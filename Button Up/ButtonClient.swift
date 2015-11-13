@@ -131,6 +131,16 @@ class ButtonClient : NSObject {
         // print("StrData:")
         // print(strData)
         
+        
+        
+        
+        
+        // TODO this should parse response into status, message, and optional data and return the data as a dictionary instead. All the functions use it the same.
+        
+        
+        
+        
+        
         var parsedResult: NSDictionary
         do {
             parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary

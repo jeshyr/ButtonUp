@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E1572CFB1BF57559006E39DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572CFA1BF57559006E39DD /* AppDelegate.swift */; };
-		E1572CFD1BF57559006E39DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572CFC1BF57559006E39DD /* ViewController.swift */; };
+		E1572CFD1BF57559006E39DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572CFC1BF57559006E39DD /* LoginViewController.swift */; };
 		E1572D001BF57559006E39DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1572CFE1BF57559006E39DD /* Main.storyboard */; };
 		E1572D021BF57559006E39DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1572D011BF57559006E39DD /* Assets.xcassets */; };
 		E1572D051BF57559006E39DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1572D031BF57559006E39DD /* LaunchScreen.storyboard */; };
@@ -16,6 +16,9 @@
 		E1572D1B1BF57559006E39DD /* Button_UpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D1A1BF57559006E39DD /* Button_UpUITests.swift */; };
 		E1572D291BF59243006E39DD /* ButtonClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D281BF59243006E39DD /* ButtonClient.swift */; };
 		E1572D2B1BF5DDA5006E39DD /* ButtonConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D2A1BF5DDA5006E39DD /* ButtonConvenience.swift */; };
+		E1572D2D1BF6058B006E39DD /* GameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */; };
+		E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */; };
+		E1572D311BF60C14006E39DD /* ButtonGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D301BF60C14006E39DD /* ButtonGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,7 @@
 /* Begin PBXFileReference section */
 		E1572CF71BF57558006E39DD /* Button Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Button Up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1572CFA1BF57559006E39DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1572CFC1BF57559006E39DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E1572CFC1BF57559006E39DD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E1572CFF1BF57559006E39DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1572D011BF57559006E39DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1572D041BF57559006E39DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +54,9 @@
 		E1572D1C1BF57559006E39DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1572D281BF59243006E39DD /* ButtonClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonClient.swift; sourceTree = "<group>"; };
 		E1572D2A1BF5DDA5006E39DD /* ButtonConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonConvenience.swift; sourceTree = "<group>"; };
+		E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewController.swift; sourceTree = "<group>"; };
+		E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
+		E1572D301BF60C14006E39DD /* ButtonGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +108,13 @@
 			isa = PBXGroup;
 			children = (
 				E1572CFA1BF57559006E39DD /* AppDelegate.swift */,
-				E1572CFC1BF57559006E39DD /* ViewController.swift */,
 				E1572D281BF59243006E39DD /* ButtonClient.swift */,
 				E1572D2A1BF5DDA5006E39DD /* ButtonConvenience.swift */,
+				E1572D301BF60C14006E39DD /* ButtonGame.swift */,
 				E1572CFE1BF57559006E39DD /* Main.storyboard */,
+				E1572CFC1BF57559006E39DD /* LoginViewController.swift */,
+				E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */,
+				E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */,
 				E1572D011BF57559006E39DD /* Assets.xcassets */,
 				E1572D031BF57559006E39DD /* LaunchScreen.storyboard */,
 				E1572D061BF57559006E39DD /* Info.plist */,
@@ -265,9 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1572CFD1BF57559006E39DD /* ViewController.swift in Sources */,
+				E1572D2D1BF6058B006E39DD /* GameTableViewController.swift in Sources */,
+				E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */,
+				E1572CFD1BF57559006E39DD /* LoginViewController.swift in Sources */,
 				E1572D291BF59243006E39DD /* ButtonClient.swift in Sources */,
 				E1572CFB1BF57559006E39DD /* AppDelegate.swift in Sources */,
+				E1572D311BF60C14006E39DD /* ButtonGame.swift in Sources */,
 				E1572D2B1BF5DDA5006E39DD /* ButtonConvenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
