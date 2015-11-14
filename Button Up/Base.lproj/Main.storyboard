@@ -342,7 +342,7 @@
         <!--Button Detail-->
         <scene sceneID="jeN-3k-jSK">
             <objects>
-                <viewController storyboardIdentifier="ButtonDetailViewController" title="Button Detail" id="j94-Lb-Unq" customClass="ButtonDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ButtonDetailViewController" title="Button Detail" id="j94-Lb-Unq" customClass="ButtonDetailViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1ad-vw-Whn"/>
                         <viewControllerLayoutGuide type="bottom" id="Rgf-Ee-BJF"/>
@@ -351,62 +351,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jzY-h9-jQ1">
-                                <rect key="frame" x="20" y="28" width="560" height="200"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NxR-cv-ooX">
+                                <rect key="frame" x="20" y="28" width="560" height="537"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anvil" translatesAutoresizingMaskIntoConstraints="NO" id="2aH-Yo-TqI">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="200"/>
-                                        <animations/>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LCi-sH-aMl">
-                                        <rect key="frame" x="285" y="0.0" width="275" height="200"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jzY-h9-jQ1">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="200"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anvil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-Y7-pAj">
-                                                <rect key="frame" x="0.0" y="0.0" width="275" height="98"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anvil" translatesAutoresizingMaskIntoConstraints="NO" id="2aH-Yo-TqI">
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="200"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="s(4) pz(10) pz(12) zs(30) spz(V)" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ht-E9-ZJ9">
-                                                <rect key="frame" x="0.0" y="108" width="275" height="35"/>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LCi-sH-aMl">
+                                                <rect key="frame" x="285" y="0.0" width="275" height="200"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anvil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-Y7-pAj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="98"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="s(4) pz(10) pz(12) zs(30) spz(V)" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ht-E9-ZJ9">
+                                                        <rect key="frame" x="0.0" y="108" width="275" height="35"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No flavor text." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq7-lV-VHN">
+                                                        <rect key="frame" x="0.0" y="153" width="275" height="47"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No flavor text." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq7-lV-VHN">
-                                                <rect key="frame" x="0.0" y="153" width="275" height="47"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            </stackView>
                                         </subviews>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="Agh-8Q-U6M"/>
+                                        </constraints>
                                     </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WAG-Ox-cUi">
+                                        <rect key="frame" x="0.0" y="205" width="560" height="332"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SkillsTableCell" textLabel="xiX-ia-wqk" style="IBUITableViewCellStyleDefault" id="p1Q-XL-53g">
+                                                <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p1Q-XL-53g" id="Hd7-op-IwB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xiX-ia-wqk">
+                                                            <rect key="frame" x="15" y="0.0" width="530" height="43"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <animations/>
+                                                </tableViewCellContentView>
+                                                <animations/>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <sections/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="j94-Lb-Unq" id="SfW-Ev-GQr"/>
+                                            <outlet property="delegate" destination="j94-Lb-Unq" id="atp-vx-hkY"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Agh-8Q-U6M"/>
-                                </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WAG-Ox-cUi">
-                                <rect key="frame" x="20" y="248" width="560" height="332"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="jzY-h9-jQ1" secondAttribute="trailing" id="1WJ-aI-9V6"/>
-                            <constraint firstItem="jzY-h9-jQ1" firstAttribute="leading" secondItem="eSr-06-ioZ" secondAttribute="leadingMargin" id="2Zi-yM-7Zb"/>
-                            <constraint firstItem="WAG-Ox-cUi" firstAttribute="trailing" secondItem="eSr-06-ioZ" secondAttribute="trailingMargin" id="Q8A-ac-j9u"/>
-                            <constraint firstItem="WAG-Ox-cUi" firstAttribute="leading" secondItem="eSr-06-ioZ" secondAttribute="leadingMargin" id="STy-PB-qTU"/>
-                            <constraint firstItem="Rgf-Ee-BJF" firstAttribute="top" secondItem="WAG-Ox-cUi" secondAttribute="bottom" constant="20" id="Uko-dv-Htn"/>
-                            <constraint firstItem="jzY-h9-jQ1" firstAttribute="top" secondItem="1ad-vw-Whn" secondAttribute="bottom" constant="8" id="dEe-R9-vAp"/>
-                            <constraint firstItem="WAG-Ox-cUi" firstAttribute="top" secondItem="jzY-h9-jQ1" secondAttribute="bottom" constant="20" id="sj8-Qj-Z9N"/>
+                            <constraint firstItem="NxR-cv-ooX" firstAttribute="top" secondItem="1ad-vw-Whn" secondAttribute="bottom" constant="8" id="2Qa-L9-duM"/>
+                            <constraint firstItem="Rgf-Ee-BJF" firstAttribute="top" secondItem="NxR-cv-ooX" secondAttribute="bottom" constant="35" id="Zri-SK-92Q"/>
+                            <constraint firstItem="NxR-cv-ooX" firstAttribute="trailing" secondItem="eSr-06-ioZ" secondAttribute="trailingMargin" id="gTf-Me-kEB"/>
+                            <constraint firstItem="NxR-cv-ooX" firstAttribute="leading" secondItem="eSr-06-ioZ" secondAttribute="leadingMargin" id="w08-2A-MS0"/>
                         </constraints>
                     </view>
                     <connections>

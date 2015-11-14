@@ -23,6 +23,8 @@ class ButtonSetsTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tabBarController?.tabBar.hidden = false
+
         // TODO load list of active games
         client.loadButtonSetData(nil) { buttonSets, success, error in
             if success {
