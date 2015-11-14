@@ -14,4 +14,13 @@ class GameDetailViewController: UIViewController {
     // Passed in from segue
     var game: ButtonGame?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tabBarController?.tabBar.hidden = true
+        
+        self.navigationItem.title = "Active Game"
+        //self.navigationItem.backBarButtonItem!.title = "Back"
+    }
+    
 }

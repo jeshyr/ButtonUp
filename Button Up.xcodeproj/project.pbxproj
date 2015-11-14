@@ -19,6 +19,8 @@
 		E1572D2D1BF6058B006E39DD /* GameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */; };
 		E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */; };
 		E1572D311BF60C14006E39DD /* ButtonGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D301BF60C14006E39DD /* ButtonGame.swift */; };
+		E1B9B8C31BF6E7D500A37061 /* ButtonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9B8C21BF6E7D500A37061 /* ButtonConstants.swift */; };
+		E1B9B8C51BF7182200A37061 /* ButtonSetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9B8C41BF7182200A37061 /* ButtonSetsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewController.swift; sourceTree = "<group>"; };
 		E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		E1572D301BF60C14006E39DD /* ButtonGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGame.swift; sourceTree = "<group>"; };
+		E1B9B8C21BF6E7D500A37061 /* ButtonConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonConstants.swift; sourceTree = "<group>"; };
+		E1B9B8C41BF7182200A37061 /* ButtonSetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSetsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 				E1572D301BF60C14006E39DD /* ButtonGame.swift */,
 				E1572CFE1BF57559006E39DD /* Main.storyboard */,
 				E1572CFC1BF57559006E39DD /* LoginViewController.swift */,
+				E1B9B8C41BF7182200A37061 /* ButtonSetsTableViewController.swift */,
+				E1B9B8C21BF6E7D500A37061 /* ButtonConstants.swift */,
 				E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */,
 				E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */,
 				E1572D011BF57559006E39DD /* Assets.xcassets */,
@@ -275,6 +281,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1572D2D1BF6058B006E39DD /* GameTableViewController.swift in Sources */,
+				E1B9B8C51BF7182200A37061 /* ButtonSetsTableViewController.swift in Sources */,
+				E1B9B8C31BF6E7D500A37061 /* ButtonConstants.swift in Sources */,
 				E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */,
 				E1572CFD1BF57559006E39DD /* LoginViewController.swift in Sources */,
 				E1572D291BF59243006E39DD /* ButtonClient.swift in Sources */,
@@ -507,6 +515,7 @@
 				E1572D211BF57559006E39DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1572D221BF57559006E39DD /* Build configuration list for PBXNativeTarget "Button UpTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +524,7 @@
 				E1572D241BF57559006E39DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1572D251BF57559006E39DD /* Build configuration list for PBXNativeTarget "Button UpUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +533,7 @@
 				E1572D271BF57559006E39DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

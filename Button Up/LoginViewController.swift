@@ -24,6 +24,8 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        activityIndicator.startAnimating()
+        
         let username = "jeshyr"
         let password = "xqEC8wu3VuZcMJ"
         
@@ -40,6 +42,12 @@ class LoginViewController: UIViewController {
                 self.displayError("Login error: \(error)")
             }
         }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        activityIndicator.stopAnimating()
     }
     
     func displayError(errorString: String?) {

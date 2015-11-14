@@ -31,7 +31,7 @@ class ButtonClient : NSObject {
         super.init()
     }
     
-    func request(parameters: [String:String], completionHandler: (result: AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func request(parameters: [String:String], completionHandler: (result: AnyObject?, success: Bool, message: String?) -> Void) -> NSURLSessionDataTask {
         
         /* 2/3. Build the URL and configure the request */
         let url = NSURL(string: self.BaseURL)!
@@ -70,18 +70,23 @@ class ButtonClient : NSObject {
             /* GUARD: Was there an error? */
             guard (error == nil) else {
                 print("There was an error with your request: \(error)")
+                completionHandler(result: nil, success: false, message: "There was an error with your request: \(error)")
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                var errorMessage: String?
                 if let response = response as? NSHTTPURLResponse {
-                    print("Your request returned an invalid response! Status code: \(response.statusCode)!")
+                    errorMessage = "Your request returned an invalid response! Status code: \(response.statusCode)!"
                 } else if let response = response {
-                    print("Your request returned an invalid response! Response: \(response)!")
+                    errorMessage = "Your request returned an invalid response! Response: \(response)!"
                 } else {
-                    print("Your request returned an invalid response!")
+                    errorMessage = "Your request returned an invalid response!"
                 }
+                print(errorMessage)
+                completionHandler(result: nil, success: false, message: errorMessage)
+
                 return
             }
             
@@ -110,6 +115,7 @@ class ButtonClient : NSObject {
             /* GUARD: Was there any data returned? */
             guard let data = data else {
                 print("No data was returned by the request!")
+                completionHandler(result: nil, success: false, message: "No data was returned by the request!")
                 return
             }
             
@@ -124,32 +130,43 @@ class ButtonClient : NSObject {
     }
     
     /* Helper: Given raw JSON, return a usable Foundation object */
-    func parseJSONWithCompletionHandler(data: NSData, completionHandler: (result: NSDictionary?, error: NSError?) -> Void) {
+    func parseJSONWithCompletionHandler(data: NSData, completionHandler: (result: NSDictionary?, success: Bool, message: String?) -> Void) {
 
         // print("parseJSONWithCompletionHandler")
         // let strData = NSString(data: data, encoding: NSUTF8StringEncoding)
         // print("StrData:")
         // print(strData)
         
-        
-        
-        
-        
-        // TODO this should parse response into status, message, and optional data and return the data as a dictionary instead. All the functions use it the same.
-        
-        
-        
-        
-        
         var parsedResult: NSDictionary
         do {
             parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
-            completionHandler(result: parsedResult, error: nil)
+            //completionHandler(result: parsedResult, success: true, message: nil)
+            
+            guard let status = parsedResult["status"] as! String? else {
+                print("Can't parse dictionary")
+                completionHandler(result: nil, success: false, message: "Can't parse result: \(parsedResult)")
+                return
+            }
+            
+            if status != "ok" {
+                completionHandler(result: nil, success: false, message: "Call failed: \(parsedResult)")
+            }
+            
+            guard let data = parsedResult["data"] as! [String: AnyObject]? else {
+                print("Can't find data in \(parsedResult)")
+                completionHandler(result: nil, success: false, message: "Can't find data in \(parsedResult)")
+                return
+            }
+            
+            // SUCCESS!!
+            completionHandler(result: data, success: true, message: nil)
+            
         } catch {
             print("Could not parse the data as JSON: '\(data)'")
-            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            completionHandler(result: nil, error: NSError(domain: "parseJSONWithCompletionHandler", code: 1, userInfo: userInfo))
+            completionHandler(result: nil, success: false, message: "Could not parse the data as JSON: '\(data)'")
         }
+        
+        
         
     }
     
