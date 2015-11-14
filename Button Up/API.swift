@@ -8,8 +8,7 @@
 
 import Foundation
 
-class ButtonClient : NSObject {
-    
+class APIClient: NSObject {
     // MARK: Properties
     
     /* Shared session */
@@ -130,7 +129,7 @@ class ButtonClient : NSObject {
     }
     
     /* Helper: Given raw JSON, return a usable Foundation object */
-    func parseJSONWithCompletionHandler(data: NSData, completionHandler: (result: NSDictionary?, success: Bool, message: String?) -> Void) {
+    func parseJSONWithCompletionHandler(data: NSData, completionHandler: (result: AnyObject?, success: Bool, message: String?) -> Void) {
 
         // print("parseJSONWithCompletionHandler")
         // let strData = NSString(data: data, encoding: NSUTF8StringEncoding)
@@ -152,7 +151,7 @@ class ButtonClient : NSObject {
                 completionHandler(result: nil, success: false, message: "Call failed: \(parsedResult)")
             }
             
-            guard let data = parsedResult["data"] as! [String: AnyObject]? else {
+            guard let data = parsedResult["data"] else {
                 print("Can't find data in \(parsedResult)")
                 completionHandler(result: nil, success: false, message: "Can't find data in \(parsedResult)")
                 return
@@ -173,10 +172,10 @@ class ButtonClient : NSObject {
     
     // MARK: Shared Instance
     
-    class func sharedInstance() -> ButtonClient {
+    class func sharedInstance() -> APIClient {
         
         struct Singleton {
-            static var sharedInstance = ButtonClient()
+            static var sharedInstance = APIClient()
         }
         
         return Singleton.sharedInstance

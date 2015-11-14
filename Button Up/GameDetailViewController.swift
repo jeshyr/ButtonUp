@@ -12,7 +12,7 @@ import UIKit
 class GameDetailViewController: UIViewController {
     
     // Passed in from segue
-    var game: ButtonGame?
+    var game: Game?
     
     override func viewDidLoad() {
         super.viewDidLoad()

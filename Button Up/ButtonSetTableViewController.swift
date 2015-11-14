@@ -1,33 +1,36 @@
 //
-//  GameTableViewController.swift
+//  ButtonSetTableViewController.swift
 //  Button Up
 //
-//  Created by Ricky Buchanan on 13/11/2015.
+//  Created by Ricky Buchanan on 14/11/2015.
 //  Copyright © 2015 Ricky Buchanan. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class GameTableViewController: UITableViewController {
-
-    let cellReuseIdentifier = "GameTableCell"
+class ButtonSetTableViewController: UITableViewController {
     
-    @IBOutlet var gameTableView: UITableView!
-    let client = APIClient.sharedInstance()
-    var games: [Game] = [Game]()
+    let cellReuseIdentifier = "ButtonSetTableCell"
+    
+    var buttons = [Button]()
+    var buttonSetName = ""
 
+    @IBOutlet var buttonSetTableView: UITableView!
+    
+    let client = APIClient.sharedInstance()
+    
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tabBarController?.tabBar.hidden = false
-        
         // TODO load list of active games
-        client.loadActiveGames() { activeGames, success, error in
+        client.loadButtonData(buttonSetName, buttonName: nil) { buttons, success, error in
             if success {
-                self.games = activeGames!
+                self.buttons = buttons!
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.gameTableView.reloadData()
+                    self.buttonSetTableView.reloadData()
                 }
             } else {
                 print("oops...")
@@ -35,27 +38,28 @@ class GameTableViewController: UITableViewController {
         }
         
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
-        let game = games[indexPath.row]
+        let button = buttons[indexPath.row]
         
-        cell.textLabel!.text = "\(game.myButton) vs. \(game.opponentButton)"
-        cell.detailTextLabel!.text = game.description
-    
+        cell.textLabel!.text = button.name
+        cell.detailTextLabel!.text = button.recipe
+        
         return(cell)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return games.count
+        return buttons.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        /* Push the game detail view */
-        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
-        controller.game = games[indexPath.row]
+        /* Push the Button detail view */
+        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ButtonDetailViewController") as! ButtonDetailViewController
+        controller.button = buttons[indexPath.row]
+        
         self.navigationController!.pushViewController(controller, animated: true)
     }
     

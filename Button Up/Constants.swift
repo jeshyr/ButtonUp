@@ -1,5 +1,5 @@
 //
-//  ButtonConstants.swift
+//  Constants.swift
 //  Button Up
 //
 //  Created by Ricky Buchanan on 14/11/2015.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ButtonMaxLengthConstants {
+struct MaxLengthConstants {
     let gameChat = 2000
     let forumBody = 16000
     let forumTitle = 100

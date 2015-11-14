@@ -9,9 +9,117 @@
 import Foundation
 import UIKit
 
-extension ButtonClient {
+extension APIClient {
     
-    func loadButtonSetData(buttonSet: String?, completionHandler: (success: Bool, message: String?) -> Void) {
+    func loadButtonData(buttonSet: String?, buttonName: String?, completionHandler: (buttons: [Button]?, success: Bool, message: String?) -> Void) {
+        var jsonBody: [String: String] = [
+            "type": "loadButtonData"
+        ]
+        
+        if buttonSet != nil {
+            jsonBody["buttonSet"] = buttonSet
+        }
+        if buttonName != nil {
+            jsonBody["buttonName"] = buttonName
+        }
+        
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
+            
+            guard success else {
+                print("error: \(message)")
+                completionHandler(buttons: nil, success: false, message: message)
+                return
+            }
+
+            //print(result)
+            var buttons = [Button]()
+            
+            guard let parsedSetArray = result as! [AnyObject]? else {
+                print("Can't find array of buttons in \(result)")
+                completionHandler(buttons: nil, success: false, message: "Can't find array of buttons in \(result)")
+                return
+            }
+            
+            for parsedSet in parsedSetArray {
+                var button = Button()
+                
+                guard let artFilename = parsedSet["artFilename"] as! String? else {
+                    print("Can't find artFilename in \(parsedSet)")
+                    completionHandler(buttons: nil, success: false, message: "Can't find artFilename in \(parsedSet)")
+                    return
+                }
+                button.artFilename = artFilename
+                
+                guard let buttonId = parsedSet["buttonId"] as! Int? else {
+                    print("Can't find buttonId in \(parsedSet)")
+                    completionHandler(buttons: nil, success: false, message: "Can't find buttonId in \(parsedSet)")
+                    return
+                }
+                button.id = buttonId
+                
+                guard let buttonName = parsedSet["buttonName"] as! String? else {
+                    print("Can't find buttonName in \(parsedSet)")
+                    completionHandler(buttons: nil, success: false, message: "Can't find buttonName in \(parsedSet)")
+                    return
+                }
+                button.name = buttonName
+
+                guard let buttonSet = parsedSet["buttonSet"] as! String? else {
+                    print("Can't find buttonSet in \(parsedSet)")
+                    completionHandler(buttons: nil, success: false, message: "Can't find buttonSet in \(parsedSet)")
+                    return
+                }
+                button.setName = buttonSet
+                
+                guard let dieSkills = parsedSet["dieSkills"] as! [String]? else {
+                    print("Can't find dieSkills in \(parsedSet)")
+                    completionHandler(buttons: nil, success: false, message: "Can't find dieSkills in \(parsedSet)")
+                    return
+                }
+                button.dieSkills = dieSkills
+                
+                guard let dieTypes = parsedSet["dieTypes"] as! [String]? else {
+                    print("Can't find dieTypes in \(parsedSet)")
+                    completionHandler(buttons: nil, success: false, message: "Can't find dieTypes in \(parsedSet)")
+                    return
+                }
+                button.dieTypes = dieTypes
+                
+                guard let hasUnimplementedSkill = parsedSet["hasUnimplementedSkill"] as! Bool? else {
+                    print("Can't find hasUnimplementedSkill in \(parsedSet)")
+                    completionHandler(buttons: nil, success: false, message: "Can't find hasUnimplementedSkill in \(parsedSet)")
+                    return
+                }
+                button.hasUnimplementedSkill = hasUnimplementedSkill
+                
+                guard let isTournamentLegal = parsedSet["isTournamentLegal"] as! Bool? else {
+                    print("Can't find isTournamentLegal in \(parsedSet)")
+                    completionHandler(buttons: nil, success: false, message: "Can't find isTournamentLegal in \(parsedSet)")
+                    return
+                }
+                button.isTournamentLegal = isTournamentLegal
+                
+                guard let recipe = parsedSet["recipe"] as! String? else {
+                    print("Can't find recipe in \(parsedSet)")
+                    completionHandler(buttons: nil, success: false, message: "Can't find recipe in \(parsedSet)")
+                    return
+                }
+                button.recipe = recipe
+                
+                if let tags = parsedSet["tags"] as! [String]? {
+                    button.tags = tags
+                } else {
+                    button.tags = nil
+                }
+
+                buttons.append(button)
+            }
+            
+            completionHandler(buttons: buttons, success: true, message: nil)
+        }
+    }
+    
+    func loadButtonSetData(buttonSet: String?, completionHandler: (buttonSets: [ButtonSet]?, success: Bool, message: String?) -> Void) {
         var jsonBody: [String: String] = [
             "type": "loadButtonSetData"
         ]
@@ -20,22 +128,76 @@ extension ButtonClient {
             jsonBody["buttonSet"] = buttonSet
         }
         
-        ButtonClient.sharedInstance().request(jsonBody) { result, success, message in
-            print("in loadButtonSetData completion handler")
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
             
-            print(result)
-            completionHandler(success: true, message: nil)
-
+            guard success else {
+                print("error: \(message)")
+                completionHandler(buttonSets: nil, success: false, message: message)
+                return
+            }
+            
+            //print(result)
+            var buttonSets = [ButtonSet]()
+            
+            guard let parsedSetArray = result as! [AnyObject]? else {
+                print("Can't find array of button sets in \(result)")
+                completionHandler(buttonSets: nil, success: false, message: "Can't find array of button sets in \(result)")
+                return
+            }
+            
+            for parsedSet in parsedSetArray {
+                var buttonSet = ButtonSet()
+                
+                guard let setName = parsedSet["setName"] as! String? else {
+                    print("Can't find set name in \(parsedSet)")
+                    completionHandler(buttonSets: nil, success: false, message: "Can't find set name in \(parsedSet)")
+                    return
+                }
+                buttonSet.name = setName
+                
+                guard let numberOfButtons = parsedSet["numberOfButtons"] as! Int? else {
+                    print("Can't find numberOfButtons in \(parsedSet)")
+                    completionHandler(buttonSets: nil, success: false, message: "Can't find numberOfButtons in \(parsedSet)")
+                    return
+                }
+                buttonSet.numberOfButtons = numberOfButtons
+                
+                guard let onlyHasUnimplementedButtons = parsedSet["onlyHasUnimplementedButtons"] as! Bool? else {
+                    print("Can't find onlyHasUnimplementedButtons in \(parsedSet)")
+                    completionHandler(buttonSets: nil, success: false, message: "Can't find onlyHasUnimplementedButtons in \(parsedSet)")
+                    return
+                }
+                buttonSet.onlyHasUnimplementedButtons = onlyHasUnimplementedButtons
+                
+                guard let dieSkills = parsedSet["dieSkills"] as! [String]? else {
+                    print("Can't find dieSkills in \(parsedSet)")
+                    completionHandler(buttonSets: nil, success: false, message: "Can't find dieSkills in \(parsedSet)")
+                    return
+                }
+                buttonSet.dieSkills = dieSkills
+                
+                
+                guard let dieTypes = parsedSet["dieTypes"] as! [String]? else {
+                    print("Can't find dieTypes in \(parsedSet)")
+                    completionHandler(buttonSets: nil, success: false, message: "Can't find dieTypes in \(parsedSet)")
+                    return
+                }
+                buttonSet.dieTypes = dieTypes
+                
+                buttonSets.append(buttonSet)
+            }
+            
+            completionHandler(buttonSets: buttonSets, success: true, message: nil)
         }
     }
 
 
-    func loadActiveGames(completionHandler: (games: [ButtonGame]?, success: Bool, message: String?) -> Void) {
+    func loadActiveGames(completionHandler: (games: [Game]?, success: Bool, message: String?) -> Void) {
         let jsonBody: [String: String] = [
             "type": "loadActiveGames"
         ]
         
-        ButtonClient.sharedInstance().request(jsonBody) { result, success, message in
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
             //print("in loadActiveGames completion handler")
             
             guard success else {
@@ -45,7 +207,7 @@ extension ButtonClient {
             }
             
             // Parse dictionary of arrays into array of games
-            var games: [ButtonGame] = [ButtonGame]()
+            var games: [Game] = [Game]()
             //print(result)
             
             guard let gameDescriptionArray = result!["gameDescriptionArray"] as! [String]? else {
@@ -54,7 +216,7 @@ extension ButtonClient {
                 return
             }
             for description in gameDescriptionArray {
-                var newGame = ButtonGame()
+                var newGame = Game()
                 newGame.description = description
                 games.append(newGame)
             }
@@ -173,7 +335,7 @@ extension ButtonClient {
                 return
             }
             for (index, opponentColor) in opponentColorArray.enumerate() {
-                games[index].opponentColor = ButtonClient.hexStringToUIColor(opponentColor)
+                games[index].opponentColor = APIClient.hexStringToUIColor(opponentColor)
             }
             
             guard let playerColorArray = result!["playerColorArray"] as! [String]? else {
@@ -182,7 +344,7 @@ extension ButtonClient {
                 return
             }
             for (index, myColor) in playerColorArray.enumerate() {
-                games[index].myColor = ButtonClient.hexStringToUIColor(myColor)
+                games[index].myColor = APIClient.hexStringToUIColor(myColor)
             }
             
             guard let opponentIdArray = result!["opponentIdArray"] as! [Int]? else {
@@ -231,7 +393,7 @@ extension ButtonClient {
             "password": password
         ]
         
-        ButtonClient.sharedInstance().request(jsonBody) { result, success, message in
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
             // print("in login completion handler")
             // No result expected for login
             completionHandler(success: success, message: message)

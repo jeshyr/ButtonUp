@@ -231,19 +231,37 @@
         <!--Button Sets-->
         <scene sceneID="Bkt-Pb-fLv">
             <objects>
-                <tableViewController id="gM4-uC-nZW" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ButtonSetsTableViewController" id="gM4-uC-nZW" customClass="ButtonSetsTableViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8gX-gD-pry">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonSetCell" id="131-TE-c4X">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonSetsTableCell" textLabel="lAm-uf-Yle" detailTextLabel="Why-u5-Oxn" style="IBUITableViewCellStyleSubtitle" id="131-TE-c4X">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="131-TE-c4X" id="oZq-JZ-JyA">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lAm-uf-Yle">
+                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Why-u5-Oxn">
+                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -255,10 +273,153 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Button Sets" id="Skq-xC-8eB"/>
+                    <connections>
+                        <outlet property="buttonSetsTableView" destination="8gX-gD-pry" id="Dxb-LB-SH0"/>
+                        <segue destination="FsJ-d8-SZS" kind="showDetail" identifier="ButtonDetail" id="pi6-jI-xws"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tf-s4-VMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1071" y="1723"/>
+        </scene>
+        <!--Button Set-->
+        <scene sceneID="vza-vx-bWd">
+            <objects>
+                <tableViewController storyboardIdentifier="ButtonSetTableViewController" title="Button Set" id="FsJ-d8-SZS" customClass="ButtonSetTableViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Lqx-Z9-IwP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonSetTableCell" textLabel="p16-Vh-ZEE" detailTextLabel="dj1-Go-zNg" imageView="B3F-36-QQz" style="IBUITableViewCellStyleSubtitle" id="OEr-GR-okM">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OEr-GR-okM" id="RLK-vO-Trk">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p16-Vh-ZEE">
+                                            <rect key="frame" x="73" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dj1-Go-zNg">
+                                            <rect key="frame" x="73" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="anvil" id="B3F-36-QQz">
+                                            <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </imageView>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FsJ-d8-SZS" id="Boh-MX-oak"/>
+                            <outlet property="delegate" destination="FsJ-d8-SZS" id="orI-HD-RJF"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="buttonSetTableView" destination="Lqx-Z9-IwP" id="eXB-LQ-qmp"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pzk-JS-uAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1776" y="1723"/>
+        </scene>
+        <!--Button Detail-->
+        <scene sceneID="jeN-3k-jSK">
+            <objects>
+                <viewController storyboardIdentifier="ButtonDetailViewController" title="Button Detail" id="j94-Lb-Unq" customClass="ButtonDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1ad-vw-Whn"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rgf-Ee-BJF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="ButtonDetailViewController" id="eSr-06-ioZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jzY-h9-jQ1">
+                                <rect key="frame" x="20" y="28" width="560" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anvil" translatesAutoresizingMaskIntoConstraints="NO" id="2aH-Yo-TqI">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="200"/>
+                                        <animations/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LCi-sH-aMl">
+                                        <rect key="frame" x="285" y="0.0" width="275" height="200"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anvil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-Y7-pAj">
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="98"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="s(4) pz(10) pz(12) zs(30) spz(V)" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ht-E9-ZJ9">
+                                                <rect key="frame" x="0.0" y="108" width="275" height="35"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No flavor text." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq7-lV-VHN">
+                                                <rect key="frame" x="0.0" y="153" width="275" height="47"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Agh-8Q-U6M"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WAG-Ox-cUi">
+                                <rect key="frame" x="20" y="248" width="560" height="332"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="jzY-h9-jQ1" secondAttribute="trailing" id="1WJ-aI-9V6"/>
+                            <constraint firstItem="jzY-h9-jQ1" firstAttribute="leading" secondItem="eSr-06-ioZ" secondAttribute="leadingMargin" id="2Zi-yM-7Zb"/>
+                            <constraint firstItem="WAG-Ox-cUi" firstAttribute="trailing" secondItem="eSr-06-ioZ" secondAttribute="trailingMargin" id="Q8A-ac-j9u"/>
+                            <constraint firstItem="WAG-Ox-cUi" firstAttribute="leading" secondItem="eSr-06-ioZ" secondAttribute="leadingMargin" id="STy-PB-qTU"/>
+                            <constraint firstItem="Rgf-Ee-BJF" firstAttribute="top" secondItem="WAG-Ox-cUi" secondAttribute="bottom" constant="20" id="Uko-dv-Htn"/>
+                            <constraint firstItem="jzY-h9-jQ1" firstAttribute="top" secondItem="1ad-vw-Whn" secondAttribute="bottom" constant="8" id="dEe-R9-vAp"/>
+                            <constraint firstItem="WAG-Ox-cUi" firstAttribute="top" secondItem="jzY-h9-jQ1" secondAttribute="bottom" constant="20" id="sj8-Qj-Z9N"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonFlavorText" destination="Dq7-lV-VHN" id="unj-t0-Q7z"/>
+                        <outlet property="buttonImage" destination="2aH-Yo-TqI" id="igY-mx-IKY"/>
+                        <outlet property="buttonRecipeLabel" destination="1Ht-E9-ZJ9" id="6kj-uj-w9v"/>
+                        <outlet property="buttonSkillsTable" destination="WAG-Ox-cUi" id="B6j-MI-B7p"/>
+                        <outlet property="buttonTitleLabel" destination="aaa-Y7-pAj" id="Xoy-7K-KcL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MKP-FK-AZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1944" y="1029"/>
         </scene>
         <!--Button Sets-->
         <scene sceneID="RNs-Qv-Q2H">
@@ -300,6 +461,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="anvil" width="150" height="150"/>
         <image name="button-tabbar" width="32" height="32"/>
     </resources>
 </document>

@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loggingInTextLabel: UILabel!
     @IBOutlet weak var debugTextLabel: UILabel!
     
-    let client = ButtonClient.sharedInstance()
+    let client = APIClient.sharedInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()

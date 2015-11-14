@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-struct ButtonGame {
+struct Game {
 
     // Object for a single game
     var description: String = ""
