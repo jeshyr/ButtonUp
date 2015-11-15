@@ -15,7 +15,7 @@ class GameHistoryTableViewController: UITableViewController {
     
     @IBOutlet var gameTableView: UITableView!
     let client = APIClient.sharedInstance()
-    var games: [Game] = [Game]()
+    var games: [GameSummary] = [GameSummary]()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -56,7 +56,7 @@ class GameHistoryTableViewController: UITableViewController {
         
         /* Push the game detail view */
         let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
-        controller.game = games[indexPath.row]
+        controller.gameSummary = games[indexPath.row]
         self.navigationController!.pushViewController(controller, animated: true)
     }
     

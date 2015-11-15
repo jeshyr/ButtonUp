@@ -1,5 +1,5 @@
 //
-//  ButtonGame.swift
+//  Game.swift
 //  Button Up
 //
 //  Created by Ricky Buchanan on 13/11/2015.
@@ -9,13 +9,81 @@
 import Foundation
 import UIKit
 
-
 struct Game {
-
+    // These may or may not be the logged in player's games
+    
     // Object for a single game
     var description: String = ""
     var id: Int = 0
-    var state: gameState = gameState.INVALID
+    var state: GameState = GameState.INVALID
+    
+    var round: Int = 0
+    var timestamp = NSDate()
+
+    var activePlayerIndex: Int? // Nill in inactive games
+    var currentPlayerIndex = 0
+    var actionLog = [GameLogMessage]()
+    var chatEditable = NSDate() // TODO is this a timestamp?
+    var chatLog = [GameLogMessage]()
+    var skillsInfo = [GameButtonSkillInfo]()
+    var maxWins: Int = 0
+    var playerData = [GamePlayerData]()
+    var playerWithInitiativeIndex: Int = 0
+    var previousGameId: Int? = nil
+    var validAttacks = [Attack]()
+}
+
+struct GamePlayerData {
+    // Data about one player in a Game - may be anyone
+    
+    var id: Int = 0
+    var name: String = ""
+    var color = UIColor()
+    var button = Button()
+
+    var activeDice = [Die]()
+    var capturedDice = [Die]()
+    var outOfPlayDice = [Die]()
+
+    var draws: Int = 0
+    var losses: Int = 0
+    var wins: Int = 0
+    var roundScore: Int = 0
+    var sideScore: Int = 0
+    var canStillWin: Bool = false
+
+    var hasDismissedGame: Bool = false
+    var lastActionTime = NSDate() // timestamp?
+    
+    var optRequestArray = [String]() // WTF?
+    var prevOptValueArray = [String]() // WTF?
+    var swingRequestArray = [String]() // WTF?
+    
+    var waitingOnAction: Bool = false
+}
+
+
+struct GameLogMessage {
+    var player: String = ""
+    var message: String = ""
+    var timestamp = NSDate()
+}
+
+struct GameButtonSkillInfo {
+    var name: String = ""
+    var code: String = "" // Are they always 1 letter?
+    var description: String = ""
+    var interactions = [String]() // Maybe?
+}
+
+
+struct GameSummary {
+    // These are always about games belonging to the logged in player, so "my" and "oponent" on the variables
+    
+    // Object for a single game
+    var description: String = ""
+    var id: Int = 0
+    var state: GameState = GameState.INVALID
     var inactivity: String = ""
     var inactivityRaw: Int = 0 // What's this?
     var awaitingAction: Bool = false
@@ -30,11 +98,11 @@ struct Game {
     var opponentName: String = ""
     var opponentColor = UIColor()
     
-    var status: gameStatus = gameStatus.BROKEN
+    var status: GameStatus = GameStatus.BROKEN
     
 }
 
-enum gameStatus: String {
+enum GameStatus: String {
     case OPEN
     case ACTIVE
     case COMPLETE
@@ -42,7 +110,7 @@ enum gameStatus: String {
     case BROKEN
 }
 
-enum gameState: String {
+enum GameState: String {
     case START_GAME
     case APPLY_HANDICAPS
     case CHOOSE_JOIN_GAME

@@ -26,6 +26,8 @@
 		E1D00DBC1BF74847009FF0A8 /* ButtonSetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */; };
 		E1D00DBE1BF74D88009FF0A8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DBD1BF74D88009FF0A8 /* Button.swift */; };
 		E1F5C9B91BF82C660052A119 /* GameHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */; };
+		E1F5C9BB1BF884F50052A119 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9BA1BF884F50052A119 /* Die.swift */; };
+		E1F5C9BD1BF88BF10052A119 /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9BC1BF88BF10052A119 /* Attack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSetTableViewController.swift; sourceTree = "<group>"; };
 		E1D00DBD1BF74D88009FF0A8 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHistoryTableViewController.swift; sourceTree = "<group>"; };
+		E1F5C9BA1BF884F50052A119 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
+		E1F5C9BC1BF88BF10052A119 /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,8 @@
 				E1572D281BF59243006E39DD /* API.swift */,
 				E1572D2A1BF5DDA5006E39DD /* Client.swift */,
 				E1572D301BF60C14006E39DD /* Game.swift */,
+				E1F5C9BC1BF88BF10052A119 /* Attack.swift */,
+				E1F5C9BA1BF884F50052A119 /* Die.swift */,
 				E1D00DB91BF734CB009FF0A8 /* ButtonSet.swift */,
 				E1D00DBD1BF74D88009FF0A8 /* Button.swift */,
 				E1B9B8C21BF6E7D500A37061 /* Constants.swift */,
@@ -303,12 +309,14 @@
 				E1572CFD1BF57559006E39DD /* LoginViewController.swift in Sources */,
 				E1F5C9B91BF82C660052A119 /* GameHistoryTableViewController.swift in Sources */,
 				E1572D291BF59243006E39DD /* API.swift in Sources */,
+				E1F5C9BB1BF884F50052A119 /* Die.swift in Sources */,
 				E1D00DB61BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift in Sources */,
 				E1D00DBA1BF734CB009FF0A8 /* ButtonSet.swift in Sources */,
 				E1572CFB1BF57559006E39DD /* AppDelegate.swift in Sources */,
 				E1572D311BF60C14006E39DD /* Game.swift in Sources */,
 				E1D00DBE1BF74D88009FF0A8 /* Button.swift in Sources */,
 				E1572D2B1BF5DDA5006E39DD /* Client.swift in Sources */,
+				E1F5C9BD1BF88BF10052A119 /* Attack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

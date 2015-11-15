@@ -15,8 +15,8 @@ class GameTableViewController: UITableViewController {
     
     @IBOutlet var gameTableView: UITableView!
     let client = APIClient.sharedInstance()
-    var games: [Game] = [Game]()
-    var completedGames: [Game] = [Game]()
+    var games: [GameSummary] = [GameSummary]()
+    var completedGames: [GameSummary] = [GameSummary]()
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,7 +52,7 @@ class GameTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
-        var game = Game()
+        var game = GameSummary()
         if indexPath.section == 0 {
             if indexPath.row < games.count {
                 game = games[indexPath.row]
@@ -86,7 +86,7 @@ class GameTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var game = Game()
+        var game = GameSummary()
 
         if indexPath.section == 0 {
             if indexPath.row < games.count {
@@ -104,7 +104,7 @@ class GameTableViewController: UITableViewController {
 
         /* Push the game detail view */
         let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
-        controller.game = game
+        controller.gameSummary = game
         self.navigationController!.pushViewController(controller, animated: true)
     }
     

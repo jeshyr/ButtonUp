@@ -11,14 +11,16 @@ import UIKit
 
 
 struct Button {
-    var artFilename: String = ""
-    var id: Int = 0
+    // May have only these first three properties, or might have all
     var name: String = ""
+    var artFilename: String = ""
+    var recipe: String = ""
+    
+    var id: Int = 0
     var setName: String = ""
     var dieSkills = [String]()
     var dieTypes = [String]()
     var hasUnimplementedSkill: Bool = false
     var isTournamentLegal: Bool = false
-    var recipe: String = ""
     var tags = [String]?()
 }

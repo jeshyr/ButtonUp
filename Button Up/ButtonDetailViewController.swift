@@ -22,8 +22,8 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
     // Passed in from segue
     var button: Button?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.hidden = true
         
@@ -94,16 +94,5 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//
-//        // No details for these yet
-////        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ButtonDetailViewController") as! ButtonDetailViewController
-////        controller.button = buttons[indexPath.row]
-////        
-////        self.navigationController!.pushViewController(controller, animated: true)
-//    }
-    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 100
-//    }
+
 }
