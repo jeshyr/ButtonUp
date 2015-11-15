@@ -35,6 +35,21 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
             buttonRecipeLabel.text = button.recipe
             buttonFlavorText.text = "oops..."
         }
+        
+        if let artFilename = button?.artFilename {
+            APIClient.sharedInstance().getImageData(artFilename, completionHandler: { (imageData, success, message) in
+                if success {
+                    if let image = UIImage(data: imageData!) {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.buttonImage.image = image
+                        }
+                    }
+                } else {
+                    print("Image request failed:")
+                    print(message)
+                }
+            })
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -42,11 +57,17 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
         
         if indexPath.section == 0 {
-            let dieSkill = button?.dieSkills[indexPath.row]
-            cell.textLabel!.text = dieSkill
+            if let dieSkill = button?.dieSkills[indexPath.row] {
+                cell.textLabel!.text = dieSkill
+            } else {
+                cell.textLabel!.text = "(none)"
+            }
         } else {
-            let dieType = button?.dieTypes[indexPath.row]
-            cell.textLabel!.text = dieType
+            if let dieType = button?.dieTypes[indexPath.row] {
+                cell.textLabel!.text = dieType
+            } else {
+                cell.textLabel!.text = "(none)"
+            }
         }
 
         return(cell)
@@ -70,13 +91,13 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
             if let skills = button?.dieSkills {
                 return skills.count
             } else {
-                return 0
+                return 1
             }
         } else {
             if let types = button?.dieTypes {
                 return types.count
             } else {
-                return 0
+                return 1
             }
         }
     }

@@ -16,11 +16,7 @@ class APIClient: NSObject {
     var cookies: NSHTTPCookieStorage
     
     
-    /* Configuration object */
-    //var config = TMDBConfig()
-    let BaseURL : String = "http://buttonweavers.com/api/responder.php"
 
-    
     // MARK: Initializers
     
     override init() {
@@ -33,7 +29,7 @@ class APIClient: NSObject {
     func request(parameters: [String:String], completionHandler: (result: AnyObject?, success: Bool, message: String?) -> Void) -> NSURLSessionDataTask {
         
         /* 2/3. Build the URL and configure the request */
-        let url = NSURL(string: self.BaseURL)!
+        let url = NSURL(string: BaseURL)!
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         
@@ -169,6 +165,65 @@ class APIClient: NSObject {
         
     }
     
+    
+    func getImageData(artFilename: String?, completionHandler: (imageData: NSData?, success: Bool, message: String?) -> Void) {
+        
+        /* 1. Set the parameters */
+        // There are none...
+        
+        /* 2/3. Build the URL and configure the request */
+        let baseURL = NSURL(string: BaseButtonImageURL)!
+        var url: NSURL
+        if let artFilename = artFilename {
+            url = baseURL.URLByAppendingPathComponent(artFilename)
+        } else {
+            url = baseURL.URLByAppendingPathComponent(ButtonImageDefault)
+        }
+        let request = NSURLRequest(URL: url)
+        
+        /* 4. Make the request */
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                print("There was an error with your image request: \(error)")
+                completionHandler(imageData: nil, success: false, message: "There was an error with your image request: \(error)")
+
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                if let response = response as? NSHTTPURLResponse {
+                    print("Your image request returned an invalid response! Status code: \(response.statusCode)!")
+                    completionHandler(imageData: nil, success: false, message: "Your image request returned an invalid response! Status code: \(response.statusCode)!")
+
+                } else if let response = response {
+                    print("Your image request returned an invalid response! Response: \(response)!")
+                    completionHandler(imageData: nil, success: false, message: "Your image request returned an invalid response! Response: \(response)!")
+
+                } else {
+                    print("Your image request returned an invalid response!")
+                    completionHandler(imageData: nil, success: false, message: "Your image request returned an invalid response!")
+
+                }
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                print("No data was returned by the image request!")
+                completionHandler(imageData: nil, success: false, message: "No data was returned by the image request!")
+                return
+            }
+            
+            /* 5/6. Parse the data and use the data (happens in completion handler) */
+            completionHandler(imageData: data, success: true, message: nil)
+        }
+        
+        /* 7. Start the request */
+        task.resume()
+    }
     
     // MARK: Shared Instance
     

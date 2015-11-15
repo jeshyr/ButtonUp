@@ -8,6 +8,13 @@
 
 import Foundation
 
+/* Configuration object */
+//var config = TMDBConfig()
+let BaseURL = "http://buttonweavers.com/api/responder.php"
+
+let BaseButtonImageURL = "http://www.buttonweavers.com/ui/images/button/"
+let ButtonImageDefault = "BMdefaultRound.png"
+
 struct MaxLengthConstants {
     let gameChat = 2000
     let forumBody = 16000

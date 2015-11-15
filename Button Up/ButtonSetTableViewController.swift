@@ -49,6 +49,20 @@ class ButtonSetTableViewController: UITableViewController {
         cell.textLabel!.text = button.name
         cell.detailTextLabel!.text = button.recipe
         
+        let artFilename = button.artFilename
+        APIClient.sharedInstance().getImageData(artFilename, completionHandler: { (imageData, success, message) in
+            if success {
+                if let image = UIImage(data: imageData!) {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            cell.imageView!.image = image
+                    }
+                }
+            } else {
+                print("Image request failed:")
+                print(message)
+            }
+        })
+        
         return(cell)
     }
     
