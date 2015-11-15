@@ -113,7 +113,7 @@
                             <outlet property="delegate" destination="git-Fa-78y" id="Osd-OS-JMT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Active Games" id="30k-gV-z7T" userLabel="Active Games"/>
+                    <navigationItem key="navigationItem" title="Your Games" id="30k-gV-z7T" userLabel="Active Games"/>
                     <connections>
                         <outlet property="gameTableView" destination="bfg-0l-Dw6" id="1lN-SI-9Fg"/>
                         <segue destination="nhG-40-lOl" kind="showDetail" identifier="ShowGameDetailSegue" id="fgx-WN-Mwy"/>
@@ -163,14 +163,14 @@
         <!--History-->
         <scene sceneID="ZAx-Ho-uJa">
             <objects>
-                <tableViewController title="History" id="vaA-Sm-96P" sceneMemberID="viewController">
+                <tableViewController title="History" id="vaA-Sm-96P" customClass="GameHistoryTableViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xCc-zs-0pD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="HistoryTableCell" textLabel="7qr-jd-A7z" detailTextLabel="vsJ-cC-7Xg" style="IBUITableViewCellStyleSubtitle" id="VVj-tV-Wjg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="GameHistoryTableCell" textLabel="7qr-jd-A7z" detailTextLabel="vsJ-cC-7Xg" style="IBUITableViewCellStyleSubtitle" id="VVj-tV-Wjg">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVj-tV-Wjg" id="ctR-Vj-0Gr">

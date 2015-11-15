@@ -57,14 +57,14 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
         
         if indexPath.section == 0 {
-            if let dieSkill = button?.dieSkills[indexPath.row] {
-                cell.textLabel!.text = dieSkill
+            if indexPath.row < button?.dieSkills.count {
+                cell.textLabel!.text = button?.dieSkills[indexPath.row]
             } else {
                 cell.textLabel!.text = "(none)"
             }
         } else {
-            if let dieType = button?.dieTypes[indexPath.row] {
-                cell.textLabel!.text = dieType
+            if indexPath.row < button?.dieTypes.count {
+                cell.textLabel!.text = button?.dieTypes[indexPath.row]
             } else {
                 cell.textLabel!.text = "(none)"
             }
@@ -88,17 +88,9 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            if let skills = button?.dieSkills {
-                return skills.count
-            } else {
-                return 1
-            }
+                return max((button?.dieSkills.count)!, 1)
         } else {
-            if let types = button?.dieTypes {
-                return types.count
-            } else {
-                return 1
-            }
+            return max((button?.dieTypes.count)!, 1)
         }
     }
     

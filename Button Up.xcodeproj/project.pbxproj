@@ -25,6 +25,7 @@
 		E1D00DBA1BF734CB009FF0A8 /* ButtonSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DB91BF734CB009FF0A8 /* ButtonSet.swift */; };
 		E1D00DBC1BF74847009FF0A8 /* ButtonSetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */; };
 		E1D00DBE1BF74D88009FF0A8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DBD1BF74D88009FF0A8 /* Button.swift */; };
+		E1F5C9B91BF82C660052A119 /* GameHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		E1D00DB91BF734CB009FF0A8 /* ButtonSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSet.swift; sourceTree = "<group>"; };
 		E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSetTableViewController.swift; sourceTree = "<group>"; };
 		E1D00DBD1BF74D88009FF0A8 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHistoryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				E1572CFC1BF57559006E39DD /* LoginViewController.swift */,
 				E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */,
 				E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */,
+				E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */,
 				E1D00DB51BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift */,
 				E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */,
 				E1D00DB31BF728D0009FF0A8 /* ButtonDetailViewController.swift */,
@@ -298,6 +301,7 @@
 				E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */,
 				E1D00DBC1BF74847009FF0A8 /* ButtonSetTableViewController.swift in Sources */,
 				E1572CFD1BF57559006E39DD /* LoginViewController.swift in Sources */,
+				E1F5C9B91BF82C660052A119 /* GameHistoryTableViewController.swift in Sources */,
 				E1572D291BF59243006E39DD /* API.swift in Sources */,
 				E1D00DB61BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift in Sources */,
 				E1D00DBA1BF734CB009FF0A8 /* ButtonSet.swift in Sources */,
