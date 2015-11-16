@@ -31,7 +31,7 @@ enum DieFlag: String {
 
 struct DieSwing {
     // Values specific to swing die
-    var swingType: Character
+    var swingType: String = ""
     var value: Int? = 0 // value chosen by player (if set)
     var max: Int = 0 // Maximum allowed value
     var min: Int = 0 // Minimum allowed value

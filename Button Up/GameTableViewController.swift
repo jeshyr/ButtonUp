@@ -60,6 +60,11 @@ class GameTableViewController: UITableViewController {
                 cell.detailTextLabel!.text = game.description
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 cell.selectionStyle = UITableViewCellSelectionStyle.Blue
+                if game.awaitingAction {
+                    cell.backgroundColor = game.myColor
+                } else {
+                    cell.backgroundColor = game.opponentColor
+                }
             } else {
                 cell.textLabel!.text = "(none)"
                 cell.detailTextLabel!.text = ""

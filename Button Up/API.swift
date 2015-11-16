@@ -152,7 +152,6 @@ class APIClient: NSObject {
                 completionHandler(result: nil, success: false, message: "Can't find data in \(parsedResult)")
                 return
             }
-            
             // SUCCESS!!
             completionHandler(result: data, success: true, message: nil)
             
@@ -160,11 +159,7 @@ class APIClient: NSObject {
             print("Could not parse the data as JSON: '\(data)'")
             completionHandler(result: nil, success: false, message: "Could not parse the data as JSON: '\(data)'")
         }
-        
-        
-        
     }
-    
     
     func getImageData(artFilename: String?, completionHandler: (imageData: NSData?, success: Bool, message: String?) -> Void) {
         

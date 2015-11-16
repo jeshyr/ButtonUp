@@ -50,14 +50,15 @@ struct GamePlayerData {
     var wins: Int = 0
     var roundScore: Int = 0
     var sideScore: Int = 0
-    var canStillWin: Bool = false
+    var canStillWin: Bool? = nil
 
     var hasDismissedGame: Bool = false
     var lastActionTime = NSDate() // timestamp?
     
-    var optRequestArray = [String]() // WTF?
-    var prevOptValueArray = [String]() // WTF?
-    var swingRequestArray = [String]() // WTF?
+    var optRequests = [String]() // optRequestArray WTF?
+    var prevOptValues = [String]() // prevOptValueArray WTF?
+    var swingRequests = [DieSwing]() 
+    var prevSwingValues = [String]() // prevSwingValueArray WTF?
     
     var waitingOnAction: Bool = false
 }

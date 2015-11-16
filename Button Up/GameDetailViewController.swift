@@ -26,8 +26,7 @@ class GameDetailViewController: UIViewController {
         
         client.loadGameData(gameSummary!.id) { game, success, error in
             if success {
-                //print(game)
-                //                self.games = activeGames!
+                self.game = game
                 //dispatch_async(dispatch_get_main_queue()) {
                 //    self.gameTableView.reloadData()
                 //}

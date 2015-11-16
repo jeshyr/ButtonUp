@@ -68,7 +68,7 @@
 		E1572D301BF60C14006E39DD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		E1B9B8C21BF6E7D500A37061 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E1D00DB31BF728D0009FF0A8 /* ButtonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDetailViewController.swift; sourceTree = "<group>"; };
-		E1D00DB51BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonSetsTableViewController.swift; path = ../ButtonSetsTableViewController.swift; sourceTree = "<group>"; };
+		E1D00DB51BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSetsTableViewController.swift; sourceTree = "<group>"; };
 		E1D00DB91BF734CB009FF0A8 /* ButtonSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSet.swift; sourceTree = "<group>"; };
 		E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSetTableViewController.swift; sourceTree = "<group>"; };
 		E1D00DBD1BF74D88009FF0A8 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };

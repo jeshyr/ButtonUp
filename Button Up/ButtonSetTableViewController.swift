@@ -26,6 +26,8 @@ class ButtonSetTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.hidden = false
+        self.navigationItem.title = buttonSetName
+
         
         // TODO load list of active games
         client.loadButtonData(buttonSetName, buttonName: nil) { buttons, success, error in
