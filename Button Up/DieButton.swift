@@ -18,10 +18,11 @@ class DieButton: UIButton {
     /* Constants for styling and configuration */
     let darkerBlue = UIColor(red: 0.0, green: 0.298, blue: 0.686, alpha:1.0)
     let lighterBlue = UIColor(red: 0.0, green:0.502, blue:0.839, alpha: 1.0)
-    let titleLabelFontSize : CGFloat = 17.0
-    let borderedButtonHeight : CGFloat = 44.0
-    let borderedButtonCornerRadius : CGFloat = 4.0
-    let phoneBorderedButtonExtraPadding : CGFloat = 14.0
+    let titleLabelFontSize : CGFloat = 25.0
+    let dieButtonHeight : CGFloat = 60.0
+    let dieButtonCornerRadius : CGFloat = 30.0
+    
+    let dieButtonExtraPadding : CGFloat = 14.0
     
     var backingColor : UIColor? = nil
     var highlightedBackingColor : UIColor? = nil
@@ -30,22 +31,22 @@ class DieButton: UIButton {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-        self.themeBorderedButton()
+        self.themeDieButton()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.themeBorderedButton()
+        self.themeDieButton()
     }
     
-    func themeBorderedButton() -> Void {
+    func themeDieButton() -> Void {
         self.layer.masksToBounds = true
-        self.layer.cornerRadius = borderedButtonCornerRadius
+        self.layer.cornerRadius = dieButtonCornerRadius
         self.highlightedBackingColor = darkerBlue
         self.backingColor = lighterBlue
         self.backgroundColor = lighterBlue
         self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        self.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: titleLabelFontSize)
+        self.titleLabel?.font = UIFont.boldSystemFontOfSize(titleLabelFontSize)
     }
     
     // MARK: Setters
@@ -79,11 +80,21 @@ class DieButton: UIButton {
     
     // MARK: Layout
     
+    override func intrinsicContentSize() -> CGSize {
+//        let extraButtonPadding : CGFloat = dieButtonExtraPadding
+        var intrinsicContentSize = CGSizeZero
+        intrinsicContentSize.width = dieButtonHeight
+        intrinsicContentSize.height = dieButtonHeight
+        return intrinsicContentSize
+        
+    }
+    
     override func sizeThatFits(size: CGSize) -> CGSize {
-        let extraButtonPadding : CGFloat = phoneBorderedButtonExtraPadding
+//        let extraButtonPadding : CGFloat = dieButtonExtraPadding
         var sizeThatFits = CGSizeZero
-        sizeThatFits.width = super.sizeThatFits(size).width + extraButtonPadding
-        sizeThatFits.height = borderedButtonHeight
+        //sizeThatFits.width = super.sizeThatFits(size).width + extraButtonPadding
+        sizeThatFits.width = dieButtonHeight
+        sizeThatFits.height = dieButtonHeight
         return sizeThatFits
         
     }
