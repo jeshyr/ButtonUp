@@ -19,6 +19,7 @@
 		E1572D2D1BF6058B006E39DD /* GameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */; };
 		E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */; };
 		E1572D311BF60C14006E39DD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D301BF60C14006E39DD /* Game.swift */; };
+		E167C37A1BFAACC700DE58C2 /* DieButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167C3791BFAACC700DE58C2 /* DieButton.swift */; };
 		E1B9B8C31BF6E7D500A37061 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9B8C21BF6E7D500A37061 /* Constants.swift */; };
 		E1D00DB41BF728D0009FF0A8 /* ButtonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DB31BF728D0009FF0A8 /* ButtonDetailViewController.swift */; };
 		E1D00DB61BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DB51BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift */; };
@@ -66,6 +67,7 @@
 		E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewController.swift; sourceTree = "<group>"; };
 		E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		E1572D301BF60C14006E39DD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		E167C3791BFAACC700DE58C2 /* DieButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieButton.swift; sourceTree = "<group>"; };
 		E1B9B8C21BF6E7D500A37061 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E1D00DB31BF728D0009FF0A8 /* ButtonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonDetailViewController.swift; sourceTree = "<group>"; };
 		E1D00DB51BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSetsTableViewController.swift; sourceTree = "<group>"; };
@@ -126,14 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				E1572CFA1BF57559006E39DD /* AppDelegate.swift */,
-				E1572D281BF59243006E39DD /* API.swift */,
-				E1572D2A1BF5DDA5006E39DD /* Client.swift */,
-				E1572D301BF60C14006E39DD /* Game.swift */,
-				E1F5C9BC1BF88BF10052A119 /* Attack.swift */,
-				E1F5C9BA1BF884F50052A119 /* Die.swift */,
-				E1D00DB91BF734CB009FF0A8 /* ButtonSet.swift */,
-				E1D00DBD1BF74D88009FF0A8 /* Button.swift */,
-				E1B9B8C21BF6E7D500A37061 /* Constants.swift */,
+				E167C3771BFAAC9900DE58C2 /* Model */,
 				E1572CFE1BF57559006E39DD /* Main.storyboard */,
 				E1572CFC1BF57559006E39DD /* LoginViewController.swift */,
 				E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */,
@@ -165,6 +160,30 @@
 				E1572D1C1BF57559006E39DD /* Info.plist */,
 			);
 			path = "Button UpUITests";
+			sourceTree = "<group>";
+		};
+		E167C3771BFAAC9900DE58C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1572D281BF59243006E39DD /* API.swift */,
+				E1572D2A1BF5DDA5006E39DD /* Client.swift */,
+				E1572D301BF60C14006E39DD /* Game.swift */,
+				E1F5C9BC1BF88BF10052A119 /* Attack.swift */,
+				E1F5C9BA1BF884F50052A119 /* Die.swift */,
+				E1D00DB91BF734CB009FF0A8 /* ButtonSet.swift */,
+				E1D00DBD1BF74D88009FF0A8 /* Button.swift */,
+				E1B9B8C21BF6E7D500A37061 /* Constants.swift */,
+				E167C3781BFAACA300DE58C2 /* View */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E167C3781BFAACA300DE58C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E167C3791BFAACC700DE58C2 /* DieButton.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +330,7 @@
 				E1572D291BF59243006E39DD /* API.swift in Sources */,
 				E1F5C9BB1BF884F50052A119 /* Die.swift in Sources */,
 				E1D00DB61BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift in Sources */,
+				E167C37A1BFAACC700DE58C2 /* DieButton.swift in Sources */,
 				E1D00DBA1BF734CB009FF0A8 /* ButtonSet.swift in Sources */,
 				E1572CFB1BF57559006E39DD /* AppDelegate.swift in Sources */,
 				E1572D311BF60C14006E39DD /* Game.swift in Sources */,
