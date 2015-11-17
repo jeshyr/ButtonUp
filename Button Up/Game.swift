@@ -134,4 +134,5 @@ enum GameState: String {
     case REJECTED
     case INVALID
 }
-    
+
+let GameStateActivePlay: Set = [GameState.START_ROUND, GameState.START_TURN, GameState.ADJUST_FIRE_DICE, GameState.COMMIT_ATTACK, GameState.CHOOSE_TURBO_SWING, GameState.END_TURN, GameState.END_ROUND]

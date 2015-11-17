@@ -127,12 +127,14 @@ extension APIClient {
                 completionHandler(game: game, success: success, message: message)
             }
             
-            guard let playerWithInitiativeIdx = result!["playerWithInitiativeIdx"] as! Int? else {
-                print("Can't find playerWithInitiativeIdx: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find playerWithInitiativeIdx: \(result)")
-                return
+            if GameStateActivePlay.contains(gameState) {
+                guard let playerWithInitiativeIdx = result!["playerWithInitiativeIdx"] as! Int? else {
+                    print("Can't find playerWithInitiativeIdx: \(result)")
+                    completionHandler(game: nil, success: false, message: "Can't find playerWithInitiativeIdx: \(result)")
+                    return
+                }
+                newGame.playerWithInitiativeIndex = playerWithInitiativeIdx
             }
-            newGame.playerWithInitiativeIndex = playerWithInitiativeIdx
             
             guard let previousGameId = result!["previousGameId"] else {
                 print("Can't find previousGameId: \(result)")
@@ -300,6 +302,7 @@ extension APIClient {
                 completionHandler(game: nil, success: false, message: "Can't find optRequestArray: \(playerDataDictionary)")
                 return playerDataArray
             }
+            print("optRequestArray: \(optRequestArray)")
             newPlayerData.optRequests = optRequestArray
             
             guard let outOfPlayDieArray = playerDataDictionary["outOfPlayDieArray"] as! [[String: AnyObject]]? else {
@@ -356,21 +359,27 @@ extension APIClient {
             }
             newPlayerData.prevSwingValues = prevSwingValueArray
             
-            guard let roundScore = playerDataDictionary["roundScore"] as! Int? else {
+            guard let roundScoreRaw = playerDataDictionary["roundScore"]  else {
                 
                 print("Can't find roundScore: \(playerDataDictionary)")
                 completionHandler(game: nil, success: false, message: "Can't find roundScore: \(playerDataDictionary)")
                 return playerDataArray
             }
-            newPlayerData.roundScore = roundScore
+            // Games that haven't started have nil as their API roundScore
+            if let roundScore = roundScoreRaw as? Int {
+                newPlayerData.roundScore = roundScore
+            }
             
-            guard let sideScore = playerDataDictionary["sideScore"] as! Int? else {
+            guard let sideScoreRaw = playerDataDictionary["sideScore"]  else {
                 
                 print("Can't find sideScore: \(playerDataDictionary)")
                 completionHandler(game: nil, success: false, message: "Can't find sideScore: \(playerDataDictionary)")
                 return playerDataArray
             }
-            newPlayerData.sideScore = sideScore
+            // Games that haven't started have nil as their API sideScore
+            if let sideScore = sideScoreRaw as? Int {
+                newPlayerData.sideScore = sideScore
+            }
             
             guard let swingRequests = playerDataDictionary["swingRequestArray"]  else {
                 
@@ -401,6 +410,7 @@ extension APIClient {
     
     func parseDieData(dieData: [String: AnyObject], completionHandler: (game: Game?, success: Bool, message: String?) -> Void) -> Die {
         var newDie = Die()
+        var isTwinDie = false
         
         /* Required parameters */
         guard let recipe = dieData["recipe"] as! String? else {
@@ -409,20 +419,6 @@ extension APIClient {
             return newDie
         }
         newDie.recipe = recipe
-        
-        guard let value = dieData["value"] as! Int? else {
-            print("Can't find value: \(dieData)")
-            completionHandler(game: nil, success: false, message: "Can't find value: \(dieData)")
-            return newDie
-        }
-        newDie.value = value
-        
-        guard let sides = dieData["sides"] as! Int? else {
-            print("Can't find sides: \(dieData)")
-            completionHandler(game: nil, success: false, message: "Can't find sides: \(dieData)")
-            return newDie
-        }
-        newDie.sides = sides
         
         guard let properties = dieData["properties"] as! [String]? else {
             print("Can't find properties: \(dieData)")
@@ -435,10 +431,30 @@ extension APIClient {
                 completionHandler(game: nil, success: false, message: "Invalid game property: \(property) in  \(dieData)")
                 return newDie
             }
+            if validProperty == DieFlag.Twin {
+                isTwinDie = true
+            }
             newDie.properties.append(validProperty)
         }
         
         /* Optional values */
+        guard let sidesRaw = dieData["sides"] else {
+            print("Can't find sides: \(dieData)")
+            completionHandler(game: nil, success: false, message: "Can't find sides: \(dieData)")
+            return newDie
+        }
+        // Swing die with unchosen values won't have a number of sides
+        if let sides = sidesRaw as? Int {
+            newDie.sides = sides
+        }
+        
+        // Nothing has a value until the game starts
+        if let value = dieData["value"] as? Int {
+            newDie.value = value
+        } else {
+            newDie.value = 0
+        }
+        
         if let description = dieData["description"] as! String? {
             newDie.description = description
         }
@@ -446,9 +462,7 @@ extension APIClient {
         if let skills = dieData["skills"] as! [String]? {
             newDie.skills = skills
         }
-        
-        // TODO parse subdie arrays for twin die here
-        
+       
         return newDie
     }
     

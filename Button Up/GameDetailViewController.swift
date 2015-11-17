@@ -15,7 +15,8 @@ class GameDetailViewController: UIViewController {
     var game: Game?
     var gameSummary: GameSummary?
     let client = APIClient.sharedInstance()
-   
+    var p1DieButtons = [DieButton]()
+    var p2DieButtons = [DieButton]()
     
     @IBOutlet weak var p1View: UIView!
     @IBOutlet weak var p1StackView: UIStackView!
@@ -52,6 +53,8 @@ class GameDetailViewController: UIViewController {
                 self.game = game
                 let p1 = game?.playerData[1]
                 let p2 = game?.playerData[0]
+                
+                // Button Images
                 APIClient.sharedInstance().getImageData(p1?.button.artFilename, completionHandler: { (imageData, success, message) in
                     if success {
                         if let image = UIImage(data: imageData!) {
@@ -77,6 +80,7 @@ class GameDetailViewController: UIViewController {
                     }
                 })
                 
+                // Text details of game
                 let p1Score = "Score: \(p1!.roundScore) (\(p1!.sideScore))"
                 let p1WLT = "W/L/T: \(p1!.wins)/\(p1!.losses)/\(p1!.draws) (\(game!.maxWins))"
                 var p1Captured = ""
@@ -104,9 +108,15 @@ class GameDetailViewController: UIViewController {
                 if p2Captured.isEmpty {
                     p2Captured = "Dice captured: (none)"
                 }
+                
+                // Dice
+                for die in (p1?.activeDice)! {
+                    self.p1DieButtons.append(self.createDieButtonFromDie(die))
+                }
+                for die in (p2?.activeDice)! {
+                    self.p2DieButtons.append(self.createDieButtonFromDie(die))
+                }
 
-                print(p1?.color)
-                print(p2?.color)
                 dispatch_async(dispatch_get_main_queue()) {
                     self.p1View.backgroundColor = p1?.color
                     self.p1NameButton.setTitle("Name: \(p1!.name)", forState: UIControlState.Normal)
@@ -116,6 +126,9 @@ class GameDetailViewController: UIViewController {
                     self.p1ScoreLabel.text = p1Score
                     self.p1WLTLabel.text = p1WLT
                     self.p1CapturedLabel.text = p1Captured
+                    for dieButton in self.p1DieButtons {
+                        self.p1DieStack.addArrangedSubview(dieButton)
+                    }
                     
                     self.p2View.backgroundColor = p2?.color
                     self.p2NameButton.setTitle("Name: \(p2!.name)", forState: UIControlState.Normal)
@@ -125,13 +138,22 @@ class GameDetailViewController: UIViewController {
                     self.p2ScoreLabel.text = p2Score
                     self.p2WLTLabel.text = p2WLT
                     self.p2CapturedLabel.text = p2Captured
-
+                    for dieButton in self.p2DieButtons {
+                        self.p2DieStack.addArrangedSubview(dieButton)
+                    }
                 }
             } else {
                 print("oops...")
             }
         }
         
+    }
+    
+    func createDieButtonFromDie(die: Die) -> DieButton {
+        let newButton = DieButton()
+        newButton.setTitle("\(die.value)", forState: UIControlState.Normal)
+        
+        return newButton
     }
     
 }
