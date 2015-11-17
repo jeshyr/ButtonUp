@@ -17,6 +17,8 @@ class GameDetailViewController: UIViewController {
     let client = APIClient.sharedInstance()
    
     
+    @IBOutlet weak var p1View: UIView!
+    @IBOutlet weak var p1StackView: UIStackView!
     @IBOutlet weak var p1ButtonImage: UIImageView!
     @IBOutlet weak var p1ButtonRecipeTextLabel: UILabel!
     @IBOutlet weak var p1ButtonButton: UIButton!
@@ -26,6 +28,8 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var p1CapturedLabel: UILabel!
     @IBOutlet weak var p1DieStack: UIStackView!
     
+    @IBOutlet weak var p2View: UIView!
+    @IBOutlet weak var p2StackView: UIStackView!
     @IBOutlet weak var p2ButtonImage: UIImageView!
     @IBOutlet weak var p2ButtonRecipeTextLabel: UILabel!
     @IBOutlet weak var p2ButtonButton: UIButton!
@@ -101,7 +105,10 @@ class GameDetailViewController: UIViewController {
                     p2Captured = "Dice captured: (none)"
                 }
 
+                print(p1?.color)
+                print(p2?.color)
                 dispatch_async(dispatch_get_main_queue()) {
+                    self.p1View.backgroundColor = p1?.color
                     self.p1NameButton.setTitle("Name: \(p1!.name)", forState: UIControlState.Normal)
                     self.p1ButtonButton.setTitle("Button: \(p1!.button.name)", forState: UIControlState.Normal)
 
@@ -110,6 +117,7 @@ class GameDetailViewController: UIViewController {
                     self.p1WLTLabel.text = p1WLT
                     self.p1CapturedLabel.text = p1Captured
                     
+                    self.p2View.backgroundColor = p2?.color
                     self.p2NameButton.setTitle("Name: \(p2!.name)", forState: UIControlState.Normal)
                     self.p2ButtonButton.setTitle("Button: \(p2!.button.name)", forState: UIControlState.Normal)
 

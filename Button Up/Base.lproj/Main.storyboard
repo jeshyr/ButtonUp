@@ -135,225 +135,258 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="BVN-jG-7AF">
-                                <rect key="frame" x="20" y="20" width="560" height="543"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGV-rg-07W">
+                                <rect key="frame" x="0.0" y="314" width="600" height="286"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z60-5w-QGk">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="191"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BVN-jG-7AF">
+                                        <rect key="frame" x="20" y="0.0" width="560" height="266"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BMdefaultRound" translatesAutoresizingMaskIntoConstraints="NO" id="xwx-g5-LVx">
-                                                <rect key="frame" x="0.0" y="0.0" width="226" height="191"/>
-                                                <animations/>
-                                                <variation key="widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                </variation>
-                                            </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ktd-x6-4Lx">
-                                                <rect key="frame" x="236" y="0.0" width="324" height="191"/>
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iqd-PE-Jti">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="48"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-4o-58d">
-                                                        <rect key="frame" x="0.0" y="0.0" width="324" height="38"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKr-mr-nxW" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="48"/>
                                                         <animations/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <variation key="widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="0.0" width="211" height="43"/>
-                                                        </variation>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnm-lT-xZS">
-                                                        <rect key="frame" x="0.0" y="38" width="324" height="38"/>
-                                                        <animations/>
-                                                        <state key="normal" title="Button: Abe Caine"/>
-                                                        <variation key="widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="53" width="211" height="44"/>
-                                                        </variation>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                        <state key="normal" title="10"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4B-LS-fzj">
-                                                        <rect key="frame" x="0.0" y="76" width="324" height="39"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMm-f0-uqy" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
+                                                        <rect key="frame" x="133" y="0.0" width="30" height="48"/>
                                                         <animations/>
-                                                        <state key="normal" title="Player: Jeshyr"/>
-                                                        <variation key="widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="107" width="211" height="43"/>
-                                                        </variation>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                        <state key="normal" title="1"/>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: -30 (-4 sides)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wev-Zi-la4">
-                                                        <rect key="frame" x="0.0" y="115" width="324" height="38"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmN-J8-U9a" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
+                                                        <rect key="frame" x="265" y="0.0" width="30" height="48"/>
                                                         <animations/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W/L/T: 1/2/0 (3)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="652-VO-UB2">
-                                                        <rect key="frame" x="0.0" y="153" width="324" height="38"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                        <state key="normal" title="11"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrh-tb-ePj" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
+                                                        <rect key="frame" x="398" y="0.0" width="30" height="48"/>
                                                         <animations/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                        <state key="normal" title="3"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bH9-a3-Qn6" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
+                                                        <rect key="frame" x="530" y="0.0" width="30" height="48"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                        <state key="normal" title="5"/>
+                                                    </button>
                                                 </subviews>
                                                 <animations/>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dice captured: (X=10), (10), p(4,4)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VO8-fd-ier">
+                                                <rect key="frame" x="0.0" y="58" width="560" height="24"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zY5-dl-gxu">
+                                                <rect key="frame" x="0.0" y="92" width="560" height="174"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MWZ-Vd-EZh">
+                                                        <rect key="frame" x="0.0" y="0.0" width="318" height="174"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W/L/T: 2/1/0 (3)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2K-Tr-2EE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="318" height="35"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: -24 (+4 sides)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bs-tM-Wu0">
+                                                                <rect key="frame" x="0.0" y="35" width="318" height="35"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IV-op-7C9">
+                                                                <rect key="frame" x="0.0" y="70" width="318" height="34"/>
+                                                                <animations/>
+                                                                <state key="normal" title="Player: blackshadowshade"/>
+                                                                <variation key="widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="211" height="43"/>
+                                                                </variation>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9B-4L-a7O">
+                                                                <rect key="frame" x="0.0" y="104" width="318" height="35"/>
+                                                                <animations/>
+                                                                <state key="normal" title="Button: Abe Caine"/>
+                                                                <variation key="widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="0.0" y="53" width="211" height="44"/>
+                                                                </variation>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgg-2A-soV">
+                                                                <rect key="frame" x="0.0" y="139" width="318" height="35"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <variation key="widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="0.0" y="107" width="211" height="43"/>
+                                                                </variation>
+                                                            </label>
+                                                        </subviews>
+                                                        <animations/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="211" height="150"/>
+                                                        </variation>
+                                                    </stackView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BMdefaultRound" translatesAutoresizingMaskIntoConstraints="NO" id="9Tl-6e-TaP">
+                                                        <rect key="frame" x="328" y="0.0" width="232" height="174"/>
+                                                        <animations/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="211" y="0.0" width="150" height="150"/>
+                                                        </variation>
+                                                    </imageView>
+                                                </subviews>
+                                                <animations/>
+                                                <variation key="heightClass=compact" axis="vertical"/>
                                                 <variation key="widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="150" y="0.0" width="211" height="150"/>
+                                                    <rect key="frame" x="0.0" y="402" width="361" height="150"/>
                                                 </variation>
                                             </stackView>
                                         </subviews>
                                         <animations/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="150"/>
-                                        </variation>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dice captured: (10), (X=4), p(4,4)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PF8-nx-EcS">
-                                        <rect key="frame" x="0.0" y="191" width="560" height="27"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LDh-Te-XYM">
-                                        <rect key="frame" x="0.0" y="218" width="560" height="54"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn9-85-wrK" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="54"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                <state key="normal" title="7"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMp-EO-0wp" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
-                                                <rect key="frame" x="265" y="0.0" width="30" height="54"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                <state key="normal" title="5"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNx-n1-7Yl" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
-                                                <rect key="frame" x="530" y="0.0" width="30" height="54"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                <state key="normal" title="1"/>
-                                            </button>
-                                        </subviews>
-                                        <animations/>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iqd-PE-Jti">
-                                        <rect key="frame" x="0.0" y="272" width="560" height="53"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKr-mr-nxW" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="104" height="53"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                <state key="normal" title="10"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMm-f0-uqy" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
-                                                <rect key="frame" x="114" y="0.0" width="104" height="53"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                <state key="normal" title="1"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmN-J8-U9a" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
-                                                <rect key="frame" x="228" y="0.0" width="104" height="53"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                <state key="normal" title="11"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrh-tb-ePj" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
-                                                <rect key="frame" x="342" y="0.0" width="104" height="53"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                <state key="normal" title="3"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bH9-a3-Qn6" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
-                                                <rect key="frame" x="456" y="0.0" width="104" height="53"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                                <state key="normal" title="5"/>
-                                            </button>
-                                        </subviews>
-                                        <animations/>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dice captured: (X=10), (10), p(4,4)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VO8-fd-ier">
-                                        <rect key="frame" x="0.0" y="325" width="560" height="27"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zY5-dl-gxu">
-                                        <rect key="frame" x="0.0" y="352" width="560" height="191"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MWZ-Vd-EZh">
-                                                <rect key="frame" x="0.0" y="0.0" width="318" height="191"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W/L/T: 2/1/0 (3)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2K-Tr-2EE">
-                                                        <rect key="frame" x="0.0" y="0.0" width="318" height="38"/>
-                                                        <animations/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: -24 (+4 sides)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bs-tM-Wu0">
-                                                        <rect key="frame" x="0.0" y="38" width="318" height="38"/>
-                                                        <animations/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IV-op-7C9">
-                                                        <rect key="frame" x="0.0" y="76" width="318" height="39"/>
-                                                        <animations/>
-                                                        <state key="normal" title="Player: blackshadowshade"/>
-                                                        <variation key="widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="0.0" width="211" height="43"/>
-                                                        </variation>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9B-4L-a7O">
-                                                        <rect key="frame" x="0.0" y="115" width="318" height="38"/>
-                                                        <animations/>
-                                                        <state key="normal" title="Button: Abe Caine"/>
-                                                        <variation key="widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="53" width="211" height="44"/>
-                                                        </variation>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgg-2A-soV">
-                                                        <rect key="frame" x="0.0" y="153" width="318" height="38"/>
-                                                        <animations/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <variation key="widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="107" width="211" height="43"/>
-                                                        </variation>
-                                                    </label>
-                                                </subviews>
-                                                <animations/>
-                                                <variation key="widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="0.0" y="0.0" width="211" height="150"/>
-                                                </variation>
-                                            </stackView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BMdefaultRound" translatesAutoresizingMaskIntoConstraints="NO" id="9Tl-6e-TaP">
-                                                <rect key="frame" x="328" y="0.0" width="232" height="191"/>
-                                                <animations/>
-                                                <variation key="widthClass=compact" misplaced="YES">
-                                                    <rect key="frame" x="211" y="0.0" width="150" height="150"/>
-                                                </variation>
-                                            </imageView>
-                                        </subviews>
-                                        <animations/>
-                                        <variation key="heightClass=compact" axis="vertical"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="402" width="361" height="150"/>
-                                        </variation>
                                     </stackView>
                                 </subviews>
                                 <animations/>
-                            </stackView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="BVN-jG-7AF" secondAttribute="bottom" constant="20" id="CvA-nC-b0W"/>
+                                    <constraint firstItem="BVN-jG-7AF" firstAttribute="leading" secondItem="WGV-rg-07W" secondAttribute="leading" constant="20" id="NMT-wQ-xdx"/>
+                                    <constraint firstItem="BVN-jG-7AF" firstAttribute="top" secondItem="WGV-rg-07W" secondAttribute="top" id="cGs-at-VhF"/>
+                                    <constraint firstAttribute="trailing" secondItem="BVN-jG-7AF" secondAttribute="trailing" constant="20" id="yF0-TH-Wh3"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O85-JJ-rbg">
+                                <rect key="frame" x="0.0" y="28" width="600" height="286"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ccL-I2-XsE">
+                                        <rect key="frame" x="20" y="8" width="560" height="278"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z60-5w-QGk">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="179"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BMdefaultRound" translatesAutoresizingMaskIntoConstraints="NO" id="xwx-g5-LVx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="226" height="179"/>
+                                                        <animations/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                        </variation>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ktd-x6-4Lx">
+                                                        <rect key="frame" x="236" y="0.0" width="324" height="179"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-4o-58d">
+                                                                <rect key="frame" x="0.0" y="0.0" width="324" height="36"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <variation key="widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="211" height="43"/>
+                                                                </variation>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnm-lT-xZS">
+                                                                <rect key="frame" x="0.0" y="36" width="324" height="36"/>
+                                                                <animations/>
+                                                                <state key="normal" title="Button: Abe Caine"/>
+                                                                <variation key="widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="0.0" y="53" width="211" height="44"/>
+                                                                </variation>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4B-LS-fzj">
+                                                                <rect key="frame" x="0.0" y="72" width="324" height="35"/>
+                                                                <animations/>
+                                                                <state key="normal" title="Player: Jeshyr"/>
+                                                                <variation key="widthClass=compact" misplaced="YES">
+                                                                    <rect key="frame" x="0.0" y="107" width="211" height="43"/>
+                                                                </variation>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: -30 (-4 sides)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wev-Zi-la4">
+                                                                <rect key="frame" x="0.0" y="107" width="324" height="36"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W/L/T: 1/2/0 (3)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="652-VO-UB2">
+                                                                <rect key="frame" x="0.0" y="143" width="324" height="36"/>
+                                                                <animations/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <animations/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="150" y="0.0" width="211" height="150"/>
+                                                        </variation>
+                                                    </stackView>
+                                                </subviews>
+                                                <animations/>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dice captured: (10), (X=4), p(4,4)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PF8-nx-EcS">
+                                                <rect key="frame" x="0.0" y="189" width="560" height="25"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LDh-Te-XYM">
+                                                <rect key="frame" x="0.0" y="224" width="560" height="54"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn9-85-wrK" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="54"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                        <state key="normal" title="7"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMp-EO-0wp" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
+                                                        <rect key="frame" x="265" y="0.0" width="30" height="54"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                        <state key="normal" title="5"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNx-n1-7Yl" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
+                                                        <rect key="frame" x="530" y="0.0" width="30" height="54"/>
+                                                        <animations/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                        <state key="normal" title="1"/>
+                                                    </button>
+                                                </subviews>
+                                                <animations/>
+                                            </stackView>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ccL-I2-XsE" firstAttribute="trailing" secondItem="O85-JJ-rbg" secondAttribute="trailing" constant="-20" id="1lL-Ca-GJN"/>
+                                    <constraint firstItem="ccL-I2-XsE" firstAttribute="leading" secondItem="O85-JJ-rbg" secondAttribute="leading" constant="20" id="Aho-0P-RB6"/>
+                                    <constraint firstItem="ccL-I2-XsE" firstAttribute="bottom" secondItem="O85-JJ-rbg" secondAttribute="bottom" id="OO0-hU-Xwr"/>
+                                    <constraint firstItem="ccL-I2-XsE" firstAttribute="top" secondItem="O85-JJ-rbg" secondAttribute="top" constant="8" id="gYY-Yc-Z1n"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BVN-jG-7AF" firstAttribute="top" secondItem="aet-Rv-LlJ" secondAttribute="bottom" constant="8" id="CYU-mQ-jQD"/>
-                            <constraint firstItem="VdS-mm-41s" firstAttribute="top" secondItem="BVN-jG-7AF" secondAttribute="bottom" constant="29" id="aXY-U7-NPO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BVN-jG-7AF" secondAttribute="trailing" id="jxC-z1-6wl"/>
-                            <constraint firstItem="BVN-jG-7AF" firstAttribute="leading" secondItem="Stu-Cx-lX6" secondAttribute="leadingMargin" id="pRG-L1-J7b"/>
+                            <constraint firstItem="O85-JJ-rbg" firstAttribute="leading" secondItem="Stu-Cx-lX6" secondAttribute="leading" id="2rE-dv-4ta"/>
+                            <constraint firstItem="WGV-rg-07W" firstAttribute="trailing" secondItem="Stu-Cx-lX6" secondAttribute="trailing" id="63H-3J-ifL"/>
+                            <constraint firstItem="WGV-rg-07W" firstAttribute="leading" secondItem="Stu-Cx-lX6" secondAttribute="leading" id="Cnv-51-u0q"/>
+                            <constraint firstItem="O85-JJ-rbg" firstAttribute="trailing" secondItem="Stu-Cx-lX6" secondAttribute="trailing" id="Ilf-wy-Qzt"/>
+                            <constraint firstItem="WGV-rg-07W" firstAttribute="bottom" secondItem="VdS-mm-41s" secondAttribute="top" id="WV3-vp-Tvi"/>
+                            <constraint firstItem="O85-JJ-rbg" firstAttribute="top" secondItem="aet-Rv-LlJ" secondAttribute="bottom" constant="8" id="eSi-K7-MzS"/>
+                            <constraint firstItem="WGV-rg-07W" firstAttribute="height" secondItem="O85-JJ-rbg" secondAttribute="height" id="gfb-DQ-5RB"/>
+                            <constraint firstItem="WGV-rg-07W" firstAttribute="top" secondItem="O85-JJ-rbg" secondAttribute="bottom" id="q36-KS-Olt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -364,6 +397,8 @@
                         <outlet property="p1DieStack" destination="LDh-Te-XYM" id="ExZ-L6-XPK"/>
                         <outlet property="p1NameButton" destination="R4B-LS-fzj" id="Xrx-v3-XsG"/>
                         <outlet property="p1ScoreLabel" destination="Wev-Zi-la4" id="DOW-S0-WdB"/>
+                        <outlet property="p1StackView" destination="ccL-I2-XsE" id="5Zi-GA-YPa"/>
+                        <outlet property="p1View" destination="O85-JJ-rbg" id="S5B-Qs-clc"/>
                         <outlet property="p1WLTLabel" destination="652-VO-UB2" id="ShD-gf-ogw"/>
                         <outlet property="p2ButtonButton" destination="I9B-4L-a7O" id="guo-hU-4f4"/>
                         <outlet property="p2ButtonImage" destination="9Tl-6e-TaP" id="7GC-IY-gxh"/>
@@ -372,12 +407,14 @@
                         <outlet property="p2DieStack" destination="iqd-PE-Jti" id="PMh-kx-xfw"/>
                         <outlet property="p2NameButton" destination="5IV-op-7C9" id="eRn-Qa-T2M"/>
                         <outlet property="p2ScoreLabel" destination="4bs-tM-Wu0" id="m5A-dy-WKy"/>
+                        <outlet property="p2StackView" destination="BVN-jG-7AF" id="ilc-Bp-TRN"/>
+                        <outlet property="p2View" destination="WGV-rg-07W" id="CGn-u6-zMp"/>
                         <outlet property="p2WLTLabel" destination="H2K-Tr-2EE" id="oAR-TS-2SX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLT-8b-yxq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1807.5" y="262"/>
+            <point key="canvasLocation" x="1798" y="262"/>
         </scene>
         <!--Active Games-->
         <scene sceneID="a63-So-ju5">
