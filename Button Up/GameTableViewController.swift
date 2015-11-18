@@ -56,7 +56,7 @@ class GameTableViewController: UITableViewController {
         if indexPath.section == 0 {
             if indexPath.row < games.count {
                 game = games[indexPath.row]
-                cell.textLabel!.text = "\(game.myButton) vs. \(game.opponentButton)"
+                cell.textLabel!.text = "You (\(game.myButton)) vs. \(game.opponentName)(\(game.opponentButton))"
                 cell.detailTextLabel!.text = game.description
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 cell.selectionStyle = UITableViewCellSelectionStyle.Blue
