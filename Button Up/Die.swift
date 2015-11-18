@@ -27,6 +27,8 @@ struct DieSubDie {
 enum DieFlag: String {
     case WasJustCaptured
     case Twin
+    case HasJustSplit
+    case JustPerformedBerserkAttack
 }
 
 struct DieSwing {

@@ -133,6 +133,25 @@ enum GameState: String {
     case END_GAME
     case REJECTED
     case INVALID
+    
+    var isActive: Bool {
+        switch self {
+        case GameState.START_ROUND:
+            return true
+        case GameState.START_TURN:
+            return true
+        case GameState.ADJUST_FIRE_DICE:
+            return true
+        case GameState.COMMIT_ATTACK:
+            return true
+        case GameState.CHOOSE_TURBO_SWING:
+            return true
+        case GameState.END_TURN:
+            return true
+        case GameState.END_ROUND:
+            return true
+        default:
+            return false
+        }
+    }
 }
-
-let GameStateActivePlay: Set = [GameState.START_ROUND, GameState.START_TURN, GameState.ADJUST_FIRE_DICE, GameState.COMMIT_ATTACK, GameState.CHOOSE_TURBO_SWING, GameState.END_TURN, GameState.END_ROUND]

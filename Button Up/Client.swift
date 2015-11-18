@@ -127,7 +127,9 @@ extension APIClient {
                 completionHandler(game: game, success: success, message: message)
             }
             
-            if GameStateActivePlay.contains(gameState) {
+//            if GameStateActivePlay.contains(validState) {
+            /* For some reason the set notation is making XCode crash. In lieu of debugging I'm avoiding it for the time being */
+            if validState.isActive {
                 guard let playerWithInitiativeIdx = result!["playerWithInitiativeIdx"] as! Int? else {
                     print("Can't find playerWithInitiativeIdx: \(result)")
                     completionHandler(game: nil, success: false, message: "Can't find playerWithInitiativeIdx: \(result)")
@@ -166,8 +168,8 @@ extension APIClient {
             }
             for validAttackType in validAttackTypeArray {
                 guard let validValidAttackType = Attack(rawValue: validAttackType) else {
-                    print("Invalid game property: \(validAttackType) in  \(validAttackTypeArray)")
-                    completionHandler(game: nil, success: false, message: "Invalid game property: \(validAttackType) in  \(validAttackTypeArray)")
+                    print("Invalid attack type: \(validAttackType) in  \(validAttackTypeArray)")
+                    completionHandler(game: nil, success: false, message: "Invalid attack type: \(validAttackType) in  \(validAttackTypeArray)")
                     return
                 }
                 newGame.validAttacks.append(validValidAttackType)
@@ -427,8 +429,8 @@ extension APIClient {
         }
         for property in properties {
             guard let validProperty = DieFlag(rawValue: property) else {
-                print("Invalid game property: \(property) in  \(dieData)")
-                completionHandler(game: nil, success: false, message: "Invalid game property: \(property) in  \(dieData)")
+                print("Invalid die flag: \(property) in  \(dieData)")
+                completionHandler(game: nil, success: false, message: "Invalid die flag: \(property) in  \(dieData)")
                 return newDie
             }
             if validProperty == DieFlag.Twin {
@@ -461,6 +463,12 @@ extension APIClient {
         
         if let skills = dieData["skills"] as! [String]? {
             newDie.skills = skills
+        }
+        
+        if isTwinDie {
+            // Read subdie here for twins
+            print("Twin!")
+            print(dieData)
         }
        
         return newDie
