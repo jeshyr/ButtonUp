@@ -167,4 +167,29 @@ class GameDetailViewController: UIViewController {
         return newButton
     }
     
+    @IBAction func buttonTouchUp(sender: UIButton) {
+        var buttonName: String
+        let p1 = game?.playerData[1]
+        let p2 = game?.playerData[0]
+        if sender == p1ButtonButton {
+            buttonName = p1!.button.name
+        } else {
+            buttonName = p2!.button.name
+        }
+        client.loadButtonData(nil, buttonName: buttonName) { buttons, success, error in
+            if success {
+                /* Push the Button detail view */
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ButtonDetailViewController") as! ButtonDetailViewController
+                controller.button = buttons![0]
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.navigationController!.pushViewController(controller, animated: true)
+                }
+            } else {
+                print("Failed loading button data for \(buttonName) - can't push detail view")
+            }
+        }
+        
+    }
+    
 }

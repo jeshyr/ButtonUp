@@ -18,9 +18,26 @@ struct Button {
     
     var id: Int = 0
     var setName: String = ""
-    var dieSkills = [String]()
-    var dieTypes = [String]()
+    var dieSkills = [ButtonDieSkills]()
+    var dieTypes = [ButtonDieTypes]()
     var hasUnimplementedSkill: Bool = false
     var isTournamentLegal: Bool = false
     var tags = [String]?()
+}
+
+/* Types of die involved in this button. Only name is non-optional */
+struct ButtonDieTypes {
+    var name: String = ""
+    var code: String? = nil
+    var description: String? = nil
+    var swingMin: Int? = nil
+    var swingMax: Int? = nil
+}
+
+/* Skills of die involved in this button. Only name is non-optional */
+struct ButtonDieSkills {
+    var name: String = ""
+    var code: String? = nil
+    var description: String? = nil
+    var interactions = [String]()
 }

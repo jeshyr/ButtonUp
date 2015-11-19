@@ -1,4 +1,4 @@
-//
+ //
 //  ButtonConvenience.swift
 //  Button Up
 //
@@ -472,8 +472,6 @@ extension APIClient {
         }
         
         if isTwinDie {
-            print("Twin!")
-            print(dieData["SubdieArray"])
             if let subDieArray = dieData["SubdieArray"] as! [[String: Int]]? {
                 for subDie in subDieArray {
                     var newSubDie = DieSubDie()
@@ -484,7 +482,7 @@ extension APIClient {
                     print("NewDie: \(newDie.subDice)")
                 }
             } else {
-                print("Confused by subdieArray: \(dieData["SubdieArray"])")
+                //print("Confused by subdieArray: \(dieData["SubdieArray"])")
             }
         }
        
@@ -583,19 +581,21 @@ extension APIClient {
                 }
                 button.setName = buttonSet
                 
-                guard let dieSkills = parsedSet["dieSkills"] as! [String]? else {
+                /* If loading multiple buttons, dieSkills will be an array of strings. If a single button, dieSkills will be a dictionary of dictionaries. */
+                guard let dieSkills = parsedSet["dieSkills"] else {
                     print("Can't find dieSkills in \(parsedSet)")
                     completionHandler(buttons: nil, success: false, message: "Can't find dieSkills in \(parsedSet)")
                     return
                 }
-                button.dieSkills = dieSkills
+                button.dieSkills = self.parseButtonDieSkills(dieSkills!)
                 
-                guard let dieTypes = parsedSet["dieTypes"] as! [String]? else {
+                /* If loading multiple buttons, dieTypes will be an array of strings. If a single button, dieTypes will be a dictionary of dictionaries. */
+                guard let dieTypes = parsedSet["dieTypes"] else {
                     print("Can't find dieTypes in \(parsedSet)")
                     completionHandler(buttons: nil, success: false, message: "Can't find dieTypes in \(parsedSet)")
                     return
                 }
-                button.dieTypes = dieTypes
+                button.dieTypes = self.parseButtonDieTypes(dieTypes!)
                 
                 guard let hasUnimplementedSkill = parsedSet["hasUnimplementedSkill"] as! Bool? else {
                     print("Can't find hasUnimplementedSkill in \(parsedSet)")
@@ -629,6 +629,63 @@ extension APIClient {
             
             completionHandler(buttons: buttons, success: true, message: nil)
         }
+    }
+    
+    
+    func parseButtonDieSkills(dieSkillData: AnyObject) -> [ButtonDieSkills] {
+        var newDieSkills = [ButtonDieSkills]()
+        
+        if let dieSkillArray = dieSkillData as? [String] {
+            // Die type array - die type names only
+            for dieSkill in dieSkillArray {
+                var newDieSkill = ButtonDieSkills()
+                newDieSkill.name = dieSkill
+                newDieSkills.append(newDieSkill)
+            }
+        } else if let dieSkillsDictionaries = dieSkillData as? [String: AnyObject] {
+            // Die type dictionary - full die type data
+            for (dieSkillName, dieSkillDict) in dieSkillsDictionaries {
+                var newDieSkill = ButtonDieSkills()
+                newDieSkill.name = dieSkillName
+                newDieSkill.code = dieSkillDict["code"] as? String
+                newDieSkill.description = dieSkillDict["description"] as? String
+                newDieSkills.append(newDieSkill)
+            }
+        } else {
+            // No die types
+        }
+        return newDieSkills
+    }
+    
+    func parseButtonDieTypes(dieTypeData: AnyObject) -> [ButtonDieTypes] {
+        var newDieTypes = [ButtonDieTypes]()
+        
+        if let dieTypeArray = dieTypeData as? [String] {
+            // Die type array - die type names only
+            for dieType in dieTypeArray {
+                var newDieType = ButtonDieTypes()
+                newDieType.name = dieType
+                newDieTypes.append(newDieType)
+            }
+        } else if let dieTypeDictionaries = dieTypeData as? [String: AnyObject] {
+            // Die type dictionary - full die type data
+            for (dieTypeName, dieTypeDict) in dieTypeDictionaries {
+                var newDieType = ButtonDieTypes()
+                newDieType.name = dieTypeName
+                newDieType.code = dieTypeDict["code"] as? String
+                newDieType.description = dieTypeDict["description"] as? String
+                if let swingMin = dieTypeDict["swingMin"] as? Int {
+                    newDieType.swingMin = swingMin
+                }
+                if let swingMax = dieTypeDict["swingMax"] as? Int {
+                    newDieType.swingMax = swingMax
+                }
+                newDieTypes.append(newDieType)
+            }
+        } else {
+            // No die types
+        }
+        return newDieTypes
     }
     
     func loadButtonSetData(buttonSet: String?, completionHandler: (buttonSets: [ButtonSet]?, success: Bool, message: String?) -> Void) {

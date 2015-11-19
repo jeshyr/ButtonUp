@@ -171,6 +171,9 @@
                                                                 <variation key="widthClass=compact" misplaced="YES">
                                                                     <rect key="frame" x="0.0" y="53" width="211" height="44"/>
                                                                 </variation>
+                                                                <connections>
+                                                                    <action selector="buttonTouchUp:" destination="nhG-40-lOl" eventType="touchUpInside" id="PS5-mP-I9L"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4B-LS-fzj">
                                                                 <rect key="frame" x="0.0" y="60" width="324" height="30"/>
@@ -301,6 +304,9 @@
                                                                 <variation key="widthClass=compact" misplaced="YES">
                                                                     <rect key="frame" x="0.0" y="53" width="211" height="44"/>
                                                                 </variation>
+                                                                <connections>
+                                                                    <action selector="buttonTouchUp:" destination="nhG-40-lOl" eventType="touchUpInside" id="fwx-6j-bR9"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgg-2A-soV">
                                                                 <rect key="frame" x="0.0" y="120" width="318" height="30"/>
