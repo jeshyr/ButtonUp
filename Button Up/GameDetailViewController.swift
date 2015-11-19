@@ -20,7 +20,7 @@ class GameDetailViewController: UIViewController {
     
     @IBOutlet weak var p1View: UIView!
     @IBOutlet weak var p1StackView: UIStackView!
-    @IBOutlet weak var p1ButtonImage: UIImageView!
+    @IBOutlet weak var p1ButtonImageButton: UIButton!
     @IBOutlet weak var p1ButtonRecipeTextLabel: UILabel!
     @IBOutlet weak var p1ButtonButton: UIButton!
     @IBOutlet weak var p1NameButton: UIButton!
@@ -31,7 +31,7 @@ class GameDetailViewController: UIViewController {
     
     @IBOutlet weak var p2View: UIView!
     @IBOutlet weak var p2StackView: UIStackView!
-    @IBOutlet weak var p2ButtonImage: UIImageView!
+    @IBOutlet weak var p2ButtonImageButton: UIButton!
     @IBOutlet weak var p2ButtonRecipeTextLabel: UILabel!
     @IBOutlet weak var p2ButtonButton: UIButton!
     @IBOutlet weak var p2NameButton: UIButton!
@@ -59,7 +59,7 @@ class GameDetailViewController: UIViewController {
                     if success {
                         if let image = UIImage(data: imageData!) {
                             dispatch_async(dispatch_get_main_queue()) {
-                                self.p1ButtonImage.image = image
+                                self.p1ButtonImageButton.imageView?.image = image
                             }
                         }
                     } else {
@@ -71,7 +71,7 @@ class GameDetailViewController: UIViewController {
                     if success {
                         if let image = UIImage(data: imageData!) {
                             dispatch_async(dispatch_get_main_queue()) {
-                                self.p2ButtonImage.image = image
+                                self.p2ButtonImageButton.imageView?.image = image
                             }
                         }
                     } else {
@@ -171,7 +171,7 @@ class GameDetailViewController: UIViewController {
         var buttonName: String
         let p1 = game?.playerData[1]
         let p2 = game?.playerData[0]
-        if sender == p1ButtonButton {
+        if (sender == p1ButtonButton) || (sender == p1ButtonImageButton)  {
             buttonName = p1!.button.name
         } else {
             buttonName = p2!.button.name

@@ -144,17 +144,18 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z60-5w-QGk">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="150"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BMdefaultRound" translatesAutoresizingMaskIntoConstraints="NO" id="xwx-g5-LVx">
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-Lr-xJH">
                                                         <rect key="frame" x="0.0" y="0.0" width="226" height="150"/>
                                                         <animations/>
-                                                        <variation key="widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                        </variation>
-                                                    </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ktd-x6-4Lx">
+                                                        <state key="normal" image="BMdefaultRound"/>
+                                                        <connections>
+                                                            <action selector="buttonTouchUp:" destination="nhG-40-lOl" eventType="touchUpInside" id="tyj-ot-k8k"/>
+                                                        </connections>
+                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ktd-x6-4Lx">
                                                         <rect key="frame" x="236" y="0.0" width="324" height="150"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-4o-58d">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="p(4,4) p(8,8) (10) ps(24) (X)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-4o-58d">
                                                                 <rect key="frame" x="0.0" y="0.0" width="324" height="30"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -164,7 +165,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="211" height="43"/>
                                                                 </variation>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnm-lT-xZS">
+                                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnm-lT-xZS">
                                                                 <rect key="frame" x="0.0" y="30" width="324" height="30"/>
                                                                 <animations/>
                                                                 <state key="normal" title="Button: Abe Caine"/>
@@ -175,7 +176,7 @@
                                                                     <action selector="buttonTouchUp:" destination="nhG-40-lOl" eventType="touchUpInside" id="PS5-mP-I9L"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4B-LS-fzj">
+                                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4B-LS-fzj">
                                                                 <rect key="frame" x="0.0" y="60" width="324" height="30"/>
                                                                 <animations/>
                                                                 <state key="normal" title="Player: Jeshyr"/>
@@ -183,14 +184,14 @@
                                                                     <rect key="frame" x="0.0" y="107" width="211" height="43"/>
                                                                 </variation>
                                                             </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: -30 (-4 sides)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wev-Zi-la4">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score: -30 (-4 sides)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wev-Zi-la4">
                                                                 <rect key="frame" x="0.0" y="90" width="324" height="30"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W/L/T: 1/2/0 (3)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="652-VO-UB2">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="W/L/T: 1/2/0 (3)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="652-VO-UB2">
                                                                 <rect key="frame" x="0.0" y="120" width="324" height="30"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -221,7 +222,6 @@
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="Vpd-d3-7pQ"/>
-                                                            <constraint firstAttribute="width" constant="60" id="Zfd-eo-L1a"/>
                                                         </constraints>
                                                         <state key="normal" title="*"/>
                                                     </button>
@@ -255,7 +255,6 @@
                                                         <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="ELd-Os-ldv"/>
-                                                            <constraint firstAttribute="width" constant="60" id="tkD-jH-mfH"/>
                                                         </constraints>
                                                         <state key="normal" title="*"/>
                                                     </button>
@@ -324,13 +323,14 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="211" height="150"/>
                                                         </variation>
                                                     </stackView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BMdefaultRound" translatesAutoresizingMaskIntoConstraints="NO" id="9Tl-6e-TaP">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9K-mL-lZW">
                                                         <rect key="frame" x="328" y="0.0" width="232" height="150"/>
                                                         <animations/>
-                                                        <variation key="widthClass=compact" misplaced="YES">
-                                                            <rect key="frame" x="211" y="0.0" width="150" height="150"/>
-                                                        </variation>
-                                                    </imageView>
+                                                        <state key="normal" image="BMdefaultRound"/>
+                                                        <connections>
+                                                            <action selector="buttonTouchUp:" destination="nhG-40-lOl" eventType="touchUpInside" id="4XD-3r-Hge"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <animations/>
                                                 <variation key="heightClass=compact" axis="vertical"/>
@@ -367,7 +367,7 @@
                     </view>
                     <connections>
                         <outlet property="p1ButtonButton" destination="hnm-lT-xZS" id="hRv-Qo-ucz"/>
-                        <outlet property="p1ButtonImage" destination="xwx-g5-LVx" id="y44-dx-B1n"/>
+                        <outlet property="p1ButtonImageButton" destination="SEx-Lr-xJH" id="dFg-gz-xUl"/>
                         <outlet property="p1ButtonRecipeTextLabel" destination="UsD-4o-58d" id="9la-56-gmB"/>
                         <outlet property="p1CapturedLabel" destination="PF8-nx-EcS" id="6jw-aj-zxp"/>
                         <outlet property="p1DieStack" destination="LDh-Te-XYM" id="ExZ-L6-XPK"/>
@@ -377,7 +377,7 @@
                         <outlet property="p1View" destination="O85-JJ-rbg" id="S5B-Qs-clc"/>
                         <outlet property="p1WLTLabel" destination="652-VO-UB2" id="ShD-gf-ogw"/>
                         <outlet property="p2ButtonButton" destination="I9B-4L-a7O" id="guo-hU-4f4"/>
-                        <outlet property="p2ButtonImage" destination="9Tl-6e-TaP" id="7GC-IY-gxh"/>
+                        <outlet property="p2ButtonImageButton" destination="s9K-mL-lZW" id="se2-12-gpi"/>
                         <outlet property="p2ButtonRecipeTextLabel" destination="qgg-2A-soV" id="gaS-gw-tX9"/>
                         <outlet property="p2CapturedLabel" destination="VO8-fd-ier" id="Toj-XO-SPo"/>
                         <outlet property="p2DieStack" destination="iqd-PE-Jti" id="PMh-kx-xfw"/>
@@ -631,7 +631,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No flavor text." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq7-lV-VHN">
                                                         <rect key="frame" x="0.0" y="197" width="275" height="69"/>
                                                         <animations/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>

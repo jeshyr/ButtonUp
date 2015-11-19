@@ -16,12 +16,14 @@ struct Button {
     var artFilename: String = ""
     var recipe: String = ""
     
+    var flavor: String = ""
     var id: Int = 0
     var setName: String = ""
     var dieSkills = [ButtonDieSkills]()
     var dieTypes = [ButtonDieTypes]()
     var hasUnimplementedSkill: Bool = false
     var isTournamentLegal: Bool = false
+    var special: String = "" // WTF? only exposed in name-only requests
     var tags = [String]?()
 }
 

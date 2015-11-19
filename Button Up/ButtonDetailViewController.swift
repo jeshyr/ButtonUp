@@ -33,7 +33,11 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
         if let button = button {
             buttonTitleLabel.text = button.name
             buttonRecipeLabel.text = button.recipe
-            buttonFlavorText.text = "oops..."
+            if !button.flavor.isEmpty {
+                buttonFlavorText.text = button.flavor
+            } else {
+                buttonFlavorText.text = "(no flavor text)"
+            }
         }
         
         if let artFilename = button?.artFilename {

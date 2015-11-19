@@ -521,6 +521,8 @@ extension APIClient {
         return newLog
     }
     
+    
+    // MARK - Load data for one or more buttons
     func loadButtonData(buttonSet: String?, buttonName: String?, completionHandler: (buttons: [Button]?, success: Bool, message: String?) -> Void) {
         var jsonBody: [String: String] = [
             "type": "loadButtonData"
@@ -541,7 +543,7 @@ extension APIClient {
                 return
             }
             
-            //print(result)
+            print(result)
             var buttons = [Button]()
             
             guard let parsedSetArray = result as! [AnyObject]? else {
@@ -596,6 +598,17 @@ extension APIClient {
                     return
                 }
                 button.dieTypes = self.parseButtonDieTypes(dieTypes!)
+
+                /* FlavorText is only exposed if loading a single button at a time */
+                if let flavorText = parsedSet["flavorText"] as? String {
+                    button.flavor = flavorText
+                }
+                
+                /* specialText is only exposed if loading a single button at a time */
+                if let specialText = parsedSet["specialText"] as? String {
+                    button.special = specialText
+                    print("Found specialText on button \(buttonName): \(specialText)")
+                }
                 
                 guard let hasUnimplementedSkill = parsedSet["hasUnimplementedSkill"] as! Bool? else {
                     print("Can't find hasUnimplementedSkill in \(parsedSet)")
@@ -620,6 +633,8 @@ extension APIClient {
                 
                 if let tags = parsedSet["tags"] as! [String]? {
                     button.tags = tags
+                    print("Found tags on button \(buttonName): \(tags)")
+
                 } else {
                     button.tags = nil
                 }
@@ -630,7 +645,6 @@ extension APIClient {
             completionHandler(buttons: buttons, success: true, message: nil)
         }
     }
-    
     
     func parseButtonDieSkills(dieSkillData: AnyObject) -> [ButtonDieSkills] {
         var newDieSkills = [ButtonDieSkills]()
@@ -688,6 +702,7 @@ extension APIClient {
         return newDieTypes
     }
     
+    // Loads data about button sets
     func loadButtonSetData(buttonSet: String?, completionHandler: (buttonSets: [ButtonSet]?, success: Bool, message: String?) -> Void) {
         var jsonBody: [String: String] = [
             "type": "loadButtonSetData"
