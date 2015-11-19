@@ -129,6 +129,7 @@ class GameDetailViewController: UIViewController {
                     for dieButton in self.p1DieButtons {
                         self.p1DieStack.addArrangedSubview(dieButton)
                     }
+                    self.p1DieStack.removeArrangedSubview(self.p1DieStack.arrangedSubviews[0])
                     
                     self.p2View.backgroundColor = p2?.color
                     self.p2NameButton.setTitle("Name: \(p2!.name)", forState: UIControlState.Normal)
@@ -141,6 +142,8 @@ class GameDetailViewController: UIViewController {
                     for dieButton in self.p2DieButtons {
                         self.p2DieStack.addArrangedSubview(dieButton)
                     }
+                    self.p2DieStack.removeArrangedSubview(self.p2DieStack.arrangedSubviews[0])
+
                 }
             } else {
                 print("oops...")
@@ -152,7 +155,6 @@ class GameDetailViewController: UIViewController {
     func createDieButtonFromDie(die: Die) -> DieButton {
         let newButton = DieButton()
         newButton.setTitle("\(die.value)", forState: UIControlState.Normal)
-        
         return newButton
     }
     

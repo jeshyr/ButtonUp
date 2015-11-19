@@ -353,13 +353,19 @@ extension APIClient {
             }
             newPlayerData.prevOptValues = prevOptValueArray
             
-            guard let prevSwingValueArray = playerDataDictionary["prevSwingValueArray"] as! [String]? else {
+       
+            guard let prevSwingValueArray = playerDataDictionary["prevSwingValueArray"]  else {
                 
                 print("Can't find prevSwingValueArray: \(playerDataDictionary)")
                 completionHandler(game: nil, success: false, message: "Can't find prevSwingValueArray: \(playerDataDictionary)")
                 return playerDataArray
             }
-            newPlayerData.prevSwingValues = prevSwingValueArray
+            if let prevSwingRequestDictionary = prevSwingValueArray as? [String: AnyObject] {
+                let newPrevSwingRequests = parseSwingDieData(prevSwingRequestDictionary, completionHandler: { (game, success, message) -> Void in
+                    completionHandler(game: nil, success: false, message: message)
+                })
+                newPlayerData.prevSwingValues = newPrevSwingRequests
+            }
             
             guard let roundScoreRaw = playerDataDictionary["roundScore"]  else {
                 

@@ -47,6 +47,16 @@ class DieButton: UIButton {
         self.backgroundColor = lighterBlue
         self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         self.titleLabel?.font = UIFont.boldSystemFontOfSize(titleLabelFontSize)
+        self.addConstraint(NSLayoutConstraint(
+            item:self, attribute:NSLayoutAttribute.Width,
+            relatedBy:NSLayoutRelation.Equal,
+            toItem:nil, attribute:NSLayoutAttribute.NotAnAttribute,
+            multiplier:0, constant:dieButtonHeight))
+        self.addConstraint(NSLayoutConstraint(
+            item:self, attribute:NSLayoutAttribute.Height,
+            relatedBy:NSLayoutRelation.Equal,
+            toItem:nil, attribute:NSLayoutAttribute.NotAnAttribute,
+            multiplier:0, constant:dieButtonHeight))
     }
     
     // MARK: Setters

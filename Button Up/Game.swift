@@ -58,7 +58,7 @@ struct GamePlayerData {
     var optRequests = [String]() // optRequestArray WTF?
     var prevOptValues = [String]() // prevOptValueArray WTF?
     var swingRequests = [DieSwing]() 
-    var prevSwingValues = [String]() // prevSwingValueArray WTF?
+    var prevSwingValues = [DieSwing]() // prevSwingValueArray WTF?
     
     var waitingOnAction: Bool = false
 }
