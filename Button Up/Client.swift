@@ -472,9 +472,20 @@ extension APIClient {
         }
         
         if isTwinDie {
-            // Read subdie here for twins
             print("Twin!")
-            print(dieData)
+            print(dieData["SubdieArray"])
+            if let subDieArray = dieData["SubdieArray"] as! [[String: Int]]? {
+                for subDie in subDieArray {
+                    var newSubDie = DieSubDie()
+                    newSubDie.sides = subDie["sides"]!
+                    newSubDie.value = subDie["value"]!
+                    print("newSubDie: \(newSubDie)")
+                    newDie.subDice.append(newSubDie)
+                    print("NewDie: \(newDie.subDice)")
+                }
+            } else {
+                print("Confused by subdieArray: \(dieData["SubdieArray"])")
+            }
         }
        
         return newDie
