@@ -51,6 +51,8 @@ class GameDetailViewController: UIViewController {
         client.loadGameData(gameSummary!.id) { game, success, error in
             if success {
                 self.game = game
+                
+                // TODO Shift these around if ourname is the wrong one!
                 let p1 = game?.playerData[1]
                 let p2 = game?.playerData[0]
                 
@@ -126,10 +128,13 @@ class GameDetailViewController: UIViewController {
                     self.p1ScoreLabel.text = p1Score
                     self.p1WLTLabel.text = p1WLT
                     self.p1CapturedLabel.text = p1Captured
+                    for oldDie in self.p1DieStack.arrangedSubviews {
+                        self.p1DieStack.removeArrangedSubview(oldDie) // Remove from stack
+                        oldDie.removeFromSuperview()                  // Kill alltogether
+                    }
                     for dieButton in self.p1DieButtons {
                         self.p1DieStack.addArrangedSubview(dieButton)
                     }
-                    self.p1DieStack.removeArrangedSubview(self.p1DieStack.arrangedSubviews[0])
                     
                     self.p2View.backgroundColor = p2?.color
                     self.p2NameButton.setTitle("Name: \(p2!.name)", forState: UIControlState.Normal)
@@ -139,10 +144,13 @@ class GameDetailViewController: UIViewController {
                     self.p2ScoreLabel.text = p2Score
                     self.p2WLTLabel.text = p2WLT
                     self.p2CapturedLabel.text = p2Captured
+                    for oldDie in self.p2DieStack.arrangedSubviews {
+                        self.p2DieStack.removeArrangedSubview(oldDie) // Remove from stack
+                        oldDie.removeFromSuperview()                  // Kill alltogether
+                    }
                     for dieButton in self.p2DieButtons {
                         self.p2DieStack.addArrangedSubview(dieButton)
                     }
-                    self.p2DieStack.removeArrangedSubview(self.p2DieStack.arrangedSubviews[0])
 
                 }
             } else {
@@ -154,6 +162,7 @@ class GameDetailViewController: UIViewController {
     
     func createDieButtonFromDie(die: Die) -> DieButton {
         let newButton = DieButton()
+        //let newButton = DieButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         if die.properties.contains(DieFlag.Twin) {
             if !die.subDice.isEmpty {
                 // subDie array that aren't empty always have two values at least currently

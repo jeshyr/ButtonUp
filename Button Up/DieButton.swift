@@ -46,7 +46,10 @@ class DieButton: UIButton {
         self.backingColor = lighterBlue
         self.backgroundColor = lighterBlue
         self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        self.setTitleColor(UIColor.whiteColor(), forState: .Selected)
         self.titleLabel?.font = UIFont.boldSystemFontOfSize(titleLabelFontSize)
+        self.titleLabel?.minimumScaleFactor = 0.01
+        self.titleLabel?.adjustsFontSizeToFitWidth = true
         self.addConstraint(NSLayoutConstraint(
             item:self, attribute:NSLayoutAttribute.Width,
             relatedBy:NSLayoutRelation.Equal,
