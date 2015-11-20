@@ -747,22 +747,22 @@
                                 <rect key="frame" x="114" y="166" width="446" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6N-lj-UnG">
-                                <rect key="frame" x="114" y="246" width="446" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gt-x7-LIO">
-                                <rect key="frame" x="283" y="351" width="34" height="30"/>
+                                <rect key="frame" x="283" y="337" width="34" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveButtonTouchUp:" destination="kF5-dj-Sna" eventType="touchUpInside" id="bH4-Yb-p58"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6N-lj-UnG">
+                                <rect key="frame" x="114" y="232" width="446" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -771,7 +771,7 @@
                             <constraint firstItem="1gt-x7-LIO" firstAttribute="top" secondItem="W6N-lj-UnG" secondAttribute="bottom" constant="75" id="Bcb-cn-bBu"/>
                             <constraint firstItem="a05-mm-ogb" firstAttribute="top" secondItem="tcB-Vj-rTa" secondAttribute="bottom" constant="150" id="SrO-LF-gNK"/>
                             <constraint firstItem="fsA-Fn-q0x" firstAttribute="top" secondItem="tcB-Vj-rTa" secondAttribute="bottom" constant="146" id="UrN-S0-q4z"/>
-                            <constraint firstItem="W6N-lj-UnG" firstAttribute="top" secondItem="fsA-Fn-q0x" secondAttribute="bottom" constant="50" id="e61-dv-T7b"/>
+                            <constraint firstItem="W6N-lj-UnG" firstAttribute="top" secondItem="fsA-Fn-q0x" secondAttribute="bottom" constant="36" id="e61-dv-T7b"/>
                             <constraint firstItem="1gt-x7-LIO" firstAttribute="centerX" secondItem="gqU-Cw-vYk" secondAttribute="centerX" id="eH4-Qs-Txq"/>
                             <constraint firstAttribute="leadingMargin" secondItem="a05-mm-ogb" secondAttribute="leading" id="epG-kh-I9e"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fsA-Fn-q0x" secondAttribute="trailing" constant="20" id="fQG-qr-ePa"/>
@@ -781,7 +781,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="FmK-QE-VFp" secondAttribute="leading" id="t9c-3O-80n"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="settings-tabbar" id="zGr-Wm-TDC"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-tabbar" id="zGr-Wm-TDC"/>
                     <connections>
                         <outlet property="passwordText" destination="W6N-lj-UnG" id="B06-J0-t4B"/>
                         <outlet property="usernameText" destination="fsA-Fn-q0x" id="HG1-jt-6Ac"/>

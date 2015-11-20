@@ -75,6 +75,20 @@ class DieButton: UIButton {
         self.highlightedBackingColor = highlightedBackingColor
         self.backingColor = highlightedBackingColor
     }
+
+    override var selected: Bool {
+        willSet(newSelected) {
+            print("changing from \(selected) to \(newSelected)")
+            if newSelected {
+                self.layer.borderColor = UIColor.redColor().CGColor
+                self.layer.borderWidth = 5
+            } else {
+                self.layer.borderWidth = 0
+            }
+        }
+    }
+    
+
     
     // MARK: Tracking
     

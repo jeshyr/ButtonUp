@@ -173,7 +173,13 @@ class GameDetailViewController: UIViewController {
         } else {
             newButton.setTitle("\(die.value)", forState: UIControlState.Normal)
         }
+        newButton.addTarget(self, action: "dieTouchUp:", forControlEvents: .TouchUpInside)
+
         return newButton
+    }
+    
+    func dieTouchUp(sender: UIButton) {
+        sender.selected = !sender.selected
     }
     
     @IBAction func buttonTouchUp(sender: UIButton) {
