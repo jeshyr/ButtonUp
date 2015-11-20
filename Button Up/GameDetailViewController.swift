@@ -88,13 +88,13 @@ class GameDetailViewController: UIViewController {
                 var p1Captured = ""
                 for captured in (p1?.capturedDice)! {
                     if p1Captured.isEmpty {
-                        p1Captured = "Dice captured: " + captured.recipe
+                        p1Captured = "Captured: " + captured.recipe
                     } else {
                         p1Captured = p1Captured + ", " + captured.recipe
                     }
                 }
                 if p1Captured.isEmpty {
-                    p1Captured = "Dice captured: (none)"
+                    p1Captured = "Captured: (none)"
                 }
                 
                 let p2Score = "Score: \(p2!.roundScore) (\(p2!.sideScore))"
@@ -102,13 +102,13 @@ class GameDetailViewController: UIViewController {
                 var p2Captured = ""
                 for captured in (p2?.capturedDice)! {
                     if p2Captured.isEmpty {
-                        p2Captured = "Dice captured: " + captured.recipe
+                        p2Captured = "Captured: " + captured.recipe
                     } else {
                         p2Captured = p2Captured + ", " + captured.recipe
                     }
                 }
                 if p2Captured.isEmpty {
-                    p2Captured = "Dice captured: (none)"
+                    p2Captured = "Captured: (none)"
                 }
                 
                 // Dice

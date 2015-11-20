@@ -50,6 +50,7 @@ class DieButton: UIButton {
         self.titleLabel?.font = UIFont.boldSystemFontOfSize(titleLabelFontSize)
         self.titleLabel?.minimumScaleFactor = 0.01
         self.titleLabel?.adjustsFontSizeToFitWidth = true
+        
         self.addConstraint(NSLayoutConstraint(
             item:self, attribute:NSLayoutAttribute.Width,
             relatedBy:NSLayoutRelation.Equal,
