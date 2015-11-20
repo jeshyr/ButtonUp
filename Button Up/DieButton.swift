@@ -78,7 +78,6 @@ class DieButton: UIButton {
 
     override var selected: Bool {
         willSet(newSelected) {
-            print("changing from \(selected) to \(newSelected)")
             if newSelected {
                 self.layer.borderColor = UIColor.redColor().CGColor
                 self.layer.borderWidth = 5

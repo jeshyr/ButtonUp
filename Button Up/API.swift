@@ -63,6 +63,7 @@ class APIClient: NSObject {
 
             
             /* GUARD: Was there an error? */
+            // TODO should figure out how to retry request if the network connection is lost
             guard (error == nil) else {
                 print("There was an error with your request: \(error)")
                 completionHandler(result: nil, success: false, message: "There was an error with your request: \(error)")

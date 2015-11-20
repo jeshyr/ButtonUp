@@ -178,8 +178,13 @@ class GameDetailViewController: UIViewController {
         return newButton
     }
     
+    // MARK - Actions
+    
     func dieTouchUp(sender: UIButton) {
         sender.selected = !sender.selected
+    }
+    
+    @IBAction func beatPeopleUpTouchUp(sender: AnyObject) {
     }
     
     @IBAction func buttonTouchUp(sender: UIButton) {
