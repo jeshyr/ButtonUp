@@ -12,12 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
+    var appSettings = Settings()
+    
+    func resetAppToFirstController() {
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let rootViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
+        self.window?.rootViewController = rootViewController
+    }
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Usually this is not overridden. Using the "did finish launching" method is more typical
         
         print("App Delegate: will finish launching")
-        
         return true
     }
     
@@ -26,6 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("App Delegate: did finish launching")
         
+        if !appSettings.retreive() {
+            // NO username/password is stored - go directly to settings screen
+            print("Found no username/password")
+            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let rootViewController:UIViewController = storyboard.instantiateViewControllerWithIdentifier("SettingsViewController") as UIViewController
+            self.window?.rootViewController = rootViewController
+        }
         return true
     }
     

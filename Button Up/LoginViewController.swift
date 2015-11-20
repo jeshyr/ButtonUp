@@ -14,10 +14,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loggingInTextLabel: UILabel!
     @IBOutlet weak var debugTextLabel: UILabel!
     
+    var appDelegate: AppDelegate!
+    
     let client = APIClient.sharedInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -26,8 +31,9 @@ class LoginViewController: UIViewController {
         
         activityIndicator.startAnimating()
         
-        let username = "jeshyr"
-        let password = "xqEC8wu3VuZcMJ"
+        // TODO should check for no saved username/password and go directly to settings screen
+        let username = appDelegate.appSettings.username
+        let password = appDelegate.appSettings.password
         
         loggingInTextLabel.text = "Logging \(username) in ..."
         
@@ -39,6 +45,7 @@ class LoginViewController: UIViewController {
                     self.presentViewController(controller, animated: true, completion: nil)
                 })
             } else {
+                // TODO should check for wrong username/password error here and go directly to settings screen
                 self.displayError("Login error: \(error)")
             }
         }

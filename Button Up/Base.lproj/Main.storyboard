@@ -9,7 +9,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -144,7 +144,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z60-5w-QGk">
                                                 <rect key="frame" x="0.0" y="0.0" width="560" height="150"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-Lr-xJH">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-Lr-xJH">
                                                         <rect key="frame" x="0.0" y="0.0" width="226" height="150"/>
                                                         <animations/>
                                                         <state key="normal" image="BMdefaultRound"/>
@@ -152,10 +152,10 @@
                                                             <action selector="buttonTouchUp:" destination="nhG-40-lOl" eventType="touchUpInside" id="tyj-ot-k8k"/>
                                                         </connections>
                                                     </button>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ktd-x6-4Lx">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ktd-x6-4Lx">
                                                         <rect key="frame" x="236" y="0.0" width="324" height="150"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="p(4,4) p(8,8) (10) ps(24) (X)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-4o-58d">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UsD-4o-58d">
                                                                 <rect key="frame" x="0.0" y="0.0" width="324" height="30"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -165,7 +165,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="211" height="43"/>
                                                                 </variation>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnm-lT-xZS">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnm-lT-xZS">
                                                                 <rect key="frame" x="0.0" y="30" width="324" height="30"/>
                                                                 <animations/>
                                                                 <state key="normal" title="Button: Abe Caine"/>
@@ -176,7 +176,7 @@
                                                                     <action selector="buttonTouchUp:" destination="nhG-40-lOl" eventType="touchUpInside" id="PS5-mP-I9L"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4B-LS-fzj">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4B-LS-fzj">
                                                                 <rect key="frame" x="0.0" y="60" width="324" height="30"/>
                                                                 <animations/>
                                                                 <state key="normal" title="Player: Jeshyr"/>
@@ -184,14 +184,14 @@
                                                                     <rect key="frame" x="0.0" y="107" width="211" height="43"/>
                                                                 </variation>
                                                             </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score: -30 (-4 sides)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wev-Zi-la4">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: -30 (-4 sides)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wev-Zi-la4">
                                                                 <rect key="frame" x="0.0" y="90" width="324" height="30"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="W/L/T: 1/2/0 (3)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="652-VO-UB2">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W/L/T: 1/2/0 (3)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="652-VO-UB2">
                                                                 <rect key="frame" x="0.0" y="120" width="324" height="30"/>
                                                                 <animations/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -717,6 +717,80 @@
             </objects>
             <point key="canvasLocation" x="381" y="1723"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="vog-0Z-dck">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="kF5-dj-Sna" customClass="SettingsViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tcB-Vj-rTa"/>
+                        <viewControllerLayoutGuide type="bottom" id="e2R-As-Beh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gqU-Cw-vYk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a05-mm-ogb">
+                                <rect key="frame" x="20" y="170" width="84" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmK-QE-VFp">
+                                <rect key="frame" x="20" y="241" width="79" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fsA-Fn-q0x">
+                                <rect key="frame" x="114" y="166" width="446" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6N-lj-UnG">
+                                <rect key="frame" x="114" y="246" width="446" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gt-x7-LIO">
+                                <rect key="frame" x="283" y="351" width="34" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonTouchUp:" destination="kF5-dj-Sna" eventType="touchUpInside" id="bH4-Yb-p58"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fsA-Fn-q0x" firstAttribute="leading" secondItem="a05-mm-ogb" secondAttribute="trailing" constant="10" id="7EH-gj-sTW"/>
+                            <constraint firstItem="1gt-x7-LIO" firstAttribute="top" secondItem="W6N-lj-UnG" secondAttribute="bottom" constant="75" id="Bcb-cn-bBu"/>
+                            <constraint firstItem="a05-mm-ogb" firstAttribute="top" secondItem="tcB-Vj-rTa" secondAttribute="bottom" constant="150" id="SrO-LF-gNK"/>
+                            <constraint firstItem="fsA-Fn-q0x" firstAttribute="top" secondItem="tcB-Vj-rTa" secondAttribute="bottom" constant="146" id="UrN-S0-q4z"/>
+                            <constraint firstItem="W6N-lj-UnG" firstAttribute="top" secondItem="fsA-Fn-q0x" secondAttribute="bottom" constant="50" id="e61-dv-T7b"/>
+                            <constraint firstItem="1gt-x7-LIO" firstAttribute="centerX" secondItem="gqU-Cw-vYk" secondAttribute="centerX" id="eH4-Qs-Txq"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="a05-mm-ogb" secondAttribute="leading" id="epG-kh-I9e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fsA-Fn-q0x" secondAttribute="trailing" constant="20" id="fQG-qr-ePa"/>
+                            <constraint firstItem="W6N-lj-UnG" firstAttribute="leading" secondItem="fsA-Fn-q0x" secondAttribute="leading" id="jFE-Kt-Ip5"/>
+                            <constraint firstItem="FmK-QE-VFp" firstAttribute="top" secondItem="a05-mm-ogb" secondAttribute="bottom" constant="50" id="jLq-j1-yPI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="W6N-lj-UnG" secondAttribute="trailing" constant="20" id="jx9-jz-dwh"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="FmK-QE-VFp" secondAttribute="leading" id="t9c-3O-80n"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="settings-tabbar" id="zGr-Wm-TDC"/>
+                    <connections>
+                        <outlet property="passwordText" destination="W6N-lj-UnG" id="B06-J0-t4B"/>
+                        <outlet property="usernameText" destination="fsA-Fn-q0x" id="HG1-jt-6Ac"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vDn-bS-ecj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="381" y="2463"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5bo-aF-I6E">
             <objects>
@@ -731,6 +805,7 @@
                         <segue destination="XKs-ZK-lZs" kind="relationship" relationship="viewControllers" id="ncS-ft-Fdv"/>
                         <segue destination="pLc-DE-i8H" kind="relationship" relationship="viewControllers" id="oN9-e1-wjq"/>
                         <segue destination="Cxf-xh-Qf9" kind="relationship" relationship="viewControllers" id="5hB-BD-OT9"/>
+                        <segue destination="kF5-dj-Sna" kind="relationship" relationship="viewControllers" id="M4X-hH-ovJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cX-DD-TSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -741,5 +816,6 @@
     <resources>
         <image name="BMdefaultRound" width="150" height="150"/>
         <image name="button-tabbar" width="32" height="32"/>
+        <image name="settings-tabbar" width="32" height="32"/>
     </resources>
 </document>

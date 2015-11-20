@@ -22,6 +22,7 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
     // Passed in from segue
     var button: Button?
     
+    // TODO this should reload single button data and re-update the UI because a few things (flavour text, etc.) are only exposed when you load one button at a time
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
