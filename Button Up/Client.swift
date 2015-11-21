@@ -415,7 +415,6 @@ extension APIClient {
         return playerDataArray
     }
     
-    
     func parseDieData(dieData: [String: AnyObject], completionHandler: (game: Game?, success: Bool, message: String?) -> Void) -> Die {
         var newDie = Die()
         var isTwinDie = false
@@ -702,7 +701,6 @@ extension APIClient {
         return newDieTypes
     }
     
-    // Loads data about button sets
     func loadButtonSetData(buttonSet: String?, completionHandler: (buttonSets: [ButtonSet]?, success: Bool, message: String?) -> Void) {
         var jsonBody: [String: String] = [
             "type": "loadButtonSetData"
@@ -775,7 +773,28 @@ extension APIClient {
         }
     }
 
-    // Completed games are finished but not dismissed - the ones which show up on the game overview page still
+    // MARK - Game summaries
+    func loadNewGames(completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
+        let jsonBody: [String: String] = [
+            "type": "loadNewGames"
+        ]
+        
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
+            //print("in loadNewGames completion handler")
+            
+            guard success else {
+                print("error: \(message)")
+                completionHandler(gameSummaries: nil, success: false, message: message)
+                return
+            }
+            
+            // Parse dictionary of arrays into array of games
+            self.parseGameSummaryArrays(result) { games, success, message in
+                completionHandler(gameSummaries: games, success: success, message: message)
+            }
+        }
+    }
+    
     func loadCompletedGames(completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
         let jsonBody: [String: String] = [
             "type": "loadCompletedGames"
@@ -791,181 +810,11 @@ extension APIClient {
             }
             
             // Parse dictionary of arrays into array of games
-            var games = [GameSummary]()
-            //print(result)
-            
-            guard let gameDescriptionArray = result!["gameDescriptionArray"] as! [String]? else {
-                print("Can't parse gameDescriptionArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse gameDescriptionArray: \(result)")
-                return
+            self.parseGameSummaryArrays(result) { games, success, message in
+                completionHandler(gameSummaries: games, success: success, message: message)
             }
-            for description in gameDescriptionArray {
-                var newGame = GameSummary()
-                newGame.description = description
-                games.append(newGame)
-            }
-            
-            guard let gameIdArray = result!["gameIdArray"] as! [Int]? else {
-                print("Can't parse gameIdArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse gameIdArray: \(result)")
-                return
-            }
-            for (index, id) in gameIdArray.enumerate() {
-                games[index].id = id
-            }
-            
-            guard let gameStateArray = result!["gameStateArray"] as! [String]? else {
-                print("Can't parse gameStateArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse gameStateArray: \(result)")
-                return
-            }
-            for (index, state) in gameStateArray.enumerate() {
-                guard let validState = GameState(rawValue: state) else {
-                    print("Invalid game state: \(state) in game \(games[index].id)")
-                    completionHandler(gameSummaries: nil, success: false, message: "Invalid game state: \(state) in game \(games[index].id)")
-                    return
-                }
-                games[index].state = validState
-            }
-            
-            guard let inactivityArray = result!["inactivityArray"] as! [String]? else {
-                print("Can't parse inactivityArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse inactivityArray: \(result)")
-                return
-            }
-            for (index, inactivity) in inactivityArray.enumerate() {
-                games[index].inactivity = inactivity
-            }
-            
-            guard let inactivityRawArray = result!["inactivityRawArray"] as! [Int]? else {
-                print("Can't parse inactivityRawArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse inactivityRawArray: \(result)")
-                return
-            }
-            for (index, inactivityRaw) in inactivityRawArray.enumerate() {
-                games[index].inactivityRaw = inactivityRaw
-            }
-            
-            guard let isAwaitingActionArray = result!["isAwaitingActionArray"] as! [Int]? else {
-                print("Can't parse isAwaitingActionArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse isAwaitingActionArray: \(result)")
-                return
-            }
-            for (index, isAwaitingAction) in isAwaitingActionArray.enumerate() {
-                if isAwaitingAction == 1 {
-                    games[index].awaitingAction = true
-                } else {
-                    games[index].awaitingAction = false
-                }
-            }
-            
-            guard let myButtonNameArray = result!["myButtonNameArray"] as! [String]? else {
-                print("Can't parse myButtonNameArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse myButtonNameArray: \(result)")
-                return
-            }
-            for (index, myButton) in myButtonNameArray.enumerate() {
-                games[index].myButton = myButton
-            }
-            
-            guard let nDrawsArray = result!["nDrawsArray"] as! [Int]? else {
-                print("Can't parse nDrawsArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse nDrawsArray: \(result)")
-                return
-            }
-            for (index, draws) in nDrawsArray.enumerate() {
-                games[index].draws = draws
-            }
-            
-            guard let nLossesArray = result!["nLossesArray"] as! [Int]? else {
-                print("Can't parse nLossesArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse nLossesArray: \(result)")
-                return
-            }
-            for (index, losses) in nLossesArray.enumerate() {
-                games[index].losses = losses
-            }
-            
-            guard let nWinsArray = result!["nWinsArray"] as! [Int]? else {
-                print("Can't parse nWinsArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse nWinsArray: \(result)")
-                return
-            }
-            for (index, wins) in nWinsArray.enumerate() {
-                games[index].wins = wins
-            }
-            
-            guard let nTargetWinsArray = result!["nTargetWinsArray"] as! [Int]? else {
-                print("Can't parse nTargetWinsArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse nTargetWinsArray: \(result)")
-                return
-            }
-            for (index, targetWins) in nTargetWinsArray.enumerate() {
-                games[index].targetWins = targetWins
-            }
-            
-            guard let opponentButtonNameArray = result!["opponentButtonNameArray"] as! [String]? else {
-                print("Can't parse opponentButtonNameArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentButtonNameArray: \(result)")
-                return
-            }
-            for (index, opponentButton) in opponentButtonNameArray.enumerate() {
-                games[index].opponentButton = opponentButton
-            }
-            
-            guard let opponentColorArray = result!["opponentColorArray"] as! [String]? else {
-                print("Can't parse opponentColorArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentColorArray: \(result)")
-                return
-            }
-            for (index, opponentColor) in opponentColorArray.enumerate() {
-                games[index].opponentColor = APIClient.hexStringToUIColor(opponentColor)
-            }
-            
-            guard let playerColorArray = result!["playerColorArray"] as! [String]? else {
-                print("Can't parse playerColorArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse playerColorArray: \(result)")
-                return
-            }
-            for (index, myColor) in playerColorArray.enumerate() {
-                games[index].myColor = APIClient.hexStringToUIColor(myColor)
-            }
-            
-            guard let opponentIdArray = result!["opponentIdArray"] as! [Int]? else {
-                print("Can't parse opponentIdArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentIdArray: \(result)")
-                return
-            }
-            for (index, opponentId) in opponentIdArray.enumerate() {
-                games[index].opponentId = opponentId
-            }
-            
-            guard let opponentNameArray = result!["opponentNameArray"] as! [String]? else {
-                print("Can't parse opponentNameArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentNameArray: \(result)")
-                return
-            }
-            for (index, opponentName) in opponentNameArray.enumerate() {
-                games[index].opponentName = opponentName
-            }
-            
-            guard let statusArray = result!["statusArray"] as! [String]? else {
-                print("Can't parse statusArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse statusArray: \(result)")
-                return
-            }
-            for (index, status) in statusArray.enumerate() {
-                guard let validStatus = GameStatus(rawValue: status) else {
-                    print("Invalid game status: \(status) in game \(games[index].id)")
-                    completionHandler(gameSummaries: nil, success: false, message: "Invalid game status: \(status) in game \(games[index].id)")
-                    return
-                }
-                games[index].status = validStatus
-            }
-            
-            //print(games)
-            completionHandler(gameSummaries: games, success: true, message: nil)
         }
+
     }
 
     func loadActiveGames(completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
@@ -983,183 +832,190 @@ extension APIClient {
             }
             
             // Parse dictionary of arrays into array of games
-            var games: [GameSummary] = [GameSummary]()
-            //print(result)
-            
-            guard let gameDescriptionArray = result!["gameDescriptionArray"] as! [String]? else {
-                print("Can't parse gameDescriptionArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse gameDescriptionArray: \(result)")
-                return
+            self.parseGameSummaryArrays(result) { games, success, message in
+                completionHandler(gameSummaries: games, success: success, message: message)
             }
-            for description in gameDescriptionArray {
-                var newGame = GameSummary()
-                newGame.description = description
-                games.append(newGame)
-            }
-            
-            guard let gameIdArray = result!["gameIdArray"] as! [Int]? else {
-                print("Can't parse gameIdArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse gameIdArray: \(result)")
-                return
-            }
-            for (index, id) in gameIdArray.enumerate() {
-                games[index].id = id
-            }
-            
-            guard let gameStateArray = result!["gameStateArray"] as! [String]? else {
-                print("Can't parse gameStateArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse gameStateArray: \(result)")
-                return
-            }
-            for (index, state) in gameStateArray.enumerate() {
-                guard let validState = GameState(rawValue: state) else {
-                    print("Invalid game state: \(state) in game \(games[index].id)")
-                    completionHandler(gameSummaries: nil, success: false, message: "Invalid game state: \(state) in game \(games[index].id)")
-                    return
-                }
-                games[index].state = validState
-            }
-            
-            guard let inactivityArray = result!["inactivityArray"] as! [String]? else {
-                print("Can't parse inactivityArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse inactivityArray: \(result)")
-                return
-            }
-            for (index, inactivity) in inactivityArray.enumerate() {
-                games[index].inactivity = inactivity
-            }
-            
-            guard let inactivityRawArray = result!["inactivityRawArray"] as! [Int]? else {
-                print("Can't parse inactivityRawArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse inactivityRawArray: \(result)")
-                return
-            }
-            for (index, inactivityRaw) in inactivityRawArray.enumerate() {
-                games[index].inactivityRaw = inactivityRaw
-            }
-            
-            guard let isAwaitingActionArray = result!["isAwaitingActionArray"] as! [Int]? else {
-                print("Can't parse isAwaitingActionArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse isAwaitingActionArray: \(result)")
-                return
-            }
-            for (index, isAwaitingAction) in isAwaitingActionArray.enumerate() {
-                if isAwaitingAction == 1 {
-                    games[index].awaitingAction = true
-                } else {
-                    games[index].awaitingAction = false
-                }
-            }
-
-            guard let myButtonNameArray = result!["myButtonNameArray"] as! [String]? else {
-                print("Can't parse myButtonNameArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse myButtonNameArray: \(result)")
-                return
-            }
-            for (index, myButton) in myButtonNameArray.enumerate() {
-                games[index].myButton = myButton
-            }
-            
-            guard let nDrawsArray = result!["nDrawsArray"] as! [Int]? else {
-                print("Can't parse nDrawsArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse nDrawsArray: \(result)")
-                return
-            }
-            for (index, draws) in nDrawsArray.enumerate() {
-                games[index].draws = draws
-            }
-            
-            guard let nLossesArray = result!["nLossesArray"] as! [Int]? else {
-                print("Can't parse nLossesArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse nLossesArray: \(result)")
-                return
-            }
-            for (index, losses) in nLossesArray.enumerate() {
-                games[index].losses = losses
-            }
-            
-            guard let nWinsArray = result!["nWinsArray"] as! [Int]? else {
-                print("Can't parse nWinsArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse nWinsArray: \(result)")
-                return
-            }
-            for (index, wins) in nWinsArray.enumerate() {
-                games[index].wins = wins
-            }
-            
-            guard let nTargetWinsArray = result!["nTargetWinsArray"] as! [Int]? else {
-                print("Can't parse nTargetWinsArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse nTargetWinsArray: \(result)")
-                return
-            }
-            for (index, targetWins) in nTargetWinsArray.enumerate() {
-                games[index].targetWins = targetWins
-            }
-            
-            guard let opponentButtonNameArray = result!["opponentButtonNameArray"] as! [String]? else {
-                print("Can't parse opponentButtonNameArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentButtonNameArray: \(result)")
-                return
-            }
-            for (index, opponentButton) in opponentButtonNameArray.enumerate() {
-                games[index].opponentButton = opponentButton
-            }
-
-            guard let opponentColorArray = result!["opponentColorArray"] as! [String]? else {
-                print("Can't parse opponentColorArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentColorArray: \(result)")
-                return
-            }
-            for (index, opponentColor) in opponentColorArray.enumerate() {
-                games[index].opponentColor = APIClient.hexStringToUIColor(opponentColor)
-            }
-            
-            guard let playerColorArray = result!["playerColorArray"] as! [String]? else {
-                print("Can't parse playerColorArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse playerColorArray: \(result)")
-                return
-            }
-            for (index, myColor) in playerColorArray.enumerate() {
-                games[index].myColor = APIClient.hexStringToUIColor(myColor)
-            }
-            
-            guard let opponentIdArray = result!["opponentIdArray"] as! [Int]? else {
-                print("Can't parse opponentIdArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentIdArray: \(result)")
-                return
-            }
-            for (index, opponentId) in opponentIdArray.enumerate() {
-                games[index].opponentId = opponentId
-            }
-            
-            guard let opponentNameArray = result!["opponentNameArray"] as! [String]? else {
-                print("Can't parse opponentNameArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentNameArray: \(result)")
-                return
-            }
-            for (index, opponentName) in opponentNameArray.enumerate() {
-                games[index].opponentName = opponentName
-            }
-
-            guard let statusArray = result!["statusArray"] as! [String]? else {
-                print("Can't parse statusArray")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't parse statusArray: \(result)")
-                return
-            }
-            for (index, status) in statusArray.enumerate() {
-                guard let validStatus = GameStatus(rawValue: status) else {
-                    print("Invalid game status: \(status) in game \(games[index].id)")
-                    completionHandler(gameSummaries: nil, success: false, message: "Invalid game status: \(status) in game \(games[index].id)")
-                    return
-                }
-                games[index].status = validStatus
-            }
-            
-            //print(games)
-            completionHandler(gameSummaries: games, success: true, message: nil)
         }
     }
-   
+
+    func parseGameSummaryArrays(result: AnyObject?, completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
+    
+        // Parse dictionary of arrays into array of games
+        var games: [GameSummary] = [GameSummary]()
+        //print(result)
+        
+        guard let gameDescriptionArray = result!["gameDescriptionArray"] as! [String]? else {
+            print("Can't parse gameDescriptionArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse gameDescriptionArray: \(result)")
+            return
+        }
+        for description in gameDescriptionArray {
+            var newGame = GameSummary()
+            newGame.description = description
+            games.append(newGame)
+        }
+        
+        guard let gameIdArray = result!["gameIdArray"] as! [Int]? else {
+            print("Can't parse gameIdArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse gameIdArray: \(result)")
+            return
+        }
+        for (index, id) in gameIdArray.enumerate() {
+            games[index].id = id
+        }
+        
+        guard let gameStateArray = result!["gameStateArray"] as! [String]? else {
+            print("Can't parse gameStateArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse gameStateArray: \(result)")
+            return
+        }
+        for (index, state) in gameStateArray.enumerate() {
+            guard let validState = GameState(rawValue: state) else {
+                print("Invalid game state: \(state) in game \(games[index].id)")
+                completionHandler(gameSummaries: nil, success: false, message: "Invalid game state: \(state) in game \(games[index].id)")
+                return
+            }
+            games[index].state = validState
+        }
+        
+        guard let inactivityArray = result!["inactivityArray"] as! [String]? else {
+            print("Can't parse inactivityArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse inactivityArray: \(result)")
+            return
+        }
+        for (index, inactivity) in inactivityArray.enumerate() {
+            games[index].inactivity = inactivity
+        }
+        
+        guard let inactivityRawArray = result!["inactivityRawArray"] as! [Int]? else {
+            print("Can't parse inactivityRawArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse inactivityRawArray: \(result)")
+            return
+        }
+        for (index, inactivityRaw) in inactivityRawArray.enumerate() {
+            games[index].inactivityRaw = inactivityRaw
+        }
+        
+        guard let isAwaitingActionArray = result!["isAwaitingActionArray"] as! [Int]? else {
+            print("Can't parse isAwaitingActionArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse isAwaitingActionArray: \(result)")
+            return
+        }
+        for (index, isAwaitingAction) in isAwaitingActionArray.enumerate() {
+            if isAwaitingAction == 1 {
+                games[index].awaitingAction = true
+            } else {
+                games[index].awaitingAction = false
+            }
+        }
+        
+        guard let myButtonNameArray = result!["myButtonNameArray"] as! [String]? else {
+            print("Can't parse myButtonNameArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse myButtonNameArray: \(result)")
+            return
+        }
+        for (index, myButton) in myButtonNameArray.enumerate() {
+            games[index].myButton = myButton
+        }
+        
+        guard let nDrawsArray = result!["nDrawsArray"] as! [Int]? else {
+            print("Can't parse nDrawsArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse nDrawsArray: \(result)")
+            return
+        }
+        for (index, draws) in nDrawsArray.enumerate() {
+            games[index].draws = draws
+        }
+        
+        guard let nLossesArray = result!["nLossesArray"] as! [Int]? else {
+            print("Can't parse nLossesArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse nLossesArray: \(result)")
+            return
+        }
+        for (index, losses) in nLossesArray.enumerate() {
+            games[index].losses = losses
+        }
+        
+        guard let nWinsArray = result!["nWinsArray"] as! [Int]? else {
+            print("Can't parse nWinsArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse nWinsArray: \(result)")
+            return
+        }
+        for (index, wins) in nWinsArray.enumerate() {
+            games[index].wins = wins
+        }
+        
+        guard let nTargetWinsArray = result!["nTargetWinsArray"] as! [Int]? else {
+            print("Can't parse nTargetWinsArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse nTargetWinsArray: \(result)")
+            return
+        }
+        for (index, targetWins) in nTargetWinsArray.enumerate() {
+            games[index].targetWins = targetWins
+        }
+        
+        guard let opponentButtonNameArray = result!["opponentButtonNameArray"] as! [String]? else {
+            print("Can't parse opponentButtonNameArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentButtonNameArray: \(result)")
+            return
+        }
+        for (index, opponentButton) in opponentButtonNameArray.enumerate() {
+            games[index].opponentButton = opponentButton
+        }
+        
+        guard let opponentColorArray = result!["opponentColorArray"] as! [String]? else {
+            print("Can't parse opponentColorArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentColorArray: \(result)")
+            return
+        }
+        for (index, opponentColor) in opponentColorArray.enumerate() {
+            games[index].opponentColor = APIClient.hexStringToUIColor(opponentColor)
+        }
+        
+        guard let playerColorArray = result!["playerColorArray"] as! [String]? else {
+            print("Can't parse playerColorArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse playerColorArray: \(result)")
+            return
+        }
+        for (index, myColor) in playerColorArray.enumerate() {
+            games[index].myColor = APIClient.hexStringToUIColor(myColor)
+        }
+        
+        guard let opponentIdArray = result!["opponentIdArray"] as! [Int]? else {
+            print("Can't parse opponentIdArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentIdArray: \(result)")
+            return
+        }
+        for (index, opponentId) in opponentIdArray.enumerate() {
+            games[index].opponentId = opponentId
+        }
+        
+        guard let opponentNameArray = result!["opponentNameArray"] as! [String]? else {
+            print("Can't parse opponentNameArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse opponentNameArray: \(result)")
+            return
+        }
+        for (index, opponentName) in opponentNameArray.enumerate() {
+            games[index].opponentName = opponentName
+        }
+        
+        guard let statusArray = result!["statusArray"] as! [String]? else {
+            print("Can't parse statusArray")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse statusArray: \(result)")
+            return
+        }
+        for (index, status) in statusArray.enumerate() {
+            guard let validStatus = GameStatus(rawValue: status) else {
+                print("Invalid game status: \(status) in game \(games[index].id)")
+                completionHandler(gameSummaries: nil, success: false, message: "Invalid game status: \(status) in game \(games[index].id)")
+                return
+            }
+            games[index].status = validStatus
+        }
+        
+        //print(games)
+        completionHandler(gameSummaries: games, success: true, message: nil)
+    }
 
     func login(username: String, password: String, completionHandler: (success: Bool, message: String?) -> Void) {
         
