@@ -24,6 +24,15 @@ class GameTableViewController: UITableViewController {
         
         self.tabBarController?.tabBar.hidden = false
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("reloadTableData"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl = refreshControl
+
+        self.reloadTableData()
+        
+    }
+    
+    func reloadTableData() {
         // load list of active games
         client.loadActiveGames() { activeGames, success, error in
             if success {
@@ -59,7 +68,7 @@ class GameTableViewController: UITableViewController {
                 print("Can't load completed but not dismissed games: \(error)")
             }
         }
-        
+        refreshControl?.endRefreshing()
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -85,8 +94,8 @@ class GameTableViewController: UITableViewController {
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
             }
         } else if indexPath.section == 1 {
-            if indexPath.row < games.count {
-                game = games[indexPath.row]
+            if indexPath.row < newGames.count {
+                game = newGames[indexPath.row]
                 cell.textLabel!.text = "You (\(game.myButton)) vs. \(game.opponentName)(\(game.opponentButton))"
                 cell.detailTextLabel!.text = game.description
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
