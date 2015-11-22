@@ -175,12 +175,15 @@ class GameTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
+        switch section {
+        case 0:
             return "Active"
-        } else if section == 1 {
+        case 1:
             return "New"
-        } else {
+        case 2:
             return "Completed"
+        default:
+            return "Error"
         }
     }
     

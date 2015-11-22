@@ -28,6 +28,8 @@
 		E1D00DBA1BF734CB009FF0A8 /* ButtonSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DB91BF734CB009FF0A8 /* ButtonSet.swift */; };
 		E1D00DBC1BF74847009FF0A8 /* ButtonSetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */; };
 		E1D00DBE1BF74D88009FF0A8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DBD1BF74D88009FF0A8 /* Button.swift */; };
+		E1D3C9F11C008153001C3150 /* DieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D3C9F01C008153001C3150 /* DieView.xib */; };
+		E1D3C9F31C00817C001C3150 /* DieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D3C9F21C00817C001C3150 /* DieView.swift */; };
 		E1F5C9B91BF82C660052A119 /* GameHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */; };
 		E1F5C9BB1BF884F50052A119 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9BA1BF884F50052A119 /* Die.swift */; };
 		E1F5C9BD1BF88BF10052A119 /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9BC1BF88BF10052A119 /* Attack.swift */; };
@@ -78,6 +80,8 @@
 		E1D00DB91BF734CB009FF0A8 /* ButtonSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSet.swift; sourceTree = "<group>"; };
 		E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSetTableViewController.swift; sourceTree = "<group>"; };
 		E1D00DBD1BF74D88009FF0A8 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		E1D3C9F01C008153001C3150 /* DieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DieView.xib; sourceTree = "<group>"; };
+		E1D3C9F21C00817C001C3150 /* DieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieView.swift; sourceTree = "<group>"; };
 		E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHistoryTableViewController.swift; sourceTree = "<group>"; };
 		E1F5C9BA1BF884F50052A119 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
 		E1F5C9BC1BF88BF10052A119 /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 		E167C3781BFAACA300DE58C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1D3C9F21C00817C001C3150 /* DieView.swift */,
+				E1D3C9F01C008153001C3150 /* DieView.xib */,
 				E167C3791BFAACC700DE58C2 /* DieButton.swift */,
 			);
 			name = View;
@@ -300,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1572D051BF57559006E39DD /* LaunchScreen.storyboard in Resources */,
+				E1D3C9F11C008153001C3150 /* DieView.xib in Resources */,
 				E1572D021BF57559006E39DD /* Assets.xcassets in Resources */,
 				E1572D001BF57559006E39DD /* Main.storyboard in Resources */,
 			);
@@ -327,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1572D2D1BF6058B006E39DD /* GameTableViewController.swift in Sources */,
+				E1D3C9F31C00817C001C3150 /* DieView.swift in Sources */,
 				E1D00DB41BF728D0009FF0A8 /* ButtonDetailViewController.swift in Sources */,
 				E1B9B8C31BF6E7D500A37061 /* Constants.swift in Sources */,
 				E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */,

@@ -15,8 +15,8 @@ class GameDetailViewController: UIViewController {
     var game: Game?
     var gameSummary: GameSummary?
     let client = APIClient.sharedInstance()
-    var p1DieButtons = [DieButton]()
-    var p2DieButtons = [DieButton]()
+    var p1DieButtons = [DieView]()
+    var p2DieButtons = [DieView]()
     
     @IBOutlet weak var p1View: UIView!
     @IBOutlet weak var p1StackView: UIStackView!
@@ -160,20 +160,24 @@ class GameDetailViewController: UIViewController {
         
     }
     
-    func createDieButtonFromDie(die: Die) -> DieButton {
-        let newButton = DieButton()
+    func createDieButtonFromDie(die: Die) -> DieView {
+        let newButton = DieView()
         //let newButton = DieButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         if die.properties.contains(DieFlag.Twin) {
             if !die.subDice.isEmpty {
                 // subDie array that aren't empty always have two values at least currently
-                newButton.setTitle("\(die.subDice[0].value),\(die.subDice[1].value)", forState: UIControlState.Normal)
+                newButton.dieValue.setTitle("\(die.subDice[0].value),\(die.subDice[1].value)", forState: UIControlState.Normal)
             } else {
-                newButton.setTitle("\(die.value)", forState: UIControlState.Normal)
+                newButton.dieValue.setTitle("\(die.value)", forState: UIControlState.Normal)
             }
         } else {
-            newButton.setTitle("\(die.value)", forState: UIControlState.Normal)
+            newButton.dieValue.setTitle("\(die.value)", forState: UIControlState.Normal)
         }
-        newButton.addTarget(self, action: "dieTouchUp:", forControlEvents: .TouchUpInside)
+        
+        // TODO this should display better for swing die
+        newButton.dieLabel.text = die.recipe
+        
+        newButton.dieValue.addTarget(self, action: "dieTouchUp:", forControlEvents: .TouchUpInside)
 
         return newButton
     }
