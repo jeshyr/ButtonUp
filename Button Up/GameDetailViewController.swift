@@ -44,6 +44,8 @@ class GameDetailViewController: UIViewController {
     @IBOutlet weak var p2CapturedLabel: UILabel!
     @IBOutlet weak var p2DieStack: UIStackView!
     
+    @IBOutlet weak var beatPeopleUpButton: UIButton!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -51,7 +53,6 @@ class GameDetailViewController: UIViewController {
         
         self.tabBarController?.tabBar.hidden = true
         
-        self.navigationItem.title = "Game"
         //self.navigationItem.backBarButtonItem!.title = "Back"
         
         client.loadGameData(gameSummary!.id) { game, success, error in
@@ -61,15 +62,22 @@ class GameDetailViewController: UIViewController {
                 // p1 (top of screen) should always be "our" user if possible
                 let username = self.appDelegate.appSettings.username
                 let array0Name = (game?.playerData[0].name)!
+                var activePlayerIndex: Int? = nil
                 var p1: GamePlayerData?
                 var p2: GamePlayerData?
 
                 if username.caseInsensitiveCompare(array0Name) == NSComparisonResult.OrderedSame {
                     p1 = game?.playerData[0]
                     p2 = game?.playerData[1]
+                    activePlayerIndex = game!.activePlayerIndex
                 } else {
                     p1 = game?.playerData[1]
                     p2 = game?.playerData[0]
+                    if game!.activePlayerIndex == 0 { // Reverse these
+                        activePlayerIndex = 1
+                    } else if game!.activePlayerIndex == 1 {
+                        activePlayerIndex = 0
+                    }
                 }
                 
                 // Button Images
@@ -127,6 +135,24 @@ class GameDetailViewController: UIViewController {
                     p2Captured = "Captured: (none)"
                 }
                 
+                // Navigation bar at top
+                if activePlayerIndex == 0 {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.navigationItem.title = "Your Move"
+                        self.beatPeopleUpButton.enabled = true
+                    }
+                } else if activePlayerIndex == 1 {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.navigationItem.title = "Their Move"
+                        self.beatPeopleUpButton.enabled = false
+                    }
+                } else if activePlayerIndex == nil {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.navigationItem.title = "(Inactive game)"
+                        self.beatPeopleUpButton.enabled = false
+                    }
+                }
+
                 // Dice
                 for die in (p1?.activeDice)! {
                     self.p1DieButtons.append(self.createDieButtonFromDie(die))

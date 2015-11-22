@@ -376,6 +376,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="beatPeopleUpButton" destination="M2r-dP-Kqu" id="BnO-iO-QM3"/>
                         <outlet property="p1ButtonButton" destination="hnm-lT-xZS" id="hRv-Qo-ucz"/>
                         <outlet property="p1ButtonImageButton" destination="SEx-Lr-xJH" id="dFg-gz-xUl"/>
                         <outlet property="p1ButtonRecipeTextLabel" destination="UsD-4o-58d" id="9la-56-gmB"/>
