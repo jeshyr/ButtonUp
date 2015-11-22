@@ -14,7 +14,11 @@ class GameDetailViewController: UIViewController {
     // Passed in from segue
     var game: Game?
     var gameSummary: GameSummary?
+    
+    
     let client = APIClient.sharedInstance()
+    var appDelegate: AppDelegate!
+
     var p1DieButtons = [DieView]()
     var p2DieButtons = [DieView]()
     
@@ -43,6 +47,8 @@ class GameDetailViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        
         self.tabBarController?.tabBar.hidden = true
         
         self.navigationItem.title = "Game"
@@ -52,9 +58,19 @@ class GameDetailViewController: UIViewController {
             if success {
                 self.game = game
                 
-                // TODO Shift these around if ourname is the wrong one!
-                let p1 = game?.playerData[1]
-                let p2 = game?.playerData[0]
+                // p1 (top of screen) should always be "our" user if possible
+                let username = self.appDelegate.appSettings.username
+                let array0Name = (game?.playerData[0].name)!
+                var p1: GamePlayerData?
+                var p2: GamePlayerData?
+
+                if username.caseInsensitiveCompare(array0Name) == NSComparisonResult.OrderedSame {
+                    p1 = game?.playerData[0]
+                    p2 = game?.playerData[1]
+                } else {
+                    p1 = game?.playerData[1]
+                    p2 = game?.playerData[0]
+                }
                 
                 // Button Images
                 APIClient.sharedInstance().getImageData(p1?.button.artFilename, completionHandler: { (imageData, success, message) in
@@ -162,7 +178,7 @@ class GameDetailViewController: UIViewController {
     
     func createDieButtonFromDie(die: Die) -> DieView {
         let newButton = DieView()
-        //let newButton = DieButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        //let newButton = DieView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         if die.properties.contains(DieFlag.Twin) {
             if !die.subDice.isEmpty {
                 // subDie array that aren't empty always have two values at least currently

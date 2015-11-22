@@ -44,23 +44,15 @@ class DieButton: UIButton {
         self.layer.cornerRadius = dieButtonCornerRadius
         self.highlightedBackingColor = darkerBlue
         self.backingColor = lighterBlue
+        self.layer.borderColor = UIColor.redColor().CGColor
         self.backgroundColor = lighterBlue
-        self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        self.setTitleColor(UIColor.whiteColor(), forState: .Selected)
         self.titleLabel?.font = UIFont.boldSystemFontOfSize(titleLabelFontSize)
         self.titleLabel?.minimumScaleFactor = 0.01
         self.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         
-        self.addConstraint(NSLayoutConstraint(
-            item:self, attribute:NSLayoutAttribute.Width,
-            relatedBy:NSLayoutRelation.Equal,
-            toItem:nil, attribute:NSLayoutAttribute.NotAnAttribute,
-            multiplier:0, constant:dieButtonHeight))
-        self.addConstraint(NSLayoutConstraint(
-            item:self, attribute:NSLayoutAttribute.Height,
-            relatedBy:NSLayoutRelation.Equal,
-            toItem:nil, attribute:NSLayoutAttribute.NotAnAttribute,
-            multiplier:0, constant:dieButtonHeight))
+        self.layer.borderWidth = 0
+
     }
     
     // MARK: Setters
@@ -80,7 +72,6 @@ class DieButton: UIButton {
     override var selected: Bool {
         willSet(newSelected) {
             if newSelected {
-                self.layer.borderColor = UIColor.redColor().CGColor
                 self.layer.borderWidth = 5
             } else {
                 self.layer.borderWidth = 0
