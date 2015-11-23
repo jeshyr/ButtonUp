@@ -14,9 +14,15 @@ enum Attack: String {
     case Default // ??
     case Surrender
     
+    // Standard attacks
     case Skill
     case Power
 
+    // Skill related attacks
+    case Boom
+    case Berserk
+    case Konstant
+    case Null
     case Shadow
     case Speed
     case Trip
