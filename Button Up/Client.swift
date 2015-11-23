@@ -489,11 +489,13 @@ extension APIClient {
         }
         
         if let description = dieData["description"] as! String? {
-            newDie.description = description
+            newDie.desc = description
         }
         
         if let skills = dieData["skills"] as! [String]? {
-            newDie.skills = skills
+            for skill in skills {
+                newDie.skills.append(Skill(skill: skill))
+            }
         }
         
         if isTwinDie {

@@ -20,6 +20,7 @@
 		E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */; };
 		E1572D311BF60C14006E39DD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D301BF60C14006E39DD /* Game.swift */; };
 		E167C37A1BFAACC700DE58C2 /* DieButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167C3791BFAACC700DE58C2 /* DieButton.swift */; };
+		E1A8F37A1C031218001EF3C4 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8F3791C031218001EF3C4 /* Skill.swift */; };
 		E1B9B8C31BF6E7D500A37061 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9B8C21BF6E7D500A37061 /* Constants.swift */; };
 		E1BF593D1BFEA3BC0091946B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF593C1BFEA3BC0091946B /* SettingsViewController.swift */; };
 		E1BF593F1BFEA5F20091946B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF593E1BFEA5F20091946B /* Settings.swift */; };
@@ -72,6 +73,7 @@
 		E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		E1572D301BF60C14006E39DD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		E167C3791BFAACC700DE58C2 /* DieButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieButton.swift; sourceTree = "<group>"; };
+		E1A8F3791C031218001EF3C4 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		E1B9B8C21BF6E7D500A37061 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E1BF593C1BFEA3BC0091946B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1BF593E1BFEA5F20091946B /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				E1572D301BF60C14006E39DD /* Game.swift */,
 				E1F5C9BC1BF88BF10052A119 /* Attack.swift */,
 				E1F5C9BA1BF884F50052A119 /* Die.swift */,
+				E1A8F3791C031218001EF3C4 /* Skill.swift */,
 				E1D00DB91BF734CB009FF0A8 /* ButtonSet.swift */,
 				E1D00DBD1BF74D88009FF0A8 /* Button.swift */,
 				E1B9B8C21BF6E7D500A37061 /* Constants.swift */,
@@ -333,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A8F37A1C031218001EF3C4 /* Skill.swift in Sources */,
 				E1572D2D1BF6058B006E39DD /* GameTableViewController.swift in Sources */,
 				E1D3C9F31C00817C001C3150 /* DieView.swift in Sources */,
 				E1D00DB41BF728D0009FF0A8 /* ButtonDetailViewController.swift in Sources */,

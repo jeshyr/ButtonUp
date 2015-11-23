@@ -112,9 +112,9 @@ class GameDetailViewController: UIViewController {
                 var p1Captured = ""
                 for captured in (p1?.capturedDice)! {
                     if p1Captured.isEmpty {
-                        p1Captured = "Captured: " + captured.recipe
+                        p1Captured = "Captured: " + captured.description
                     } else {
-                        p1Captured = p1Captured + ", " + captured.recipe
+                        p1Captured = p1Captured + ", " + captured.description
                     }
                 }
                 if p1Captured.isEmpty {
@@ -126,9 +126,9 @@ class GameDetailViewController: UIViewController {
                 var p2Captured = ""
                 for captured in (p2?.capturedDice)! {
                     if p2Captured.isEmpty {
-                        p2Captured = "Captured: " + captured.recipe
+                        p2Captured = "Captured: " + captured.description
                     } else {
-                        p2Captured = p2Captured + ", " + captured.recipe
+                        p2Captured = p2Captured + ", " + captured.description
                     }
                 }
                 if p2Captured.isEmpty {
@@ -216,8 +216,7 @@ class GameDetailViewController: UIViewController {
             newButton.dieValue.setTitle("\(die.value)", forState: UIControlState.Normal)
         }
         
-        // TODO this should display better for swing die
-        newButton.dieLabel.text = die.recipe
+        newButton.dieLabel.text = die.description
         
         newButton.dieValue.addTarget(self, action: "dieTouchUp:", forControlEvents: .TouchUpInside)
 
