@@ -297,16 +297,6 @@ extension APIClient {
             }
             newPlayerData.lastActionTime = NSDate(timeIntervalSince1970:lastActionTime)
             
-            // TODO FIXME what actually comes in optRequestArray?
-            guard let optRequestArray = playerDataDictionary["optRequestArray"] as! [String]? else {
-                
-                print("Can't find optRequestArray: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find optRequestArray: \(playerDataDictionary)")
-                return playerDataArray
-            }
-            print("optRequestArray: \(optRequestArray)")
-            newPlayerData.optRequests = optRequestArray
-            
             guard let outOfPlayDieArray = playerDataDictionary["outOfPlayDieArray"] as! [[String: AnyObject]]? else {
                 
                 print("Can't find outOfPlayDieArray: \(playerDataDictionary)")
@@ -344,16 +334,52 @@ extension APIClient {
                 return playerDataArray
             }
             newPlayerData.name = playerName
+            
+            // TODO FIXME what actually comes in optRequestArray?
+            guard let optRequestArray = playerDataDictionary["optRequestArray"] else {
+                
+                print("Can't find optRequestArray: \(playerDataDictionary)")
+                completionHandler(game: nil, success: false, message: "Can't find optRequestArray: \(playerDataDictionary)")
+                return playerDataArray
+            }
+            if let optRequests = optRequestArray as? [String:[String]] {
+                for (key, valueArray) in optRequests {
+                    let keyInt = Int(key)!
+                    for value in valueArray {
+                        let valueInt = Int(value)!
+                        if newPlayerData.optRequests[keyInt] == nil {
+                            newPlayerData.optRequests[keyInt] = [valueInt]
+                        } else {
+                            newPlayerData.optRequests[keyInt]!.append(valueInt)
+                        }
+                    }
+                }
+            }
+            print("optRequests: \(newPlayerData.optRequests)")
 
-            guard let prevOptValueArray = playerDataDictionary["prevOptValueArray"] as! [String]? else {
+            // TODO this is a guess at parsing - haven't ever found any yet
+            guard let prevOptValueArray = playerDataDictionary["prevOptValueArray"] else {
                 
                 print("Can't find prevOptValueArray: \(playerDataDictionary)")
                 completionHandler(game: nil, success: false, message: "Can't find prevOptValueArray: \(playerDataDictionary)")
                 return playerDataArray
             }
-            newPlayerData.prevOptValues = prevOptValueArray
+            print("prevOptValues: \(prevOptValueArray)")
+            if let prevOptRequests = prevOptValueArray as? [String:[String]] {
+                for (key, valueArray) in prevOptRequests {
+                    let keyInt = Int(key)!
+                    for value in valueArray {
+                        let valueInt = Int(value)!
+                        if newPlayerData.prevOptValues[keyInt] == nil {
+                            newPlayerData.prevOptValues[keyInt] = [valueInt]
+                        } else {
+                            newPlayerData.prevOptValues[keyInt]!.append(valueInt)
+                        }
+                    }
+                }
+            }
+            print("prevOptValues: \(newPlayerData.prevOptValues)")
             
-       
             guard let prevSwingValueArray = playerDataDictionary["prevSwingValueArray"]  else {
                 
                 print("Can't find prevSwingValueArray: \(playerDataDictionary)")

@@ -53,10 +53,10 @@ struct GamePlayerData {
     var canStillWin: Bool? = nil
 
     var hasDismissedGame: Bool = false
-    var lastActionTime = NSDate() // timestamp?
+    var lastActionTime = NSDate()
     
-    var optRequests = [String]() // optRequestArray WTF?
-    var prevOptValues = [String]() // prevOptValueArray WTF?
+    var optRequests = [Int:[Int]]() // Possible values for unchosen optional dice eg (10/12) or (4/12)
+    var prevOptValues = [Int:[Int]]() //
     var swingRequests = [DieSwing]() 
     var prevSwingValues = [DieSwing]() // prevSwingValueArray WTF?
     
