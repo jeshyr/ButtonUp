@@ -17,7 +17,7 @@ struct Die : CustomStringConvertible {
     var value: Int = 0
     var subDice = [DieSubDie]() // For twin die
     
-    // This has to be called 'description' for the customstringconvertable protocol
+    // This has to be called 'description' for the CustomStringConvertible protocol
     var description : String {
         // Return full recipe suitable for display on game detail page
         
