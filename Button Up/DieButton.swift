@@ -79,8 +79,6 @@ class DieButton: UIButton {
         }
     }
     
-
-    
     // MARK: Tracking
     
     override func beginTrackingWithTouch(touch: UITouch, withEvent: UIEvent?) -> Bool {
@@ -95,25 +93,5 @@ class DieButton: UIButton {
     override func cancelTrackingWithEvent(event: UIEvent?) {
         self.backgroundColor = self.backingColor
     }
-    
-    // MARK: Layout
-    
-//    override func intrinsicContentSize() -> CGSize {
-////        let extraButtonPadding : CGFloat = dieButtonExtraPadding
-//        var intrinsicContentSize = CGSizeZero
-//        intrinsicContentSize.width = dieButtonHeight
-//        intrinsicContentSize.height = dieButtonHeight
-//        return intrinsicContentSize
-//        
-//    }
-    
-//    override func sizeThatFits(size: CGSize) -> CGSize {
-////        let extraButtonPadding : CGFloat = dieButtonExtraPadding
-//        var sizeThatFits = CGSizeZero
-//        //sizeThatFits.width = super.sizeThatFits(size).width + extraButtonPadding
-//        sizeThatFits.width = dieButtonHeight
-//        sizeThatFits.height = dieButtonHeight
-//        return sizeThatFits
-//        
-//    }
+
 }

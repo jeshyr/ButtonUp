@@ -31,7 +31,6 @@ class LoginViewController: UIViewController {
         
         activityIndicator.startAnimating()
         
-        // TODO should check for no saved username/password and go directly to settings screen
         let username = appDelegate.appSettings.username
         let password = appDelegate.appSettings.password
         

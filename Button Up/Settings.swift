@@ -42,7 +42,7 @@ class Settings: NSObject {
         return userSuccess && passSuccess
     }
 
-//     Not sure what the point of this is?
+//     TODO Not sure what the point of this is?
     func register() {
         let defaults = NSUserDefaults.standardUserDefaults()
 

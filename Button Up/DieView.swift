@@ -39,15 +39,5 @@ import UIKit
         view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         addSubview(view)
     }
-    
-//    override func sizeThatFits(size: CGSize) -> CGSize {
-//        //        let extraButtonPadding : CGFloat = dieButtonExtraPadding
-//        var sizeThatFits = CGSizeZero
-//        //sizeThatFits.width = super.sizeThatFits(size).width + extraButtonPadding
-//        sizeThatFits.width = dieValue.
-//        sizeThatFits.height = dieButtonHeight
-//        return sizeThatFits
-//        
-//    }
 
 }

@@ -137,9 +137,9 @@
 		E1572CF91BF57558006E39DD /* Button Up */ = {
 			isa = PBXGroup;
 			children = (
-				E1572CFA1BF57559006E39DD /* AppDelegate.swift */,
 				E167C3771BFAAC9900DE58C2 /* Model */,
 				E1572CFE1BF57559006E39DD /* Main.storyboard */,
+				E1572CFA1BF57559006E39DD /* AppDelegate.swift */,
 				E1572CFC1BF57559006E39DD /* LoginViewController.swift */,
 				E1BF593C1BFEA3BC0091946B /* SettingsViewController.swift */,
 				E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */,

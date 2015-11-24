@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class SettingsViewController: UIViewController, UITextViewDelegate {
-
     
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
@@ -36,10 +35,6 @@ class SettingsViewController: UIViewController, UITextViewDelegate {
         appDelegate.appSettings.password = password
         
         appDelegate.appSettings.save()
-        // TODO should go back to login screen here
         appDelegate.resetAppToFirstController()
     }
-    
-    
-    
 }

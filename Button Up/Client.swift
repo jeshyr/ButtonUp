@@ -127,8 +127,6 @@ extension APIClient {
                 completionHandler(game: game, success: success, message: message)
             }
             
-//            if GameStateActivePlay.contains(validState) {
-            /* For some reason the set notation is making XCode crash. In lieu of debugging I'm avoiding it for the time being */
             if validState.isActive {
                 guard let playerWithInitiativeIdx = result!["playerWithInitiativeIdx"] as! Int? else {
                     print("Can't find playerWithInitiativeIdx: \(result)")
@@ -570,7 +568,6 @@ extension APIClient {
                 return
             }
             
-            print(result)
             var buttons = [Button]()
             
             guard let parsedSetArray = result as! [AnyObject]? else {
@@ -659,6 +656,7 @@ extension APIClient {
                 button.recipe = recipe
                 
                 if let tags = parsedSet["tags"] as! [String]? {
+                    // TODO what tags exist?
                     button.tags = tags
                     print("Found tags on button \(buttonName): \(tags)")
 

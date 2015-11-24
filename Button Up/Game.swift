@@ -78,7 +78,6 @@ struct GamePlayerData {
     var waitingOnAction: Bool = false
 }
 
-
 struct GameLogMessage {
     var player: String = ""
     var message: String = ""
@@ -91,7 +90,6 @@ struct GameButtonSkillInfo {
     var description: String = ""
     var interactions = [String]() // Maybe?
 }
-
 
 struct GameSummary {
     // These are always about games belonging to the logged in player, so "my" and "oponent" on the variables

@@ -14,8 +14,6 @@ class APIClient: NSObject {
     /* Shared session */
     var session: NSURLSession
     var cookies: NSHTTPCookieStorage
-    
-    
 
     // MARK: Initializers
     

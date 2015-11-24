@@ -20,8 +20,6 @@ class ButtonSetTableViewController: UITableViewController {
     
     let client = APIClient.sharedInstance()
     
-    
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

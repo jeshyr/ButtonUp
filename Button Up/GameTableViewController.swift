@@ -165,10 +165,7 @@ class GameTableViewController: UITableViewController {
                 return
             }
         }
-
-
     }
-    
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
