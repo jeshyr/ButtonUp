@@ -56,8 +56,23 @@ struct GamePlayerData {
     var lastActionTime = NSDate()
     
     var optRequests = [Int:[Int]]() // Possible values for unchosen optional dice eg (10/12) or (4/12)
-    var prevOptValues = [Int:[Int]]() //
-    var swingRequests = [DieSwing]() 
+    var prevOptValues = [Int:[Int]]() // Only available while choosing dice in the second/subsequent round of a game with Optional values. 
+        // TODO Currently NOT parsed by us correctly
+        // May contain dictionary OR array - seen values include
+        //prevOptValues: { // My dice, new values unchosen
+        //    1 = 7;
+        //    2 = 7;
+        //    3 = 7;
+        //    4 = 7;
+        //}
+        //
+        //prevOptValues: ( // Oponent dice, new values chosen
+        //    20,
+        //    20,
+        //    20,
+        //    20
+        //)
+    var swingRequests = [DieSwing]()
     var prevSwingValues = [DieSwing]() // prevSwingValueArray WTF?
     
     var waitingOnAction: Bool = false
