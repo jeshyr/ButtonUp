@@ -55,8 +55,18 @@ class GameDetailViewController: UIViewController {
         
         //self.navigationItem.backBarButtonItem!.title = "Back"
         
+        tryLoadingGameData()
+        
+    }
+    
+    var loadAttempts = 0
+    
+    func tryLoadingGameData() {
+        
         client.loadGameData(gameSummary!.id) { game, success, error in
             if success {
+                self.loadAttempts = 0
+                
                 self.game = game
                 
                 // p1 (top of screen) should always be "our" user if possible
@@ -65,7 +75,7 @@ class GameDetailViewController: UIViewController {
                 var activePlayerIndex: Int? = nil
                 var p1: GamePlayerData?
                 var p2: GamePlayerData?
-
+                
                 if username.caseInsensitiveCompare(array0Name) == NSComparisonResult.OrderedSame {
                     p1 = game?.playerData[0]
                     p2 = game?.playerData[1]
@@ -152,9 +162,7 @@ class GameDetailViewController: UIViewController {
                         self.beatPeopleUpButton.enabled = false
                     }
                 }
-
-
-
+                
                 dispatch_async(dispatch_get_main_queue()) {
                     // Dice - if we create these outside the main thread they don't update properly
                     for die in (p1?.activeDice)! {
@@ -167,7 +175,7 @@ class GameDetailViewController: UIViewController {
                     self.p1View.backgroundColor = p1?.color
                     self.p1NameButton.setTitle("Name: \(p1!.name)", forState: UIControlState.Normal)
                     self.p1ButtonButton.setTitle("Button: \(p1!.button.name)", forState: UIControlState.Normal)
-
+                    
                     self.p1ButtonRecipeTextLabel.text = p1!.button.recipe
                     self.p1ScoreLabel.text = p1Score
                     self.p1WLTLabel.text = p1WLT
@@ -183,7 +191,7 @@ class GameDetailViewController: UIViewController {
                     self.p2View.backgroundColor = p2?.color
                     self.p2NameButton.setTitle("Name: \(p2!.name)", forState: UIControlState.Normal)
                     self.p2ButtonButton.setTitle("Button: \(p2!.button.name)", forState: UIControlState.Normal)
-
+                    
                     self.p2ButtonRecipeTextLabel.text = p2!.button.recipe
                     self.p2ScoreLabel.text = p2Score
                     self.p2WLTLabel.text = p2WLT
@@ -195,13 +203,16 @@ class GameDetailViewController: UIViewController {
                     for dieButton in self.p2DieButtons {
                         self.p2DieStack.addArrangedSubview(dieButton)
                     }
-
+                    
                 }
             } else {
-                print("oops...")
+                print("Error loading game data data: \(error), attempt #\(self.loadAttempts)")
+                self.loadAttempts += 1
+                if self.loadAttempts < 4 {
+                    self.tryLoadingGameData()
+                }
             }
         }
-        
     }
     
     func createDieButtonFromDie(die: Die) -> DieView {
