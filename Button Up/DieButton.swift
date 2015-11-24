@@ -98,22 +98,22 @@ class DieButton: UIButton {
     
     // MARK: Layout
     
-    override func intrinsicContentSize() -> CGSize {
-//        let extraButtonPadding : CGFloat = dieButtonExtraPadding
-        var intrinsicContentSize = CGSizeZero
-        intrinsicContentSize.width = dieButtonHeight
-        intrinsicContentSize.height = dieButtonHeight
-        return intrinsicContentSize
-        
-    }
+//    override func intrinsicContentSize() -> CGSize {
+////        let extraButtonPadding : CGFloat = dieButtonExtraPadding
+//        var intrinsicContentSize = CGSizeZero
+//        intrinsicContentSize.width = dieButtonHeight
+//        intrinsicContentSize.height = dieButtonHeight
+//        return intrinsicContentSize
+//        
+//    }
     
-    override func sizeThatFits(size: CGSize) -> CGSize {
-//        let extraButtonPadding : CGFloat = dieButtonExtraPadding
-        var sizeThatFits = CGSizeZero
-        //sizeThatFits.width = super.sizeThatFits(size).width + extraButtonPadding
-        sizeThatFits.width = dieButtonHeight
-        sizeThatFits.height = dieButtonHeight
-        return sizeThatFits
-        
-    }
+//    override func sizeThatFits(size: CGSize) -> CGSize {
+////        let extraButtonPadding : CGFloat = dieButtonExtraPadding
+//        var sizeThatFits = CGSizeZero
+//        //sizeThatFits.width = super.sizeThatFits(size).width + extraButtonPadding
+//        sizeThatFits.width = dieButtonHeight
+//        sizeThatFits.height = dieButtonHeight
+//        return sizeThatFits
+//        
+//    }
 }

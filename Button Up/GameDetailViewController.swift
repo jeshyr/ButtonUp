@@ -153,15 +153,17 @@ class GameDetailViewController: UIViewController {
                     }
                 }
 
-                // Dice
-                for die in (p1?.activeDice)! {
-                    self.p1DieButtons.append(self.createDieButtonFromDie(die))
-                }
-                for die in (p2?.activeDice)! {
-                    self.p2DieButtons.append(self.createDieButtonFromDie(die))
-                }
+
 
                 dispatch_async(dispatch_get_main_queue()) {
+                    // Dice - if we create these outside the main thread they don't update properly
+                    for die in (p1?.activeDice)! {
+                        self.p1DieButtons.append(self.createDieButtonFromDie(die))
+                    }
+                    for die in (p2?.activeDice)! {
+                        self.p2DieButtons.append(self.createDieButtonFromDie(die))
+                    }
+                    
                     self.p1View.backgroundColor = p1?.color
                     self.p1NameButton.setTitle("Name: \(p1!.name)", forState: UIControlState.Normal)
                     self.p1ButtonButton.setTitle("Button: \(p1!.button.name)", forState: UIControlState.Normal)

@@ -27,8 +27,8 @@
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                     <state key="normal" title="12"/>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(16,16)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k9u-OV-Rw0">
-                    <rect key="frame" x="0.0" y="64" width="61" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="950" text="p(16,16)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k9u-OV-Rw0">
+                    <rect key="frame" x="0.0" y="64" width="60" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -37,10 +37,11 @@
             </subviews>
             <animations/>
             <constraints>
-                <constraint firstItem="k9u-OV-Rw0" firstAttribute="centerX" secondItem="9cH-AD-dQQ" secondAttribute="centerX" id="0Fq-GJ-t4O"/>
+                <constraint firstAttribute="trailing" secondItem="k9u-OV-Rw0" secondAttribute="trailing" id="2DG-Hm-2VK"/>
                 <constraint firstItem="9cH-AD-dQQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="350-is-7dC"/>
                 <constraint firstAttribute="bottom" secondItem="k9u-OV-Rw0" secondAttribute="bottom" id="9kz-LA-tt9"/>
                 <constraint firstAttribute="trailing" secondItem="9cH-AD-dQQ" secondAttribute="trailing" id="Q3F-Zy-uCc"/>
+                <constraint firstItem="k9u-OV-Rw0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aWD-7J-mwb"/>
                 <constraint firstItem="9cH-AD-dQQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jac-a1-6ni"/>
                 <constraint firstItem="9cH-AD-dQQ" firstAttribute="bottom" secondItem="k9u-OV-Rw0" secondAttribute="top" constant="-4" id="sPV-7s-fu4"/>
             </constraints>
