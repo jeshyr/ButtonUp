@@ -42,6 +42,11 @@ struct Die : CustomStringConvertible {
     // Uses ? if no values chosen
     var expandedCoreRecipe: String {
         let rawCoreRecipe = self.coreRecipe // The bit inside the braces
+        var sides = String(self.sides)
+
+        if sides == "0" {
+            sides = "?"
+        }
         
         do {
             let range = NSMakeRange(0, rawCoreRecipe.characters.count)
@@ -57,7 +62,7 @@ struct Die : CustomStringConvertible {
                 // (20/2) becomes (2/20=2)
                 let regExp = try NSRegularExpression(pattern: "^\\d+/\\d+$", options: NSRegularExpressionOptions.CaseInsensitive)
                 if regExp.numberOfMatchesInString(rawCoreRecipe, options: NSMatchingOptions(), range: range) > 0 {
-                    return "\(rawCoreRecipe)=\(self.sides)"
+                    return "\(rawCoreRecipe)=\(sides)"
                 } else {
                     // If there's a comma and digit(s), it's a plain twin die and we return it unchanged
                     let regExp = try NSRegularExpression(pattern: "^\\d+,\\d+$", options: NSRegularExpressionOptions.CaseInsensitive)
@@ -69,7 +74,7 @@ struct Die : CustomStringConvertible {
                         // X becomes X=6
                         let regExp = try NSRegularExpression(pattern: "^[RSTUVWXYZ]$", options: NSRegularExpressionOptions.CaseInsensitive)
                         if regExp.numberOfMatchesInString(rawCoreRecipe, options: NSMatchingOptions(), range: range) > 0 {
-                            return "\(rawCoreRecipe)=\(self.sides)"
+                            return "\(rawCoreRecipe)=\(sides)"
 
                         } else {
                             // Last option - twin swing die
@@ -85,7 +90,12 @@ struct Die : CustomStringConvertible {
                                 let opt1 = nsCoreRecipe.substringWithRange(range)
                                 range = match!.rangeAtIndex(2) // Second capture group
                                 let opt2 = nsCoreRecipe.substringWithRange(range)
-                                let eachSides = self.sides / 2
+                                var eachSides = ""
+                                if sides == "?" {
+                                    eachSides = "?" // Can't divide a question mark by two
+                                } else {
+                                    eachSides = "\(self.sides / 2)"
+                                }
                                 return "\(opt1)=\(eachSides),\(opt2)=\(eachSides)"
                             } else {
                                 print("Die::expandedCoreRecipe failed to identify type of die \(rawCoreRecipe) - can't expand")
@@ -112,7 +122,7 @@ struct Die : CustomStringConvertible {
         }
         
         // if die.properties.contains(DieFlag.Twin)
-        print("Recipe: \(self.recipe), sides: \(self.sides), skills: \(self.skills), coreRecipe: \(self.coreRecipe), expandedCoreRecipe: \(core)")
+        //print("Recipe: \(self.recipe), sides: \(self.sides), skills: \(self.skills), coreRecipe: \(self.coreRecipe), expandedCoreRecipe: \(core)")
         return "\(skillString)(\(core))"
     }
 }
