@@ -18,16 +18,20 @@ class GameTableViewController: UITableViewController {
     var games: [GameSummary] = [GameSummary]()
     var newGames: [GameSummary] = [GameSummary]()
     var completedGames: [GameSummary] = [GameSummary]()
+    
+    override func viewDidLoad() {
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("reloadTableData"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl = refreshControl
+
+    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.hidden = false
         
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: Selector("reloadTableData"), forControlEvents: UIControlEvents.ValueChanged)
-        self.refreshControl = refreshControl
-
         self.reloadTableData()
         
     }
