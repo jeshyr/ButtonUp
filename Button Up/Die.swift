@@ -20,7 +20,7 @@ struct Die : CustomStringConvertible {
     // Recipe without skills, braces, or option/swing values
     var coreRecipe: String {
         do {
-            let regExp = try NSRegularExpression(pattern: "\\((.+)\\)$", options: NSRegularExpressionOptions.CaseInsensitive)
+            let regExp = try NSRegularExpression(pattern: "\\((.+)\\)", options: NSRegularExpressionOptions.CaseInsensitive)
             let range = NSMakeRange(0, self.recipe.characters.count)
             let match = regExp.firstMatchInString(self.recipe, options: NSMatchingOptions(), range: range)
             
@@ -115,15 +115,21 @@ struct Die : CustomStringConvertible {
     var description : String {
         // Return full recipe suitable for display on game detail page
         let core = self.expandedCoreRecipe
-        var skillString = ""
+        var skillStringPrefix = ""
+        var skillStringPostfix = ""
 
         for skill in self.skills {
-            skillString += skill.short
+            
+            switch skill.description {
+            case "Mood":
+                skillStringPostfix += skill.short
+            default:
+                skillStringPrefix += skill.short
+            }
         }
         
-        // if die.properties.contains(DieFlag.Twin)
         //print("Recipe: \(self.recipe), sides: \(self.sides), skills: \(self.skills), coreRecipe: \(self.coreRecipe), expandedCoreRecipe: \(core)")
-        return "\(skillString)(\(core))"
+        return "\(skillStringPrefix)(\(core))\(skillStringPostfix)"
     }
 }
 
