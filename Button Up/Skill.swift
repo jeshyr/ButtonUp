@@ -8,23 +8,23 @@
 
 import Foundation
 
-class Skill : CustomStringConvertible {
+struct Skill : CustomStringConvertible {
     var value: String = "" // Full name
+    var text: String = ""  // Long textual description of skill's attributes
     
     var short: String {
         // Return one-character version of Skill
-        print("Skill value: \(self.value)")
         return nameToCharacter[self.value]!
 
     }
     
+    // This has to be called 'description' for the CustomStringConvertible protocol
     var description: String {
         // Return full name of skill
         return self.value
     }
     
     init?(skill: String) {
-        // TODO should check if skill exists
         if skill.isEmpty {
             return nil
         } else if skill.characters.count > 1 {

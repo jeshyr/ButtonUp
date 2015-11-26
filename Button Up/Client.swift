@@ -333,7 +333,6 @@ extension APIClient {
             }
             newPlayerData.name = playerName
             
-            // TODO FIXME what actually comes in optRequestArray?
             guard let optRequestArray = playerDataDictionary["optRequestArray"] else {
                 
                 print("Can't find optRequestArray: \(playerDataDictionary)")
@@ -355,7 +354,7 @@ extension APIClient {
             }
             print("optRequests: \(newPlayerData.optRequests)")
 
-            // TODO this is a guess at parsing - haven't ever found any yet
+            // TODO check parsing of PrevOptValues in more situations
             guard let prevOptValueArray = playerDataDictionary["prevOptValueArray"] else {
                 
                 print("Can't find prevOptValueArray: \(playerDataDictionary)")
@@ -364,8 +363,21 @@ extension APIClient {
             }
             print("prevOptValues: \(prevOptValueArray)")
             if let prevOptRequests = prevOptValueArray as? [String:[String]] {
+                print("Perceiving prevOptRequests as dictionary...")
                 for (key, valueArray) in prevOptRequests {
                     let keyInt = Int(key)!
+                    for value in valueArray {
+                        let valueInt = Int(value)!
+                        if newPlayerData.prevOptValues[keyInt] == nil {
+                            newPlayerData.prevOptValues[keyInt] = [valueInt]
+                        } else {
+                            newPlayerData.prevOptValues[keyInt]!.append(valueInt)
+                        }
+                    }
+                }
+            } else if let prevOptRequests = prevOptValueArray as? [[String]] {
+                print("Perceiving prevOptRequests as array...")
+                for (keyInt, valueArray) in prevOptRequests.enumerate() {
                     for value in valueArray {
                         let valueInt = Int(value)!
                         if newPlayerData.prevOptValues[keyInt] == nil {
@@ -487,7 +499,7 @@ extension APIClient {
         }
         
         if let description = dieData["description"] as! String? {
-            newDie.desc = description
+            newDie.text = description
         }
         
         if let skills = dieData["skills"] as! [String]? {
@@ -629,6 +641,7 @@ extension APIClient {
                 }
                 
                 /* specialText is only exposed if loading a single button at a time */
+                // TODO have no examples of special text
                 if let specialText = parsedSet["specialText"] as? String {
                     button.special = specialText
                     print("Found specialText on button \(buttonName): \(specialText)")
@@ -671,27 +684,30 @@ extension APIClient {
         }
     }
     
-    func parseButtonDieSkills(dieSkillData: AnyObject) -> [ButtonDieSkills] {
-        var newDieSkills = [ButtonDieSkills]()
+    func parseButtonDieSkills(dieSkillData: AnyObject) -> [Skill] {
+        var newDieSkills = [Skill]()
         
         if let dieSkillArray = dieSkillData as? [String] {
-            // Die type array - die type names only
+            // Die skill array - die skill names only
             for dieSkill in dieSkillArray {
-                var newDieSkill = ButtonDieSkills()
-                newDieSkill.name = dieSkill
+                guard let newDieSkill = Skill(skill: dieSkill) else {
+                    print("Found unknown die name: \(dieSkill)")
+                    return newDieSkills
+                }
                 newDieSkills.append(newDieSkill)
             }
         } else if let dieSkillsDictionaries = dieSkillData as? [String: AnyObject] {
-            // Die type dictionary - full die type data
+            // Die skill dictionary - full die skill data
             for (dieSkillName, dieSkillDict) in dieSkillsDictionaries {
-                var newDieSkill = ButtonDieSkills()
-                newDieSkill.name = dieSkillName
-                newDieSkill.code = dieSkillDict["code"] as? String
-                newDieSkill.description = dieSkillDict["description"] as? String
+                guard var newDieSkill = Skill(skill: dieSkillName) else {
+                    print("Found unknown die name: \(dieSkillName)")
+                    return newDieSkills
+                }
+                newDieSkill.text = dieSkillDict["description"] as! String
                 newDieSkills.append(newDieSkill)
             }
         } else {
-            // No die types
+            // No die skill
         }
         return newDieSkills
     }

@@ -63,7 +63,7 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         if indexPath.section == 0 {
             if indexPath.row < button?.dieSkills.count {
-                cell.textLabel!.text = button?.dieSkills[indexPath.row].name
+                cell.textLabel!.text = button?.dieSkills[indexPath.row].description
             } else {
                 cell.textLabel!.text = "(none)"
             }

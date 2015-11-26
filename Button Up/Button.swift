@@ -19,7 +19,7 @@ struct Button {
     var flavor: String = ""
     var id: Int = 0
     var setName: String = ""
-    var dieSkills = [ButtonDieSkills]()
+    var dieSkills = [Skill]()
     var dieTypes = [ButtonDieTypes]()
     var hasUnimplementedSkill: Bool = false
     var isTournamentLegal: Bool = false

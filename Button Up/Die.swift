@@ -9,7 +9,7 @@
 import Foundation
 
 struct Die : CustomStringConvertible {
-    var desc: String = "" // Description string sent from server
+    var text: String = "" // Description string sent from server
     var properties = [DieFlag]()
     var recipe: String = ""
     var skills = [Skill]()
