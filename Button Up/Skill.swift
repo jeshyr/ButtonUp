@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 class Skill : CustomStringConvertible {
     var value: String = "" // Full name
     
@@ -25,13 +23,24 @@ class Skill : CustomStringConvertible {
         return self.value
     }
     
-    init(skill: String) {
-        if skill.characters.count > 1 {
+    init?(skill: String) {
+        // TODO should check if skill exists
+        if skill.isEmpty {
+            return nil
+        } else if skill.characters.count > 1 {
             // Full name initialisation
-            self.value = skill
+            if nameToCharacter[skill] == nil {
+                return nil
+            } else {
+                self.value = skill
+            }
         } else {
             // Single character
-            self.value = characterToName[skill]!
+            if characterToName[skill] == nil {
+                return nil
+            } else {
+                self.value = characterToName[skill]!
+            }
         }
     }
     

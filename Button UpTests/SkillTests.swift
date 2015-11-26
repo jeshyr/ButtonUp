@@ -20,21 +20,33 @@ class SkillTests: XCTestCase {
         super.tearDown()
     }
     
-    func testSkillShortLong() {
+    func testSkillShortInit() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        var skill = Skill(skill: "Berserk")
+        let skill = Skill(skill: "B")
         
-        XCTAssertEqual(skill.short, "B")
-        XCTAssertEqual(skill.description, "Berserk")
+        XCTAssertEqual(skill!.short, "B")
+        XCTAssertEqual(skill!.description, "Berserk")
         
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testSkillLongInit() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let skill = Skill(skill: "Berserk")
+        
+        XCTAssertEqual(skill!.short, "B")
+        XCTAssertEqual(skill!.description, "Berserk")
+        
+    }
+    
+    func testSkillInvalidInit() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let skill = Skill(skill: "Beserk")
+        
+        XCTAssertNil(skill)
+        
     }
     
 }

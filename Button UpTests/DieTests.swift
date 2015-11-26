@@ -26,7 +26,7 @@ class DieTests: XCTestCase {
         var die = Die()
         die.recipe = "B(U)"
         die.sides = 10
-        die.skills.append(Skill(skill: "Berserk"))
+        die.skills.append(Skill(skill: "Berserk")!)
         
         XCTAssertEqual(die.coreRecipe, "U")
         XCTAssertEqual(die.expandedCoreRecipe, "U=10")

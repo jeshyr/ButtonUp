@@ -492,7 +492,7 @@ extension APIClient {
         
         if let skills = dieData["skills"] as! [String]? {
             for skill in skills {
-                newDie.skills.append(Skill(skill: skill))
+                newDie.skills.append(Skill(skill: skill)!)
             }
         }
         
