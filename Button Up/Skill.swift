@@ -15,6 +15,7 @@ class Skill : CustomStringConvertible {
     
     var short: String {
         // Return one-character version of Skill
+        print("Skill value: \(self.value)")
         return nameToCharacter[self.value]!
 
     }

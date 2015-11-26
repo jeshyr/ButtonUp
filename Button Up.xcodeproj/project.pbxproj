@@ -20,6 +20,10 @@
 		E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */; };
 		E1572D311BF60C14006E39DD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D301BF60C14006E39DD /* Game.swift */; };
 		E167C37A1BFAACC700DE58C2 /* DieButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167C3791BFAACC700DE58C2 /* DieButton.swift */; };
+		E19AEC2E1C067DB100170735 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AEC2D1C067DB100170735 /* DieTests.swift */; };
+		E19AEC301C06804000170735 /* SkillTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AEC2F1C06804000170735 /* SkillTests.swift */; };
+		E19AEC311C06826900170735 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9BA1BF884F50052A119 /* Die.swift */; };
+		E19AEC321C06834B00170735 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8F3791C031218001EF3C4 /* Skill.swift */; };
 		E1A8F37A1C031218001EF3C4 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8F3791C031218001EF3C4 /* Skill.swift */; };
 		E1B9B8C31BF6E7D500A37061 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B9B8C21BF6E7D500A37061 /* Constants.swift */; };
 		E1BF593D1BFEA3BC0091946B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF593C1BFEA3BC0091946B /* SettingsViewController.swift */; };
@@ -73,6 +77,8 @@
 		E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		E1572D301BF60C14006E39DD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		E167C3791BFAACC700DE58C2 /* DieButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieButton.swift; sourceTree = "<group>"; };
+		E19AEC2D1C067DB100170735 /* DieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieTests.swift; sourceTree = "<group>"; };
+		E19AEC2F1C06804000170735 /* SkillTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillTests.swift; sourceTree = "<group>"; };
 		E1A8F3791C031218001EF3C4 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		E1B9B8C21BF6E7D500A37061 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E1BF593C1BFEA3BC0091946B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				E1572D0F1BF57559006E39DD /* Button_UpTests.swift */,
+				E19AEC2D1C067DB100170735 /* DieTests.swift */,
+				E19AEC2F1C06804000170735 /* SkillTests.swift */,
 				E1572D111BF57559006E39DD /* Info.plist */,
 			);
 			path = "Button UpTests";
@@ -364,6 +372,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E19AEC2E1C067DB100170735 /* DieTests.swift in Sources */,
+				E19AEC301C06804000170735 /* SkillTests.swift in Sources */,
+				E19AEC321C06834B00170735 /* Skill.swift in Sources */,
+				E19AEC311C06826900170735 /* Die.swift in Sources */,
 				E1572D101BF57559006E39DD /* Button_UpTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +440,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: jeshyr@me.com (54798688H9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -473,6 +486,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: jeshyr@me.com (54798688H9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
