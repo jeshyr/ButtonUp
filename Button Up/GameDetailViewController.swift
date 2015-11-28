@@ -218,7 +218,7 @@ class GameDetailViewController: UIViewController {
     func createDieButtonFromDie(die: Die) -> DieView {
         let newButton = DieView()
         //let newButton = DieView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-        if die.properties.contains(DieFlag.Twin) {
+        if die.properties.contains(Flag.Twin) {
             if !die.subDice.isEmpty {
                 // subDie array that aren't empty always have two values at least currently
                 newButton.dieValue.setTitle("\(die.subDice[0].value),\(die.subDice[1].value)", forState: UIControlState.Normal)

@@ -476,12 +476,12 @@ extension APIClient {
             return newDie
         }
         for property in properties {
-            guard let validProperty = DieFlag(rawValue: property) else {
+            guard let validProperty = Flag(rawValue: property) else {
                 print("Invalid die flag: \(property) in  \(dieData)")
                 completionHandler(game: nil, success: false, message: "Invalid die flag: \(property) in  \(dieData)")
                 return newDie
             }
-            if validProperty == DieFlag.Twin {
+            if validProperty == Flag.Twin {
                 isTwinDie = true
             }
             newDie.properties.append(validProperty)

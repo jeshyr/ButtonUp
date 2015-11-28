@@ -10,7 +10,7 @@ import Foundation
 
 struct Die : CustomStringConvertible {
     var text: String = "" // Description string sent from server
-    var properties = [DieFlag]()
+    var properties = [Flag]()
     var recipe: String = ""
     var skills = [Skill]()
     var sides: Int = 0
@@ -137,14 +137,6 @@ struct DieSubDie {
     // For contents of a twin die
     var sides: Int = 0
     var value: Int = 0
-}
-
-enum DieFlag: String {
-    case WasJustCaptured
-    case Twin
-    case HasJustSplit
-    case JustPerformedBerserkAttack
-    case IsRageTargetReplacement
 }
 
 struct DieSwing {
