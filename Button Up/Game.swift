@@ -25,7 +25,7 @@ struct Game {
     var actionLog = [GameLogMessage]()
     var chatEditable = NSDate() // TODO is this a timestamp?
     var chatLog = [GameLogMessage]()
-    var skillsInfo = [GameButtonSkillInfo]()
+    var skillsInfo = [ButtonDieSkills]()
     var maxWins: Int = 0
     var playerData = [GamePlayerData]()
     var playerWithInitiativeIndex: Int = 0
@@ -82,13 +82,6 @@ struct GameLogMessage {
     var player: String = ""
     var message: String = ""
     var timestamp = NSDate()
-}
-
-struct GameButtonSkillInfo {
-    var name: String = ""
-    var code: String = "" // Are they always 1 letter?
-    var description: String = ""
-    var interactions = [String]() // Maybe?
 }
 
 struct GameSummary {

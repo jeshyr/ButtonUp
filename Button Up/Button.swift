@@ -41,5 +41,9 @@ struct ButtonDieSkills {
     var name: String = ""
     var code: String? = nil
     var description: String? = nil
-    var interactions = [String]()
+    // Example of interactions:
+    //    interacts =     {
+    //    Ornery = "Dice with both Ornery and Mood Swing have their sizes randomized during ornery rerolls";
+    //    };
+    var interactions = [String: String]()
 }

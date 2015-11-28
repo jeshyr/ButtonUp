@@ -87,13 +87,20 @@ extension APIClient {
             }
             if let gameSkillsInfoDictionary = gameSkillsInfoDictionaryObj as? [String: AnyObject]? {
                 for (skill, skillDictionary) in gameSkillsInfoDictionary! {
-                    var newButtonSkill = GameButtonSkillInfo()
+                    var newButtonSkill = ButtonDieSkills()
                     newButtonSkill.name = skill
 
-                    newButtonSkill.code = skillDictionary["code"] as! String
-                    newButtonSkill.description = skillDictionary["description"] as! String
-                    // TODO find an example of a button with interactions
-                    // newButtonSkill.interactions =
+                    if let code = skillDictionary["code"] as? String {
+                        newButtonSkill.code = code
+                    }
+                    
+                    if let description = skillDictionary["description"] as? String {
+                        newButtonSkill.description = description
+                    }
+                    
+                    if let interactions = skillDictionary["interacts"] as? [String: String] {
+                        newButtonSkill.interactions = interactions
+                    }
                     
                     newGame.skillsInfo.append(newButtonSkill)
                 }
@@ -352,7 +359,7 @@ extension APIClient {
                     }
                 }
             }
-            print("optRequests: \(newPlayerData.optRequests)")
+            // print("optRequests: \(newPlayerData.optRequests)")
 
             // TODO check parsing of PrevOptValues in more situations
             guard let prevOptValueArray = playerDataDictionary["prevOptValueArray"] else {
