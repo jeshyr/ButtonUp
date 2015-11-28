@@ -144,6 +144,7 @@ enum DieFlag: String {
     case Twin
     case HasJustSplit
     case JustPerformedBerserkAttack
+    case IsRageTargetReplacement
 }
 
 struct DieSwing {
