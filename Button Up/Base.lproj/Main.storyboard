@@ -214,7 +214,7 @@
                                                 </subviews>
                                                 <animations/>
                                             </stackView>
-                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LDh-Te-XYM">
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LDh-Te-XYM">
                                                 <rect key="frame" x="275" y="182" width="30" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcG-yh-04E" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
@@ -247,7 +247,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BVN-jG-7AF">
                                         <rect key="frame" x="10" y="10" width="580" height="242"/>
                                         <subviews>
-                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iqd-PE-Jti">
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iqd-PE-Jti">
                                                 <rect key="frame" x="275" y="0.0" width="30" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krq-jf-fDf" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
