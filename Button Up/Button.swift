@@ -35,15 +35,3 @@ struct ButtonDieTypes {
     var swingMin: Int? = nil
     var swingMax: Int? = nil
 }
-
-/* Skills of die involved in this button. Only name is non-optional */
-struct ButtonDieSkills {
-    var name: String = ""
-    var code: String? = nil
-    var description: String? = nil
-    // Example of interactions:
-    //    interacts =     {
-    //    Ornery = "Dice with both Ornery and Mood Swing have their sizes randomized during ornery rerolls";
-    //    };
-    var interactions = [String: String]()
-}

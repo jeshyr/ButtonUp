@@ -25,7 +25,7 @@ struct Game {
     var actionLog = [GameLogMessage]()
     var chatEditable = NSDate() // TODO is this a timestamp?
     var chatLog = [GameLogMessage]()
-    var skillsInfo = [ButtonDieSkills]()
+    var skillsInfo = [Skill]()
     var maxWins: Int = 0
     var playerData = [GamePlayerData]()
     var playerWithInitiativeIndex: Int = 0

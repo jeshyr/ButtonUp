@@ -11,6 +11,11 @@ import Foundation
 struct Skill : CustomStringConvertible {
     var value: String = "" // Full name
     var text: String = ""  // Long textual description of skill's attributes
+    // Example of interactions:
+    //    interacts =     {
+    //    Ornery = "Dice with both Ornery and Mood Swing have their sizes randomized during ornery rerolls";
+    //    };
+    var interactions = [String: String]()
     
     var short: String {
         // Return one-character version of Skill
