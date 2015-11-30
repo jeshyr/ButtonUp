@@ -474,7 +474,7 @@
         <!--History-->
         <scene sceneID="2c2-5E-Q3S">
             <objects>
-                <navigationController id="pLc-DE-i8H" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HistoryNavigationController" id="pLc-DE-i8H" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="History" image="menu-tabbar" id="wYW-Cu-P0G"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qe3-vG-JLa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -713,7 +713,7 @@
         <!--Button Sets-->
         <scene sceneID="RNs-Qv-Q2H">
             <objects>
-                <navigationController id="Cxf-xh-Qf9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ButtonSetsNavigationController" id="Cxf-xh-Qf9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Button Sets" image="button-sets-tabbar" id="vvx-P6-Vcs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RcI-Wa-jeg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

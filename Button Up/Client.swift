@@ -712,6 +712,7 @@ extension APIClient {
     
     func parseButtonDieTypes(dieTypeData: AnyObject) -> [ButtonDieTypes] {
         var newDieTypes = [ButtonDieTypes]()
+        print("Die types: \(dieTypeData)")
         
         if let dieTypeArray = dieTypeData as? [String] {
             // Die type array - die type names only

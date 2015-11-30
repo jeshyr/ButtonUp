@@ -180,7 +180,9 @@ class GameDetailViewController: UIViewController {
                     self.p1ScoreLabel.text = p1Score
                     self.p1WLTLabel.text = p1WLT
                     self.p1CapturedLabel.text = p1Captured
+                    // TODO this removes sample die but not old dice - WHY?
                     for oldDie in self.p1DieStack.arrangedSubviews {
+                        print("removing: \(oldDie)")
                         self.p1DieStack.removeArrangedSubview(oldDie) // Remove from stack
                         oldDie.removeFromSuperview()                  // Kill alltogether
                     }
@@ -197,6 +199,7 @@ class GameDetailViewController: UIViewController {
                     self.p2WLTLabel.text = p2WLT
                     self.p2CapturedLabel.text = p2Captured
                     for oldDie in self.p2DieStack.arrangedSubviews {
+                        print("removing: \(oldDie)")
                         self.p2DieStack.removeArrangedSubview(oldDie) // Remove from stack
                         oldDie.removeFromSuperview()                  // Kill alltogether
                     }
@@ -256,12 +259,13 @@ class GameDetailViewController: UIViewController {
         }
         client.loadButtonData(nil, buttonName: buttonName) { buttons, success, error in
             if success {
-                /* Push the Button detail view */
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("ButtonDetailViewController") as! ButtonDetailViewController
-                controller.button = buttons![0]
-                
+                /* Push the Button detail view onto the button sets tab then display */
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.navigationController!.pushViewController(controller, animated: true)
+                    self.tabBarController?.selectedIndex = 2
+                    let buttonSetsNavigationController = self.tabBarController?.selectedViewController as! UINavigationController
+                    let buttonDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ButtonDetailViewController") as! ButtonDetailViewController
+                    buttonDetailViewController.button = buttons![0]
+                    buttonSetsNavigationController.pushViewController(buttonDetailViewController, animated:false)
                 }
             } else {
                 print("Failed loading button data for \(buttonName) - can't push detail view")
