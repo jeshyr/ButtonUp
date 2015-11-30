@@ -202,7 +202,6 @@ class GameDetailViewController: UIViewController {
                     self.p2WLTLabel.text = p2WLT
                     self.p2CapturedLabel.text = p2Captured
                     for oldDie in self.p2DieStack.arrangedSubviews {
-                        print("removing: \(oldDie)")
                         self.p2DieStack.removeArrangedSubview(oldDie) // Remove from stack
                         oldDie.removeFromSuperview()                  // Kill alltogether
                     }

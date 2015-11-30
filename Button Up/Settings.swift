@@ -11,8 +11,8 @@ import Foundation
 
 class Settings: NSObject {
 
-    var username = "jeshyr"
-    var password = "xqEC8wu3VuZcMJ"
+    var username = ""
+    var password = ""
     
     func save() {
         let defaults = NSUserDefaults.standardUserDefaults()

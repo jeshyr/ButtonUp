@@ -19,6 +19,11 @@ class SettingsViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        
+        // Preload existing values into text fields
+        usernameText.text = appDelegate.appSettings.username
+        passwordText.text = appDelegate.appSettings.password
+
     }
     
     @IBAction func saveButtonTouchUp(sender: AnyObject) {
@@ -30,7 +35,6 @@ class SettingsViewController: UIViewController, UITextViewDelegate {
         let username = usernameText.text!
         let password = passwordText.text!
         
-        print("app delegate: \(appDelegate)")
         appDelegate.appSettings.username = username
         appDelegate.appSettings.password = password
         

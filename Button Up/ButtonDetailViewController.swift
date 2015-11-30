@@ -26,7 +26,7 @@ class ButtonDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.hidden = false
         
         self.navigationItem.title = "Button"
         //self.navigationItem.backBarButtonItem!.title = "Back"
