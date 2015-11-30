@@ -163,6 +163,10 @@ class GameDetailViewController: UIViewController {
                     }
                 }
                 
+                // Delete any old buttons hanging around
+                self.p1DieButtons = []
+                self.p2DieButtons = []
+                
                 dispatch_async(dispatch_get_main_queue()) {
                     // Dice - if we create these outside the main thread they don't update properly
                     for die in (p1?.activeDice)! {
@@ -180,16 +184,15 @@ class GameDetailViewController: UIViewController {
                     self.p1ScoreLabel.text = p1Score
                     self.p1WLTLabel.text = p1WLT
                     self.p1CapturedLabel.text = p1Captured
-                    // TODO this removes sample die but not old dice - WHY?
+
                     for oldDie in self.p1DieStack.arrangedSubviews {
-                        print("removing: \(oldDie)")
                         self.p1DieStack.removeArrangedSubview(oldDie) // Remove from stack
                         oldDie.removeFromSuperview()                  // Kill alltogether
                     }
                     for dieButton in self.p1DieButtons {
                         self.p1DieStack.addArrangedSubview(dieButton)
                     }
-                    
+
                     self.p2View.backgroundColor = p2?.color
                     self.p2NameButton.setTitle("Name: \(p2!.name)", forState: UIControlState.Normal)
                     self.p2ButtonButton.setTitle("Button: \(p2!.button.name)", forState: UIControlState.Normal)
