@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,29 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button Up - by Ricky Buchanan - 2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlz-xj-z47">
-                                <rect key="frame" x="153" y="559" width="294" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="button-hand-drawn-cropped" translatesAutoresizingMaskIntoConstraints="NO" id="lR1-Gh-Fj6">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button Up - by Ricky Buchanan - 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vlz-xj-z47">
+                                <rect key="frame" x="40" y="550" width="520" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Button-120" translatesAutoresizingMaskIntoConstraints="NO" id="lR1-Gh-Fj6">
-                                <rect key="frame" x="180" y="180" width="240" height="240"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="2pl-DC-4iz"/>
-                                    <constraint firstAttribute="width" constant="240" id="iff-Ad-LS7"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lR1-Gh-Fj6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="GM0-CA-23O"/>
+                            <constraint firstItem="lR1-Gh-Fj6" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="5aL-UX-ymh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vlz-xj-z47" secondAttribute="trailing" constant="20" id="CQ1-o7-zqW"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="lR1-Gh-Fj6" secondAttribute="bottom" id="DUR-hp-gPf"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="vlz-xj-z47" secondAttribute="bottom" constant="20" id="IL7-Nu-EXQ"/>
-                            <constraint firstItem="vlz-xj-z47" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="SmT-Sd-0st"/>
-                            <constraint firstItem="lR1-Gh-Fj6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="pQK-DH-Iai"/>
+                            <constraint firstItem="lR1-Gh-Fj6" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="JM3-RM-FQ7"/>
+                            <constraint firstItem="vlz-xj-z47" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="20" id="pNs-tB-2p1"/>
+                            <constraint firstAttribute="trailing" secondItem="lR1-Gh-Fj6" secondAttribute="trailing" id="tOl-ZH-Ap1"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -49,6 +49,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Button-120" width="120" height="120"/>
+        <image name="button-hand-drawn-cropped" width="1478" height="1798"/>
     </resources>
 </document>
