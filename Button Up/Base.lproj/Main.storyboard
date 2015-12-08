@@ -116,12 +116,43 @@
                     <navigationItem key="navigationItem" title="Your Games" id="30k-gV-z7T" userLabel="Active Games"/>
                     <connections>
                         <outlet property="gameTableView" destination="bfg-0l-Dw6" id="1lN-SI-9Fg"/>
-                        <segue destination="nhG-40-lOl" kind="showDetail" identifier="ShowGameDetailSegue" id="fgx-WN-Mwy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTc-90-MXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1071" y="262"/>
+        </scene>
+        <!--Game Loading View Controller-->
+        <scene sceneID="YvL-qw-2UW">
+            <objects>
+                <viewController storyboardIdentifier="GameLoadingViewController" title="Game Loading View Controller" id="sfX-Sn-ri9" customClass="GameLoadingViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UeH-mF-2qD"/>
+                        <viewControllerLayoutGuide type="bottom" id="gAg-OM-9YQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ktj-SZ-2Cf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jaj-bK-SvO">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <animations/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jaj-bK-SvO" firstAttribute="centerY" secondItem="ktj-SZ-2Cf" secondAttribute="centerY" id="B8I-vE-mkv"/>
+                            <constraint firstItem="jaj-bK-SvO" firstAttribute="centerX" secondItem="ktj-SZ-2Cf" secondAttribute="centerX" id="NyR-6G-zCH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="jaj-bK-SvO" id="BaV-zt-mdM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rzi-rd-Qiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1822" y="620"/>
         </scene>
         <!--Game Detail View Controller-->
         <scene sceneID="36X-5g-YsX">
@@ -144,7 +175,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z60-5w-QGk">
                                                 <rect key="frame" x="102" y="0.0" width="377" height="172"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-Lr-xJH">
+                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-Lr-xJH">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="172"/>
                                                         <animations/>
                                                         <state key="normal" image="BMdefaultRound"/>
@@ -323,7 +354,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="211" height="150"/>
                                                         </variation>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9K-mL-lZW">
+                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9K-mL-lZW">
                                                         <rect key="frame" x="234" y="0.0" width="150" height="172"/>
                                                         <animations/>
                                                         <state key="normal" image="BMdefaultRound"/>
@@ -401,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLT-8b-yxq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1798" y="262"/>
+            <point key="canvasLocation" x="2542" y="620"/>
         </scene>
         <!--Active Games-->
         <scene sceneID="a63-So-ju5">
@@ -708,7 +739,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKP-FK-AZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1944" y="1029"/>
+            <point key="canvasLocation" x="2474" y="1723"/>
         </scene>
         <!--Button Sets-->
         <scene sceneID="RNs-Qv-Q2H">

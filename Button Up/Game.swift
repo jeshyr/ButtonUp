@@ -128,16 +128,16 @@ enum GameState: String {
     case SPECIFY_DICE
     case DETERMINE_INITIATIVE
     case REACT_TO_INITIATIVE
-    case START_ROUND
+    case START_ROUND // Never returned by API
     case START_TURN
     case ADJUST_FIRE_DICE
     case COMMIT_ATTACK
     case CHOOSE_TURBO_SWING
-    case END_TURN
-    case END_ROUND
+    case END_TURN // Never returned by API
+    case END_ROUND // Never returned by API
     case END_GAME
     case REJECTED
-    case INVALID
+    case INVALID // Completed games have this (check GameStatus)
     
     var isActive: Bool {
         switch self {

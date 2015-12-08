@@ -109,11 +109,14 @@ class GameTableViewController: UITableViewController {
                 } else {
                     cell.backgroundColor = game.opponentColor
                 }
+                print("New game state: \(game.state)")
             } else {
                 cell.textLabel!.text = "(none)"
                 cell.detailTextLabel!.text = ""
                 cell.accessoryType = UITableViewCellAccessoryType.None
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
+                print("Old game state: \(game.state)")
+
             }
         } else {
             if indexPath.row < completedGames.count {
@@ -140,8 +143,8 @@ class GameTableViewController: UITableViewController {
         if indexPath.section == 0 {
             if indexPath.row < games.count {
                 game = games[indexPath.row]
-                /* Push the game detail view */
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
+                /* Push the game loading view */
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
                 controller.gameSummary = game
                 self.navigationController!.pushViewController(controller, animated: true)
                 
@@ -160,11 +163,11 @@ class GameTableViewController: UITableViewController {
         } else {
             if indexPath.row < completedGames.count {
                 game = completedGames[indexPath.row]
-                /* Push the game detail view */
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
+                /* Push the game loading view */
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
                 controller.gameSummary = game
                 self.navigationController!.pushViewController(controller, animated: true)
-                
+               
             } else {
                 return
             }

@@ -55,7 +55,7 @@ class GameHistoryTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         /* Push the game detail view */
-        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
+        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
         controller.gameSummary = games[indexPath.row]
         self.navigationController!.pushViewController(controller, animated: true)
     }
