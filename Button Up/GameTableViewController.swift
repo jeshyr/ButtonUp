@@ -97,6 +97,8 @@ class GameTableViewController: UITableViewController {
                 cell.accessoryType = UITableViewCellAccessoryType.None
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
             }
+            print("New game state: \(game.state)")
+
         } else if indexPath.section == 1 {
             if indexPath.row < newGames.count {
                 game = newGames[indexPath.row]
@@ -155,7 +157,6 @@ class GameTableViewController: UITableViewController {
         } else if indexPath.section == 1 {
             if indexPath.row < newGames.count {
                 game = newGames[indexPath.row]
-                // TODO - can't view game details for these - fix that
             } else {
                 return
             }

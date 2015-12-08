@@ -60,17 +60,73 @@ class GameLoadingViewController: UIViewController {
 
     func loadGameDetailViewController(game: Game) {
         
-        self.activityIndicator.stopAnimating()
-        /* Push the game detail view */
-        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
-        controller.game = game
-
-        let nc = self.navigationController!
-        nc.popViewControllerAnimated(false) // Take ourselves out of the stack
-        nc.pushViewController(controller, animated: true)
+        dispatch_async(dispatch_get_main_queue()) {
+            self.activityIndicator.stopAnimating()
+        }
         
+        var controller: UIViewController
+        switch game.state {
+        case .START_GAME:
+            // The game hasn't started yet
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The game has not started yet."
+            
+        case .CHOOSE_JOIN_GAME:
+            // Waiting for opponent to join game
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
+            
+        case .SPECIFY_DICE:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
+            
+        case .CHOOSE_AUXILIARY_DICE:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
+            
+           
+        case .CHOOSE_RESERVE_DICE:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
+            
+        case .REACT_TO_INITIATIVE:
+            // Waiting for someone to move
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
+            
+        case .START_TURN:
+            // Waiting for someone to move
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
+            (controller as! GameDetailViewController).game = game
+            
+        case .ADJUST_FIRE_DICE:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
+            
+        case .END_GAME:
+            // Games which are finished but not dismissed
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
+            (controller as! GameDetailViewController).game = game
+            
+        case .REJECTED:
+            // Website just takes you to a screen that says "This game is rejected"
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "This game has been rejected."
+            
+        case .INVALID:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state), sorry!"
+            
+        default:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "There's something wrong with this game - it has an unknown game state."
+        }
+        
+        let nc = self.navigationController!
+        dispatch_async(dispatch_get_main_queue()) {
+            nc.popViewControllerAnimated(false) // Take ourselves out of the stack
+            nc.pushViewController(controller, animated: true)
+        }
     }
-    
-    
 }
 

@@ -27,7 +27,6 @@ class ButtonSetTableViewController: UITableViewController {
         self.navigationItem.title = buttonSetName
 
         
-        // TODO load list of active games
         client.loadButtonData(buttonSetName, buttonName: nil) { buttons, success, error in
             if success {
                 self.buttons = buttons!

@@ -154,6 +154,45 @@
             </objects>
             <point key="canvasLocation" x="1822" y="620"/>
         </scene>
+        <!--Game Message Only View Controller-->
+        <scene sceneID="leb-Yd-rtj">
+            <objects>
+                <viewController storyboardIdentifier="GameMessageOnlyViewController" title="Game Message Only View Controller" id="Ep8-5x-UVO" customClass="GameMessageOnlyViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wIw-pI-TlX"/>
+                        <viewControllerLayoutGuide type="bottom" id="TBw-fK-NOv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2HL-nf-icL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUF-NB-b6V">
+                                <rect key="frame" x="70" y="250" width="460" height="100"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="rJN-3K-pwx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pUF-NB-b6V" firstAttribute="leading" secondItem="2HL-nf-icL" secondAttribute="leadingMargin" constant="50" id="Apu-Yd-7SB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pUF-NB-b6V" secondAttribute="trailing" constant="50" id="C07-z1-rZR"/>
+                            <constraint firstItem="pUF-NB-b6V" firstAttribute="centerY" secondItem="2HL-nf-icL" secondAttribute="centerY" id="rAf-fE-gvr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="pUF-NB-b6V" id="zGJ-xS-XXg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hK8-4A-I2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2574" y="888"/>
+        </scene>
         <!--Game Detail View Controller-->
         <scene sceneID="36X-5g-YsX">
             <objects>
@@ -175,7 +214,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z60-5w-QGk">
                                                 <rect key="frame" x="102" y="0.0" width="377" height="172"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-Lr-xJH">
+                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-Lr-xJH">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="172"/>
                                                         <animations/>
                                                         <state key="normal" image="BMdefaultRound"/>
@@ -354,7 +393,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="211" height="150"/>
                                                         </variation>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9K-mL-lZW">
+                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9K-mL-lZW">
                                                         <rect key="frame" x="234" y="0.0" width="150" height="172"/>
                                                         <animations/>
                                                         <state key="normal" image="BMdefaultRound"/>
@@ -432,7 +471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLT-8b-yxq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2542" y="620"/>
+            <point key="canvasLocation" x="2574" y="150"/>
         </scene>
         <!--Active Games-->
         <scene sceneID="a63-So-ju5">

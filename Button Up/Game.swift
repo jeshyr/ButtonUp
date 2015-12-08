@@ -118,21 +118,22 @@ enum GameStatus: String {
 
 enum GameState: String {
     case START_GAME
-    case APPLY_HANDICAPS
+    case APPLY_HANDICAPS // Never returned by API
     case CHOOSE_JOIN_GAME
-    case SPECIFY_RECIPES
+    case SPECIFY_RECIPES // Never returned by API
+    case SPECIFY_DICE
     case CHOOSE_AUXILIARY_DICE
     case CHOOSE_RESERVE_DICE
-    case LOAD_DICE_INTO_BUTTONS
-    case ADD_AVAILABLE_DICE_TO_GAME
-    case SPECIFY_DICE
-    case DETERMINE_INITIATIVE
+    case LOAD_DICE_INTO_BUTTONS // Never returned by API
+    case ADD_AVAILABLE_DICE_TO_GAME // Never returned by API
+    case DETERMINE_INITIATIVE // Never returned by API
     case REACT_TO_INITIATIVE
+
     case START_ROUND // Never returned by API
     case START_TURN
     case ADJUST_FIRE_DICE
-    case COMMIT_ATTACK
-    case CHOOSE_TURBO_SWING
+    case COMMIT_ATTACK // Never returned by API
+    case CHOOSE_TURBO_SWING // Never returned by API
     case END_TURN // Never returned by API
     case END_ROUND // Never returned by API
     case END_GAME

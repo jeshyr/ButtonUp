@@ -84,12 +84,10 @@ class APIClient: NSObject {
                 return
             }
             
-            /* TODO: check cookies? */
             if let httpResponse = response as? NSHTTPURLResponse, let fields = httpResponse.allHeaderFields as? [String : String] {
                 let newCookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields, forURL: response!.URL!)
                 self.cookies.setCookies(newCookies, forURL: response!.URL!, mainDocumentURL: nil)
                 for cookie in newCookies {
-                    // print("NEW COOKIES!")
                     var cookieProperties = [String: AnyObject]()
                     cookieProperties[NSHTTPCookieName] = cookie.name
                     cookieProperties[NSHTTPCookieValue] = cookie.value

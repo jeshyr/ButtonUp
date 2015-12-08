@@ -25,7 +25,6 @@ class ButtonSetsTableViewController: UITableViewController {
         
         self.tabBarController?.tabBar.hidden = false
 
-        // TODO load list of active games
         client.loadButtonSetData(nil) { buttonSets, success, error in
             if success {
                 self.buttonSets = buttonSets!
