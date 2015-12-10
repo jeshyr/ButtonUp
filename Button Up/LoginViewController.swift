@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
         
         loggingInTextLabel.text = "Logging \(username) in ..."
         
-        client.login(username, password: password) { success, error in
+        client.loginIfNeeded(username, password: password) { success, error in
             if success {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.debugTextLabel.text = "Logged in!"

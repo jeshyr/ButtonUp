@@ -1057,7 +1057,31 @@ extension APIClient {
         //print(games)
         completionHandler(gameSummaries: games, success: true, message: nil)
     }
+    
+    // Check if we're logged in, if not then log in.
+    func loginIfNeeded(username: String, password: String, completionHandler: (success: Bool, message: String?) -> Void) {
+        
+        let jsonBody : [String:String] = [
+            "type": "loadPlayerName",
+        ]
+        
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
+            // If this call succeeds, we must be logged in. We don't care about the actual values returned - only the success.
+            
+            if success {
+                print("Already logged in!")
+                completionHandler(success: true, message: message)
+            } else {
+                print("Logging in now")
+                self.login(username, password: password) { success, message in
+                    completionHandler(success: success, message: message)
+                }
+            }
+        }
+    }
 
+
+    // Note: More polite to only log in when necessary, max of 6 clients from one player can be logged in at once. Use loginIfNeeded instead of this.
     func login(username: String, password: String, completionHandler: (success: Bool, message: String?) -> Void) {
         
         let jsonBody : [String:String] = [
@@ -1067,7 +1091,6 @@ extension APIClient {
         ]
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            // print("in login completion handler")
             // No result expected for login
             completionHandler(success: success, message: message)
             

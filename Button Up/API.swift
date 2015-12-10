@@ -38,7 +38,6 @@ class APIClient: NSObject {
 
         if let headers = NSHTTPCookie.requestHeaderFieldsWithCookies(cookies.cookiesForURL(url)!) as [String:String]? {
             for (key, value) in headers {
-                // print("Adding cookie to request: \(key): \(value)")
                 request.setValue(value, forHTTPHeaderField: key)
             }
         }
@@ -46,18 +45,18 @@ class APIClient: NSObject {
         /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
-            // print("===== TASK RESPONSE START =====")
-            // print("Data:")
-            // print(data)
-            // print("Response:")
-            // print(response)
-            // print("Error:")
-            // print(error)
-            
-            // let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            // print("StrData:")
-            // print(strData)
-            // print("===== TASK RESPONSE END   =====")
+//             print("===== TASK RESPONSE START =====")
+//             print("Data:")
+//             print(data)
+//             print("Response:")
+//             print(response)
+//             print("Error:")
+//             print(error)
+//            
+//             let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//             print("StrData:")
+//             print(strData)
+//             print("===== TASK RESPONSE END   =====")
 
             
             /* GUARD: Was there an error? */
