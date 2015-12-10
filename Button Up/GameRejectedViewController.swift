@@ -114,6 +114,17 @@ class GameRejectedViewController: UIViewController {
     }
     
     @IBAction func dismissButtonTouchUp(sender: AnyObject) {
+        let id = game!.id
+        print("Trying to dismiss \(id)")
+        client.dismissGame(id) { success, message in
+            if success {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.navigationController!.popViewControllerAnimated(true)
+                }
+            } else {
+                print("Failed to dismiss game \(id): \(message).")
+            }
+        }
     }
     
     @IBAction func buttonTouchUp(sender: UIButton) {

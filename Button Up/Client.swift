@@ -25,7 +25,7 @@ extension APIClient {
                 return
             }
             
-            print(result)
+            //print(result)
             var newGame = Game()
 
             guard let activePlayerIndexObj = result!["activePlayerIdx"] else {
@@ -550,8 +550,7 @@ extension APIClient {
         return newLog
     }
     
-    
-    // MARK - Load data for one or more buttons
+    // MARK: - Load data for one or more buttons
     func loadButtonData(buttonSet: String?, buttonName: String?, completionHandler: (buttons: [Button]?, success: Bool, message: String?) -> Void) {
         var jsonBody: [String: String] = [
             "type": "loadButtonData"
@@ -819,7 +818,7 @@ extension APIClient {
         }
     }
 
-    // MARK - Game summaries
+    // MARK: - Game summaries
     func loadNewGames(completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
         let jsonBody: [String: String] = [
             "type": "loadNewGames"
@@ -1083,6 +1082,20 @@ extension APIClient {
         completionHandler(gameSummaries: games, success: true, message: nil)
     }
     
+    // MARK: - Dismissing
+    func dismissGame(gameId: Int, completionHandler: (success: Bool, message: String?) -> Void) {
+        let jsonBody: [String: String] = [
+            "type": "dismissGame",
+            "gameId": String(gameId)
+        ]
+        
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
+            completionHandler(success: success, message: message)
+        }
+    }
+ 
+    // MARK: - Logins
+    
     // Check if we're logged in, if not then log in.
     func loginIfNeeded(username: String, password: String, completionHandler: (success: Bool, message: String?) -> Void) {
         
@@ -1104,7 +1117,6 @@ extension APIClient {
             }
         }
     }
-
 
     // Note: More polite to only log in when necessary, max of 6 clients from one player can be logged in at once. Use loginIfNeeded instead of this.
     func login(username: String, password: String, completionHandler: (success: Bool, message: String?) -> Void) {
