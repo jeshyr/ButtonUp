@@ -167,7 +167,7 @@ class GameTableViewController: UITableViewController {
                 /* Push the game loading view */
                 let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
                 controller.gameSummary = game
-                self.navigationController!.pushViewController(controller, animated: true)
+                self.navigationController!.pushViewController(controller, animated: false)
                
             } else {
                 return
