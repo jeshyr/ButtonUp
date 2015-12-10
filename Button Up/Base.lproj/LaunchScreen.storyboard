@@ -22,11 +22,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button Up - by Ricky Buchanan - 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vlz-xj-z47">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ricky Buchanan - 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vlz-xj-z47">
                                 <rect key="frame" x="40" y="550" width="520" height="30"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whk-zF-mjI">
+                                <rect key="frame" x="189" y="28" width="222" height="60"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -34,10 +41,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lR1-Gh-Fj6" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="5aL-UX-ymh"/>
+                            <constraint firstItem="Whk-zF-mjI" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="5tx-Z3-R13"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vlz-xj-z47" secondAttribute="trailing" constant="20" id="CQ1-o7-zqW"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="lR1-Gh-Fj6" secondAttribute="bottom" id="DUR-hp-gPf"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="vlz-xj-z47" secondAttribute="bottom" constant="20" id="IL7-Nu-EXQ"/>
                             <constraint firstItem="lR1-Gh-Fj6" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="JM3-RM-FQ7"/>
+                            <constraint firstItem="Whk-zF-mjI" firstAttribute="centerX" secondItem="lR1-Gh-Fj6" secondAttribute="centerX" id="djN-ka-swe"/>
                             <constraint firstItem="vlz-xj-z47" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="20" id="pNs-tB-2p1"/>
                             <constraint firstAttribute="trailing" secondItem="lR1-Gh-Fj6" secondAttribute="trailing" id="tOl-ZH-Ap1"/>
                         </constraints>
