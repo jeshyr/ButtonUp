@@ -1,5 +1,5 @@
 //
-//  GameRejectedViewController.swift
+//  GameCompletedViewController.swift
 //  Button Up
 //
 //  Created by Ricky Buchanan on 10/12/2015.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class GameRejectedViewController: UIViewController {
-    
+class GameCompletedViewController: UIViewController {
+
+
     // From seague
     var game: Game?
-    
+
     let client = APIClient.sharedInstance()
     var appDelegate: AppDelegate!
 
@@ -21,33 +22,35 @@ class GameRejectedViewController: UIViewController {
     @IBOutlet weak var p1ButtonRecipeTextLabel: UILabel!
     @IBOutlet weak var p1ButtonButton: UIButton!
     @IBOutlet weak var p1NameButton: UIButton!
-    
+    @IBOutlet weak var p1WLTLabel: UILabel!
+
     @IBOutlet weak var p2View: UIView!
     @IBOutlet weak var p2ButtonImageButton: UIButton!
     @IBOutlet weak var p2ButtonRecipeTextLabel: UILabel!
     @IBOutlet weak var p2ButtonButton: UIButton!
     @IBOutlet weak var p2NameButton: UIButton!
-    
-    
+    @IBOutlet weak var p2WLTLabel: UILabel!
+
+
     @IBOutlet weak var dismissButton: UIButton!
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         print(game)
-
+        
         appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         
         self.tabBarController?.tabBar.hidden = true
         
-        self.navigationItem.title = "Rejected Game"
+        self.navigationItem.title = "Completed Game"
         
         //self.navigationItem.backBarButtonItem!.title = "Back"
         
         displayGame()
         
     }
-    
+
     func displayGame() {
         let game = self.game
         
@@ -94,28 +97,34 @@ class GameRejectedViewController: UIViewController {
         })
         
         // Text details of game
-
-
+        let p1WLT = "W/L/T: \(p1!.wins)/\(p1!.losses)/\(p1!.draws) (\(game!.maxWins))"
+        let p2WLT = "W/L/T: \(p2!.wins)/\(p2!.losses)/\(p2!.draws) (\(game!.maxWins))"
+        
         dispatch_async(dispatch_get_main_queue()) {
-
+            
             self.p1View.backgroundColor = p1?.color
             self.p1NameButton.setTitle("Name: \(p1!.name)", forState: UIControlState.Normal)
             self.p1ButtonButton.setTitle("Button: \(p1!.button.name)", forState: UIControlState.Normal)
             
             self.p1ButtonRecipeTextLabel.text = p1!.button.recipe
+            self.p1WLTLabel.text = p1WLT
 
             self.p2View.backgroundColor = p2?.color
             self.p2NameButton.setTitle("Name: \(p2!.name)", forState: UIControlState.Normal)
             self.p2ButtonButton.setTitle("Button: \(p2!.button.name)", forState: UIControlState.Normal)
             
             self.p2ButtonRecipeTextLabel.text = p2!.button.recipe
-                        
+            self.p2WLTLabel.text = p2WLT
+
         }
     }
-    
+
     @IBAction func dismissButtonTouchUp(sender: AnyObject) {
     }
     
+    @IBAction func nameTouchUp(sender: AnyObject) {
+    }
+
     @IBAction func buttonTouchUp(sender: UIButton) {
         var buttonName: String
         let p1 = game?.playerData[1]
@@ -141,6 +150,6 @@ class GameRejectedViewController: UIViewController {
         }
         
     }
-
     
 }
+

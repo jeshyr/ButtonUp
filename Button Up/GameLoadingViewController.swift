@@ -111,8 +111,8 @@ class GameLoadingViewController: UIViewController {
             
         case .END_GAME:
             // Games which are finished but not dismissed
-            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
-            (controller as! GameDetailViewController).game = game
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameCompletedViewController") as! GameCompletedViewController
+            (controller as! GameCompletedViewController).game = game
             
         case .REJECTED:
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameRejectedViewController") as! GameRejectedViewController
