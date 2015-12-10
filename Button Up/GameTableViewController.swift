@@ -18,6 +18,7 @@ class GameTableViewController: UITableViewController {
     var games: [GameSummary] = [GameSummary]()
     var newGames: [GameSummary] = [GameSummary]()
     var completedGames: [GameSummary] = [GameSummary]()
+    var rejectedGames: [GameSummary] = [GameSummary]()
     
     override func viewDidLoad() {
         
@@ -72,6 +73,19 @@ class GameTableViewController: UITableViewController {
                 print("Can't load completed but not dismissed games: \(error)")
             }
         }
+        
+        // Load rejected but not dismissed games
+        client.loadRejectedGames() { rejectedGames, success, error in
+            if success {
+                self.rejectedGames = rejectedGames!
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.gameTableView.reloadData()
+                }
+            } else {
+                print("Can't load rejected but not dismissed games: \(error)")
+            }
+        }
+        
         refreshControl?.endRefreshing()
     }
 
@@ -120,6 +134,19 @@ class GameTableViewController: UITableViewController {
                 print("Old game state: \(game.state)")
 
             }
+        } else if indexPath.section == 2 {
+            if indexPath.row < rejectedGames.count {
+                game = rejectedGames[indexPath.row]
+                cell.textLabel!.text = "\(game.myButton) vs. \(game.opponentButton)"
+                cell.detailTextLabel!.text = game.description
+                cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                cell.selectionStyle = UITableViewCellSelectionStyle.Blue
+            } else {
+                cell.textLabel!.text = "(none)"
+                cell.detailTextLabel!.text = ""
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+            }
         } else {
             if indexPath.row < completedGames.count {
                 game = completedGames[indexPath.row]
@@ -145,10 +172,9 @@ class GameTableViewController: UITableViewController {
         if indexPath.section == 0 {
             if indexPath.row < games.count {
                 game = games[indexPath.row]
-                /* Push the game loading view */
                 let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
                 controller.gameSummary = game
-                self.navigationController!.pushViewController(controller, animated: true)
+                self.navigationController!.pushViewController(controller, animated: false)
                 
             } else {
                 return
@@ -157,18 +183,31 @@ class GameTableViewController: UITableViewController {
         } else if indexPath.section == 1 {
             if indexPath.row < newGames.count {
                 game = newGames[indexPath.row]
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
+                controller.gameSummary = game
+                self.navigationController!.pushViewController(controller, animated: false)
+                
             } else {
                 return
             }
             
-        } else {
-            if indexPath.row < completedGames.count {
-                game = completedGames[indexPath.row]
-                /* Push the game loading view */
+        } else if indexPath.section == 2 {
+            if indexPath.row < rejectedGames.count {
+                game = rejectedGames[indexPath.row]
                 let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
                 controller.gameSummary = game
                 self.navigationController!.pushViewController(controller, animated: false)
-               
+                
+            } else {
+                return
+            }
+        } else {
+            if indexPath.row < completedGames.count {
+                game = completedGames[indexPath.row]
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
+                controller.gameSummary = game
+                self.navigationController!.pushViewController(controller, animated: false)
+                
             } else {
                 return
             }
@@ -176,7 +215,7 @@ class GameTableViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -186,6 +225,8 @@ class GameTableViewController: UITableViewController {
         case 1:
             return "New"
         case 2:
+            return "Rejected"
+        case 3:
             return "Completed"
         default:
             return "Error"
@@ -198,6 +239,8 @@ class GameTableViewController: UITableViewController {
             return max(games.count, 1)
         } else if section == 1 {
             return max(newGames.count, 1)
+        } else if section == 2 {
+            return max(rejectedGames.count, 1)
         } else {
             return max(completedGames.count, 1)
         }

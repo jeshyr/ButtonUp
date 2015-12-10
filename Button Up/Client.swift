@@ -836,6 +836,27 @@ extension APIClient {
         }
     }
     
+    func loadRejectedGames(completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
+        let jsonBody: [String: String] = [
+            "type": "loadRejectedGames"
+        ]
+        
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
+            //print("in loadRejectedGames completion handler")
+            
+            guard success else {
+                print("error: \(message)")
+                completionHandler(gameSummaries: nil, success: false, message: message)
+                return
+            }
+            
+            // Parse dictionary of arrays into array of games
+            self.parseGameSummaryArrays(result) { games, success, message in
+                completionHandler(gameSummaries: games, success: success, message: message)
+            }
+        }
+    }
+    
     func loadCompletedGames(completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
         let jsonBody: [String: String] = [
             "type": "loadCompletedGames"
@@ -855,7 +876,6 @@ extension APIClient {
                 completionHandler(gameSummaries: games, success: success, message: message)
             }
         }
-
     }
 
     func loadActiveGames(completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {

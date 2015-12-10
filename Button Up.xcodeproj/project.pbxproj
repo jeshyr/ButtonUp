@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E135F1211C19126C00542FFA /* GameRejectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E135F1201C19126B00542FFA /* GameRejectedViewController.swift */; };
 		E13634821C09536D00B6126F /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13634811C09536D00B6126F /* Flag.swift */; };
 		E1572CFB1BF57559006E39DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572CFA1BF57559006E39DD /* AppDelegate.swift */; };
 		E1572CFD1BF57559006E39DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572CFC1BF57559006E39DD /* LoginViewController.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E135F1201C19126B00542FFA /* GameRejectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRejectedViewController.swift; sourceTree = "<group>"; };
 		E13634811C09536D00B6126F /* Flag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
 		E1572CF71BF57558006E39DD /* Button Up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Button Up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1572CFA1BF57559006E39DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */,
 				E18DA02A1C16DA5A00CA0CFA /* GameLoadingViewController.swift */,
 				E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */,
+				E135F1201C19126B00542FFA /* GameRejectedViewController.swift */,
 				E18DA02C1C17051700CA0CFA /* GameMessageOnlyViewController.swift */,
 				E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */,
 				E1D00DB51BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift */,
@@ -378,6 +381,7 @@
 				E1D00DBE1BF74D88009FF0A8 /* Button.swift in Sources */,
 				E13634821C09536D00B6126F /* Flag.swift in Sources */,
 				E1572D2B1BF5DDA5006E39DD /* Client.swift in Sources */,
+				E135F1211C19126C00542FFA /* GameRejectedViewController.swift in Sources */,
 				E1F5C9BD1BF88BF10052A119 /* Attack.swift in Sources */,
 				E1BF593D1BFEA3BC0091946B /* SettingsViewController.swift in Sources */,
 				E1BF593F1BFEA5F20091946B /* Settings.swift in Sources */,

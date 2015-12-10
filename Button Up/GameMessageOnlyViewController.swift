@@ -18,7 +18,7 @@ class GameMessageOnlyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = "Message"
         
         messageLabel.text = self.message!
     }

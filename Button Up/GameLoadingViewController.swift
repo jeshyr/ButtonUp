@@ -75,24 +75,29 @@ class GameLoadingViewController: UIViewController {
             // Waiting for opponent to join game
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
             (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
-            
+            print(game)
+
         case .SPECIFY_DICE:
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
             (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
-            
+            print(game)
+
         case .CHOOSE_AUXILIARY_DICE:
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
             (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
-            
+            print(game)
            
         case .CHOOSE_RESERVE_DICE:
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
             (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
-            
+            print(game)
+
         case .REACT_TO_INITIATIVE:
             // Waiting for someone to move
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
             (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
+            print(game)
+
             
         case .START_TURN:
             // Waiting for someone to move
@@ -102,6 +107,7 @@ class GameLoadingViewController: UIViewController {
         case .ADJUST_FIRE_DICE:
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
             (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
+            print(game)
             
         case .END_GAME:
             // Games which are finished but not dismissed
@@ -109,9 +115,8 @@ class GameLoadingViewController: UIViewController {
             (controller as! GameDetailViewController).game = game
             
         case .REJECTED:
-            // Website just takes you to a screen that says "This game is rejected"
-            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
-            (controller as! GameMessageOnlyViewController).message = "This game has been rejected."
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameRejectedViewController") as! GameRejectedViewController
+            (controller as! GameRejectedViewController).game = game
             
         case .INVALID:
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
@@ -120,6 +125,7 @@ class GameLoadingViewController: UIViewController {
         default:
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
             (controller as! GameMessageOnlyViewController).message = "There's something wrong with this game - it has an unknown game state."
+            print(game)
         }
         
         let nc = self.navigationController!
