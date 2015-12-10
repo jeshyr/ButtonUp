@@ -87,6 +87,7 @@ class GameDetailViewController: UIViewController {
             if success {
                 if let image = UIImage(data: imageData!) {
                     dispatch_async(dispatch_get_main_queue()) {
+                        self.p1ButtonImageButton.imageView?.contentMode = .ScaleAspectFit
                         self.p1ButtonImageButton.imageView?.image = image
                     }
                 }
@@ -99,6 +100,7 @@ class GameDetailViewController: UIViewController {
             if success {
                 if let image = UIImage(data: imageData!) {
                     dispatch_async(dispatch_get_main_queue()) {
+                        self.p2ButtonImageButton.imageView?.contentMode = .ScaleAspectFit
                         self.p2ButtonImageButton.imageView?.image = image
                     }
                 }
