@@ -25,6 +25,7 @@ extension APIClient {
                 return
             }
             
+            print(result)
             var newGame = Game()
 
             guard let activePlayerIndexObj = result!["activePlayerIdx"] else {
@@ -443,6 +444,8 @@ extension APIClient {
         var newDie = Die()
         var isTwinDie = false
         
+//        print(dieData)
+        
         /* Required parameters */
         guard let recipe = dieData["recipe"] as! String? else {
             print("Can't find recipe: \(dieData)")
@@ -497,20 +500,21 @@ extension APIClient {
         }
         
         if isTwinDie {
-            if let subDieArray = dieData["SubdieArray"] as! [[String: Int]]? {
+            if let subDieArray = dieData["subdieArray"] as! [[String: Int]]? {
                 for subDie in subDieArray {
                     var newSubDie = DieSubDie()
                     newSubDie.sides = subDie["sides"]!
                     newSubDie.value = subDie["value"]!
-                    print("newSubDie: \(newSubDie)")
+//                    print("newSubDie: \(newSubDie)")
                     newDie.subDice.append(newSubDie)
-                    print("NewDie: \(newDie.subDice)")
+//                    print("NewDie: \(newDie.subDice)")
                 }
             } else {
                 //print("Confused by subdieArray: \(dieData["SubdieArray"])")
             }
         }
        
+//        print("Parsed: \(newDie)")
         return newDie
     }
     
@@ -698,6 +702,7 @@ extension APIClient {
                 }
                 
                 if let interactions = skillDictionary["interacts"] as? [String: String] {
+                    print("Interaction: \(interactions)")
                     newDieSkill.interactions = interactions
                 }
                 
