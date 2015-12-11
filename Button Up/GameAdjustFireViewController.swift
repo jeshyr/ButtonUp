@@ -188,7 +188,7 @@ class GameAdjustFireViewController: UIViewController {
     // MARK - Actions
     
     func dieTouchUp(sender: UIButton) {
-        sender.selected = !sender.selected
+        //sender.selected = !sender.selected
     }
     
     @IBAction func fireButtonTouchUp(sender: AnyObject) {
