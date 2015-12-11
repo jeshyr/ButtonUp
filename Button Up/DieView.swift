@@ -12,7 +12,7 @@ import UIKit
 
     var view:UIView!
 
-    @IBOutlet weak var dieValue: UIButton!
+    @IBOutlet weak var dieValue: DieButton!
     @IBOutlet weak var dieLabel: UILabel!
 
     override init(frame: CGRect) {

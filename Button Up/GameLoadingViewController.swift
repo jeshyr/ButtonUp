@@ -105,9 +105,8 @@ class GameLoadingViewController: UIViewController {
             (controller as! GameDetailViewController).game = game
             
         case .ADJUST_FIRE_DICE:
-            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
-            (controller as! GameMessageOnlyViewController).message = "The current game state is \(game.state) and that's not implemented, sorry!"
-            print(game)
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameAdjustFireViewController") as! GameAdjustFireViewController
+            (controller as! GameAdjustFireViewController).game = game
             
         case .END_GAME:
             // Games which are finished but not dismissed

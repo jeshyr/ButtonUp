@@ -44,8 +44,8 @@ class DieButton: UIButton {
         self.layer.cornerRadius = dieButtonCornerRadius
         self.highlightedBackingColor = darkerBlue
         self.backingColor = lighterBlue
-        self.layer.borderColor = UIColor.redColor().CGColor
         self.backgroundColor = lighterBlue
+        self.layer.borderColor = UIColor.redColor().CGColor
         self.titleLabel?.font = UIFont.boldSystemFontOfSize(titleLabelFontSize)
         self.titleLabel?.minimumScaleFactor = 0.01
         self.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -57,16 +57,11 @@ class DieButton: UIButton {
     
     // MARK: Setters
     
-    private func setBackingColor(backingColor : UIColor) -> Void {
+    func newBackingColor(backingColor : UIColor) -> Void {
         if (self.backingColor != nil) {
             self.backingColor = backingColor;
             self.backgroundColor = backingColor;
         }
-    }
-    
-    private func setHighlightedBackingColor(highlightedBackingColor: UIColor) -> Void {
-        self.highlightedBackingColor = highlightedBackingColor
-        self.backingColor = highlightedBackingColor
     }
 
     override var selected: Bool {

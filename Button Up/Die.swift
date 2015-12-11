@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Die : CustomStringConvertible {
     var text: String = "" // Description string sent from server
@@ -109,6 +110,8 @@ struct Die : CustomStringConvertible {
             print("Die::expandedCoreRecipe failed to create regular expression")
             return rawCoreRecipe
         }
+        
+       
     }
     
     // This has to be called 'description' for the CustomStringConvertible protocol
@@ -131,6 +134,26 @@ struct Die : CustomStringConvertible {
         //print("Recipe: \(self.recipe), sides: \(self.sides), skills: \(self.skills), coreRecipe: \(self.coreRecipe), expandedCoreRecipe: \(core)")
         return "\(skillStringPrefix)(\(core))\(skillStringPostfix)"
     }
+    
+    func asView() -> DieView {
+        let newButton = DieView()
+        if self.properties.contains(Flag.Twin) {
+            if !self.subDice.isEmpty {
+                newButton.dieValue.setTitle("\(self.subDice[0].value),\(self.subDice[1].value)", forState: UIControlState.Normal)
+            } else {
+                newButton.dieValue.setTitle("\(self.value)", forState: UIControlState.Normal)
+            }
+        } else {
+            newButton.dieValue.setTitle("\(self.value)", forState: UIControlState.Normal)
+        }
+        
+        newButton.dieLabel.text = self.description
+        if self.properties.contains(Flag.IsAttacker) || self.properties.contains(Flag.IsAttackTarget) {
+            newButton.dieValue.newBackingColor(UIColor(red: 0.9, green: 0.15, blue: 0.15, alpha: 1.0))
+        }
+        return newButton
+    }
+
 }
 
 struct DieSubDie {
