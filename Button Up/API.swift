@@ -25,6 +25,7 @@ class APIClient: NSObject {
     }
     
     func request(parameters: [String:String], completionHandler: (result: AnyObject?, success: Bool, message: String?) -> Void) -> NSURLSessionDataTask {
+        debugPrint("APIClient request: \(parameters)")
         
         /* 2/3. Build the URL and configure the request */
         let url = NSURL(string: BaseURL)!
@@ -45,18 +46,21 @@ class APIClient: NSObject {
         /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
-//             print("===== TASK RESPONSE START =====")
-//             print("Data:")
-//             print(data)
-//             print("Response:")
-//             print(response)
-//             print("Error:")
-//             print(error)
-//            
-//             let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-//             print("StrData:")
-//             print(strData)
-//             print("===== TASK RESPONSE END   =====")
+             print("===== TASK RESPONSE START =====")
+             print("Data:")
+             print(data)
+             print("Response:")
+             print(response)
+             print("Error:")
+             print(error)
+            
+            if data != nil {
+                let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                
+                 print("StrData:")
+                 print(strData)
+            }
+             print("===== TASK RESPONSE END   =====")
 
             
             /* GUARD: Was there an error? */
@@ -79,7 +83,6 @@ class APIClient: NSObject {
                 }
                 print(errorMessage)
                 completionHandler(result: nil, success: false, message: errorMessage)
-
                 return
             }
             
@@ -140,7 +143,9 @@ class APIClient: NSObject {
             }
             
             if status != "ok" {
+                // TODO check here for logged out errors - message format is "You need to login before calling API function ____" and login then retry
                 completionHandler(result: nil, success: false, message: "Call failed: \(parsedResult)")
+                return
             }
             
             guard let data = parsedResult["data"] else {
@@ -150,6 +155,7 @@ class APIClient: NSObject {
             }
             // SUCCESS!!
             completionHandler(result: data, success: true, message: nil)
+            return
             
         } catch {
             print("Could not parse the data as JSON: '\(data)'")
@@ -179,7 +185,6 @@ class APIClient: NSObject {
             guard (error == nil) else {
                 print("There was an error with your image request: \(error)")
                 completionHandler(imageData: nil, success: false, message: "There was an error with your image request: \(error)")
-
                 return
             }
             
@@ -188,17 +193,19 @@ class APIClient: NSObject {
                 if let response = response as? NSHTTPURLResponse {
                     print("Your image request returned an invalid response! Status code: \(response.statusCode)!")
                     completionHandler(imageData: nil, success: false, message: "Your image request returned an invalid response! Status code: \(response.statusCode)!")
+                    return
 
                 } else if let response = response {
                     print("Your image request returned an invalid response! Response: \(response)!")
                     completionHandler(imageData: nil, success: false, message: "Your image request returned an invalid response! Response: \(response)!")
+                    return
 
                 } else {
                     print("Your image request returned an invalid response!")
                     completionHandler(imageData: nil, success: false, message: "Your image request returned an invalid response!")
+                    return
 
                 }
-                return
             }
             
             /* GUARD: Was there any data returned? */
@@ -210,6 +217,7 @@ class APIClient: NSObject {
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */
             completionHandler(imageData: data, success: true, message: nil)
+            return
         }
         
         /* 7. Start the request */

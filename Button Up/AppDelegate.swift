@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appSettings = Settings()
     
     func resetAppToFirstController() {
+        debugPrint("resetAppToFirstController called")
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let rootViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController
         self.window?.rootViewController = rootViewController

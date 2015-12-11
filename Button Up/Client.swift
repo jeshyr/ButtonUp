@@ -112,9 +112,12 @@ extension APIClient {
                 completionHandler(game: nil, success: false, message: "Can't find playerDataArray: \(result)")
                 return
             }
-            newGame.playerData = self.parseGamePlayerDataArray(playerDataArray) { game, success, message in
-                completionHandler(game: game, success: success, message: message)
+            
+            guard let parsedPlayerData = self.parseGamePlayerDataArray(playerDataArray) else {
+                completionHandler(game: nil, success: false, message: "Can't parse playerDataArray: \(playerDataArray)")
+                return
             }
+            newGame.playerData = parsedPlayerData
             
             if validState.isActive {
                 guard let playerWithInitiativeIdx = result!["playerWithInitiativeIdx"] as! Int? else {
@@ -163,10 +166,11 @@ extension APIClient {
             }
             
             completionHandler(game: newGame, success: true, message: nil)
+            return
         }
     }
     
-    func parseGamePlayerDataArray(playerDataDictionaryArray: [[String: AnyObject]], completionHandler: (game: Game?, success: Bool, message: String?) -> Void) -> [GamePlayerData] {
+    func parseGamePlayerDataArray(playerDataDictionaryArray: [[String: AnyObject]]) -> [GamePlayerData]? {
         var playerDataArray = [GamePlayerData]()
         
         for playerDataDictionary in playerDataDictionaryArray {
@@ -175,158 +179,128 @@ extension APIClient {
             guard let activeDieArray = playerDataDictionary["activeDieArray"] as! [[String: AnyObject]]? else {
                 
                 print("Can't find activeDieArray: \(playerDataDictionary)")
-                    completionHandler(game: nil, success: false, message: "Can't find activeDieArray: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             for activeDie in activeDieArray {
-                let newDie = self.parseDieData(activeDie) { game, success, message in
-                    completionHandler(game: game, success: success, message: message)
+                if let newDie = self.parseDieData(activeDie) {
+                    newPlayerData.activeDice.append(newDie)
+                } else {
+                    print("Can't parse active die data: \(activeDie)")
+                    return nil
                 }
-                newPlayerData.activeDice.append(newDie)
             }
             
             guard let buttonData = playerDataDictionary["button"] as! [String: AnyObject]? else {
-                
                 print("Can't find button: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find button: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             
             guard let artFilename = buttonData["artFilename"] as! String? else {
-                
                 print("Can't find artFilename: \(buttonData)")
-                completionHandler(game: nil, success: false, message: "Can't find artFilename: \(buttonData)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.button.artFilename = artFilename
             
             guard let name = buttonData["name"] as! String? else {
-                
                 print("Can't find name: \(buttonData)")
-                completionHandler(game: nil, success: false, message: "Can't find name: \(buttonData)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.button.name = name
          
             guard let recipe = buttonData["recipe"] as! String? else {
-                
                 print("Can't find recipe: \(buttonData)")
-                completionHandler(game: nil, success: false, message: "Can't find recipe: \(buttonData)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.button.recipe = recipe
             
             guard let canStillWin = playerDataDictionary["canStillWin"] else {
-                
                 print("Can't find canStillWin: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find canStillWin: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             if let canStillWinBool = canStillWin as? Bool {
                 newPlayerData.canStillWin = canStillWinBool
             }
             
             guard let capturedDieArray = playerDataDictionary["capturedDieArray"] as! [[String: AnyObject]]? else {
-                
                 print("Can't find capturedDieArray: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find capturedDieArray: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             for capturedDie in capturedDieArray {
-                let newDie = self.parseDieData(capturedDie) { game, success, message in
-                    completionHandler(game: game, success: success, message: message)
+                if let newDie = self.parseDieData(capturedDie) {                newPlayerData.capturedDice.append(newDie)
+                } else {
+                    print("Can't parse captured die data: \(capturedDie)")
+                    return nil
                 }
-                newPlayerData.capturedDice.append(newDie)
             }
             
             guard let gameScoreArray = playerDataDictionary["gameScoreArray"] as! [String: Int]? else {
-                
                 print("Can't find gameScoreArray: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find gameScoreArray: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             guard let gameScoreD = gameScoreArray["D"] else {
-                
                 print("Can't find D: \(gameScoreArray)")
-                completionHandler(game: nil, success: false, message: "Can't find D: \(gameScoreArray)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.draws = gameScoreD
             
             guard let gameScoreL = gameScoreArray["L"] else {
-                
                 print("Can't find L: \(gameScoreArray)")
-                completionHandler(game: nil, success: false, message: "Can't find L: \(gameScoreArray)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.losses = gameScoreL
             
             guard let gameScoreW = gameScoreArray["W"] else {
                 print("Can't find W: \(gameScoreArray)")
-                completionHandler(game: nil, success: false, message: "Can't find W: \(gameScoreArray)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.wins = gameScoreW
             
             guard let hasDismissedGame = playerDataDictionary["hasDismissedGame"] as! Bool? else {
-                
                 print("Can't find hasDismissedGame: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find hasDismissedGame: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.hasDismissedGame = hasDismissedGame
             
             guard let lastActionTime = playerDataDictionary["lastActionTime"] as! Double? else {
-                
                 print("Can't find lastActionTime: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find lastActionTime: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.lastActionTime = NSDate(timeIntervalSince1970:lastActionTime)
             
             guard let outOfPlayDieArray = playerDataDictionary["outOfPlayDieArray"] as! [[String: AnyObject]]? else {
-                
                 print("Can't find outOfPlayDieArray: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find outOfPlayDieArray: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             for outOfPlayDie in outOfPlayDieArray {
-                let newDie = self.parseDieData(outOfPlayDie) { game, success, message in
-                    completionHandler(game: game, success: success, message: message)
+                if let newDie = self.parseDieData(outOfPlayDie) {
+                    newPlayerData.outOfPlayDice.append(newDie)
+                } else {
+                    print("Can't parse out of play die data: \(outOfPlayDie)")
+                    return nil
                 }
-                newPlayerData.capturedDice.append(newDie)
             }
             
             guard let playerColor = playerDataDictionary["playerColor"] as! String? else {
-                
                 print("Can't find playerColor: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find playerColor: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.color = APIClient.hexStringToUIColor(playerColor)
-
             
             guard let playerId = playerDataDictionary["playerId"] as! Int? else {
-                
                 print("Can't find playerId: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find playerId: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.id = playerId
             
             guard let playerName = playerDataDictionary["playerName"] as! String? else {
-                
                 print("Can't find playerName: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find playerName: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.name = playerName
             
             guard let optRequestArray = playerDataDictionary["optRequestArray"] else {
-                
                 print("Can't find optRequestArray: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find optRequestArray: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             if let optRequests = optRequestArray as? [String:[String]] {
                 for (key, valueArray) in optRequests {
@@ -347,8 +321,7 @@ extension APIClient {
             guard let prevOptValueArray = playerDataDictionary["prevOptValueArray"] else {
                 
                 print("Can't find prevOptValueArray: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find prevOptValueArray: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             print("prevOptValues: \(prevOptValueArray)")
             if let prevOptRequests = prevOptValueArray as? [String:[String]] {
@@ -380,23 +353,21 @@ extension APIClient {
             print("prevOptValues: \(newPlayerData.prevOptValues)")
             
             guard let prevSwingValueArray = playerDataDictionary["prevSwingValueArray"]  else {
-                
                 print("Can't find prevSwingValueArray: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find prevSwingValueArray: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             if let prevSwingRequestDictionary = prevSwingValueArray as? [String: AnyObject] {
-                let newPrevSwingRequests = parseSwingDieData(prevSwingRequestDictionary, completionHandler: { (game, success, message) -> Void in
-                    completionHandler(game: nil, success: false, message: message)
-                })
-                newPlayerData.prevSwingValues = newPrevSwingRequests
+                if let newPrevSwingRequests = parseSwingDieData(prevSwingRequestDictionary) {
+                    newPlayerData.prevSwingValues = newPrevSwingRequests
+                } else {
+                    print("Can't parse prev swing die data: \(prevSwingRequestDictionary)")
+                    return nil
+                }
             }
             
             guard let roundScoreRaw = playerDataDictionary["roundScore"]  else {
-                
                 print("Can't find roundScore: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find roundScore: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             // Games that haven't started have nil as their API roundScore
             if let roundScore = roundScoreRaw as? Int {
@@ -404,10 +375,8 @@ extension APIClient {
             }
             
             guard let sideScoreRaw = playerDataDictionary["sideScore"]  else {
-                
                 print("Can't find sideScore: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find sideScore: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             // Games that haven't started have nil as their API sideScore
             if let sideScore = sideScoreRaw as? Int {
@@ -415,23 +384,21 @@ extension APIClient {
             }
             
             guard let swingRequests = playerDataDictionary["swingRequestArray"]  else {
-                
                 print("Can't find swingRequestArray: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find swingRequestArray: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             if let swingRequestDictionary = swingRequests as? [String: AnyObject] {
-               let newSwingRequests = parseSwingDieData(swingRequestDictionary, completionHandler: { (game, success, message) -> Void in
-                    completionHandler(game: nil, success: false, message: message)
-                })
-                newPlayerData.swingRequests = newSwingRequests
+                if let newSwingRequests = parseSwingDieData(swingRequestDictionary) {
+                    newPlayerData.swingRequests = newSwingRequests
+                } else {
+                    print("Can't parse swing requests: \(swingRequestDictionary)")
+                    return nil
+                }
             }
         
             guard let waitingOnAction = playerDataDictionary["waitingOnAction"] as! Bool? else {
-                
                 print("Can't find waitingOnAction: \(playerDataDictionary)")
-                completionHandler(game: nil, success: false, message: "Can't find waitingOnAction: \(playerDataDictionary)")
-                return playerDataArray
+                return nil
             }
             newPlayerData.waitingOnAction = waitingOnAction
             
@@ -440,7 +407,7 @@ extension APIClient {
         return playerDataArray
     }
     
-    func parseDieData(dieData: [String: AnyObject], completionHandler: (game: Game?, success: Bool, message: String?) -> Void) -> Die {
+    func parseDieData(dieData: [String: AnyObject]) -> Die? {
         var newDie = Die()
         var isTwinDie = false
         
@@ -449,21 +416,18 @@ extension APIClient {
         /* Required parameters */
         guard let recipe = dieData["recipe"] as! String? else {
             print("Can't find recipe: \(dieData)")
-            completionHandler(game: nil, success: false, message: "Can't find recipe: \(dieData)")
-            return newDie
+            return nil
         }
         newDie.recipe = recipe
         
         guard let properties = dieData["properties"] as! [String]? else {
             print("Can't find properties: \(dieData)")
-            completionHandler(game: nil, success: false, message: "Can't find properties: \(dieData)")
-            return newDie
+            return nil
         }
         for property in properties {
             guard let validProperty = Flag(rawValue: property) else {
                 print("Invalid die flag: \(property) in  \(dieData)")
-                completionHandler(game: nil, success: false, message: "Invalid die flag: \(property) in  \(dieData)")
-                return newDie
+                return nil
             }
             if validProperty == Flag.Twin {
                 isTwinDie = true
@@ -474,8 +438,7 @@ extension APIClient {
         /* Optional values */
         guard let sidesRaw = dieData["sides"] else {
             print("Can't find sides: \(dieData)")
-            completionHandler(game: nil, success: false, message: "Can't find sides: \(dieData)")
-            return newDie
+            return nil
         }
         // Swing die with unchosen values won't have a number of sides
         if let sides = sidesRaw as? Int {
@@ -518,7 +481,7 @@ extension APIClient {
         return newDie
     }
     
-    func parseSwingDieData(dieDataDictionary: [String: AnyObject], completionHandler: (game: Game?, success: Bool, message: String?) -> Void) -> [DieSwing] {
+    func parseSwingDieData(dieDataDictionary: [String: AnyObject]) -> [DieSwing]? {
         var newDice = [DieSwing]()
         
         for (name, values) in dieDataDictionary {
@@ -672,6 +635,7 @@ extension APIClient {
             }
             
             completionHandler(buttons: buttons, success: true, message: nil)
+            return
         }
     }
     
@@ -815,6 +779,7 @@ extension APIClient {
             }
             
             completionHandler(buttonSets: buttonSets, success: true, message: nil)
+            return
         }
     }
 
@@ -836,6 +801,7 @@ extension APIClient {
             // Parse dictionary of arrays into array of games
             self.parseGameSummaryArrays(result) { games, success, message in
                 completionHandler(gameSummaries: games, success: success, message: message)
+                return
             }
         }
     }
@@ -857,6 +823,7 @@ extension APIClient {
             // Parse dictionary of arrays into array of games
             self.parseGameSummaryArrays(result) { games, success, message in
                 completionHandler(gameSummaries: games, success: success, message: message)
+                return
             }
         }
     }
@@ -878,6 +845,7 @@ extension APIClient {
             // Parse dictionary of arrays into array of games
             self.parseGameSummaryArrays(result) { games, success, message in
                 completionHandler(gameSummaries: games, success: success, message: message)
+                return
             }
         }
     }
@@ -899,6 +867,7 @@ extension APIClient {
             // Parse dictionary of arrays into array of games
             self.parseGameSummaryArrays(result) { games, success, message in
                 completionHandler(gameSummaries: games, success: success, message: message)
+                return
             }
         }
     }
@@ -1080,6 +1049,7 @@ extension APIClient {
         
         //print(games)
         completionHandler(gameSummaries: games, success: true, message: nil)
+        return
     }
     
     // MARK: - Dismissing
@@ -1091,6 +1061,7 @@ extension APIClient {
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
             completionHandler(success: success, message: message)
+            return
         }
     }
  
@@ -1107,12 +1078,16 @@ extension APIClient {
             // If this call succeeds, we must be logged in. We don't care about the actual values returned - only the success.
             
             if success {
-                print("Already logged in!")
+                debugPrint("Already logged in!")
+                debugPrint(result)
+                debugPrint(message)
                 completionHandler(success: true, message: message)
+                return
             } else {
-                print("Logging in now")
+                debugPrint("Logging in now")
                 self.login(username, password: password) { success, message in
                     completionHandler(success: success, message: message)
+                    return
                 }
             }
         }
@@ -1120,7 +1095,7 @@ extension APIClient {
 
     // Note: More polite to only log in when necessary, max of 6 clients from one player can be logged in at once. Use loginIfNeeded instead of this.
     func login(username: String, password: String, completionHandler: (success: Bool, message: String?) -> Void) {
-        
+       
         let jsonBody : [String:String] = [
             "type": "login",
             "username": username,
@@ -1130,7 +1105,7 @@ extension APIClient {
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
             // No result expected for login
             completionHandler(success: success, message: message)
-            
+            return
         }
     }
 
