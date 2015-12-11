@@ -15,6 +15,7 @@ class GameTableViewController: UITableViewController {
     
     @IBOutlet var gameTableView: UITableView!
     let client = APIClient.sharedInstance()
+    
     var games: [GameSummary] = [GameSummary]()
     var newGames: [GameSummary] = [GameSummary]()
     var completedGames: [GameSummary] = [GameSummary]()

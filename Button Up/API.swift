@@ -25,7 +25,7 @@ class APIClient: NSObject {
     }
     
     func request(parameters: [String:String], completionHandler: (result: AnyObject?, success: Bool, message: String?) -> Void) -> NSURLSessionDataTask {
-        debugPrint("APIClient request: \(parameters)")
+        //debugPrint("APIClient request: \(parameters)")
         
         /* 2/3. Build the URL and configure the request */
         let url = NSURL(string: BaseURL)!

@@ -510,6 +510,71 @@
             </objects>
             <point key="canvasLocation" x="381" y="999"/>
         </scene>
+        <!--Open Games ViewController-->
+        <scene sceneID="Rjq-F5-eOm">
+            <objects>
+                <tableViewController storyboardIdentifier="OpenGamesViewController" title="Open Games ViewController" id="Hy2-kO-iGd" customClass="OpenGamesTableViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WPP-Xz-eKa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="OpenGamesTableCell" textLabel="7EQ-QV-2PR" detailTextLabel="5ln-zr-dv7" style="IBUITableViewCellStyleSubtitle" id="Ao7-Qe-YSK">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ao7-Qe-YSK" id="cdF-Vs-qHD">
+                                    <rect key="frame" x="0.0" y="0.0" width="533" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7EQ-QV-2PR">
+                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5ln-zr-dv7">
+                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Hy2-kO-iGd" id="IS7-67-XdL"/>
+                            <outlet property="delegate" destination="Hy2-kO-iGd" id="rz2-6G-gzv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Open Games" id="TuR-Di-EyS" userLabel="Open Games"/>
+                    <connections>
+                        <outlet property="gameTableView" destination="WPP-Xz-eKa" id="nyP-He-cj3"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5yb-eC-cTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071" y="1707"/>
+        </scene>
+        <!--Open Games-->
+        <scene sceneID="bRY-Mf-Z5K">
+            <objects>
+                <navigationController storyboardIdentifier="OpenGamesNavigationController" title="Open Games" id="nSz-FU-3Bw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Open Games" image="dice-open-tabbar" id="egi-Vs-wNV"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fId-dB-Ho9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Hy2-kO-iGd" kind="relationship" relationship="rootViewController" id="Ed1-Zj-PNq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r2p-yo-O2X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="378" y="1707"/>
+        </scene>
         <!--Button Sets-->
         <scene sceneID="Bkt-Pb-fLv">
             <objects>
@@ -557,7 +622,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tf-s4-VMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071" y="1723"/>
+            <point key="canvasLocation" x="1060" y="2443"/>
         </scene>
         <!--Button Set-->
         <scene sceneID="vza-vx-bWd">
@@ -608,7 +673,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pzk-JS-uAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1776" y="1723"/>
+            <point key="canvasLocation" x="1765" y="2443"/>
         </scene>
         <!--Button Detail-->
         <scene sceneID="jeN-3k-jSK">
@@ -706,7 +771,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKP-FK-AZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2474" y="1723"/>
+            <point key="canvasLocation" x="2463" y="2443"/>
         </scene>
         <!--Button Sets-->
         <scene sceneID="RNs-Qv-Q2H">
@@ -723,7 +788,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbJ-J3-hhU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="381" y="1723"/>
+            <point key="canvasLocation" x="370" y="2443"/>
         </scene>
         <!--Settings-->
         <scene sceneID="vog-0Z-dck">
@@ -800,7 +865,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDn-bS-ecj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="381" y="2463"/>
+            <point key="canvasLocation" x="370" y="3183"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5bo-aF-I6E">
@@ -814,6 +879,7 @@
                     <connections>
                         <segue destination="XKs-ZK-lZs" kind="relationship" relationship="viewControllers" id="ncS-ft-Fdv"/>
                         <segue destination="pLc-DE-i8H" kind="relationship" relationship="viewControllers" id="oN9-e1-wjq"/>
+                        <segue destination="nSz-FU-3Bw" kind="relationship" relationship="viewControllers" id="ifX-pS-WZf"/>
                         <segue destination="Cxf-xh-Qf9" kind="relationship" relationship="viewControllers" id="5hB-BD-OT9"/>
                         <segue destination="kF5-dj-Sna" kind="relationship" relationship="viewControllers" id="M4X-hH-ovJ"/>
                     </connections>
@@ -1412,6 +1478,7 @@
     <resources>
         <image name="BMdefaultRound" width="150" height="150"/>
         <image name="button-sets-tabbar" width="32" height="32"/>
+        <image name="dice-open-tabbar" width="32" height="32"/>
         <image name="dice-tabbar" width="32" height="32"/>
         <image name="menu-tabbar" width="32" height="32"/>
         <image name="settings-tabbar" width="32" height="32"/>

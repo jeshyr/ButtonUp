@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E12550D91C1A6299009CAFD5 /* GameAdjustFireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12550D81C1A6299009CAFD5 /* GameAdjustFireViewController.swift */; };
+		E12550DB1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12550DA1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift */; };
 		E135F1211C19126C00542FFA /* GameRejectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E135F1201C19126B00542FFA /* GameRejectedViewController.swift */; };
 		E135F1231C19831600542FFA /* GameCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E135F1221C19831600542FFA /* GameCompletedViewController.swift */; };
 		E13634821C09536D00B6126F /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13634811C09536D00B6126F /* Flag.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		E12550D81C1A6299009CAFD5 /* GameAdjustFireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAdjustFireViewController.swift; sourceTree = "<group>"; };
+		E12550DA1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGamesTableViewController.swift; sourceTree = "<group>"; };
 		E135F1201C19126B00542FFA /* GameRejectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRejectedViewController.swift; sourceTree = "<group>"; };
 		E135F1221C19831600542FFA /* GameCompletedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCompletedViewController.swift; sourceTree = "<group>"; };
 		E13634811C09536D00B6126F /* Flag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				E135F1201C19126B00542FFA /* GameRejectedViewController.swift */,
 				E18DA02C1C17051700CA0CFA /* GameMessageOnlyViewController.swift */,
 				E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */,
+				E12550DA1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift */,
 				E1D00DB51BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift */,
 				E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */,
 				E1D00DB31BF728D0009FF0A8 /* ButtonDetailViewController.swift */,
@@ -381,6 +384,7 @@
 				E1F5C9BB1BF884F50052A119 /* Die.swift in Sources */,
 				E1D00DB61BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift in Sources */,
 				E167C37A1BFAACC700DE58C2 /* DieButton.swift in Sources */,
+				E12550DB1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift in Sources */,
 				E18DA02D1C17051700CA0CFA /* GameMessageOnlyViewController.swift in Sources */,
 				E1D00DBA1BF734CB009FF0A8 /* ButtonSet.swift in Sources */,
 				E1572CFB1BF57559006E39DD /* AppDelegate.swift in Sources */,

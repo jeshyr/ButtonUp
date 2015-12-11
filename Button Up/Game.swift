@@ -84,7 +84,7 @@ struct GameLogMessage {
 }
 
 struct GameSummary {
-    // These are always about games belonging to the logged in player, so "my" and "oponent" on the variables
+    // These are almost always about games belonging to the logged in player, so "my" and "opponent" on the variables. For open games, "opponent" is the person proprosing the game and "my" is the one I'd play if I accepted the game.
     
     // Object for a single game
     var description: String = ""
@@ -105,8 +105,9 @@ struct GameSummary {
     var opponentColor = UIColor()
     
     var status: GameStatus = GameStatus.BROKEN
-    
 }
+
+
 
 enum GameStatus: String {
     case OPEN

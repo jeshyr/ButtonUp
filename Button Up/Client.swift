@@ -11,6 +11,7 @@ import UIKit
 
 extension APIClient {
     
+    // MARK: - Load a single game
     func loadGameData(gameId: Int, completionHandler: (game: Game?, success: Bool, message: String?) -> Void) {
         let jsonBody: [String: String] = [
             "type": "loadGameData",
@@ -783,7 +784,7 @@ extension APIClient {
         }
     }
 
-    // MARK: - Game summaries
+    // MARK: - Load game summaries
     func loadNewGames(completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
         let jsonBody: [String: String] = [
             "type": "loadNewGames"
@@ -871,7 +872,7 @@ extension APIClient {
             }
         }
     }
-
+    
     func parseGameSummaryArrays(result: AnyObject?, completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
     
         // Parse dictionary of arrays into array of games
@@ -1050,6 +1051,110 @@ extension APIClient {
         //print(games)
         completionHandler(gameSummaries: games, success: true, message: nil)
         return
+    }
+
+    // MARK: - Load Open Games
+    
+    func loadOpenGames(completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
+        let jsonBody: [String: String] = [
+            "type": "loadOpenGames"
+        ]
+        
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
+            print("in loadOpenGames completion handler")
+            
+            guard success else {
+                print("error: \(message)")
+                completionHandler(gameSummaries: nil, success: false, message: message)
+                return
+            }
+            
+            // Parse dictionary of arrays into array of games
+            self.parseOpenGameArrays(result) { games, success, message in
+                completionHandler(gameSummaries: games, success: success, message: message)
+                return
+            }
+        }
+    }
+    
+    func parseOpenGameArrays(result: AnyObject?, completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
+        
+        var games: [GameSummary] = [GameSummary]()
+        
+        guard let openGameArray = result!["games"] as! [[String: AnyObject]]? else {
+            print("Can't parse openGameArrays")
+            completionHandler(gameSummaries: nil, success: false, message: "Can't parse openGameArrays: \(result)")
+            return
+        }
+        for openGameData in openGameArray {
+            var newGame = GameSummary()
+            
+//            print(openGameData)
+            
+            guard let challengerButton = openGameData["challengerButton"] as? String else {
+                print("Can't find challengerButton in open games \(openGameData)")
+                completionHandler(gameSummaries: nil, success: false, message: "Can't find challengerButton in open games \(openGameData)")
+                return
+            }
+            newGame.opponentButton = challengerButton
+            
+            guard let challengerColor = openGameData["challengerColor"] as? String else {
+                print("Can't find challengerColor in open games \(openGameData)")
+                completionHandler(gameSummaries: nil, success: false, message: "Can't find challengerColor in open games \(openGameData)")
+                return
+            }
+            newGame.opponentColor = APIClient.hexStringToUIColor(challengerColor)
+            
+            
+            guard let challengerId = openGameData["challengerId"] as? Int else {
+                print("Can't find challengerId in open games \(openGameData)")
+                completionHandler(gameSummaries: nil, success: false, message: "Can't find challengerId in open games \(openGameData)")
+                return
+            }
+            newGame.opponentId = challengerId
+            
+            guard let challengerName = openGameData["challengerName"] as? String else {
+                print("Can't find challengerName in open games \(openGameData)")
+                completionHandler(gameSummaries: nil, success: false, message: "Can't find challengerName in open games \(openGameData)")
+                return
+            }
+            newGame.opponentName = challengerName
+            
+            guard let description = openGameData["description"] as? String else {
+                print("Can't find description in open games \(openGameData)")
+                completionHandler(gameSummaries: nil, success: false, message: "Can't find description in open games \(openGameData)")
+                return
+            }
+            newGame.description = description
+            
+            guard let gameId = openGameData["gameId"] as? Int else {
+                print("Can't find gameId in open games \(openGameData)")
+                completionHandler(gameSummaries: nil, success: false, message: "Can't find gameId in open games \(openGameData)")
+                return
+            }
+            newGame.id = gameId
+
+            guard let targetWins = openGameData["gameId"] as? Int else {
+                print("Can't find targetWins in open games \(openGameData)")
+                completionHandler(gameSummaries: nil, success: false, message: "Can't find targetWins in open games \(openGameData)")
+                return
+            }
+            newGame.targetWins = targetWins
+
+            guard let victimButton = openGameData["victimButton"] as? String else {
+                print("Can't find victimButton in open games \(openGameData)")
+                completionHandler(gameSummaries: nil, success: false, message: "Can't find victimButton in open games \(openGameData)")
+                return
+            }
+            newGame.myButton = victimButton
+         
+            games.append(newGame)
+        }
+        
+        //print(games)
+        completionHandler(gameSummaries: games, success: true, message: nil)
+        return
+        
     }
     
     // MARK: - Dismissing
