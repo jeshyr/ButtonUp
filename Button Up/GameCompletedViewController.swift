@@ -11,6 +11,8 @@ import UIKit
 class GameCompletedViewController: UIViewController {
 
     // From seague
+    var gameSummary: GameSummary?
+    
     var game: Game?
 
     let client = APIClient.sharedInstance()
@@ -46,8 +48,14 @@ class GameCompletedViewController: UIViewController {
         
         //self.navigationItem.backBarButtonItem!.title = "Back"
         
-        displayGame()
-        
+        client.tryLoadingGameData(gameSummary!, loadAttempts: 0) { game, success, message in
+            if success {
+                self.game = game
+                self.displayGame()
+            } else {
+                print(message)
+            }
+        }
     }
 
     func displayGame() {

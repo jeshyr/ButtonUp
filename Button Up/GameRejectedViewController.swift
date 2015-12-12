@@ -11,6 +11,8 @@ import UIKit
 class GameRejectedViewController: UIViewController {
     
     // From seague
+    var gameSummary: GameSummary?
+    
     var game: Game?
     
     let client = APIClient.sharedInstance()
@@ -34,7 +36,7 @@ class GameRejectedViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        print(game)
+        print(gameSummary)
 
         appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         
@@ -44,26 +46,22 @@ class GameRejectedViewController: UIViewController {
         
         //self.navigationItem.backBarButtonItem!.title = "Back"
         
-        displayGame()
+        client.tryLoadingGameData(gameSummary!, loadAttempts: 0) { game, success, message in
+            if success {
+                self.game = game
+                self.displayGame()
+            } else {
+                print(message)
+            }
+        }
         
     }
     
     func displayGame() {
         let game = self.game
         
-        // p1 (top of screen) should always be "our" user if possible
-        let username = self.appDelegate.appSettings.username
-        let array0Name = (game?.playerData[0].name)!
-        var p1: GamePlayerData?
-        var p2: GamePlayerData?
-        
-        if username.caseInsensitiveCompare(array0Name) == NSComparisonResult.OrderedSame {
-            p1 = game?.playerData[0]
-            p2 = game?.playerData[1]
-        } else {
-            p1 = game?.playerData[1]
-            p2 = game?.playerData[0]
-        }
+        let p1 = game?.playerData[0]
+        let p2 = game?.playerData[1]
         
         // Button Images
         APIClient.sharedInstance().getImageData(p1?.button.artFilename, completionHandler: { (imageData, success, message) in
@@ -94,8 +92,6 @@ class GameRejectedViewController: UIViewController {
         })
         
         // Text details of game
-
-
         dispatch_async(dispatch_get_main_queue()) {
 
             self.p1View.backgroundColor = p1?.color

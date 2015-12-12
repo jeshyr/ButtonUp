@@ -11,6 +11,8 @@ import UIKit
 class GameAdjustFireViewController: UIViewController {
     
     // From seague
+    var gameSummary: GameSummary?
+    
     var game: Game?
     
     let client = APIClient.sharedInstance()
@@ -54,8 +56,14 @@ class GameAdjustFireViewController: UIViewController {
         
         //self.navigationItem.backBarButtonItem!.title = "Back"
         
-        displayGame()
-        
+        client.tryLoadingGameData(gameSummary!, loadAttempts: 0) { game, success, message in
+            if success {
+                self.game = game
+                self.displayGame()
+            } else {
+                print(message)
+            }
+        }
     }
     
     //MARK: - Game Display
@@ -63,27 +71,10 @@ class GameAdjustFireViewController: UIViewController {
     func displayGame() {
         let game = self.game
         
-        // p1 (top of screen) should always be "our" user if possible
-        let username = self.appDelegate.appSettings.username
-        let array0Name = (game?.playerData[0].name)!
-        var activePlayerIndex: Int? = nil
-        var p1: GamePlayerData?
-        var p2: GamePlayerData?
-        
-        if username.caseInsensitiveCompare(array0Name) == NSComparisonResult.OrderedSame {
-            p1 = game?.playerData[0]
-            p2 = game?.playerData[1]
-            activePlayerIndex = game!.activePlayerIndex
-        } else {
-            p1 = game?.playerData[1]
-            p2 = game?.playerData[0]
-            if game!.activePlayerIndex == 0 { // Reverse these
-                activePlayerIndex = 1
-            } else if game!.activePlayerIndex == 1 {
-                activePlayerIndex = 0
-            }
-        }
-        
+        let p1 = game?.playerData[0]
+        let p2 = game?.playerData[1]
+        let activePlayerIndex = game!.activePlayerIndex
+
         // Button Images
         APIClient.sharedInstance().getImageData(p1?.button.artFilename, completionHandler: { (imageData, success, message) in
             if success {
@@ -180,7 +171,7 @@ class GameAdjustFireViewController: UIViewController {
     }
     
     func createDieButtonFromDie(die: Die) -> DieView {
-        let newButton = die.asView()
+        let newButton = die.asView(true)
         newButton.dieValue.addTarget(self, action: "dieTouchUp:", forControlEvents: .TouchUpInside)
         return newButton
     }

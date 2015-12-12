@@ -165,47 +165,29 @@ class GameTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var game = GameSummary()
-
         if indexPath.section == 0 {
             if indexPath.row < games.count {
-                game = games[indexPath.row]
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
-                controller.gameSummary = game
-                self.navigationController!.pushViewController(controller, animated: false)
-                
+                loadGameViewController(games[indexPath.row])
             } else {
                 return
             }
             
         } else if indexPath.section == 1 {
             if indexPath.row < newGames.count {
-                game = newGames[indexPath.row]
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
-                controller.gameSummary = game
-                self.navigationController!.pushViewController(controller, animated: false)
-                
+                loadGameViewController(newGames[indexPath.row])
             } else {
                 return
             }
             
         } else if indexPath.section == 2 {
             if indexPath.row < rejectedGames.count {
-                game = rejectedGames[indexPath.row]
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
-                controller.gameSummary = game
-                self.navigationController!.pushViewController(controller, animated: false)
-                
+                loadGameViewController(rejectedGames[indexPath.row])
             } else {
                 return
             }
         } else {
             if indexPath.row < completedGames.count {
-                game = completedGames[indexPath.row]
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameLoadingViewController") as! GameLoadingViewController
-                controller.gameSummary = game
-                self.navigationController!.pushViewController(controller, animated: false)
-                
+                loadGameViewController(completedGames[indexPath.row])
             } else {
                 return
             }
@@ -243,5 +225,76 @@ class GameTableViewController: UITableViewController {
             return max(completedGames.count, 1)
         }
     }
+    
+    func loadGameViewController(gameSummary: GameSummary) {
+        var controller: UIViewController
+        switch gameSummary.state {
+        case .START_GAME:
+            // The game hasn't started yet
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The game has not started yet."
+            
+        case .CHOOSE_JOIN_GAME:
+            // Waiting for opponent to join game
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(gameSummary.state) and that's not implemented, sorry!"
+            print(gameSummary)
+            
+        case .SPECIFY_DICE:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(gameSummary.state) and that's not implemented, sorry!"
+            print(gameSummary)
+            
+        case .CHOOSE_AUXILIARY_DICE:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(gameSummary.state) and that's not implemented, sorry!"
+            print(gameSummary)
+            
+        case .CHOOSE_RESERVE_DICE:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(gameSummary.state) and that's not implemented, sorry!"
+            print(gameSummary)
+            
+        case .REACT_TO_INITIATIVE:
+            // Waiting for someone to move
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(gameSummary.state) and that's not implemented, sorry!"
+            print(gameSummary)
+            
+            
+        case .START_TURN:
+            // Waiting for someone to move
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameDetailViewController") as! GameDetailViewController
+            (controller as! GameDetailViewController).gameSummary = gameSummary
+            
+        case .ADJUST_FIRE_DICE:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameAdjustFireViewController") as! GameAdjustFireViewController
+            (controller as! GameAdjustFireViewController).gameSummary = gameSummary
+            
+        case .END_GAME:
+            // Games which are finished but not dismissed
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameCompletedViewController") as! GameCompletedViewController
+            (controller as! GameCompletedViewController).gameSummary = gameSummary
+            
+        case .REJECTED:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameRejectedViewController") as! GameRejectedViewController
+            (controller as! GameRejectedViewController).gameSummary = gameSummary
+            
+        case .INVALID:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "The current game state is \(gameSummary.state), sorry!"
+            
+        default:
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
+            (controller as! GameMessageOnlyViewController).message = "There's something wrong with this game - it has an unknown game state."
+            print(gameSummary)
+        }
+        
+        let nc = self.navigationController!
+        dispatch_async(dispatch_get_main_queue()) {
+            nc.pushViewController(controller, animated: true)
+        }
+    }
+
     
 }

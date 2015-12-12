@@ -12,6 +12,33 @@ import UIKit
 extension APIClient {
     
     // MARK: - Load a single game
+    func tryLoadingGameData(gameSummary: GameSummary, var loadAttempts: Int, completionHandler: (game: Game?, success: Bool, message: String?) -> Void) {
+        print("Loading game \(gameSummary.id) ... attempt #\(loadAttempts)")
+        
+        self.loadGameData(gameSummary.id) { game, success, error in
+            if success {
+                if let game = game {
+                    completionHandler(game: game, success: true, message: nil)
+                } else {
+                    print("Unknown error loading game data on attempt #\(loadAttempts)")
+                    completionHandler(game: nil, success: false, message: "Unknown error loading game data on attempt #\(loadAttempts)")
+                }
+                
+            } else {
+                print("Error loading game data: \(error), attempt #\(loadAttempts)")
+                loadAttempts += 1
+                if loadAttempts < 4 {
+                    self.tryLoadingGameData(gameSummary, loadAttempts: loadAttempts) { game, success, message in
+                        completionHandler(game: game, success: success, message: message)
+                    }
+                } else {
+                    print("Failed to load game after \(loadAttempts) attempts: giving up.")
+                    completionHandler(game: nil, success: false, message: "Failed to load game after \(loadAttempts) attempts: giving up. Error: \(error)")
+                }
+            }
+        }
+    }
+    
     func loadGameData(gameId: Int, completionHandler: (game: Game?, success: Bool, message: String?) -> Void) {
         let jsonBody: [String: String] = [
             "type": "loadGameData",

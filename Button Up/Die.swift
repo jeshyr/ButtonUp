@@ -135,7 +135,7 @@ struct Die : CustomStringConvertible {
         return "\(skillStringPrefix)(\(core))\(skillStringPostfix)"
     }
     
-    func asView() -> DieView {
+    func asView(active: Bool) -> DieView {
         let newButton = DieView()
         if self.properties.contains(Flag.Twin) {
             if !self.subDice.isEmpty {
@@ -148,8 +148,14 @@ struct Die : CustomStringConvertible {
         }
         
         newButton.dieLabel.text = self.description
-        if self.properties.contains(Flag.IsAttacker) || self.properties.contains(Flag.IsAttackTarget) {
-            newButton.dieValue.newBackingColor(UIColor(red: 0.9, green: 0.15, blue: 0.15, alpha: 1.0))
+        if active {
+            // Active fire-adjust dice are red
+            if self.properties.contains(Flag.IsAttacker) || self.properties.contains(Flag.IsAttackTarget) {
+                newButton.dieValue.newBackingColor(UIColor(red: 0.9, green: 0.15, blue: 0.15, alpha: 1.0))
+            }
+        } else {
+            // Inactive dice are grey
+            newButton.dieValue.newBackingColor(UIColor.lightGrayColor())
         }
         return newButton
     }

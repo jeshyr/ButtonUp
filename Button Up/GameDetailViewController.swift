@@ -12,6 +12,8 @@ import UIKit
 class GameDetailViewController: UIViewController {
     
     // Passed in from segue
+    var gameSummary: GameSummary?
+    
     var game: Game?
     
     let client = APIClient.sharedInstance()
@@ -55,8 +57,14 @@ class GameDetailViewController: UIViewController {
         
         //self.navigationItem.backBarButtonItem!.title = "Back"
         
-        displayGame()
-        
+        client.tryLoadingGameData(gameSummary!, loadAttempts: 0) { game, success, message in
+            if success {
+                self.game = game
+                self.displayGame()
+            } else {
+                print(message)
+            }
+        }
     }
 
     //MARK: - Game Display
@@ -150,10 +158,10 @@ class GameDetailViewController: UIViewController {
         dispatch_async(dispatch_get_main_queue()) {
             // Dice - if we create these outside the main thread they don't update properly
             for die in (p1?.activeDice)! {
-                self.p1DieButtons.append(self.createDieButtonFromDie(die))
+                self.p1DieButtons.append(self.createDieButtonFromDie(die, active: (activePlayerIndex == 0)))
             }
             for die in (p2?.activeDice)! {
-                self.p2DieButtons.append(self.createDieButtonFromDie(die))
+                self.p2DieButtons.append(self.createDieButtonFromDie(die, active: (activePlayerIndex == 0)))
             }
             
             self.p1View.backgroundColor = p1?.color
@@ -192,8 +200,8 @@ class GameDetailViewController: UIViewController {
         }
     }
     
-    func createDieButtonFromDie(die: Die) -> DieView {
-        let newButton = die.asView()
+    func createDieButtonFromDie(die: Die, active: Bool) -> DieView {
+        let newButton = die.asView(active)
         newButton.dieValue.addTarget(self, action: "dieTouchUp:", forControlEvents: .TouchUpInside)
         return newButton
     }
