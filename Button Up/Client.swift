@@ -669,43 +669,43 @@ extension APIClient {
         }
     }
     
-    // Both Games and Buttons have Skills
-    func parseSkills(dieSkillData: AnyObject?) -> [Skill] {
-        var newDieSkills = [Skill]()
+    // Games and Buttons and Die all have Skills
+    func parseSkills(skillData: AnyObject?) -> [Skill] {
+        var newSkills = [Skill]()
         
-        if let dieSkillArray = dieSkillData as? [String] {
-            // Die skill array - die skill names only
-            for dieSkill in dieSkillArray {
-                guard let newDieSkill = Skill(skill: dieSkill) else {
-                    print("Found unknown die name: \(dieSkill)")
-                    return newDieSkills
+        if let skillArray = skillData as? [String] {
+            // skill array - skill names only
+            for skill in skillArray {
+                guard let newDieSkill = Skill(skill: skill) else {
+                    print("Found unknown skill name: \(skill)")
+                    return newSkills
                 }
-                newDieSkills.append(newDieSkill)
+                newSkills.append(newDieSkill)
             }
-        } else if let dieSkillsDictionaries = dieSkillData as? [String: AnyObject] {
-            // Die skill dictionary - full die skill data
-            for (dieSkillName, skillDictionary) in dieSkillsDictionaries {
-                guard var newDieSkill = Skill(skill: dieSkillName) else {
-                    print("Found unknown die name: \(dieSkillName)")
-                    return newDieSkills
+        } else if let skillsDictionaries = skillData as? [String: AnyObject] {
+            // skill dictionary - full skill data
+            for (skillName, skillDictionary) in skillsDictionaries {
+                guard var newSkill = Skill(skill: skillName) else {
+                    print("Found unknown skill name: \(skillName)")
+                    return newSkills
                 }
                 
                 if let description = skillDictionary["description"] as? String {
-                    newDieSkill.text = description
+                    newSkill.text = description
                 }
                 
                 if let interactions = skillDictionary["interacts"] as? [String: String] {
                     print("Interaction: \(interactions)")
-                    newDieSkill.interactions = interactions
+                    newSkill.interactions = interactions
                 }
                 
-                newDieSkills.append(newDieSkill)
+                newSkills.append(newSkill)
                 
             }
         } else {
             // No die skill - return empty array
         }
-        return newDieSkills
+        return newSkills
     }
     
     func parseButtonDieTypes(dieTypeData: AnyObject) -> [ButtonDieTypes] {

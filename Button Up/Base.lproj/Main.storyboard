@@ -200,7 +200,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z60-5w-QGk">
                                                 <rect key="frame" x="102" y="0.0" width="377" height="172"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-Lr-xJH">
+                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEx-Lr-xJH">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="172"/>
                                                         <state key="normal" image="BMdefaultRound"/>
                                                         <connections>
@@ -261,7 +261,7 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LDh-Te-XYM">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LDh-Te-XYM">
                                                 <rect key="frame" x="275" y="182" width="30" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcG-yh-04E" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
@@ -290,7 +290,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BVN-jG-7AF">
                                         <rect key="frame" x="10" y="10" width="580" height="242"/>
                                         <subviews>
-                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iqd-PE-Jti">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iqd-PE-Jti">
                                                 <rect key="frame" x="275" y="0.0" width="30" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krq-jf-fDf" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
@@ -357,7 +357,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="211" height="150"/>
                                                         </variation>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9K-mL-lZW">
+                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9K-mL-lZW">
                                                         <rect key="frame" x="234" y="0.0" width="150" height="172"/>
                                                         <state key="normal" image="BMdefaultRound"/>
                                                         <connections>
@@ -530,14 +530,14 @@
                                             <rect key="frame" x="15" y="5" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5ln-zr-dv7">
                                             <rect key="frame" x="15" y="25" width="41" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
