@@ -1,0 +1,1 @@
+This is a first pass effort at making a client for the Button Men online dice game at http://buttonweavers.com/
