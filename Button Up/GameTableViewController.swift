@@ -112,7 +112,6 @@ class GameTableViewController: UITableViewController {
                 cell.accessoryType = UITableViewCellAccessoryType.None
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
             }
-            print("New game state: \(game.state)")
 
         } else if indexPath.section == 1 {
             if indexPath.row < newGames.count {
@@ -126,13 +125,11 @@ class GameTableViewController: UITableViewController {
                 } else {
                     cell.backgroundColor = game.opponentColor
                 }
-                print("New game state: \(game.state)")
             } else {
                 cell.textLabel!.text = "(none)"
                 cell.detailTextLabel!.text = ""
                 cell.accessoryType = UITableViewCellAccessoryType.None
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
-                print("Old game state: \(game.state)")
 
             }
         } else if indexPath.section == 2 {

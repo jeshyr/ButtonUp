@@ -20,7 +20,7 @@ struct Game {
     var round: Int = 0
     var timestamp = NSDate()
 
-    var activePlayerIndex: Int? // Nill in inactive games
+    var activePlayerIndex: Int? // Nil in inactive games
     var currentPlayerIndex = 0
     var actionLog = [GameLogMessage]()
     var chatEditable = NSDate() // TODO is this a timestamp?

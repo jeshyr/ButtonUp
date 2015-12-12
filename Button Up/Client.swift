@@ -166,6 +166,33 @@ extension APIClient {
                 newGame.validAttacks.append(validValidAttackType)
             }
             
+            // Sort the array so that if our user is one of the players they are always the first member. This simplifies display code.
+            let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+            let username = appDelegate!.appSettings.username
+            
+            if username.caseInsensitiveCompare(newGame.playerData[1].name) == NSComparisonResult.OrderedSame {
+                debugPrint("Flipping array")
+                // Our user is second in the array - flip it (always two players)
+                newGame.playerData = newGame.playerData.reverse()
+                
+                // Then reverse all the things that point to the playerData array
+                if newGame.activePlayerIndex == 1 {
+                    newGame.activePlayerIndex = 0
+                } else if newGame.activePlayerIndex == 0 {
+                    newGame.activePlayerIndex = 1
+                }
+                if newGame.currentPlayerIndex == 1 {
+                    newGame.currentPlayerIndex = 0
+                } else if newGame.currentPlayerIndex == 0 {
+                    newGame.currentPlayerIndex = 1
+                }
+                if newGame.playerWithInitiativeIndex == 1 {
+                    newGame.playerWithInitiativeIndex = 0
+                } else if newGame.playerWithInitiativeIndex == 0 {
+                    newGame.playerWithInitiativeIndex = 1
+                }
+            }
+            
             completionHandler(game: newGame, success: true, message: nil)
             return
         }
@@ -405,7 +432,9 @@ extension APIClient {
             
             playerDataArray.append(newPlayerData)
         }
+        
         return playerDataArray
+
     }
     
     func parseDieData(dieData: [String: AnyObject]) -> Die? {

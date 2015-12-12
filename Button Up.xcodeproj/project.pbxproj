@@ -43,7 +43,6 @@
 		E1D00DBE1BF74D88009FF0A8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DBD1BF74D88009FF0A8 /* Button.swift */; };
 		E1D3C9F11C008153001C3150 /* DieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D3C9F01C008153001C3150 /* DieView.xib */; };
 		E1D3C9F31C00817C001C3150 /* DieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D3C9F21C00817C001C3150 /* DieView.swift */; };
-		E1E9094B1C1B9BA300569835 /* readme.md in Sources */ = {isa = PBXBuildFile; fileRef = E1E9094A1C1B9BA300569835 /* readme.md */; };
 		E1F5C9B91BF82C660052A119 /* GameHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */; };
 		E1F5C9BB1BF884F50052A119 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9BA1BF884F50052A119 /* Die.swift */; };
 		E1F5C9BD1BF88BF10052A119 /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9BC1BF88BF10052A119 /* Attack.swift */; };
@@ -107,7 +106,6 @@
 		E1D00DBD1BF74D88009FF0A8 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		E1D3C9F01C008153001C3150 /* DieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DieView.xib; sourceTree = "<group>"; };
 		E1D3C9F21C00817C001C3150 /* DieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieView.swift; sourceTree = "<group>"; };
-		E1E9094A1C1B9BA300569835 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = readme.md; path = "Button Up/readme.md"; sourceTree = "<group>"; };
 		E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHistoryTableViewController.swift; sourceTree = "<group>"; };
 		E1F5C9BA1BF884F50052A119 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
 		E1F5C9BC1BF88BF10052A119 /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 		E1572CEE1BF57557006E39DD = {
 			isa = PBXGroup;
 			children = (
-				E1E9094A1C1B9BA300569835 /* readme.md */,
 				E1572CF91BF57558006E39DD /* Button Up */,
 				E1572D0E1BF57559006E39DD /* Button UpTests */,
 				E1572D191BF57559006E39DD /* Button UpUITests */,
@@ -389,7 +386,6 @@
 				E167C37A1BFAACC700DE58C2 /* DieButton.swift in Sources */,
 				E12550DB1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift in Sources */,
 				E18DA02D1C17051700CA0CFA /* GameMessageOnlyViewController.swift in Sources */,
-				E1E9094B1C1B9BA300569835 /* readme.md in Sources */,
 				E1D00DBA1BF734CB009FF0A8 /* ButtonSet.swift in Sources */,
 				E1572CFB1BF57559006E39DD /* AppDelegate.swift in Sources */,
 				E1572D311BF60C14006E39DD /* Game.swift in Sources */,
