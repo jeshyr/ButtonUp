@@ -107,7 +107,7 @@
 		E1D00DBD1BF74D88009FF0A8 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		E1D3C9F01C008153001C3150 /* DieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DieView.xib; sourceTree = "<group>"; };
 		E1D3C9F21C00817C001C3150 /* DieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieView.swift; sourceTree = "<group>"; };
-		E1E9094A1C1B9BA300569835 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		E1E9094A1C1B9BA300569835 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = readme.md; path = "Button Up/readme.md"; sourceTree = "<group>"; };
 		E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHistoryTableViewController.swift; sourceTree = "<group>"; };
 		E1F5C9BA1BF884F50052A119 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
 		E1F5C9BC1BF88BF10052A119 /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
@@ -141,6 +141,7 @@
 		E1572CEE1BF57557006E39DD = {
 			isa = PBXGroup;
 			children = (
+				E1E9094A1C1B9BA300569835 /* readme.md */,
 				E1572CF91BF57558006E39DD /* Button Up */,
 				E1572D0E1BF57559006E39DD /* Button UpTests */,
 				E1572D191BF57559006E39DD /* Button UpUITests */,
@@ -161,7 +162,6 @@
 		E1572CF91BF57558006E39DD /* Button Up */ = {
 			isa = PBXGroup;
 			children = (
-				E1E9094A1C1B9BA300569835 /* readme.md */,
 				E18DA02E1C17A4FB00CA0CFA /* TODO.rtf */,
 				E167C3771BFAAC9900DE58C2 /* Model */,
 				E167C3781BFAACA300DE58C2 /* View */,
