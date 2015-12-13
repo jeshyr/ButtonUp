@@ -61,19 +61,8 @@ class GameCompletedViewController: UIViewController {
     func displayGame() {
         let game = self.game
         
-        // p1 (top of screen) should always be "our" user if possible
-        let username = self.appDelegate.appSettings.username
-        let array0Name = (game?.playerData[0].name)!
-        var p1: GamePlayerData?
-        var p2: GamePlayerData?
-        
-        if username.caseInsensitiveCompare(array0Name) == NSComparisonResult.OrderedSame {
-            p1 = game?.playerData[0]
-            p2 = game?.playerData[1]
-        } else {
-            p1 = game?.playerData[1]
-            p2 = game?.playerData[0]
-        }
+        let p1 = game?.playerData[0]
+        let p2 = game?.playerData[1]
         
         // Button Images
         APIClient.sharedInstance().getImageData(p1?.button.artFilename, completionHandler: { (imageData, success, message) in
