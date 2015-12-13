@@ -105,6 +105,19 @@ struct GameSummary {
     var opponentColor = UIColor()
     
     var status: GameStatus = GameStatus.BROKEN
+    
+    var title: String {
+        return "You (\(myButton)) vs. \(opponentName) (\(opponentButton))"
+    }
+    
+    // Return title in the format for open games
+    var openGameTitle: String {
+        if myButton.isEmpty {
+            return "\(opponentName) (\(opponentButton)) challenges (Any button)"
+        } else {
+            return "\(opponentName) (\(opponentButton)) challenges (\(myButton))"
+        }
+    }
 }
 
 

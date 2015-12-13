@@ -42,7 +42,7 @@ class GameHistoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
         let game = games[indexPath.row]
         
-        cell.textLabel!.text = "\(game.myButton) vs. \(game.opponentButton)"
+        cell.textLabel!.text = game.title
         cell.detailTextLabel!.text = game.description
         
         return(cell)

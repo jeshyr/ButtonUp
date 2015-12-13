@@ -97,7 +97,7 @@ class GameTableViewController: UITableViewController {
         if indexPath.section == 0 {
             if indexPath.row < games.count {
                 game = games[indexPath.row]
-                cell.textLabel!.text = "You (\(game.myButton)) vs. \(game.opponentName)(\(game.opponentButton))"
+                cell.textLabel!.text = game.title
                 cell.detailTextLabel!.text = game.description
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 cell.selectionStyle = UITableViewCellSelectionStyle.Blue
@@ -116,7 +116,7 @@ class GameTableViewController: UITableViewController {
         } else if indexPath.section == 1 {
             if indexPath.row < newGames.count {
                 game = newGames[indexPath.row]
-                cell.textLabel!.text = "You (\(game.myButton)) vs. \(game.opponentName)(\(game.opponentButton))"
+                cell.textLabel!.text = game.title
                 cell.detailTextLabel!.text = game.description
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 cell.selectionStyle = UITableViewCellSelectionStyle.Blue
@@ -135,7 +135,7 @@ class GameTableViewController: UITableViewController {
         } else if indexPath.section == 2 {
             if indexPath.row < rejectedGames.count {
                 game = rejectedGames[indexPath.row]
-                cell.textLabel!.text = "\(game.myButton) vs. \(game.opponentButton)"
+                cell.textLabel!.text = game.title
                 cell.detailTextLabel!.text = game.description
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 cell.selectionStyle = UITableViewCellSelectionStyle.Blue
@@ -148,7 +148,7 @@ class GameTableViewController: UITableViewController {
         } else {
             if indexPath.row < completedGames.count {
                 game = completedGames[indexPath.row]
-                cell.textLabel!.text = "\(game.myButton) vs. \(game.opponentButton)"
+                cell.textLabel!.text = game.title
                 cell.detailTextLabel!.text = game.description
                 cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
                 cell.selectionStyle = UITableViewCellSelectionStyle.Blue

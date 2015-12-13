@@ -1197,12 +1197,12 @@ extension APIClient {
             }
             newGame.targetWins = targetWins
 
-            guard let victimButton = openGameData["victimButton"] as? String else {
-                print("Can't find victimButton in open games \(openGameData)")
-                completionHandler(gameSummaries: nil, success: false, message: "Can't find victimButton in open games \(openGameData)")
-                return
+            // Victim button can be unspecified
+            if let victimButton = openGameData["victimButton"] as? String  {
+                newGame.myButton = victimButton
+            } else {
+                newGame.myButton = ""
             }
-            newGame.myButton = victimButton
          
             games.append(newGame)
         }
