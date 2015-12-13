@@ -112,36 +112,6 @@
             </objects>
             <point key="canvasLocation" x="1071" y="262"/>
         </scene>
-        <!--Game Loading View Controller-->
-        <scene sceneID="YvL-qw-2UW">
-            <objects>
-                <viewController storyboardIdentifier="GameLoadingViewController" title="Game Loading View Controller" id="sfX-Sn-ri9" customClass="GameLoadingViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="UeH-mF-2qD"/>
-                        <viewControllerLayoutGuide type="bottom" id="gAg-OM-9YQ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ktj-SZ-2Cf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jaj-bK-SvO">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="jaj-bK-SvO" firstAttribute="centerY" secondItem="ktj-SZ-2Cf" secondAttribute="centerY" id="B8I-vE-mkv"/>
-                            <constraint firstItem="jaj-bK-SvO" firstAttribute="centerX" secondItem="ktj-SZ-2Cf" secondAttribute="centerX" id="NyR-6G-zCH"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="activityIndicator" destination="jaj-bK-SvO" id="BaV-zt-mdM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rzi-rd-Qiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1792" y="262"/>
-        </scene>
         <!--Game Message Only View Controller-->
         <scene sceneID="leb-Yd-rtj">
             <objects>
@@ -177,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hK8-4A-I2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2503" y="192"/>
+            <point key="canvasLocation" x="2075" y="550"/>
         </scene>
         <!--Game Detail View Controller-->
         <scene sceneID="36X-5g-YsX">
@@ -458,7 +428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pLT-8b-yxq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2452" y="133.5"/>
+            <point key="canvasLocation" x="2024" y="491"/>
         </scene>
         <!--Active Games-->
         <scene sceneID="a63-So-ju5">
@@ -1090,7 +1060,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WFe-BV-lMo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2553" y="256"/>
+            <point key="canvasLocation" x="2125" y="614"/>
         </scene>
         <!--Game Completed-->
         <scene sceneID="xRL-aw-gch">
@@ -1277,7 +1247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edX-Ge-vG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2602" y="322"/>
+            <point key="canvasLocation" x="2174" y="680"/>
         </scene>
         <!--Adjust Fire-->
         <scene sceneID="6py-f8-cBf">
@@ -1501,7 +1471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XE5-1B-Bn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2654" y="375"/>
+            <point key="canvasLocation" x="2226" y="733"/>
         </scene>
     </scenes>
     <resources>
