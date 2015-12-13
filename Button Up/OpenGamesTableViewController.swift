@@ -67,9 +67,9 @@ class OpenGamesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         /* Push the open game detail view */
-//        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OpenGameDetailViewController") as! OpenGameDetailViewController
-//        controller.gameSummary = games[indexPath.row]
-//        self.navigationController!.pushViewController(controller, animated: true)
+        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("OpenGameDetailViewController") as! OpenGameDetailViewController
+        controller.gameSummary = games[indexPath.row]
+        self.navigationController!.pushViewController(controller, animated: true)
     }
 
 }

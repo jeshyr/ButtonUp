@@ -1221,12 +1221,12 @@
                             <constraint firstItem="qK5-zX-myQ" firstAttribute="centerX" secondItem="NSJ-Ie-kw6" secondAttribute="centerX" id="0zH-D9-qbN"/>
                             <constraint firstAttribute="trailing" secondItem="Srp-UH-xs0" secondAttribute="trailing" id="125-ZW-qTN"/>
                             <constraint firstItem="qK5-zX-myQ" firstAttribute="top" secondItem="Hwl-eA-imA" secondAttribute="bottom" constant="10" id="6eY-cP-B1f"/>
+                            <constraint firstItem="jSr-FG-OTP" firstAttribute="top" secondItem="qK5-zX-myQ" secondAttribute="bottom" constant="20" id="CzU-tH-R89"/>
                             <constraint firstItem="Hwl-eA-imA" firstAttribute="leading" secondItem="NSJ-Ie-kw6" secondAttribute="leading" id="W72-40-shF"/>
                             <constraint firstItem="Hwl-eA-imA" firstAttribute="top" secondItem="Srp-UH-xs0" secondAttribute="bottom" id="ZTc-Yb-EiM"/>
                             <constraint firstAttribute="trailing" secondItem="Hwl-eA-imA" secondAttribute="trailing" id="dXq-od-7f7"/>
-                            <constraint firstItem="jSr-FG-OTP" firstAttribute="top" secondItem="qK5-zX-myQ" secondAttribute="bottom" constant="20" id="evP-kr-ckm"/>
+                            <constraint firstItem="Srp-UH-xs0" firstAttribute="top" secondItem="6It-ig-MDl" secondAttribute="bottom" id="ewy-Xb-zDM"/>
                             <constraint firstItem="Hwl-eA-imA" firstAttribute="height" secondItem="Srp-UH-xs0" secondAttribute="height" id="jIR-kx-UeH"/>
-                            <constraint firstItem="Srp-UH-xs0" firstAttribute="top" secondItem="6It-ig-MDl" secondAttribute="bottom" id="wYo-4b-WIh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1472,6 +1472,190 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XE5-1B-Bn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2226" y="733"/>
+        </scene>
+        <!--Open Game-->
+        <scene sceneID="lIo-z5-vcA">
+            <objects>
+                <viewController storyboardIdentifier="OpenGameDetailViewController" title="Open Game" id="fPs-F4-GKh" customClass="OpenGameDetailViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TZe-za-4ek"/>
+                        <viewControllerLayoutGuide type="bottom" id="DBZ-Uh-dad"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y0N-OF-uiZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1w-yt-Uwl" userLabel="p1View">
+                                <rect key="frame" x="0.0" y="20" width="600" height="168"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tTD-ok-8dZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="168"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xac-wU-u1B">
+                                                <rect key="frame" x="0.0" y="0.0" width="243" height="168"/>
+                                                <state key="normal" image="BMdefaultRound"/>
+                                                <connections>
+                                                    <action selector="buttonTouchUp:" destination="fPs-F4-GKh" eventType="touchUpInside" id="beK-El-9Kv"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kjq-UU-Nc6">
+                                                <rect key="frame" x="253" y="0.0" width="347" height="168"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDv-vl-Ja9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="347" height="42"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="211" height="43"/>
+                                                        </variation>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0I5-JW-3wc">
+                                                        <rect key="frame" x="0.0" y="42" width="347" height="42"/>
+                                                        <state key="normal" title="Button: Abe Caine"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="53" width="211" height="44"/>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="buttonTouchUp:" destination="fPs-F4-GKh" eventType="touchUpInside" id="DPU-fa-rW6"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjP-x4-pNT">
+                                                        <rect key="frame" x="0.0" y="84" width="347" height="42"/>
+                                                        <state key="normal" title="Player: Jeshyr"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="107" width="211" height="43"/>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="nameTouchUp:" destination="fPs-F4-GKh" eventType="touchUpInside" id="xYs-nj-AxK"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W/L/T: 1/2/7 (9)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OW-MQ-uho">
+                                                        <rect key="frame" x="0.0" y="126" width="347" height="42"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="150" y="0.0" width="211" height="150"/>
+                                                </variation>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tTD-ok-8dZ" secondAttribute="trailing" id="LZA-YQ-361"/>
+                                    <constraint firstItem="tTD-ok-8dZ" firstAttribute="leading" secondItem="B1w-yt-Uwl" secondAttribute="leading" id="Ncp-S9-5ke"/>
+                                    <constraint firstAttribute="bottom" secondItem="tTD-ok-8dZ" secondAttribute="bottom" id="eb1-w9-kNa"/>
+                                    <constraint firstItem="tTD-ok-8dZ" firstAttribute="top" secondItem="B1w-yt-Uwl" secondAttribute="top" id="soi-41-6y2"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxb-ap-GWZ">
+                                <rect key="frame" x="264" y="366" width="73" height="214"/>
+                                <state key="normal" title="Join Game"/>
+                                <connections>
+                                    <action selector="joinButtonTouchUp:" destination="fPs-F4-GKh" eventType="touchUpInside" id="dsv-fZ-ZaC"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMu-Yk-ZcC" userLabel="p2View">
+                                <rect key="frame" x="0.0" y="188" width="600" height="168"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="evD-9Y-vat">
+                                        <rect key="frame" x="10" y="10" width="580" height="150"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JDK-s1-tQS">
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="150"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xql-KL-F27">
+                                                        <rect key="frame" x="0.0" y="0.0" width="330" height="38"/>
+                                                        <state key="normal" title="Player: blackshadowshade"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="211" height="43"/>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="nameTouchUp:" destination="fPs-F4-GKh" eventType="touchUpInside" id="8p2-Jt-JYP"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1n-Gj-vSy">
+                                                        <rect key="frame" x="0.0" y="38" width="330" height="37"/>
+                                                        <state key="normal" title="Button: Abe Caine"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="53" width="211" height="44"/>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="buttonTouchUp:" destination="fPs-F4-GKh" eventType="touchUpInside" id="yZh-i3-A2V"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2QG-jZ-Qkp">
+                                                        <rect key="frame" x="0.0" y="75" width="330" height="38"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="107" width="211" height="43"/>
+                                                        </variation>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3o-lA-LN9">
+                                                        <rect key="frame" x="0.0" y="113" width="330" height="37"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XlQ-u9-fjS">
+                                                <rect key="frame" x="340" y="0.0" width="240" height="150"/>
+                                                <state key="normal" image="BMdefaultRound"/>
+                                                <connections>
+                                                    <action selector="buttonTouchUp:" destination="fPs-F4-GKh" eventType="touchUpInside" id="hDu-nk-no6"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="evD-9Y-vat" secondAttribute="bottom" constant="8" id="33x-u2-tho"/>
+                                    <constraint firstItem="evD-9Y-vat" firstAttribute="top" secondItem="pMu-Yk-ZcC" secondAttribute="top" constant="10" id="7LX-Q5-zK5"/>
+                                    <constraint firstAttribute="trailing" secondItem="evD-9Y-vat" secondAttribute="trailing" constant="10" id="Qc2-Tn-uN8"/>
+                                    <constraint firstItem="evD-9Y-vat" firstAttribute="leading" secondItem="pMu-Yk-ZcC" secondAttribute="leading" constant="10" id="caZ-oX-F7Z"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="B1w-yt-Uwl" firstAttribute="leading" secondItem="Y0N-OF-uiZ" secondAttribute="leading" id="3Tm-Kg-KND"/>
+                            <constraint firstItem="vxb-ap-GWZ" firstAttribute="top" secondItem="pMu-Yk-ZcC" secondAttribute="bottom" constant="10" id="5fd-t5-RAf"/>
+                            <constraint firstItem="pMu-Yk-ZcC" firstAttribute="leading" secondItem="Y0N-OF-uiZ" secondAttribute="leading" id="7tF-JF-TGe"/>
+                            <constraint firstItem="pMu-Yk-ZcC" firstAttribute="height" secondItem="B1w-yt-Uwl" secondAttribute="height" id="Bek-zb-CH0"/>
+                            <constraint firstItem="pMu-Yk-ZcC" firstAttribute="top" secondItem="B1w-yt-Uwl" secondAttribute="bottom" id="KpI-zQ-SUG"/>
+                            <constraint firstAttribute="trailing" secondItem="pMu-Yk-ZcC" secondAttribute="trailing" id="d90-G9-EL9"/>
+                            <constraint firstItem="DBZ-Uh-dad" firstAttribute="top" secondItem="vxb-ap-GWZ" secondAttribute="bottom" constant="20" id="hfz-ze-Xp1"/>
+                            <constraint firstItem="B1w-yt-Uwl" firstAttribute="top" secondItem="TZe-za-4ek" secondAttribute="bottom" id="iq6-U4-UGG"/>
+                            <constraint firstAttribute="trailing" secondItem="B1w-yt-Uwl" secondAttribute="trailing" id="r73-5W-Slh"/>
+                            <constraint firstItem="vxb-ap-GWZ" firstAttribute="centerX" secondItem="Y0N-OF-uiZ" secondAttribute="centerX" id="zhe-bP-iy0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="joinButton" destination="vxb-ap-GWZ" id="Sm4-0W-4u9"/>
+                        <outlet property="p1ButtonButton" destination="0I5-JW-3wc" id="guk-su-8iB"/>
+                        <outlet property="p1ButtonImageButton" destination="Xac-wU-u1B" id="rIA-Ys-dNO"/>
+                        <outlet property="p1ButtonRecipeTextLabel" destination="cDv-vl-Ja9" id="Jja-q1-oHs"/>
+                        <outlet property="p1NameButton" destination="WjP-x4-pNT" id="Ut6-hk-vtm"/>
+                        <outlet property="p1View" destination="B1w-yt-Uwl" id="ief-zx-BbQ"/>
+                        <outlet property="p1WLTLabel" destination="0OW-MQ-uho" id="1mc-DT-pbt"/>
+                        <outlet property="p2ButtonButton" destination="C1n-Gj-vSy" id="W7B-xc-mzm"/>
+                        <outlet property="p2ButtonImageButton" destination="XlQ-u9-fjS" id="BDH-yY-HdE"/>
+                        <outlet property="p2ButtonRecipeTextLabel" destination="2QG-jZ-Qkp" id="Ek0-vl-Oor"/>
+                        <outlet property="p2NameButton" destination="xql-KL-F27" id="kBB-l5-gXl"/>
+                        <outlet property="p2View" destination="pMu-Yk-ZcC" id="4PM-Ft-H6X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jdi-ow-wb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1765" y="1707"/>
         </scene>
     </scenes>
     <resources>

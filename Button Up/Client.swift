@@ -341,17 +341,14 @@ extension APIClient {
             }
             newPlayerData.color = APIClient.hexStringToUIColor(playerColor)
             
-            guard let playerId = playerDataDictionary["playerId"] as! Int? else {
-                print("Can't find playerId: \(playerDataDictionary)")
-                return nil
+            // Open games have missing playerId and playerName
+            if let playerId = playerDataDictionary["playerId"] as? Int {
+                newPlayerData.id = playerId
             }
-            newPlayerData.id = playerId
             
-            guard let playerName = playerDataDictionary["playerName"] as! String? else {
-                print("Can't find playerName: \(playerDataDictionary)")
-                return nil
+            if let playerName = playerDataDictionary["playerName"] as? String {
+                newPlayerData.name = playerName
             }
-            newPlayerData.name = playerName
             
             guard let optRequestArray = playerDataDictionary["optRequestArray"] else {
                 print("Can't find optRequestArray: \(playerDataDictionary)")
@@ -1109,7 +1106,35 @@ extension APIClient {
         return
     }
 
-    // MARK: - Load Open Games
+    // MARK: - Open Games
+    
+    func joinOpenGame(gameId: Int, buttonName: String?, completionHandler: (success: Bool, message: String?) -> Void) {
+        var jsonBody: [String: String] = [
+            "type": "joinOpenGame",
+            "gameId": String(gameId)
+        ]
+        if buttonName != nil {
+            jsonBody["buttonName"] = buttonName
+        }
+        
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
+            print("in joinOpenGame completion handler")
+            
+            guard success else {
+                print("error: \(message)")
+                completionHandler(success: false, message: message)
+                return
+            }
+            
+            print(result)
+            
+            // Parse dictionary of arrays into array of games
+//            self.parseOpenGameArrays(result) { games, success, message in
+//                completionHandler(gameSummaries: games, success: success, message: message)
+//                return
+//            }
+        }
+    }
     
     func loadOpenGames(completionHandler: (gameSummaries: [GameSummary]?, success: Bool, message: String?) -> Void) {
         let jsonBody: [String: String] = [
