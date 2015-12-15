@@ -127,6 +127,8 @@ class OpenGameDetailViewController: UIViewController {
     
     @IBAction func joinButtonTouchUp(sender: AnyObject) {
         let id = game!.id
+        // If button is not specified, need to prompt user to choose
+        
         print("Trying to join \(id)")
         client.joinOpenGame(id, buttonName: nil) { success, message in
             if success {

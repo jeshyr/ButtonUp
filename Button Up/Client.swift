@@ -1255,6 +1255,7 @@ extension APIClient {
     
     // Check if we're logged in, if not then log in.
     func loginIfNeeded(username: String, password: String, completionHandler: (success: Bool, message: String?) -> Void) {
+        print("loginIfNeeded")
         
         let jsonBody : [String:String] = [
             "type": "loadPlayerName",

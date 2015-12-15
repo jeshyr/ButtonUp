@@ -45,8 +45,11 @@ class LoginViewController: UIViewController {
                     self.presentViewController(controller, animated: true, completion: nil)
                 })
             } else {
-                // TODO should check for wrong username/password error here and go directly to settings screen
+                // login failed - assume it's a username/password error
+                print("Login failed: \(error)")
                 self.displayError("Login error: \(error)")
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("SettingsViewController") as UIViewController
+                self.presentViewController(controller, animated: true, completion: nil)
             }
         }
     }

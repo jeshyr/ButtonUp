@@ -9,10 +9,11 @@
 import Foundation
 
 /* Configuration object */
-//var config = TMDBConfig()
 let BaseURL = "http://buttonweavers.com/api/responder.php"
+//let BaseURL = "http://localhost:8080/api/responder.php"
 
 let BaseButtonImageURL = "http://www.buttonweavers.com/ui/images/button/"
+//let BaseButtonImageURL = "http://localhost:8080/ui/images/button/"
 let ButtonImageDefault = "BMdefaultRound.png"
 
 struct MaxLengthConstants {
