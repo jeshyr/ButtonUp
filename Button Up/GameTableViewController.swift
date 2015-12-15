@@ -111,6 +111,7 @@ class GameTableViewController: UITableViewController {
                 cell.detailTextLabel!.text = ""
                 cell.accessoryType = UITableViewCellAccessoryType.None
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
+                cell.backgroundColor = UIColor.whiteColor()
             }
 
         } else if indexPath.section == 1 {
@@ -130,6 +131,7 @@ class GameTableViewController: UITableViewController {
                 cell.detailTextLabel!.text = ""
                 cell.accessoryType = UITableViewCellAccessoryType.None
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
+                cell.backgroundColor = UIColor.whiteColor()
 
             }
         } else if indexPath.section == 2 {
@@ -144,6 +146,7 @@ class GameTableViewController: UITableViewController {
                 cell.detailTextLabel!.text = ""
                 cell.accessoryType = UITableViewCellAccessoryType.None
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
+                cell.backgroundColor = UIColor.whiteColor()
             }
         } else {
             if indexPath.row < completedGames.count {
@@ -157,6 +160,7 @@ class GameTableViewController: UITableViewController {
                 cell.detailTextLabel!.text = ""
                 cell.accessoryType = UITableViewCellAccessoryType.None
                 cell.selectionStyle = UITableViewCellSelectionStyle.None
+                cell.backgroundColor = UIColor.whiteColor()
             }
         }
         
@@ -236,9 +240,8 @@ class GameTableViewController: UITableViewController {
             
         case .CHOOSE_JOIN_GAME:
             // Waiting for opponent to join game
-            controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
-            (controller as! GameMessageOnlyViewController).message = "The current game state is \(gameSummary.state) and that's not implemented, sorry!"
-            print(gameSummary)
+            controller = self.storyboard!.instantiateViewControllerWithIdentifier("ChooseJoinGameViewController") as! ChooseJoinGameViewController
+            (controller as! ChooseJoinGameViewController).gameSummary = gameSummary
             
         case .SPECIFY_DICE:
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController

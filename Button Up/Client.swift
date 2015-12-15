@@ -1106,6 +1106,34 @@ extension APIClient {
         return
     }
 
+    // MARK: - Offered Games
+    
+    func acceptNewGame(gameId: Int, accept: Bool, completionHandler: (success: Bool, message: String?) -> Void) {
+        var jsonBody: [String: String] = [
+            "type": "reactToNewGame",
+            "gameId": String(gameId),
+        ]
+        if accept {
+            jsonBody["action"] = "accept"
+        } else {
+            jsonBody["action"] = "reject"
+        }
+        
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
+            print("in reactToNewGame completion handler")
+            
+            guard success else {
+                print("error: \(message)")
+                completionHandler(success: false, message: message)
+                return
+            }
+            
+            print(result)
+            completionHandler(success: success, message: nil)
+
+        }
+    }
+    
     // MARK: - Open Games
     
     func joinOpenGame(gameId: Int, buttonName: String?, completionHandler: (success: Bool, message: String?) -> Void) {
@@ -1126,13 +1154,7 @@ extension APIClient {
                 return
             }
             
-            print(result)
-            
-            // Parse dictionary of arrays into array of games
-//            self.parseOpenGameArrays(result) { games, success, message in
-//                completionHandler(gameSummaries: games, success: success, message: message)
-//                return
-//            }
+            completionHandler(success: success, message: nil)
         }
     }
     

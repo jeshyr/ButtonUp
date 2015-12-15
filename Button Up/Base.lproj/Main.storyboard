@@ -1639,7 +1639,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="joinButton" destination="vxb-ap-GWZ" id="Sm4-0W-4u9"/>
+                        <outlet property="joinButton" destination="vxb-ap-GWZ" id="sKI-2t-RBg"/>
                         <outlet property="p1ButtonButton" destination="0I5-JW-3wc" id="guk-su-8iB"/>
                         <outlet property="p1ButtonImageButton" destination="Xac-wU-u1B" id="rIA-Ys-dNO"/>
                         <outlet property="p1ButtonRecipeTextLabel" destination="cDv-vl-Ja9" id="Jja-q1-oHs"/>
@@ -1656,6 +1656,199 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jdi-ow-wb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1765" y="1707"/>
+        </scene>
+        <!--Join Game-->
+        <scene sceneID="aND-HQ-lJI">
+            <objects>
+                <viewController storyboardIdentifier="ChooseJoinGameViewController" title="Join Game" id="bpp-dA-4AE" customClass="ChooseJoinGameViewController" customModule="Button_Up" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n7q-UQ-RuJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="kHj-YU-wan"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sri-ag-CK6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqU-PF-YPL" userLabel="p1View">
+                                <rect key="frame" x="0.0" y="20" width="600" height="168"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NNv-q9-JGZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="168"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwJ-8W-nVm">
+                                                <rect key="frame" x="0.0" y="0.0" width="243" height="168"/>
+                                                <state key="normal" image="BMdefaultRound"/>
+                                                <connections>
+                                                    <action selector="buttonTouchUp:" destination="bpp-dA-4AE" eventType="touchUpInside" id="HWr-Ex-2vh"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="74P-Ea-h7F">
+                                                <rect key="frame" x="253" y="0.0" width="347" height="168"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fnL-fr-DXj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="347" height="42"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="211" height="43"/>
+                                                        </variation>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJI-ce-Ham">
+                                                        <rect key="frame" x="0.0" y="42" width="347" height="42"/>
+                                                        <state key="normal" title="Button: Abe Caine"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="53" width="211" height="44"/>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="buttonTouchUp:" destination="bpp-dA-4AE" eventType="touchUpInside" id="SZX-c2-tNN"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e57-Qx-3sG">
+                                                        <rect key="frame" x="0.0" y="84" width="347" height="42"/>
+                                                        <state key="normal" title="Player: Jeshyr"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="107" width="211" height="43"/>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="nameTouchUp:" destination="bpp-dA-4AE" eventType="touchUpInside" id="30q-03-cD1"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W/L/T: 1/2/7 (9)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nye-Mw-AOd">
+                                                        <rect key="frame" x="0.0" y="126" width="347" height="42"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="150" y="0.0" width="211" height="150"/>
+                                                </variation>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="NNv-q9-JGZ" firstAttribute="leading" secondItem="gqU-PF-YPL" secondAttribute="leading" id="Mqe-Yg-7jD"/>
+                                    <constraint firstAttribute="trailing" secondItem="NNv-q9-JGZ" secondAttribute="trailing" id="Ypv-Kw-pNF"/>
+                                    <constraint firstAttribute="bottom" secondItem="NNv-q9-JGZ" secondAttribute="bottom" id="oWS-ae-BYY"/>
+                                    <constraint firstItem="NNv-q9-JGZ" firstAttribute="top" secondItem="gqU-PF-YPL" secondAttribute="top" id="yNL-SK-Zzk"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a5a-sc-hhX">
+                                <rect key="frame" x="254" y="376" width="93" height="92"/>
+                                <state key="normal" title="Accept Game"/>
+                                <connections>
+                                    <action selector="acceptButtonTouchUp:" destination="bpp-dA-4AE" eventType="touchUpInside" id="JaR-Nf-fvf"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usF-lx-XD1" userLabel="p2View">
+                                <rect key="frame" x="0.0" y="188" width="600" height="168"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UJx-zb-oYa">
+                                        <rect key="frame" x="10" y="10" width="580" height="150"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YkH-sO-jwU">
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="150"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1SJ-fW-0BO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="330" height="38"/>
+                                                        <state key="normal" title="Player: blackshadowshade"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="0.0" width="211" height="43"/>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="nameTouchUp:" destination="bpp-dA-4AE" eventType="touchUpInside" id="63I-Lw-soo"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScQ-j1-L5M">
+                                                        <rect key="frame" x="0.0" y="38" width="330" height="37"/>
+                                                        <state key="normal" title="Button: Abe Caine"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="53" width="211" height="44"/>
+                                                        </variation>
+                                                        <connections>
+                                                            <action selector="buttonTouchUp:" destination="bpp-dA-4AE" eventType="touchUpInside" id="TQA-2E-WhK"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="p(4,4) p(8,8) (10) ps(24) (X)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LpJ-kF-sEX">
+                                                        <rect key="frame" x="0.0" y="75" width="330" height="38"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="widthClass=compact" misplaced="YES">
+                                                            <rect key="frame" x="0.0" y="107" width="211" height="43"/>
+                                                        </variation>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVr-cB-QIX">
+                                                        <rect key="frame" x="0.0" y="113" width="330" height="37"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIz-9A-mcl">
+                                                <rect key="frame" x="340" y="0.0" width="240" height="150"/>
+                                                <state key="normal" image="BMdefaultRound"/>
+                                                <connections>
+                                                    <action selector="buttonTouchUp:" destination="bpp-dA-4AE" eventType="touchUpInside" id="A5L-cw-ToQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UJx-zb-oYa" secondAttribute="trailing" constant="10" id="5EL-TN-XbG"/>
+                                    <constraint firstItem="UJx-zb-oYa" firstAttribute="top" secondItem="usF-lx-XD1" secondAttribute="top" constant="10" id="VZm-GN-qwl"/>
+                                    <constraint firstAttribute="bottom" secondItem="UJx-zb-oYa" secondAttribute="bottom" constant="8" id="kl0-hR-KfY"/>
+                                    <constraint firstItem="UJx-zb-oYa" firstAttribute="leading" secondItem="usF-lx-XD1" secondAttribute="leading" constant="10" id="or0-jZ-iAq"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pK-GW-d0C">
+                                <rect key="frame" x="256" y="488" width="88" height="92"/>
+                                <state key="normal" title="Reject Game"/>
+                                <connections>
+                                    <action selector="rejectButtonTouchUp:" destination="bpp-dA-4AE" eventType="touchUpInside" id="0AJ-x0-KEQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a5a-sc-hhX" firstAttribute="top" secondItem="usF-lx-XD1" secondAttribute="bottom" constant="20" id="1xY-iv-dXE"/>
+                            <constraint firstItem="gqU-PF-YPL" firstAttribute="leading" secondItem="sri-ag-CK6" secondAttribute="leading" id="3fY-SD-TV4"/>
+                            <constraint firstItem="usF-lx-XD1" firstAttribute="top" secondItem="gqU-PF-YPL" secondAttribute="bottom" id="6fz-kq-bKy"/>
+                            <constraint firstItem="gqU-PF-YPL" firstAttribute="top" secondItem="n7q-UQ-RuJ" secondAttribute="bottom" id="AhR-oy-oo1"/>
+                            <constraint firstItem="a5a-sc-hhX" firstAttribute="centerX" secondItem="sri-ag-CK6" secondAttribute="centerX" id="BsA-fh-8wK"/>
+                            <constraint firstItem="usF-lx-XD1" firstAttribute="height" secondItem="gqU-PF-YPL" secondAttribute="height" id="Jvx-Pc-Ohz"/>
+                            <constraint firstAttribute="trailing" secondItem="gqU-PF-YPL" secondAttribute="trailing" id="KqU-QE-yfW"/>
+                            <constraint firstItem="usF-lx-XD1" firstAttribute="leading" secondItem="sri-ag-CK6" secondAttribute="leading" id="a4A-oV-44C"/>
+                            <constraint firstItem="9pK-GW-d0C" firstAttribute="centerX" secondItem="sri-ag-CK6" secondAttribute="centerX" id="fYd-ky-2dZ"/>
+                            <constraint firstItem="9pK-GW-d0C" firstAttribute="height" secondItem="a5a-sc-hhX" secondAttribute="height" id="lU3-jb-Awv"/>
+                            <constraint firstAttribute="trailing" secondItem="usF-lx-XD1" secondAttribute="trailing" id="maf-cx-jOj"/>
+                            <constraint firstItem="9pK-GW-d0C" firstAttribute="top" secondItem="a5a-sc-hhX" secondAttribute="bottom" constant="20" id="y9u-80-f55"/>
+                            <constraint firstItem="kHj-YU-wan" firstAttribute="top" secondItem="9pK-GW-d0C" secondAttribute="bottom" constant="20" id="yBU-UF-xeW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="p1ButtonButton" destination="SJI-ce-Ham" id="AOa-aF-oZn"/>
+                        <outlet property="p1ButtonImageButton" destination="jwJ-8W-nVm" id="acC-ae-ryi"/>
+                        <outlet property="p1ButtonRecipeTextLabel" destination="fnL-fr-DXj" id="bnD-jS-pg3"/>
+                        <outlet property="p1NameButton" destination="e57-Qx-3sG" id="KYW-Kj-fXD"/>
+                        <outlet property="p1View" destination="gqU-PF-YPL" id="0a9-Pu-nJU"/>
+                        <outlet property="p1WLTLabel" destination="nye-Mw-AOd" id="yFE-it-9ef"/>
+                        <outlet property="p2ButtonButton" destination="ScQ-j1-L5M" id="ETO-ty-2yp"/>
+                        <outlet property="p2ButtonImageButton" destination="XIz-9A-mcl" id="POi-kZ-YI8"/>
+                        <outlet property="p2ButtonRecipeTextLabel" destination="LpJ-kF-sEX" id="Wbe-2K-tu8"/>
+                        <outlet property="p2NameButton" destination="1SJ-fW-0BO" id="jPu-un-MfH"/>
+                        <outlet property="p2View" destination="usF-lx-XD1" id="n6F-Ez-DIh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KqQ-km-5wc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2284" y="793"/>
         </scene>
     </scenes>
     <resources>

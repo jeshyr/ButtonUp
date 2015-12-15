@@ -45,6 +45,7 @@
 		E1F5C9B91BF82C660052A119 /* GameHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */; };
 		E1F5C9BB1BF884F50052A119 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9BA1BF884F50052A119 /* Die.swift */; };
 		E1F5C9BD1BF88BF10052A119 /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9BC1BF88BF10052A119 /* Attack.swift */; };
+		E1FC13001C1FA409009D4792 /* ChooseJoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC12FF1C1FA408009D4792 /* ChooseJoinGameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHistoryTableViewController.swift; sourceTree = "<group>"; };
 		E1F5C9BA1BF884F50052A119 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
 		E1F5C9BC1BF88BF10052A119 /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
+		E1FC12FF1C1FA408009D4792 /* ChooseJoinGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseJoinGameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				E1572CFC1BF57559006E39DD /* LoginViewController.swift */,
 				E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */,
 				E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */,
+				E1FC12FF1C1FA408009D4792 /* ChooseJoinGameViewController.swift */,
 				E12550D81C1A6299009CAFD5 /* GameAdjustFireViewController.swift */,
 				E135F1221C19831600542FFA /* GameCompletedViewController.swift */,
 				E135F1201C19126B00542FFA /* GameRejectedViewController.swift */,
@@ -372,6 +375,7 @@
 				E1D00DB41BF728D0009FF0A8 /* ButtonDetailViewController.swift in Sources */,
 				E1B9B8C31BF6E7D500A37061 /* Constants.swift in Sources */,
 				E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */,
+				E1FC13001C1FA409009D4792 /* ChooseJoinGameViewController.swift in Sources */,
 				E1D00DBC1BF74847009FF0A8 /* ButtonSetTableViewController.swift in Sources */,
 				E1572CFD1BF57559006E39DD /* LoginViewController.swift in Sources */,
 				E1F5C9B91BF82C660052A119 /* GameHistoryTableViewController.swift in Sources */,
