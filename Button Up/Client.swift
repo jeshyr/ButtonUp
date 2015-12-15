@@ -1290,8 +1290,24 @@ extension APIClient {
                 debugPrint("Already logged in!")
                 debugPrint(result)
                 debugPrint(message)
-                completionHandler(success: true, message: message)
-                return
+                let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+                let username = appDelegate!.appSettings.username
+
+                if let newUsername = result!["userName"] as? String {
+                    if username.caseInsensitiveCompare(newUsername) == NSComparisonResult.OrderedSame {
+                        // Same person. All good.
+                        completionHandler(success: true, message: message)
+                        return
+                    } else {
+                        // Wrong user is logged in. Do the login again.
+                        debugPrint("User logged in is \(newUsername), current user is \(username) - logging new user in now.")
+                        self.login(username, password: password) { success, message in
+                            completionHandler(success: success, message: message)
+                            return
+                        }
+                    }
+                }
+
             } else {
                 debugPrint("Logging in now")
                 self.login(username, password: password) { success, message in
