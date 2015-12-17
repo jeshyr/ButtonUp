@@ -123,6 +123,16 @@ class ChooseJoinGameViewController: UIViewController {
                 }
             } else {
                 print("Failed to accept game \(id): \(message).")
+                // Alert message
+                dispatch_async(dispatch_get_main_queue()) {
+
+                let nextController = UIAlertController(title: "Failed To Reject Game", message: "Failed to reject game \(id): \(message).", preferredStyle: UIAlertControllerStyle.ActionSheet)
+                let OKAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default){ action in
+                    self.dismissViewControllerAnimated(true, completion: nil) }
+                nextController.addAction(OKAction)
+                self.presentViewController(nextController, animated: true, completion: nil)
+                }
+
             }
         }
     }
@@ -130,7 +140,7 @@ class ChooseJoinGameViewController: UIViewController {
     @IBAction func rejectButtonTouchUp(sender: AnyObject) {
         let id = gameSummary!.id
         
-        print("Trying to accept \(id)")
+        print("Trying to reject \(id)")
         client.acceptNewGame(id, accept: false) { success, message in
             if success {
                 print("Success!")
@@ -139,6 +149,15 @@ class ChooseJoinGameViewController: UIViewController {
                 }
             } else {
                 print("Failed to reject game \(id): \(message).")
+                // Alert message
+                dispatch_async(dispatch_get_main_queue()) {
+                let nextController = UIAlertController(title: "Failed To Reject Game", message: "Failed to reject game \(id): \(message).", preferredStyle: UIAlertControllerStyle.ActionSheet)
+                let OKAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.Default){ action in
+                    self.dismissViewControllerAnimated(true, completion: nil) }
+                nextController.addAction(OKAction)
+                self.presentViewController(nextController, animated: true, completion: nil)
+            }
+
             }
         }
     }

@@ -66,8 +66,19 @@ class APIClient: NSObject {
             /* GUARD: Was there an error? */
             // TODO should figure out how to retry request if the network connection is lost
             guard (error == nil) else {
-                print("There was an error with your request: \(error)")
-                completionHandler(result: nil, success: false, message: "There was an error with your request: \(error)")
+                
+                // Try figuring out what error it was
+                var parsedError = String(error)
+                let regExp = try! NSRegularExpression(pattern: "NSLocalizedDescription=(.+)\\}", options: NSRegularExpressionOptions.CaseInsensitive)
+                let range = NSMakeRange(0, parsedError.characters.count)
+                let match = regExp.firstMatchInString(parsedError, options: NSMatchingOptions(), range: range)
+                
+                if (match != nil) {
+                    let range = match!.rangeAtIndex(1) // First capture group
+                    parsedError = (parsedError as NSString).substringWithRange(range)
+                }
+                print("There was an error with your request: \(parsedError)")
+                completionHandler(result: nil, success: false, message: "There was an error with your request: \(parsedError)")
                 return
             }
             
@@ -144,7 +155,11 @@ class APIClient: NSObject {
             
             if status != "ok" {
                 // TODO check here for logged out errors - message format is "You need to login before calling API function ____" and login then retry
-                completionHandler(result: nil, success: false, message: "Call failed: \(parsedResult)")
+                if let message = parsedResult["message"] as? String {
+                    completionHandler(result: nil, success: false, message: "Call failed: \(message)")
+                } else {
+                    completionHandler(result: nil, success: false, message: "Call failed: \(parsedResult)")
+                }
                 return
             }
             
