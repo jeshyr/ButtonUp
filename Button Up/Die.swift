@@ -149,9 +149,12 @@ struct Die : CustomStringConvertible {
         
         newButton.dieLabel.text = self.description
         if active {
-            // Active fire-adjust dice are red
             if self.properties.contains(Flag.IsAttacker) || self.properties.contains(Flag.IsAttackTarget) {
+                // Active fire-adjust dice are red
                 newButton.dieValue.newBackingColor(UIColor(red: 0.9, green: 0.15, blue: 0.15, alpha: 1.0))
+            } else if self.properties.contains(Flag.Disabled) || self.properties.contains(Flag.Dizzy) {
+                // Disabled/Dizzy dice can't be used this turn (eg Focus die you just turned down) - they're grey
+                newButton.dieValue.newBackingColor(UIColor.lightGrayColor())
             }
         } else {
             // Inactive dice are grey or mostly grey

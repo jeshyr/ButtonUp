@@ -259,7 +259,7 @@ class GameTableViewController: UITableViewController {
             print(gameSummary)
             
         case .REACT_TO_INITIATIVE:
-            // Waiting for someone to move
+            // Waiting for someone to turn down focus dice
             controller = self.storyboard!.instantiateViewControllerWithIdentifier("GameMessageOnlyViewController") as! GameMessageOnlyViewController
             (controller as! GameMessageOnlyViewController).message = "The current game state is \(gameSummary.state) and that's not implemented, sorry!"
             print(gameSummary)
