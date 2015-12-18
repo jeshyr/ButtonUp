@@ -1319,7 +1319,7 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="D4L-SA-UBC">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="D4L-SA-UBC">
                                                 <rect key="frame" x="275" y="182" width="30" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-Oh-Zuw" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
@@ -1348,7 +1348,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="du0-gJ-FVy">
                                         <rect key="frame" x="10" y="10" width="580" height="242"/>
                                         <subviews>
-                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="l1P-i9-MCv">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="l1P-i9-MCv">
                                                 <rect key="frame" x="275" y="0.0" width="30" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EV0-ON-u0I" customClass="DieButton" customModule="Button_Up" customModuleProvider="target">
