@@ -174,12 +174,13 @@ extension APIClient {
             }
             newGame.round = roundNumber
             
-            guard let timestamp = result!["timestamp"] as! Double? else {
+            guard let timestamp = result!["timestamp"] as? Double else {
                 print("Can't find timestamp: \(result)")
                 completionHandler(game: nil, success: false, message: "Can't find timestamp: \(result)")
                 return
             }
-            newGame.timestamp = NSDate(timeIntervalSince1970:timestamp)
+            //newGame.timestamp = NSDate(timeIntervalSince1970:timestamp)
+            newGame.timestamp = String(format: "%.0f", timestamp)
             
             guard let validAttackTypeArray = result!["validAttackTypeArray"] as! [String]? else {
                 print("Can't find validAttackTypeArray: \(result)")
@@ -549,7 +550,6 @@ extension APIClient {
             newLogMessage.message = gameLogDictionary["message"] as! String
             newLogMessage.player = gameLogDictionary["player"] as! String
             newLogMessage.timestamp = NSDate(timeIntervalSince1970:gameLogDictionary["timestamp"] as! Double)
-            
             newLog.append(newLogMessage)
         }
         return newLog
@@ -1076,6 +1076,28 @@ extension APIClient {
         completionHandler(gameSummaries: games, success: true, message: nil)
         return
     }
+    
+    // MARK: - Adjust Fire Dice
+    
+    func adjustFire(gameId: Int, roundNumber: Int, timestamp: String, action: String, completionHandler: (success: Bool, message: String?) -> Void) {
+        let jsonBody: [String: String] = [
+            "type": "adjustFire",
+            "game": String(gameId),
+            "roundNumber": String(roundNumber),
+            "timestamp": timestamp,
+            "action": action
+        ]
+        
+        APIClient.sharedInstance().request(jsonBody) { result, success, message in
+            guard success else {
+                print("error: \(message)")
+                completionHandler(success: false, message: message)
+                return
+            }
+            
+            completionHandler(success: success, message: nil)
+        }
+    }
 
     // MARK: - Offered Games
     
@@ -1097,7 +1119,6 @@ extension APIClient {
                 return
             }
             
-            print(result)
             completionHandler(success: success, message: nil)
         }
     }

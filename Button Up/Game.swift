@@ -18,7 +18,7 @@ struct Game {
     var state: GameState = GameState.INVALID
     
     var round: Int = 0
-    var timestamp = NSDate()
+    var timestamp: String = "" // This is more of a token we hand back to the API to make sure a move is current
 
     var activePlayerIndex: Int? // Nil in inactive games
     var currentPlayerIndex = 0

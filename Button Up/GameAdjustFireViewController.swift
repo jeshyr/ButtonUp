@@ -46,8 +46,6 @@ class GameAdjustFireViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        print(game)
-        
         appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         
         self.tabBarController?.tabBar.hidden = true
@@ -55,6 +53,8 @@ class GameAdjustFireViewController: UIViewController {
         self.navigationItem.title = "Adjust Fire Dice"
         
         //self.navigationItem.backBarButtonItem!.title = "Back"
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelButtonTouchUp")
         
         client.tryLoadingGameData(gameSummary!, loadAttempts: 0) { game, success, message in
             if success {
@@ -112,16 +112,19 @@ class GameAdjustFireViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue()) {
                 self.navigationItem.title = "Your Move"
                 self.fireButton.enabled = true
+                self.navigationItem.rightBarButtonItem!.enabled = true
             }
         } else if activePlayerIndex == 1 {
             dispatch_async(dispatch_get_main_queue()) {
                 self.navigationItem.title = "Their Move"
                 self.fireButton.enabled = false
+                self.navigationItem.rightBarButtonItem!.enabled = false
             }
         } else if activePlayerIndex == nil {
             dispatch_async(dispatch_get_main_queue()) {
                 self.navigationItem.title = "(Inactive game)"
                 self.fireButton.enabled = false
+                self.navigationItem.rightBarButtonItem!.enabled = false
             }
         }
         
@@ -184,6 +187,21 @@ class GameAdjustFireViewController: UIViewController {
     
     @IBAction func fireButtonTouchUp(sender: AnyObject) {
         debugPrint("Bang bang")
+    }
+    
+    func cancelButtonTouchUp() {
+        debugPrint("Cancel")
+        
+        client.adjustFire(game!.id, roundNumber: game!.round, timestamp: game!.timestamp, action: "cancel") { success, message in
+            
+            if success {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.navigationController!.popViewControllerAnimated(true)
+                }
+            } else {
+                print("Failed to cancel fire adjusting: \(message)")
+            }
+        }
     }
     
     @IBAction func buttonTouchUp(sender: UIButton) {
