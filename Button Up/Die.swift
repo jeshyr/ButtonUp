@@ -154,8 +154,12 @@ struct Die : CustomStringConvertible {
                 newButton.dieValue.newBackingColor(UIColor(red: 0.9, green: 0.15, blue: 0.15, alpha: 1.0))
             }
         } else {
-            // Inactive dice are grey
-            newButton.dieValue.newBackingColor(UIColor.lightGrayColor())
+            // Inactive dice are grey or mostly grey
+            if self.properties.contains(Flag.IsAttacker) || self.properties.contains(Flag.IsAttackTarget) {
+                newButton.dieValue.newBackingColor(UIColor(red: 0.85, green: 0.5, blue: 0.5, alpha: 1.0))
+            } else {
+                newButton.dieValue.newBackingColor(UIColor.lightGrayColor())
+            }
         }
         return newButton
     }
