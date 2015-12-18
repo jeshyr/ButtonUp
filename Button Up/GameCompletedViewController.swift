@@ -37,9 +37,7 @@ class GameCompletedViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print(game)
-        
+                
         appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         
         self.tabBarController?.tabBar.hidden = true
@@ -117,7 +115,7 @@ class GameCompletedViewController: UIViewController {
     
     @IBAction func dismissButtonTouchUp(sender: AnyObject) {
         let id = game!.id
-        print("Trying to dismiss \(id)")
+        //print("Trying to dismiss \(id)")
         client.dismissGame(id) { success, message in
             if success {
                 dispatch_async(dispatch_get_main_queue()) {

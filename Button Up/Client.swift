@@ -13,7 +13,9 @@ extension APIClient {
     
     // MARK: - Load a single game
     func tryLoadingGameData(gameSummary: GameSummary, var loadAttempts: Int, completionHandler: (game: Game?, success: Bool, message: String?) -> Void) {
-        print("Loading game \(gameSummary.id) ... attempt #\(loadAttempts)")
+        if loadAttempts != 0 {
+            print("Loading game \(gameSummary.id) ... attempt #\(loadAttempts)")
+        }
         
         self.loadGameData(gameSummary.id) { game, success, error in
             if success {
@@ -198,7 +200,6 @@ extension APIClient {
             let username = appDelegate!.appSettings.username
             
             if username.caseInsensitiveCompare(newGame.playerData[1].name) == NSComparisonResult.OrderedSame {
-                debugPrint("Flipping array")
                 // Our user is second in the array - flip it (always two players)
                 newGame.playerData = newGame.playerData.reverse()
                 
@@ -232,7 +233,6 @@ extension APIClient {
             var newPlayerData = GamePlayerData()
             
             guard let activeDieArray = playerDataDictionary["activeDieArray"] as! [[String: AnyObject]]? else {
-                
                 print("Can't find activeDieArray: \(playerDataDictionary)")
                 return nil
             }
@@ -375,9 +375,7 @@ extension APIClient {
                 print("Can't find prevOptValueArray: \(playerDataDictionary)")
                 return nil
             }
-            print("prevOptValues: \(prevOptValueArray)")
             if let prevOptRequests = prevOptValueArray as? [String:[String]] {
-                print("Perceiving prevOptRequests as dictionary...")
                 for (key, valueArray) in prevOptRequests {
                     let keyInt = Int(key)!
                     for value in valueArray {
@@ -390,7 +388,6 @@ extension APIClient {
                     }
                 }
             } else if let prevOptRequests = prevOptValueArray as? [[String]] {
-                print("Perceiving prevOptRequests as array...")
                 for (keyInt, valueArray) in prevOptRequests.enumerate() {
                     for value in valueArray {
                         let valueInt = Int(value)!
@@ -402,7 +399,6 @@ extension APIClient {
                     }
                 }
             }
-            print("prevOptValues: \(newPlayerData.prevOptValues)")
             
             guard let prevSwingValueArray = playerDataDictionary["prevSwingValueArray"]  else {
                 print("Can't find prevSwingValueArray: \(playerDataDictionary)")
@@ -465,8 +461,6 @@ extension APIClient {
         var newDie = Die()
         var isTwinDie = false
         
-//        print(dieData)
-        
         /* Required parameters */
         guard let recipe = dieData["recipe"] as! String? else {
             print("Can't find recipe: \(dieData)")
@@ -522,16 +516,11 @@ extension APIClient {
                     var newSubDie = DieSubDie()
                     newSubDie.sides = subDie["sides"]!
                     newSubDie.value = subDie["value"]!
-//                    print("newSubDie: \(newSubDie)")
                     newDie.subDice.append(newSubDie)
-//                    print("NewDie: \(newDie.subDice)")
                 }
-            } else {
-                //print("Confused by subdieArray: \(dieData["SubdieArray"])")
             }
         }
        
-//        print("Parsed: \(newDie)")
         return newDie
     }
     
@@ -559,7 +548,6 @@ extension APIClient {
             
             newLogMessage.message = gameLogDictionary["message"] as! String
             newLogMessage.player = gameLogDictionary["player"] as! String
-            // FIXME TIMEZONES
             newLogMessage.timestamp = NSDate(timeIntervalSince1970:gameLogDictionary["timestamp"] as! Double)
             
             newLog.append(newLogMessage)
@@ -581,7 +569,6 @@ extension APIClient {
         }
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            
             guard success else {
                 print("error: \(message)")
                 completionHandler(buttons: nil, success: false, message: message)
@@ -589,7 +576,6 @@ extension APIClient {
             }
             
             var buttons = [Button]()
-            
             guard let parsedSetArray = result as! [AnyObject]? else {
                 print("Can't find array of buttons in \(result)")
                 completionHandler(buttons: nil, success: false, message: "Can't find array of buttons in \(result)")
@@ -649,7 +635,6 @@ extension APIClient {
                 }
                 
                 /* specialText is only exposed if loading a single button at a time */
-                // TODO have no examples of special text
                 if let specialText = parsedSet["specialText"] as? String {
                     button.special = specialText
                     print("Found specialText on button \(buttonName): \(specialText)")
@@ -677,9 +662,8 @@ extension APIClient {
                 button.recipe = recipe
                 
                 if let tags = parsedSet["tags"] as! [String]? {
-                    // TODO what tags exist?
                     button.tags = tags
-                    print("Found tags on button \(buttonName): \(tags)")
+                    // print("Found tags on button \(buttonName): \(tags)")
 
                 } else {
                     button.tags = nil
@@ -719,7 +703,6 @@ extension APIClient {
                 }
                 
                 if let interactions = skillDictionary["interacts"] as? [String: String] {
-                    print("Interaction: \(interactions)")
                     newSkill.interactions = interactions
                 }
                 
@@ -734,7 +717,6 @@ extension APIClient {
     
     func parseButtonDieTypes(dieTypeData: AnyObject) -> [ButtonDieTypes] {
         var newDieTypes = [ButtonDieTypes]()
-        print("Die types: \(dieTypeData)")
         
         if let dieTypeArray = dieTypeData as? [String] {
             // Die type array - die type names only
@@ -774,7 +756,6 @@ extension APIClient {
         }
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            
             guard success else {
                 print("error: \(message)")
                 completionHandler(buttonSets: nil, success: false, message: message)
@@ -844,8 +825,6 @@ extension APIClient {
         ]
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            //print("in loadNewGames completion handler")
-            
             guard success else {
                 print("error: \(message)")
                 completionHandler(gameSummaries: nil, success: false, message: message)
@@ -866,8 +845,6 @@ extension APIClient {
         ]
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            //print("in loadRejectedGames completion handler")
-            
             guard success else {
                 print("error: \(message)")
                 completionHandler(gameSummaries: nil, success: false, message: message)
@@ -888,8 +865,6 @@ extension APIClient {
         ]
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            //print("in loadCompletedGames completion handler")
-            
             guard success else {
                 print("error: \(message)")
                 completionHandler(gameSummaries: nil, success: false, message: message)
@@ -910,8 +885,6 @@ extension APIClient {
         ]
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            //print("in loadActiveGames completion handler")
-            
             guard success else {
                 print("error: \(message)")
                 completionHandler(gameSummaries: nil, success: false, message: message)
@@ -930,7 +903,6 @@ extension APIClient {
     
         // Parse dictionary of arrays into array of games
         var games: [GameSummary] = [GameSummary]()
-        //print(result)
         
         guard let gameDescriptionArray = result!["gameDescriptionArray"] as! [String]? else {
             print("Can't parse gameDescriptionArray")
@@ -1101,7 +1073,6 @@ extension APIClient {
             games[index].status = validStatus
         }
         
-        //print(games)
         completionHandler(gameSummaries: games, success: true, message: nil)
         return
     }
@@ -1120,8 +1091,6 @@ extension APIClient {
         }
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            print("in reactToNewGame completion handler")
-            
             guard success else {
                 print("error: \(message)")
                 completionHandler(success: false, message: message)
@@ -1130,7 +1099,6 @@ extension APIClient {
             
             print(result)
             completionHandler(success: success, message: nil)
-
         }
     }
     
@@ -1146,8 +1114,6 @@ extension APIClient {
         }
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            print("in joinOpenGame completion handler")
-            
             guard success else {
                 print("error: \(message)")
                 completionHandler(success: false, message: message)
@@ -1164,8 +1130,6 @@ extension APIClient {
         ]
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            print("in loadOpenGames completion handler")
-            
             guard success else {
                 print("error: \(message)")
                 completionHandler(gameSummaries: nil, success: false, message: message)
@@ -1191,8 +1155,6 @@ extension APIClient {
         }
         for openGameData in openGameArray {
             var newGame = GameSummary()
-            
-//            print(openGameData)
             
             guard let challengerButton = openGameData["challengerButton"] as? String else {
                 print("Can't find challengerButton in open games \(openGameData)")
@@ -1254,7 +1216,6 @@ extension APIClient {
             games.append(newGame)
         }
         
-        //print(games)
         completionHandler(gameSummaries: games, success: true, message: nil)
         return
         
@@ -1277,19 +1238,13 @@ extension APIClient {
     
     // Check if we're logged in, if not then log in.
     func loginIfNeeded(username: String, password: String, completionHandler: (success: Bool, message: String?) -> Void) {
-        print("loginIfNeeded")
-        
         let jsonBody : [String:String] = [
             "type": "loadPlayerName",
         ]
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
             // If this call succeeds, we must be logged in. We don't care about the actual values returned - only the success.
-            
             if success {
-                debugPrint("Already logged in!")
-                debugPrint(result)
-                debugPrint(message)
                 let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
                 let username = appDelegate!.appSettings.username
 
@@ -1307,9 +1262,7 @@ extension APIClient {
                         }
                     }
                 }
-
             } else {
-                debugPrint("Logging in now")
                 self.login(username, password: password) { success, message in
                     completionHandler(success: success, message: message)
                     return

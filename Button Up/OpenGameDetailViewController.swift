@@ -37,8 +37,6 @@ class OpenGameDetailViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        print(game)
-        
         appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         
         self.tabBarController?.tabBar.hidden = true

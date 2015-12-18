@@ -38,7 +38,6 @@ class LoginViewController: UIViewController {
         
         client.loginIfNeeded(username, password: password) { success, error in
             if success {
-                debugPrint("viewWillAppear/loginIfNeeded completion handler")
                 dispatch_async(dispatch_get_main_queue(), {
                     self.debugTextLabel.text = "Logged in!"
                     let controller = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController

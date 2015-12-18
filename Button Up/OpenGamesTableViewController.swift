@@ -36,7 +36,6 @@ class OpenGamesTableViewController: UITableViewController {
     func reloadTableData() {
         client.loadOpenGames() { openGames, success, error in
             if success {
-                print("success loading open games")
                 self.games = openGames!
                 dispatch_async(dispatch_get_main_queue()) {
                     self.gameTableView.reloadData()

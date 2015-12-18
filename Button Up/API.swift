@@ -148,13 +148,14 @@ class APIClient: NSObject {
             //completionHandler(result: parsedResult, success: true, message: nil)
             
             guard let status = parsedResult["status"] as! String? else {
-                print("Can't parse dictionary")
+                print("Can't parse result: \(parsedResult)")
                 completionHandler(result: nil, success: false, message: "Can't parse result: \(parsedResult)")
                 return
             }
             
             if status != "ok" {
                 // TODO check here for logged out errors - message format is "You need to login before calling API function ____" and login then retry
+                print("Call failed")
                 if let message = parsedResult["message"] as? String {
                     completionHandler(result: nil, success: false, message: "Call failed: \(message)")
                 } else {
