@@ -48,183 +48,177 @@ extension APIClient {
         ]
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
-            
             guard success else {
                 print("error: \(message)")
                 completionHandler(game: nil, success: false, message: message)
                 return
             }
             
-            //print(result)
-            var newGame = Game()
-
-            guard let activePlayerIndexObj = result!["activePlayerIdx"] else {
-                print("Can't find activePlayerIdx: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find activePlayerIdx: \(result)")
-                return
-            }
-            if let activePlayerIndex = activePlayerIndexObj as? Int? {
-                newGame.activePlayerIndex = activePlayerIndex
+            if let result = result {
+                if let game = self.parseGameData(result as! [String : AnyObject]) {
+                    completionHandler(game: game, success: true, message: nil)
+                    return
+                } else {
+                    completionHandler(game: nil, success: false, message: "Failure to parse game data")
+                    return
+                }
             } else {
-                newGame.activePlayerIndex = nil
-            }
-            
-            guard let currentPlayerIndex = result!["currentPlayerIdx"] as! Int? else {
-                print("Can't find currentPlayerIdx: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find currentPlayerIdx: \(result)")
+                print("no data returned: \(message)")
+                completionHandler(game: nil, success: false, message: message)
                 return
             }
-            newGame.currentPlayerIndex = currentPlayerIndex
-
-            guard let description = result!["description"] as! String? else {
-                print("Can't find description: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find description: \(result)")
-                return
-            }
-            newGame.description = description
-            
-            guard let gameActionLog = result!["gameActionLog"] as! [[String: AnyObject]]? else {
-                print("Can't find gameActionLog: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find gameActionLog: \(result)")
-                return
-            }
-            newGame.actionLog = self.parseGameLog(gameActionLog)
-            
-            guard let chatEditable = result!["gameChatEditable"] as! Double? else {
-                print("Can't find gameChatEditable: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find gameChatEditable: \(result)")
-                return
-            }
-            newGame.chatEditable = NSDate(timeIntervalSince1970: chatEditable)
-            
-            guard let gameChatLog = result!["gameChatLog"] as! [[String: AnyObject]]? else {
-                print("Can't find gameChatLog: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find gameChatLog: \(result)")
-                return
-            }
-            newGame.chatLog = self.parseGameLog(gameChatLog)
-            
-            guard let gameId = result!["gameId"] as! Int? else {
-                print("Can't find gameId: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find gameId: \(result)")
-                return
-            }
-            newGame.id = gameId
-           
-            guard let gameSkillsInfoDictionaryObj = result!["gameSkillsInfo"] else {
-                print("Can't find gameSkillsInfo: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find gameSkillsInfo: \(result)")
-                return
-            }
-            newGame.skillsInfo = self.parseSkills(gameSkillsInfoDictionaryObj)
-            
-            guard let gameState = result!["gameState"] as! String? else {
-                print("Can't find gameState: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find gameState: \(result)")
-                return
-            }
-            guard let validState = GameState(rawValue: gameState) else {
-                print("Invalid game state: \(gameState) in  \(result)")
-                completionHandler(game: nil, success: false, message: "Invalid game state: \(gameState) in  \(result)")
-                return
-            }
-            newGame.state = validState
-            
-            guard let maxWins = result!["maxWins"] as! Int? else {
-                print("Can't find maxWins: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find maxWins: \(result)")
-                return
-            }
-            newGame.maxWins = maxWins
-            
-            guard let playerDataArray = result!["playerDataArray"] as! [[String: AnyObject]]? else {
-                print("Can't find playerDataArray: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find playerDataArray: \(result)")
-                return
-            }
-            
-            guard let parsedPlayerData = self.parseGamePlayerDataArray(playerDataArray) else {
-                completionHandler(game: nil, success: false, message: "Can't parse playerDataArray: \(playerDataArray)")
-                return
-            }
-            newGame.playerData = parsedPlayerData
-            
-            if validState.isActive {
-                guard let playerWithInitiativeIdx = result!["playerWithInitiativeIdx"] as! Int? else {
-                    print("Can't find playerWithInitiativeIdx: \(result)")
-                    completionHandler(game: nil, success: false, message: "Can't find playerWithInitiativeIdx: \(result)")
-                    return
-                }
-                newGame.playerWithInitiativeIndex = playerWithInitiativeIdx
-            }
-            
-            guard let previousGameId = result!["previousGameId"] else {
-                print("Can't find previousGameId: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find previousGameId: \(result)")
-                return
-            }
-            if let previousGameIdInt = previousGameId as? Int? {
-                newGame.previousGameId = previousGameIdInt
-            }
-            
-            guard let roundNumber = result!["roundNumber"] as! Int? else {
-                print("Can't find roundNumber: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find roundNumber: \(result)")
-                return
-            }
-            newGame.round = roundNumber
-            
-            guard let timestamp = result!["timestamp"] as? Double else {
-                print("Can't find timestamp: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find timestamp: \(result)")
-                return
-            }
-            //newGame.timestamp = NSDate(timeIntervalSince1970:timestamp)
-            newGame.timestamp = String(format: "%.0f", timestamp)
-            
-            guard let validAttackTypeArray = result!["validAttackTypeArray"] as! [String]? else {
-                print("Can't find validAttackTypeArray: \(result)")
-                completionHandler(game: nil, success: false, message: "Can't find validAttackTypeArray: \(result)")
-                return
-            }
-            for validAttackType in validAttackTypeArray {
-                guard let validValidAttackType = Attack(rawValue: validAttackType) else {
-                    print("Invalid attack type: \(validAttackType) in  \(validAttackTypeArray)")
-                    completionHandler(game: nil, success: false, message: "Invalid attack type: \(validAttackType) in  \(validAttackTypeArray)")
-                    return
-                }
-                newGame.validAttacks.append(validValidAttackType)
-            }
-            
-            // Sort the array so that if our user is one of the players they are always the first member. This simplifies display code.
-            let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-            let username = appDelegate!.appSettings.username
-            
-            if username.caseInsensitiveCompare(newGame.playerData[1].name) == NSComparisonResult.OrderedSame {
-                // Our user is second in the array - flip it (always two players)
-                newGame.playerData = newGame.playerData.reverse()
-                
-                // Then reverse all the things that point to the playerData array
-                if newGame.activePlayerIndex == 1 {
-                    newGame.activePlayerIndex = 0
-                } else if newGame.activePlayerIndex == 0 {
-                    newGame.activePlayerIndex = 1
-                }
-                if newGame.currentPlayerIndex == 1 {
-                    newGame.currentPlayerIndex = 0
-                } else if newGame.currentPlayerIndex == 0 {
-                    newGame.currentPlayerIndex = 1
-                }
-                if newGame.playerWithInitiativeIndex == 1 {
-                    newGame.playerWithInitiativeIndex = 0
-                } else if newGame.playerWithInitiativeIndex == 0 {
-                    newGame.playerWithInitiativeIndex = 1
-                }
-            }
-            
-            completionHandler(game: newGame, success: true, message: nil)
-            return
         }
+    }
+    
+    func parseGameData(data: [String: AnyObject]) -> Game? {
+        //print(data)
+        var game = Game()
+        
+        guard let activePlayerIndexObj = data["activePlayerIdx"] else {
+            print("Can't find activePlayerIdx: \(data)")
+            return nil
+        }
+        if let activePlayerIndex = activePlayerIndexObj as? Int {
+            game.activePlayerIndex = activePlayerIndex
+        } else {
+            game.activePlayerIndex = nil
+        }
+        
+        guard let currentPlayerIndex = data["currentPlayerIdx"] as? Int else {
+            print("Can't find currentPlayerIdx: \(data)")
+            return nil
+        }
+        game.currentPlayerIndex = currentPlayerIndex
+        
+        guard let description = data["description"] as? String else {
+            print("Can't find description: \(data)")
+            return nil
+        }
+        game.description = description
+        
+        guard let gameActionLog = data["gameActionLog"] as? [[String: AnyObject]] else {
+            print("Can't find gameActionLog: \(data)")
+            return nil
+        }
+        game.actionLog = self.parseGameLog(gameActionLog)
+        
+        guard let chatEditable = data["gameChatEditable"] as? Double else {
+            print("Can't find gameChatEditable: \(data)")
+            return nil
+        }
+        game.chatEditable = NSDate(timeIntervalSince1970: chatEditable)
+        
+        guard let gameChatLog = data["gameChatLog"] as? [[String: AnyObject]] else {
+            print("Can't find gameChatLog: \(data)")
+            return nil
+        }
+        game.chatLog = self.parseGameLog(gameChatLog)
+        
+        guard let gameId = data["gameId"] as? Int else {
+            print("Can't find gameId: \(data)")
+            return nil
+        }
+        game.id = gameId
+        
+        guard let gameSkillsInfoDictionaryObj = data["gameSkillsInfo"] else {
+            print("Can't find gameSkillsInfo: \(data)")
+            return nil
+        }
+        game.skillsInfo = self.parseSkills(gameSkillsInfoDictionaryObj)
+        
+        guard let gameState = data["gameState"] as? String else {
+            print("Can't find gameState: \(data)")
+            return nil
+        }
+        guard let validState = GameState(rawValue: gameState) else {
+            print("Invalid game state: \(gameState) in  \(data)")
+            return nil
+        }
+        game.state = validState
+        
+        guard let maxWins = data["maxWins"] as? Int else {
+            print("Can't find maxWins: \(data)")
+            return nil
+        }
+        game.maxWins = maxWins
+        
+        guard let playerDataArray = data["playerDataArray"] as? [[String: AnyObject]] else {
+            print("Can't find playerDataArray: \(data)")
+            return nil
+        }
+        
+        guard let parsedPlayerData = self.parseGamePlayerDataArray(playerDataArray) else {
+            return nil
+        }
+        game.playerData = parsedPlayerData
+        
+        if validState.isActive {
+            guard let playerWithInitiativeIdx = data["playerWithInitiativeIdx"] as? Int else {
+                print("Can't find playerWithInitiativeIdx: \(data)")
+                return nil
+            }
+            game.playerWithInitiativeIndex = playerWithInitiativeIdx
+        }
+        
+        guard let previousGameId = data["previousGameId"] else {
+            print("Can't find previousGameId: \(data)")
+            return nil
+        }
+        if let previousGameIdInt = previousGameId as? Int {
+            game.previousGameId = previousGameIdInt
+        }
+        
+        guard let roundNumber = data["roundNumber"] as? Int else {
+            print("Can't find roundNumber: \(data)")
+            return nil
+        }
+        game.round = roundNumber
+        
+        guard let timestamp = data["timestamp"] as? Double else {
+            print("Can't find timestamp: \(data)")
+            return nil
+        }
+        //newGame.timestamp = NSDate(timeIntervalSince1970:timestamp)
+        game.timestamp = String(format: "%.0f", timestamp)
+        
+        guard let validAttackTypeArray = data["validAttackTypeArray"] as? [String] else {
+            print("Can't find validAttackTypeArray: \(data)")
+            return nil
+        }
+        for validAttackType in validAttackTypeArray {
+            guard let validValidAttackType = Attack(rawValue: validAttackType) else {
+                print("Invalid attack type: \(validAttackType) in  \(validAttackTypeArray)")
+                return nil
+            }
+            game.validAttacks.append(validValidAttackType)
+        }
+        
+        // Sort the array so that if our user is one of the players they are always the first member. This simplifies display code.
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let username = appDelegate!.appSettings.username
+        
+        if username.caseInsensitiveCompare(game.playerData[1].name) == NSComparisonResult.OrderedSame {
+            // Our user is second in the array - flip it (always two players)
+            game.playerData = game.playerData.reverse()
+            
+            // Then reverse all the things that point to the playerData array
+            if game.activePlayerIndex == 1 {
+                game.activePlayerIndex = 0
+            } else if game.activePlayerIndex == 0 {
+                game.activePlayerIndex = 1
+            }
+            if game.currentPlayerIndex == 1 {
+                game.currentPlayerIndex = 0
+            } else if game.currentPlayerIndex == 0 {
+                game.currentPlayerIndex = 1
+            }
+            if game.playerWithInitiativeIndex == 1 {
+                game.playerWithInitiativeIndex = 0
+            } else if game.playerWithInitiativeIndex == 0 {
+                game.playerWithInitiativeIndex = 1
+            }
+        }
+        return game
     }
     
     func parseGamePlayerDataArray(playerDataDictionaryArray: [[String: AnyObject]]) -> [GamePlayerData]? {
@@ -575,106 +569,106 @@ extension APIClient {
                 return
             }
             
-            var buttons = [Button]()
             guard let parsedSetArray = result as! [AnyObject]? else {
                 print("Can't find array of buttons in \(result)")
                 completionHandler(buttons: nil, success: false, message: "Can't find array of buttons in \(result)")
                 return
             }
             
-            for parsedSet in parsedSetArray {
-                var button = Button()
-                
-                guard let artFilename = parsedSet["artFilename"] as! String? else {
-                    print("Can't find artFilename in \(parsedSet)")
-                    completionHandler(buttons: nil, success: false, message: "Can't find artFilename in \(parsedSet)")
-                    return
-                }
-                button.artFilename = artFilename
-                
-                guard let buttonId = parsedSet["buttonId"] as! Int? else {
-                    print("Can't find buttonId in \(parsedSet)")
-                    completionHandler(buttons: nil, success: false, message: "Can't find buttonId in \(parsedSet)")
-                    return
-                }
-                button.id = buttonId
-                
-                guard let buttonName = parsedSet["buttonName"] as! String? else {
-                    print("Can't find buttonName in \(parsedSet)")
-                    completionHandler(buttons: nil, success: false, message: "Can't find buttonName in \(parsedSet)")
-                    return
-                }
-                button.name = buttonName
-                
-                guard let buttonSet = parsedSet["buttonSet"] as! String? else {
-                    print("Can't find buttonSet in \(parsedSet)")
-                    completionHandler(buttons: nil, success: false, message: "Can't find buttonSet in \(parsedSet)")
-                    return
-                }
-                button.setName = buttonSet
-                
-                /* If loading multiple buttons, dieSkills will be an array of strings. If a single button, dieSkills will be a dictionary of dictionaries. */
-                guard let dieSkills = parsedSet["dieSkills"] else {
-                    print("Can't find dieSkills in \(parsedSet)")
-                    completionHandler(buttons: nil, success: false, message: "Can't find dieSkills in \(parsedSet)")
-                    return
-                }
-                button.dieSkills = self.parseSkills(dieSkills!)
-                
-                /* If loading multiple buttons, dieTypes will be an array of strings. If a single button, dieTypes will be a dictionary of dictionaries. */
-                guard let dieTypes = parsedSet["dieTypes"] else {
-                    print("Can't find dieTypes in \(parsedSet)")
-                    completionHandler(buttons: nil, success: false, message: "Can't find dieTypes in \(parsedSet)")
-                    return
-                }
-                button.dieTypes = self.parseButtonDieTypes(dieTypes!)
-
-                /* FlavorText is only exposed if loading a single button at a time */
-                if let flavorText = parsedSet["flavorText"] as? String {
-                    button.flavor = flavorText
-                }
-                
-                /* specialText is only exposed if loading a single button at a time */
-                if let specialText = parsedSet["specialText"] as? String {
-                    button.special = specialText
-                    print("Found specialText on button \(buttonName): \(specialText)")
-                }
-                
-                guard let hasUnimplementedSkill = parsedSet["hasUnimplementedSkill"] as! Bool? else {
-                    print("Can't find hasUnimplementedSkill in \(parsedSet)")
-                    completionHandler(buttons: nil, success: false, message: "Can't find hasUnimplementedSkill in \(parsedSet)")
-                    return
-                }
-                button.hasUnimplementedSkill = hasUnimplementedSkill
-                
-                guard let isTournamentLegal = parsedSet["isTournamentLegal"] as! Bool? else {
-                    print("Can't find isTournamentLegal in \(parsedSet)")
-                    completionHandler(buttons: nil, success: false, message: "Can't find isTournamentLegal in \(parsedSet)")
-                    return
-                }
-                button.isTournamentLegal = isTournamentLegal
-                
-                guard let recipe = parsedSet["recipe"] as! String? else {
-                    print("Can't find recipe in \(parsedSet)")
-                    completionHandler(buttons: nil, success: false, message: "Can't find recipe in \(parsedSet)")
-                    return
-                }
-                button.recipe = recipe
-                
-                if let tags = parsedSet["tags"] as! [String]? {
-                    button.tags = tags
-                    // print("Found tags on button \(buttonName): \(tags)")
-
-                } else {
-                    button.tags = nil
-                }
-                
-                buttons.append(button)
-            }
+            let buttons = self.parseButtonData(parsedSetArray)
             
             completionHandler(buttons: buttons, success: true, message: nil)
             return
         }
+    }
+    
+    func parseButtonData(dataArray: [AnyObject]) -> [Button]? {
+        
+        var buttons = [Button]()
+        
+        for data in dataArray {
+            var button = Button()
+            
+            guard let artFilename = data["artFilename"] as? String else {
+                print("Can't find artFilename in \(data)")
+                return nil
+            }
+            button.artFilename = artFilename
+            
+            guard let buttonId = data["buttonId"] as? Int else {
+                print("Can't find buttonId in \(data)")
+                return nil
+            }
+            button.id = buttonId
+            
+            guard let buttonName = data["buttonName"] as? String else {
+                print("Can't find buttonName in \(data)")
+                return nil
+            }
+            button.name = buttonName
+            
+            guard let buttonSet = data["buttonSet"] as? String else {
+                print("Can't find buttonSet in \(data)")
+                return nil
+            }
+            button.setName = buttonSet
+            
+            /* If loading multiple buttons, dieSkills will be an array of strings. If a single button, dieSkills will be a dictionary of dictionaries. */
+            guard let dieSkills = data["dieSkills"] else {
+                print("Can't find dieSkills in \(data)")
+                return nil
+            }
+            button.dieSkills = self.parseSkills(dieSkills!)
+            
+            /* If loading multiple buttons, dieTypes will be an array of strings. If a single button, dieTypes will be a dictionary of dictionaries. */
+            guard let dieTypes = data["dieTypes"] else {
+                print("Can't find dieTypes in \(data)")
+                return nil
+            }
+            button.dieTypes = self.parseButtonDieTypes(dieTypes!)
+            
+            /* FlavorText is only exposed if loading a single button at a time */
+            if let flavorText = data["flavorText"] as? String {
+                button.flavor = flavorText
+            }
+            
+            /* specialText is only exposed if loading a single button at a time */
+            if let specialText = data["specialText"] as? String {
+                button.special = specialText
+                print("Found specialText on button \(buttonName): \(specialText)")
+            }
+            
+            guard let hasUnimplementedSkill = data["hasUnimplementedSkill"] as? Bool else {
+                print("Can't find hasUnimplementedSkill in \(data)")
+                return nil
+            }
+            button.hasUnimplementedSkill = hasUnimplementedSkill
+            
+            guard let isTournamentLegal = data["isTournamentLegal"] as? Bool else {
+                print("Can't find isTournamentLegal in \(data)")
+                return nil
+            }
+            button.isTournamentLegal = isTournamentLegal
+            
+            guard let recipe = data["recipe"] as? String else {
+                print("Can't find recipe in \(data)")
+                return nil
+            }
+            button.recipe = recipe
+            
+            if let tags = data["tags"] as? [String] {
+                button.tags = tags
+                // print("Found tags on button \(buttonName): \(tags)")
+                
+            } else {
+                button.tags = nil
+            }
+            
+            buttons.append(button)
+        }
+        
+        return buttons
+
     }
     
     // Games and Buttons and Die all have Skills
