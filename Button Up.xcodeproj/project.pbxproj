@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7A83F3397F7C9DBC34AF92BE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEE56C43EDAAE078047F3E1F /* Pods.framework */; };
+		E10786D91C2531270069A54E /* playerDataArray.json in Resources */ = {isa = PBXBuildFile; fileRef = E10786D81C2531270069A54E /* playerDataArray.json */; };
+		E10786DB1C2531FD0069A54E /* ParseGamePlayerDataArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10786DA1C2531FD0069A54E /* ParseGamePlayerDataArrayTests.swift */; };
+		E10786DD1C2535430069A54E /* dieData.json in Resources */ = {isa = PBXBuildFile; fileRef = E10786DC1C2535430069A54E /* dieData.json */; };
+		E10786DF1C2536CC0069A54E /* ParseDieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10786DE1C2536CC0069A54E /* ParseDieData.swift */; };
 		E12550D91C1A6299009CAFD5 /* GameAdjustFireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12550D81C1A6299009CAFD5 /* GameAdjustFireViewController.swift */; };
 		E12550DB1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12550DA1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift */; };
 		E12FD7351C1D50CE00B8E6E5 /* OpenGameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FD7341C1D50CE00B8E6E5 /* OpenGameDetailViewController.swift */; };
@@ -42,8 +46,8 @@
 		E1D00DBE1BF74D88009FF0A8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D00DBD1BF74D88009FF0A8 /* Button.swift */; };
 		E1D3C9F11C008153001C3150 /* DieView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D3C9F01C008153001C3150 /* DieView.xib */; };
 		E1D3C9F31C00817C001C3150 /* DieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D3C9F21C00817C001C3150 /* DieView.swift */; };
-		E1F19AB71C24E1E80097DE98 /* loadGameData.json in Resources */ = {isa = PBXBuildFile; fileRef = E1F19AB61C24E1E80097DE98 /* loadGameData.json */; };
-		E1F19AB91C24E2580097DE98 /* loadActiveGames.json in Resources */ = {isa = PBXBuildFile; fileRef = E1F19AB81C24E2580097DE98 /* loadActiveGames.json */; };
+		E1F19AB71C24E1E80097DE98 /* gameData.json in Resources */ = {isa = PBXBuildFile; fileRef = E1F19AB61C24E1E80097DE98 /* gameData.json */; };
+		E1F19AB91C24E2580097DE98 /* activeGames.json in Resources */ = {isa = PBXBuildFile; fileRef = E1F19AB81C24E2580097DE98 /* activeGames.json */; };
 		E1F19ABB1C24EF980097DE98 /* ParseJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F19ABA1C24EF980097DE98 /* ParseJSONTests.swift */; };
 		E1F19ABC1C24F3E40097DE98 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13634811C09536D00B6126F /* Flag.swift */; };
 		E1F19ABD1C24F3EA0097DE98 /* DieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D3C9F21C00817C001C3150 /* DieView.swift */; };
@@ -54,10 +58,10 @@
 		E1F5C9BD1BF88BF10052A119 /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5C9BC1BF88BF10052A119 /* Attack.swift */; };
 		E1FC13001C1FA409009D4792 /* ChooseJoinGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC12FF1C1FA408009D4792 /* ChooseJoinGameViewController.swift */; };
 		E1FCAC511C250C7800F05269 /* ParseGameDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCAC501C250C7800F05269 /* ParseGameDataTests.swift */; };
-		E1FCAC531C2515D200F05269 /* loadButtonSetData.json in Resources */ = {isa = PBXBuildFile; fileRef = E1FCAC521C2515D200F05269 /* loadButtonSetData.json */; };
-		E1FCAC551C25160B00F05269 /* loadButtonData-multiple.json in Resources */ = {isa = PBXBuildFile; fileRef = E1FCAC541C25160B00F05269 /* loadButtonData-multiple.json */; };
-		E1FCAC571C25166700F05269 /* loadButtonData-single.json in Resources */ = {isa = PBXBuildFile; fileRef = E1FCAC561C25166700F05269 /* loadButtonData-single.json */; };
-		E1FCAC591C2516DC00F05269 /* loadOpenGames.json in Resources */ = {isa = PBXBuildFile; fileRef = E1FCAC581C2516DC00F05269 /* loadOpenGames.json */; };
+		E1FCAC531C2515D200F05269 /* buttonSetData.json in Resources */ = {isa = PBXBuildFile; fileRef = E1FCAC521C2515D200F05269 /* buttonSetData.json */; };
+		E1FCAC551C25160B00F05269 /* buttonData-multiple.json in Resources */ = {isa = PBXBuildFile; fileRef = E1FCAC541C25160B00F05269 /* buttonData-multiple.json */; };
+		E1FCAC571C25166700F05269 /* buttonData-single.json in Resources */ = {isa = PBXBuildFile; fileRef = E1FCAC561C25166700F05269 /* buttonData-single.json */; };
+		E1FCAC591C2516DC00F05269 /* openGames.json in Resources */ = {isa = PBXBuildFile; fileRef = E1FCAC581C2516DC00F05269 /* openGames.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +85,10 @@
 		6DD6D14639307B40292B7497 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AD2EB2E6A566B34FD60EED3F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DEE56C43EDAAE078047F3E1F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10786D81C2531270069A54E /* playerDataArray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = playerDataArray.json; sourceTree = "<group>"; };
+		E10786DA1C2531FD0069A54E /* ParseGamePlayerDataArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseGamePlayerDataArrayTests.swift; sourceTree = "<group>"; };
+		E10786DC1C2535430069A54E /* dieData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dieData.json; sourceTree = "<group>"; };
+		E10786DE1C2536CC0069A54E /* ParseDieData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseDieData.swift; sourceTree = "<group>"; };
 		E12550D81C1A6299009CAFD5 /* GameAdjustFireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAdjustFireViewController.swift; sourceTree = "<group>"; };
 		E12550DA1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGamesTableViewController.swift; sourceTree = "<group>"; };
 		E12FD7341C1D50CE00B8E6E5 /* OpenGameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGameDetailViewController.swift; sourceTree = "<group>"; };
@@ -119,8 +127,8 @@
 		E1D00DBD1BF74D88009FF0A8 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		E1D3C9F01C008153001C3150 /* DieView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DieView.xib; sourceTree = "<group>"; };
 		E1D3C9F21C00817C001C3150 /* DieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieView.swift; sourceTree = "<group>"; };
-		E1F19AB61C24E1E80097DE98 /* loadGameData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadGameData.json; sourceTree = "<group>"; };
-		E1F19AB81C24E2580097DE98 /* loadActiveGames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadActiveGames.json; sourceTree = "<group>"; };
+		E1F19AB61C24E1E80097DE98 /* gameData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gameData.json; sourceTree = "<group>"; };
+		E1F19AB81C24E2580097DE98 /* activeGames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeGames.json; sourceTree = "<group>"; };
 		E1F19ABA1C24EF980097DE98 /* ParseJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseJSONTests.swift; sourceTree = "<group>"; };
 		E1F19ABF1C24F97C0097DE98 /* invalid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = invalid.json; sourceTree = "<group>"; };
 		E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameHistoryTableViewController.swift; sourceTree = "<group>"; };
@@ -128,10 +136,10 @@
 		E1F5C9BC1BF88BF10052A119 /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 		E1FC12FF1C1FA408009D4792 /* ChooseJoinGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseJoinGameViewController.swift; sourceTree = "<group>"; };
 		E1FCAC501C250C7800F05269 /* ParseGameDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseGameDataTests.swift; sourceTree = "<group>"; };
-		E1FCAC521C2515D200F05269 /* loadButtonSetData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadButtonSetData.json; sourceTree = "<group>"; };
-		E1FCAC541C25160B00F05269 /* loadButtonData-multiple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loadButtonData-multiple.json"; sourceTree = "<group>"; };
-		E1FCAC561C25166700F05269 /* loadButtonData-single.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loadButtonData-single.json"; sourceTree = "<group>"; };
-		E1FCAC581C2516DC00F05269 /* loadOpenGames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadOpenGames.json; sourceTree = "<group>"; };
+		E1FCAC521C2515D200F05269 /* buttonSetData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = buttonSetData.json; sourceTree = "<group>"; };
+		E1FCAC541C25160B00F05269 /* buttonData-multiple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "buttonData-multiple.json"; sourceTree = "<group>"; };
+		E1FCAC561C25166700F05269 /* buttonData-single.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "buttonData-single.json"; sourceTree = "<group>"; };
+		E1FCAC581C2516DC00F05269 /* openGames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openGames.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				E1FCAC5A1C25175500F05269 /* json */,
+				E10786DA1C2531FD0069A54E /* ParseGamePlayerDataArrayTests.swift */,
+				E10786DE1C2536CC0069A54E /* ParseDieData.swift */,
 				E1FCAC501C250C7800F05269 /* ParseGameDataTests.swift */,
 				E1F19ABA1C24EF980097DE98 /* ParseJSONTests.swift */,
 				E19AEC2D1C067DB100170735 /* DieTests.swift */,
@@ -281,13 +291,15 @@
 		E1FCAC5A1C25175500F05269 /* json */ = {
 			isa = PBXGroup;
 			children = (
-				E1FCAC581C2516DC00F05269 /* loadOpenGames.json */,
-				E1FCAC541C25160B00F05269 /* loadButtonData-multiple.json */,
-				E1FCAC561C25166700F05269 /* loadButtonData-single.json */,
-				E1FCAC521C2515D200F05269 /* loadButtonSetData.json */,
+				E10786D81C2531270069A54E /* playerDataArray.json */,
+				E10786DC1C2535430069A54E /* dieData.json */,
+				E1FCAC581C2516DC00F05269 /* openGames.json */,
+				E1FCAC541C25160B00F05269 /* buttonData-multiple.json */,
+				E1FCAC561C25166700F05269 /* buttonData-single.json */,
+				E1FCAC521C2515D200F05269 /* buttonSetData.json */,
 				E1F19ABF1C24F97C0097DE98 /* invalid.json */,
-				E1F19AB81C24E2580097DE98 /* loadActiveGames.json */,
-				E1F19AB61C24E1E80097DE98 /* loadGameData.json */,
+				E1F19AB81C24E2580097DE98 /* activeGames.json */,
+				E1F19AB61C24E1E80097DE98 /* gameData.json */,
 			);
 			name = json;
 			sourceTree = "<group>";
@@ -413,12 +425,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1FCAC551C25160B00F05269 /* loadButtonData-multiple.json in Resources */,
-				E1FCAC591C2516DC00F05269 /* loadOpenGames.json in Resources */,
-				E1FCAC571C25166700F05269 /* loadButtonData-single.json in Resources */,
-				E1FCAC531C2515D200F05269 /* loadButtonSetData.json in Resources */,
-				E1F19AB71C24E1E80097DE98 /* loadGameData.json in Resources */,
-				E1F19AB91C24E2580097DE98 /* loadActiveGames.json in Resources */,
+				E10786D91C2531270069A54E /* playerDataArray.json in Resources */,
+				E1FCAC551C25160B00F05269 /* buttonData-multiple.json in Resources */,
+				E10786DD1C2535430069A54E /* dieData.json in Resources */,
+				E1FCAC591C2516DC00F05269 /* openGames.json in Resources */,
+				E1FCAC571C25166700F05269 /* buttonData-single.json in Resources */,
+				E1FCAC531C2515D200F05269 /* buttonSetData.json in Resources */,
+				E1F19AB71C24E1E80097DE98 /* gameData.json in Resources */,
+				E1F19AB91C24E2580097DE98 /* activeGames.json in Resources */,
 				E1F19AC01C24F97C0097DE98 /* invalid.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,10 +539,12 @@
 				E1F19ABC1C24F3E40097DE98 /* Flag.swift in Sources */,
 				E19AEC2E1C067DB100170735 /* DieTests.swift in Sources */,
 				E19AEC301C06804000170735 /* SkillTests.swift in Sources */,
+				E10786DF1C2536CC0069A54E /* ParseDieData.swift in Sources */,
 				E19AEC321C06834B00170735 /* Skill.swift in Sources */,
 				E1FCAC511C250C7800F05269 /* ParseGameDataTests.swift in Sources */,
 				E1F19ABD1C24F3EA0097DE98 /* DieView.swift in Sources */,
 				E19AEC311C06826900170735 /* Die.swift in Sources */,
+				E10786DB1C2531FD0069A54E /* ParseGamePlayerDataArrayTests.swift in Sources */,
 				E1F19ABE1C24F3EE0097DE98 /* DieButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
