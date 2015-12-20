@@ -124,12 +124,15 @@ class APIClient: NSObject {
             }
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */
-            if let parsedData = self.parseJSON(data) {
-                completionHandler(result: parsedData, success: true, message: nil)
-            } else {
-                debugPrint(NSString(data: data, encoding: NSUTF8StringEncoding))
-
-                completionHandler(result: nil, success: false, message: "Can't parse JSON.")
+//            if let parsedData = self.parseJSON(data) {
+//                completionHandler(result: parsedData, success: true, message: nil)
+//            } else {
+//                debugPrint(NSString(data: data, encoding: NSUTF8StringEncoding))
+//                
+//                completionHandler(result: nil, success: false, message: "Can't parse JSON.")
+//            }
+            self.parseJSONWithCompletionHandler(data) { result, success, message in
+                completionHandler(result: result, success: success, message: message)
             }
         }
         
@@ -172,6 +175,49 @@ class APIClient: NSObject {
         } catch {
             print("Could not parse the data as JSON: '\(data)'")
             return nil
+        }
+    }
+    
+    /* Helper: Given raw JSON, return a usable Foundation object */
+    func parseJSONWithCompletionHandler(data: NSData, completionHandler: (result: AnyObject?, success: Bool, message: String?) -> Void) -> Void {
+        
+//        debugPrint(NSString(data: data, encoding: NSUTF8StringEncoding))
+        
+        var parsedResult: NSDictionary
+        do {
+            parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
+            
+            guard let status = parsedResult["status"] as! String? else {
+                print("Can't parse status: \(parsedResult)")
+                completionHandler(result: nil, success: false, message: "Can't parse status: \(parsedResult)")
+                return
+            }
+            
+            if status != "ok" {
+                // TODO check here for logged out errors - message format is "You need to login before calling API function ____" and login then retry
+                print("Call failed")
+                if let message = parsedResult["message"] as? String {
+                    print(message)
+                    completionHandler(result: nil, success: false, message: message)
+                } else {
+                    completionHandler(result: nil, success: false, message: "Call failed")
+                }
+                return
+            }
+            
+            guard let data = parsedResult["data"] else {
+                print("Can't find data in \(parsedResult)")
+                completionHandler(result: nil, success: false, message: "Can't find data in \(parsedResult)")
+                return
+            }
+            
+            completionHandler(result: data, success: true, message: nil)
+            return
+            
+        } catch {
+            print("Could not parse the data as JSON: '\(data)'")
+            completionHandler(result: nil, success: false, message: "Could not parse the data as JSON: '\(data)'")
+            return
         }
     }
     

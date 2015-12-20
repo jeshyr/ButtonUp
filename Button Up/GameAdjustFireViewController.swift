@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ActionSheetPicker_3_0
 
 class GameAdjustFireViewController: UIViewController {
     
@@ -134,11 +135,13 @@ class GameAdjustFireViewController: UIViewController {
         
         dispatch_async(dispatch_get_main_queue()) {
             // Dice - if we create these outside the main thread they don't update properly
-            for die in (p1?.activeDice)! {
-                self.p1DieButtons.append(self.createDieButtonFromDie(die, active: (activePlayerIndex == 0)))
+            for (index, die) in (p1?.activeDice)!.enumerate() {
+                self.p1DieButtons.append(self.createDieButtonFromDie(die, activeGame: (activePlayerIndex == 0), activePlayer: true))
+                self.p1DieButtons.last!.dieValue.tag = index
             }
-            for die in (p2?.activeDice)! {
-                self.p2DieButtons.append(self.createDieButtonFromDie(die, active: (activePlayerIndex == 0)))
+            for (index, die) in (p2?.activeDice)!.enumerate() {
+                self.p2DieButtons.append(self.createDieButtonFromDie(die, activeGame: (activePlayerIndex == 0), activePlayer: false))
+                self.p2DieButtons.last!.dieValue.tag = index
             }
             
             self.p1View.backgroundColor = p1?.color
@@ -173,26 +176,62 @@ class GameAdjustFireViewController: UIViewController {
         }
     }
     
-    func createDieButtonFromDie(die: Die, active: Bool) -> DieView {
-        let newButton = die.asView(active)
-        newButton.dieValue.addTarget(self, action: "dieTouchUp:", forControlEvents: .TouchUpInside)
+    func createDieButtonFromDie(die: Die, activeGame: Bool, activePlayer: Bool) -> DieView {
+        let newButton = die.asView(activeGame)
+        if activePlayer && activeGame {
+            if !die.properties.contains(Flag.IsAttacker) && die.hasSkill("Fire") {
+                newButton.outline = true
+                
+                newButton.dieValue.addTarget(self, action: "dieTouchUp:", forControlEvents: .TouchUpInside)
+            }
+        }
         return newButton
     }
     
     // MARK - Actions
     
     func dieTouchUp(sender: UIButton) {
-        //sender.selected = !sender.selected
+        if sender.isDescendantOfView(p1View) {
+            //sender.selected = !sender.selected
+            let die = game?.playerData[0].activeDice[sender.tag]
+            print("die: \(sender.tag), value: \(die!.value)")
+            let stringArray = (die!.minimum...die!.value).flatMap { String($0) }
+            
+            ActionSheetStringPicker.showPickerWithTitle("Turn Down Fire Die", rows: stringArray, initialSelection: (stringArray.count - 1), doneBlock: {
+                picker, index, value in
+                    sender.setTitle("\(value)", forState: UIControlState.Normal)
+                    print("Value now: \(sender.titleLabel!.text!)")
+                    return
+                }, cancelBlock: { ActionStringCancelBlock in return }, origin: sender)
+        }
     }
     
     @IBAction func fireButtonTouchUp(sender: AnyObject) {
-        debugPrint("Bang bang")
+        var dieIdxArray = [Int]()
+        var dieValueArray = [Int]()
+        let activeDice = game?.playerData[0].activeDice
+    
+        for (index, die) in activeDice!.enumerate() {
+            let displayedValue = self.p1DieButtons[index].dieValue.titleLabel!.text!
+            if String(die.value) != displayedValue {
+                dieIdxArray.append(index)
+                dieValueArray.append(Int(displayedValue)!)
+            }
+        }
+
+        client.adjustFire(game!.id, roundNumber: game!.round, timestamp: game!.timestamp, action: "turndown", dieIdxArray: dieIdxArray, dieValueArray: dieValueArray) { success, message in
+            if success {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.navigationController!.popViewControllerAnimated(true)
+                }
+            } else {
+                print("Failed to adjust fire dice: \(message!)")
+            }
+        }
     }
     
     func cancelButtonTouchUp() {
-        debugPrint("Cancel")
-        
-        client.adjustFire(game!.id, roundNumber: game!.round, timestamp: game!.timestamp, action: "cancel") { success, message in
+        client.adjustFire(game!.id, roundNumber: game!.round, timestamp: game!.timestamp, action: "cancel", dieIdxArray: [], dieValueArray: []) { success, message in
             
             if success {
                 dispatch_async(dispatch_get_main_queue()) {

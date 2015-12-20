@@ -37,7 +37,19 @@ import UIKit
         view = loadViewFromNib()
         view.frame = bounds
         view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        view.layer.cornerRadius = 5
         addSubview(view)
+    }
+    
+    var outline: Bool = false {
+        didSet {
+            if outline {
+                view.layer.borderWidth = 2
+                view.layer.borderColor = UIColor.blackColor().CGColor
+            } else {
+                view.layer.borderWidth = 0
+            }
+        }
     }
 
 }

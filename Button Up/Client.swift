@@ -1073,14 +1073,21 @@ extension APIClient {
     
     // MARK: - Adjust Fire Dice
     
-    func adjustFire(gameId: Int, roundNumber: Int, timestamp: String, action: String, completionHandler: (success: Bool, message: String?) -> Void) {
-        let jsonBody: [String: String] = [
+    func adjustFire(gameId: Int, roundNumber: Int, timestamp: String, action: String, dieIdxArray: [Int], dieValueArray: [Int], completionHandler: (success: Bool, message: String?) -> Void) {
+        var jsonBody: [String: String] = [
             "type": "adjustFire",
             "game": String(gameId),
             "roundNumber": String(roundNumber),
             "timestamp": timestamp,
-            "action": action
+            "action": action // "cancel" or "turndown"
         ]
+        
+        if action == "turndown" {
+            jsonBody["dieIdxArray[]"] = dieIdxArray.map({"\($0)"}).joinWithSeparator(",") // indices of the dice to adjust from the game array
+            jsonBody["dieValueArray[]"] = dieValueArray.map({"\($0)"}).joinWithSeparator(",") // new values of those dice
+        }
+        
+        debugPrint(jsonBody)
         
         APIClient.sharedInstance().request(jsonBody) { result, success, message in
             guard success else {
@@ -1089,6 +1096,8 @@ extension APIClient {
                 return
             }
             
+            debugPrint(result)
+            debugPrint(message)
             completionHandler(success: success, message: nil)
         }
     }

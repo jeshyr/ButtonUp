@@ -212,23 +212,9 @@
 			children = (
 				E167C3771BFAAC9900DE58C2 /* Model */,
 				E167C3781BFAACA300DE58C2 /* View */,
+				E173CCA41C263DFF003EBFB1 /* ViewControllers */,
 				E1572CFE1BF57559006E39DD /* Main.storyboard */,
 				E1572CFA1BF57559006E39DD /* AppDelegate.swift */,
-				E1572CFC1BF57559006E39DD /* LoginViewController.swift */,
-				E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */,
-				E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */,
-				E1FC12FF1C1FA408009D4792 /* ChooseJoinGameViewController.swift */,
-				E12550D81C1A6299009CAFD5 /* GameAdjustFireViewController.swift */,
-				E135F1221C19831600542FFA /* GameCompletedViewController.swift */,
-				E135F1201C19126B00542FFA /* GameRejectedViewController.swift */,
-				E18DA02C1C17051700CA0CFA /* GameMessageOnlyViewController.swift */,
-				E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */,
-				E12550DA1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift */,
-				E12FD7341C1D50CE00B8E6E5 /* OpenGameDetailViewController.swift */,
-				E1D00DB51BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift */,
-				E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */,
-				E1D00DB31BF728D0009FF0A8 /* ButtonDetailViewController.swift */,
-				E1BF593C1BFEA3BC0091946B /* SettingsViewController.swift */,
 				E1572D011BF57559006E39DD /* Assets.xcassets */,
 				E1572D031BF57559006E39DD /* LaunchScreen.storyboard */,
 				E1572D061BF57559006E39DD /* Info.plist */,
@@ -286,6 +272,28 @@
 				E167C3791BFAACC700DE58C2 /* DieButton.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		E173CCA41C263DFF003EBFB1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1572CFC1BF57559006E39DD /* LoginViewController.swift */,
+				E1572D2C1BF6058B006E39DD /* GameTableViewController.swift */,
+				E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */,
+				E1FC12FF1C1FA408009D4792 /* ChooseJoinGameViewController.swift */,
+				E12550D81C1A6299009CAFD5 /* GameAdjustFireViewController.swift */,
+				E135F1221C19831600542FFA /* GameCompletedViewController.swift */,
+				E135F1201C19126B00542FFA /* GameRejectedViewController.swift */,
+				E18DA02C1C17051700CA0CFA /* GameMessageOnlyViewController.swift */,
+				E1F5C9B81BF82C660052A119 /* GameHistoryTableViewController.swift */,
+				E12550DA1C1ABAA8009CAFD5 /* OpenGamesTableViewController.swift */,
+				E12FD7341C1D50CE00B8E6E5 /* OpenGameDetailViewController.swift */,
+				E1D00DB51BF72A4C009FF0A8 /* ButtonSetsTableViewController.swift */,
+				E1D00DBB1BF74847009FF0A8 /* ButtonSetTableViewController.swift */,
+				E1D00DB31BF728D0009FF0A8 /* ButtonDetailViewController.swift */,
+				E1BF593C1BFEA3BC0091946B /* SettingsViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		E1FCAC5A1C25175500F05269 /* json */ = {

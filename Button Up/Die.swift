@@ -15,6 +15,15 @@ struct Die : CustomStringConvertible {
     var recipe: String = ""
     var skills = [Skill]()
     var sides: Int = 0
+    var minimum: Int { // lowest possible value of this die
+        if self.properties.contains(Flag.Twin) {
+            return 2
+        } else if sides == 0 {
+            return 0
+        } else {
+            return 1
+        }
+    }
     var value: Int = 0
     var subDice = [DieSubDie]() // For twin die
     
@@ -133,6 +142,16 @@ struct Die : CustomStringConvertible {
         
         //print("Recipe: \(self.recipe), sides: \(self.sides), skills: \(self.skills), coreRecipe: \(self.coreRecipe), expandedCoreRecipe: \(core)")
         return "\(skillStringPrefix)(\(core))\(skillStringPostfix)"
+    }
+    
+    func hasSkill(skillText: String) -> Bool {
+        // This is ugly and I'm sure there's a better way to do it but I can't think of it just now.
+        for skill in skills {
+            if skill.description == skillText {
+                return true
+            }
+        }
+        return false
     }
     
     func asView(active: Bool) -> DieView {
