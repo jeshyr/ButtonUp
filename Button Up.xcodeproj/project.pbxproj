@@ -30,6 +30,7 @@
 		E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */; };
 		E1572D311BF60C14006E39DD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1572D301BF60C14006E39DD /* Game.swift */; };
 		E167C37A1BFAACC700DE58C2 /* DieButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167C3791BFAACC700DE58C2 /* DieButton.swift */; };
+		E173CCA61C26B001003EBFB1 /* Client-Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173CCA51C26B001003EBFB1 /* Client-Gameplay.swift */; };
 		E18DA02D1C17051700CA0CFA /* GameMessageOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18DA02C1C17051700CA0CFA /* GameMessageOnlyViewController.swift */; };
 		E19AEC2E1C067DB100170735 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AEC2D1C067DB100170735 /* DieTests.swift */; };
 		E19AEC301C06804000170735 /* SkillTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AEC2F1C06804000170735 /* SkillTests.swift */; };
@@ -113,6 +114,7 @@
 		E1572D2E1BF605C4006E39DD /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		E1572D301BF60C14006E39DD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		E167C3791BFAACC700DE58C2 /* DieButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieButton.swift; sourceTree = "<group>"; };
+		E173CCA51C26B001003EBFB1 /* Client-Gameplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client-Gameplay.swift"; sourceTree = "<group>"; };
 		E18DA02C1C17051700CA0CFA /* GameMessageOnlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMessageOnlyViewController.swift; sourceTree = "<group>"; };
 		E19AEC2D1C067DB100170735 /* DieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieTests.swift; sourceTree = "<group>"; };
 		E19AEC2F1C06804000170735 /* SkillTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillTests.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				E1572D281BF59243006E39DD /* API.swift */,
 				E1572D2A1BF5DDA5006E39DD /* Client.swift */,
+				E173CCA51C26B001003EBFB1 /* Client-Gameplay.swift */,
 				E1572D301BF60C14006E39DD /* Game.swift */,
 				E1F5C9BC1BF88BF10052A119 /* Attack.swift */,
 				E1F5C9BA1BF884F50052A119 /* Die.swift */,
@@ -511,6 +514,7 @@
 				E1572D2D1BF6058B006E39DD /* GameTableViewController.swift in Sources */,
 				E12550D91C1A6299009CAFD5 /* GameAdjustFireViewController.swift in Sources */,
 				E1D3C9F31C00817C001C3150 /* DieView.swift in Sources */,
+				E173CCA61C26B001003EBFB1 /* Client-Gameplay.swift in Sources */,
 				E1D00DB41BF728D0009FF0A8 /* ButtonDetailViewController.swift in Sources */,
 				E1B9B8C31BF6E7D500A37061 /* Constants.swift in Sources */,
 				E1572D2F1BF605C4006E39DD /* GameDetailViewController.swift in Sources */,

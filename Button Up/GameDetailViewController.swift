@@ -213,6 +213,36 @@ class GameDetailViewController: UIViewController {
     }
     
     @IBAction func beatPeopleUpTouchUp(sender: AnyObject) {
+        var p1DieSelectStatus = [Bool]()
+        var p2DieSelectStatus = [Bool]()
+        
+        for die in self.p1DieButtons {
+            if die.dieValue.selected {
+                p1DieSelectStatus.append(true)
+            } else {
+                p1DieSelectStatus.append(false)
+            }
+        }
+        for die in self.p2DieButtons {
+            if die.dieValue.selected {
+                p2DieSelectStatus.append(true)
+            } else {
+                p2DieSelectStatus.append(false)
+            }
+        }
+        
+        print(p1DieSelectStatus)
+        print(p2DieSelectStatus)
+        
+        client.submitTurn(game!, attackType: Attack.Default, p1DieSelectStatus: p1DieSelectStatus, p2DieSelectStatus: p2DieSelectStatus) { success, message in
+            if success {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.navigationController!.popViewControllerAnimated(true)
+                }
+            } else {
+                print("Failed to make move: \(message!)")
+            }
+        }
     }
     
     @IBAction func buttonTouchUp(sender: UIButton) {

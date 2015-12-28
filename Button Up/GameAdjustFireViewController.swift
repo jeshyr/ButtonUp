@@ -219,7 +219,7 @@ class GameAdjustFireViewController: UIViewController {
             }
         }
 
-        client.adjustFire(game!.id, roundNumber: game!.round, timestamp: game!.timestamp, action: "turndown", dieIdxArray: dieIdxArray, dieValueArray: dieValueArray) { success, message in
+        client.adjustFire(game!, action: "turndown", dieIdxArray: dieIdxArray, dieValueArray: dieValueArray) { success, message in
             if success {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.navigationController!.popViewControllerAnimated(true)
@@ -231,7 +231,7 @@ class GameAdjustFireViewController: UIViewController {
     }
     
     func cancelButtonTouchUp() {
-        client.adjustFire(game!.id, roundNumber: game!.round, timestamp: game!.timestamp, action: "cancel", dieIdxArray: [], dieValueArray: []) { success, message in
+        client.adjustFire(game!, action: "cancel", dieIdxArray: [], dieValueArray: []) { success, message in
             
             if success {
                 dispatch_async(dispatch_get_main_queue()) {

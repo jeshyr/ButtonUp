@@ -28,6 +28,7 @@ struct Game {
     var skillsInfo = [Skill]()
     var maxWins: Int = 0
     var playerData = [GamePlayerData]()
+    var playerDataFlipped: Bool = false
     var playerWithInitiativeIndex: Int = 0
     var previousGameId: Int? = nil
     var validAttacks = [Attack]()

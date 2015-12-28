@@ -1,5 +1,5 @@
 //
-//  ButtonClient.swift
+//  API.swift
 //  Button Up
 //
 //  Created by Ricky Buchanan on 13/11/2015.
@@ -46,21 +46,21 @@ class APIClient: NSObject {
         /* 4. Make the request */
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
-//             print("===== TASK RESPONSE START =====")
-//             print("Data:")
-//             print(data)
-//             print("Response:")
-//             print(response)
-//             print("Error:")
-//             print(error)
-//            
-//            if data != nil {
-//                let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-//                
-//                 print("StrData:")
-//                 print(strData)
-//            }
-//             print("===== TASK RESPONSE END   =====")
+             print("===== TASK RESPONSE START =====")
+             print("Data:")
+             print(data)
+             print("Response:")
+             print(response)
+             print("Error:")
+             print(error)
+            
+            if data != nil {
+                let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                
+                 print("StrData:")
+                 print(strData)
+            }
+             print("===== TASK RESPONSE END   =====")
 
             
             /* GUARD: Was there an error? */
@@ -215,6 +215,7 @@ class APIClient: NSObject {
             return
             
         } catch {
+            print("Fetch failed: \((error as NSError).localizedDescription)")
             print("Could not parse the data as JSON: '\(data)'")
             completionHandler(result: nil, success: false, message: "Could not parse the data as JSON: '\(data)'")
             return
